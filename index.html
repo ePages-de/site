@@ -25,7 +25,14 @@
   <body>
     <h1>site-prototype</h1>
 
-    <p>Beispiel:</p>
-    <a href="http://localhost:8000/?url=products/">localhost:8000/?url=products/</a>
+    <form id="api">
+    <label>API Call
+      <input type="text" value="products" id="apiCall">
+    </label>
+    <input type="submit" value="load">
+    </form>
+
+    <pre id="result">
+    </pre>
   </body>
 </html>

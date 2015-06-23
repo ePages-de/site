@@ -1,43 +1,37 @@
 "use strict";
 
 var _eps = _eps || {},
-    corsApiUrl = "http://localhost:4567/",
-    baseUrl = "developer.epages.com/api/shops/" + _eps.shopId + "/";
+    corsApiUrl = "http://localhost:4567/";
 
 if( undefined === _eps.shopId) {
   throw "_eps.shopId not defined";
 }
 
-function doCORSRequest(options, printResult) {
-    if (!options.data) { options.data = {}; }
-
-    var x = new XMLHttpRequest();
-    x.open(options.method, corsApiUrl + options.url);
-    x.onload = x.onerror = function() {
-        printResult(
-            options.method + " " + options.url + "\n" +
-            x.status + " " + x.statusText + "\n\n" +
-            (x.responseText || "")
-        );
+(function(window, document, version, callback) {
+  var j, d;
+  var loaded = false;
+  if (!(j = window.jQuery) || j.fn.jquery.match(new RegExp("^" + version)) || callback(j, loaded)) {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://code.jquery.com/jquery-2.1.4.min.js";
+    script.onload = script.onreadystatechange = function() {
+      if (!loaded && (!(d = this.readyState) || d === "loaded" || d === "complete")) {
+        callback((j = window.jQuery).noConflict(1), loaded = true);
+        j(script).remove();
+      }
     };
-    if (/^POST/i.test(options.method)) {
-        x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    }
-    x.send(options.data);
-}
+    (document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script);
+  }
+})(window, document, "2.1", function($) {
+  console.log("jQuery version " + $.fn.jquery);
 
-function getParameterByName(name) {
-    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-    results = regex.exec(location.search);
-    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-}
-
-(function() {
-    doCORSRequest({
-        method: "GET",
-        url: baseUrl + getParameterByName("url")
-    }, function printResult(result) {
-        console.log(result);
+  $("#api").submit( function(e) {
+    e.preventDefault();
+    var url = corsApiUrl + "//developer.epages.com/api/shops/" + _eps.shopId + "/" + $("#apiCall").val();
+    console.log("Attempting to fetch " + url);
+    $.getJSON(url, function(result) {
+      console.log("Successfully fetched " + url);
+      $("#result").html(JSON.stringify(result, null, 2));
     });
-})();
+  });
+});
