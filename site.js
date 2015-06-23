@@ -1,3 +1,5 @@
+"use strict";
+
 var _eps = _eps || {},
     corsApiUrl = "http://localhost:4567/",
     baseUrl = "developer.epages.com/api/shops/" + _eps.shopId + "/";

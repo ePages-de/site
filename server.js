@@ -1,9 +1,11 @@
-// Config
+"use strict";
+
+var connect = require("connect"),
+    serveStatic = require("serve-static");
+
 var corsHost = "localhost",
     corsPort = 4567,
     staticPort = 8000,
-    connect = require("connect"),
-    serveStatic = require("serve-static"),
     app = connect();
 
 // CORS proxy
