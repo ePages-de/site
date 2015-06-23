@@ -1,36 +1,21 @@
 // Config
-
-var corsHost   = 'localhost',
-    corsPort   = 4567,
-    staticHost = 'localhost',
-    staticPort = 8000;
-
+var corsHost = "localhost",
+    corsPort = 4567,
+    staticPort = 8000,
+    connect = require("connect"),
+    serveStatic = require("serve-static"),
+    app = connect();
 
 // CORS proxy
-
-var corsProxy = require('cors-anywhere');
+var corsProxy = require("cors-anywhere");
 corsProxy.createServer({
-    removeHeaders: ['cookie', 'cookie2']
+  removeHeaders: ["cookie", "cookie2"]
 }).listen(corsPort, corsHost, function() {
-    console.log('Running CORS proxy on http://' + corsHost + ':' + corsPort);
+  console.log("Running CORS proxy on http://" + corsHost + ":" + corsPort);
 });
 
-
 // Static index page
-
-var http = require('http'),
-    fs = require('fs');
-
-fs.readFile('./index.html', function (err, html) {
-  if (err) {
-    throw err;
-  }
-
-  http.createServer(function(request, response) {
-    response.writeHeader(200, { "Content-Type": "text/html" });
-    response.write(html);
-    response.end();
-  }).listen(staticPort, staticHost, function() {
-    console.log('Running static index page on http://' + staticHost + ':' + staticPort);
-  });
+app.use(serveStatic(__dirname, {"index": ["index.html"]}));
+app.listen(staticPort, function() {
+  console.log("Running serve-static on http://localhost:" + staticPort);
 });

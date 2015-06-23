@@ -1,17 +1,19 @@
 {
-    "name": "site-prototype",
-    "version": "0.0.1",
-    "private": true,
-    "author": "mindmatters <info@mindmatters.de>",
-    "description": "Site prototype",
-    "license": "MIT",
-    "engines": {
-        "node": ">=0.10"
-    },
-    "scripts": {
-        "start": "node ./server.js"
-    },
-    "dependencies": {
-        "cors-anywhere": "~0.2.3"
-    }
+  "name": "site-prototype",
+  "version": "0.0.1",
+  "private": true,
+  "author": "mindmatters <info@mindmatters.de>",
+  "description": "Site prototype",
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.10"
+  },
+  "scripts": {
+    "start": "node ./server.js"
+  },
+  "dependencies": {
+    "connect": "^3.4.0",
+    "cors-anywhere": "~0.2.3",
+    "serve-static": "^1.10.0"
+  }
 }

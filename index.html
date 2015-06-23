@@ -11,41 +11,14 @@
     </style>
 
     <script type="text/javascript">
-        var cors_api_url = 'http://localhost:4567/';
+      var _eps = _eps || {};
+      _eps.shopId = _eps.shopId || 'DemoShop';
 
-        function doCORSRequest(options, printResult) {
-            if (!options.data) { options.data = {}; }
-
-            var x = new XMLHttpRequest();
-            x.open(options.method, cors_api_url + options.url);
-            x.onload = x.onerror = function() {
-                printResult(
-                    options.method + ' ' + options.url + '\n' +
-                    x.status + ' ' + x.statusText + '\n\n' +
-                    (x.responseText || '')
-                );
-            };
-            if (/^POST/i.test(options.method)) {
-                x.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            }
-            x.send(options.data);
-        }
-
-        function getParameterByName(name) {
-            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-            results = regex.exec(location.search);
-            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-        }
-
-        (function() {
-            doCORSRequest({
-                method: 'GET',
-                url: getParameterByName('url')
-            }, function printResult(result) {
-                console.log(result);
-            });
-        })();
+      (function() {
+        var site = document.createElement('script'); site.type = 'text/javascript'; site.async = true;
+        site.src = '/site.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(site, s);
+      })();
     </script>
   </head>
 
@@ -53,6 +26,6 @@
     <h1>site-prototype</h1>
 
     <p>Beispiel:</p>
-    <a href="http://localhost:8000/?url=developer.epages.com/api/shops/DemoShop/products/">localhost:8000/?url=developer.epages.com/api/shops/DemoShop/products/</a>
+    <a href="http://localhost:8000/?url=products/">localhost:8000/?url=products/</a>
   </body>
 </html>
