@@ -1,0 +1,14 @@
+{
+    "name": "site-prototype",
+    "version": "0.0.1",
+    "private": true,
+    "author": "mindmatters <info@mindmatters.de>",
+    "description": "Site prototype",
+    "license": "MIT",
+    "engines": {
+        "node": ">=0.10"
+    },
+    "dependencies": {
+        "cors-anywhere": "~0.2.3"
+    }
+}
