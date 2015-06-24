@@ -27,7 +27,7 @@ if( undefined === _eps.shopId) {
 
   $("#api").submit( function(e) {
     e.preventDefault();
-    var url = corsApiUrl + "//developer.epages.com/api/shops/" + _eps.shopId + "/" + $("#apiCall").val();
+    var url = corsApiUrl + "https://developer.epages.com/api/shops/" + _eps.shopId + "/" + $("#apiCall").val();
     console.log("Attempting to fetch " + url);
     $.getJSON(url, function(result) {
       console.log("Successfully fetched " + url);
