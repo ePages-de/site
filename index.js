@@ -15,5 +15,5 @@ var connect = require("connect"),
 app.use(serveStatic(__dirname + '/public'));
 
 app.listen(port, function() {
-  console.log("Static server is running.");
+  console.log("Static server is running on port " + port);
 });
