@@ -4,6 +4,11 @@
 
 (function(window, document, undefined) {
 
-  console.log("SITe is running.");
+  var containers = document.getElementsByClassName("eps-site-widget");
+
+  for (var i = 0; i < containers.length; i++) {
+    var container = containers[i];
+    container.innerHTML = "<p>WIDGET</p>";
+  }
 
 }(window, document));
