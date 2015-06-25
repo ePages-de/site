@@ -56,9 +56,12 @@
 
 
   function onLoad() {
-    // TODO: figure out whether we’re running on localhost or heroku.
-    //var baseURL = "https://site-prototype.herokuapp.com";
-    var baseURL = "http://localhost:4566";
+    var baseURL;
+    if (window.location.hostname.match(/localhost|127\.0\.0\.1|0\.0\.0\.0/)) {
+      baseURL = "http://localhost:4566";
+    } else {
+      baseURL = "https://site-prototype.herokuapp.com";
+    }
 
     var loader = new Loader();
     loader.require(
