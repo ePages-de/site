@@ -8,13 +8,22 @@
   Loader.prototype = {
     require: function(scripts, callback) {
       this.loadCount  = 0;
-      this.totalCount = scripts.length;
+      this.totalCount = 0;
       this.callback   = callback;
 
       var target = document.getElementsByTagName("script")[0];
 
       for (var i = 0; i < scripts.length; i++) {
-        this.writeScript(scripts[i], target);
+        var script = scripts[i];
+
+        if (!script.unless || !script.unless()) {
+          this.totalCount++;
+          this.writeScript(script.url, target);
+        }
+      }
+
+      if (this.totalCount === 0 && typeof this.callback == "function") {
+        this.callback();
       }
     },
 
@@ -22,7 +31,7 @@
       this.loadCount++;
 
       if (this.loadCount == this.totalCount && typeof this.callback == "function") {
-        this.callback.call();
+        this.callback();
       }
     },
 
@@ -47,30 +56,36 @@
 
 
   function onLoad() {
-
-    function onReady() {
-      console.log('all scripts loaded');
-      console.log(Backbone);
-      console.log(jQuery);
-      console.log(_);
-    }
-
     // TODO: figure out whether we’re running on localhost or heroku.
-    // var baseURL = "https://site-prototype.herokuapp.com";
+    //var baseURL = "https://site-prototype.herokuapp.com";
     var baseURL = "http://localhost:4566";
 
-    // TODO: check whether compatible libraries are already loaded on the client page.
     var loader = new Loader();
     loader.require(
       [
-        baseURL + "/vendor/underscore-1.8.3.js",
-        baseURL + "/vendor/jquery-1.11.3.js",
-        baseURL + "/vendor/backbone-1.2.1.js",
-        baseURL + "/app.js",
+        {
+          url: baseURL + "/vendor/underscore-1.8.3.js",
+          unless: function() {
+            return window._ && window._.VERSION.match(new RegExp("^1."));
+          }
+        },
+        {
+          url: baseURL + "/vendor/jquery-1.11.3.js",
+          unless: function() {
+            return window.jQuery && window.jQuery.fn.jquery.match(new RegExp("^1."));
+          }
+        },
+        {
+          url: baseURL + "/vendor/backbone-1.2.1.js",
+          unless: function() {
+            return window.Backbone && window.Backbone.VERSION.match(new RegExp("^1."));
+          }
+        }
       ],
-      onReady
+      function() {
+        loader.require([{ url: baseURL + "/app.js" }]);
+      }
     );
-
   }
 
   if (window.addEventListener) { window.addEventListener("load", onLoad, false); }
