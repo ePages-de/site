@@ -95,8 +95,8 @@
   var Products = new ProductList();
 
   var ProductView = Backbone.View.extend({
-    tagName: "li",
-    template: _.template("<%= name %> <%= priceInfo.price.formatted %>"),
+    tagName: "div",
+    template: _.template("<div class='product'><img src='<%= _.findWhere(images, {classifier: 'Small'}).url %>'/><div class='product-name'><%= name %></div><div class='product-price'><%= priceInfo.price.formatted %></div></div>"),
     render: function() {
       this.$el.html(this.template(this.model.toJSON()));
       return this;
@@ -111,12 +111,11 @@
     },
     render: function() {
       if (Products.length > 0) {
-        var result = Products.length + " Produkte:<ul>";
+        var result = "";
         Products.each( function(product) {
           var pv = new ProductView({model: product}).render().el;
           result += pv.outerHTML;
         });
-        result += "</ul>";
         this.$el.html(result);
       } else {
         this.$el.html("loading...");
