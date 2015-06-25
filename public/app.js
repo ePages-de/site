@@ -95,7 +95,7 @@
   var Products = new ProductList();
 
   var ProductView = Backbone.View.extend({
-    tagName: "div",
+    tagName: "li",
     template: _.template("<%= name %> <%= priceInfo.price.formatted %>"),
     render: function() {
       this.$el.html(this.template(this.model.toJSON()));
@@ -111,11 +111,12 @@
     },
     render: function() {
       if (Products.length > 0) {
-        var result = Products.length + " Produkte:";
+        var result = Products.length + " Produkte:<ul>";
         Products.each( function(product) {
           var pv = new ProductView({model: product}).render().el;
           result += pv.outerHTML;
         });
+        result += "</ul>";
         this.$el.html(result);
       } else {
         this.$el.html("loading...");
