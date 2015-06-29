@@ -127,7 +127,7 @@ function onLoad() {
   });
 
   var ProductList = Backbone.Collection.extend({
-    url: "http://site-cors-api-proxy.herokuapp.com/https://developer.epages.com/api/shops/DemoShop/products",
+    url: "https://site-cors-api-proxy.herokuapp.com/https://developer.epages.com/api/shops/DemoShop/products",
     model: Product,
     parse: function(data) {
       return data.items;
