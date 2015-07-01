@@ -1,6 +1,6 @@
 "use strict";
 
-// A static file server for the SITe prototype widget.
+// A static file server for the SITe widget.
 //
 // Running on Heroku at:
 //   https://site-prototype.herokuapp.com

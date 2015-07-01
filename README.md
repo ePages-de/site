@@ -1,4 +1,4 @@
-# site-prototype
+# SITe
 
 
 ## Installation

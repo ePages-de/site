@@ -1,6 +1,6 @@
 {
-  "name": "site-prototype",
-  "description": "The SITe prototype",
+  "name": "site",
+  "description": "SITe widget",
   "version": "0.1.0",
   "private" : true,
   "main": "index.js",
