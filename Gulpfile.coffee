@@ -8,35 +8,37 @@ merge  = require("merge-stream")
 env = process.env.NODE_ENV or "development"
 
 dependencies =
-  reqwest: "1.1.5"
+  reqwest:    "1.1.5"
   underscore: "1.8.3"
+
+path =
+  public:  "public/"
+  vendor:  "public/vendor/"
+  wrapper: "public/wrapper/"
 
 vendorPath = (name) ->
   version = dependencies[name]
   min = if env == "production" then ".min" else ""
-  "public/vendor/" + name + "-" + version + min + ".js"
-
-wrapperPath = (name) ->
-  "public/wrapper/" + name + ".js"
+  path.vendor + name + "-" + version + min + ".js"
 
 gulp.task "build", ->
   reqwest =
     gulp.src(vendorPath("reqwest"))
-        .pipe(wrap(src: wrapperPath("reqwest")))
+        .pipe(wrap(src: path.wrapper + "reqwest.js"))
 
   underscore =
     gulp.src(vendorPath("underscore"))
-        .pipe(wrap(src: wrapperPath("underscore")))
+        .pipe(wrap(src: path.wrapper + "underscore.js"))
 
   app =
-    gulp.src("public/app.coffee")
+    gulp.src(path.public + "app.coffee")
     .pipe(coffee(bare: true).on("error", util.log))
 
   merge(reqwest, underscore, app)
     .pipe(concat("site.js"))
-    .pipe(wrap(src: wrapperPath("iife")))
-    .pipe(gulp.dest("public"))
+    .pipe(wrap(src: path.wrapper + "iife.js"))
+    .pipe(gulp.dest(path.public))
 
 gulp.task "watch", ["build"], ->
-  gulp.watch "public/wrapper/*.js", ["build"]
-  gulp.watch "public/app.coffee", ["build"]
+  gulp.watch path.wrapper + "*.js", ["build"]
+  gulp.watch path.public + "app.coffee", ["build"]
