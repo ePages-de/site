@@ -4,6 +4,6 @@ module = {
 
 <%= contents %>
 
-var reqwest = module.exports.reqwest;
+var reqwest = module.exports;
 
 module = undefined;
