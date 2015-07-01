@@ -38,8 +38,11 @@ class Widget
   constructor: (options = {}) ->
     @$el = options.el
 
-  shopId: ->
-    @$el.getAttribute("data-shopid")
+  grabShopId: ->
+    @shopId = @$el.getAttribute("data-shopid")
+
+    if !@shopId or !@shopId.length
+      @render "Widget container is missing a data-shopid attribute."
 
   render: (html) ->
     @$el.innerHTML = html
@@ -48,7 +51,7 @@ class Widget
 initializeWidget = (widget) ->
   widget.render "Loading ..."
 
-  Products.all widget.shopId(), (products) ->
+  Products.all widget.shopId, (products) ->
     html = _.map products, (product) ->
       product.render()
 
@@ -56,13 +59,9 @@ initializeWidget = (widget) ->
 
 
 initializeWidgets = ->
-_.each Widget.all(), (widget) ->
-  shopId = widget.shopId()
-
-  if !shopId or !shopId.length
-    container.innerHTML = "Widget container is missing a data-shopid attribute."
-
-  initializeWidget(widget)
+  _.each Widget.all(), (widget) ->
+    widget.grabShopId()
+    initializeWidget(widget)
 
 
 initializeWidgets()
