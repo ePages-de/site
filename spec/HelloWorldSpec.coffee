@@ -9,7 +9,6 @@ describe 'Hello Word', ->
     $widget = $j('.epages-shop-widget')
     expect($widget.text()).toEqual("FIXTURE")
     waitForWidget = setInterval(->
-      console.log "text: " + $widget.text()
       if $widget.text() != 'FIXTURE'
         done && clearInterval(waitForWidget)
     , 10)
