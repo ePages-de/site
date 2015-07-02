@@ -1,2 +1,2 @@
 console.log "IT'S ALIVE"
-document.getElementsByClassName("eps-site-widget")[0].innerHTML = "WIDGET"
+document.getElementsByClassName("epages-shop-widget")[0].innerHTML = "WIDGET"

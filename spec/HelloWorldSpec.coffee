@@ -3,12 +3,16 @@ describe 'Hello Word', ->
 
   beforeEach (done) ->
     jasmine.getFixtures().set(
-      '<div class="eps-site-widget" data-shopid="DemoShop">FIXTURE</div>' +
+      '<div class="epages-shop-widget" data-shopid="DemoShop">FIXTURE</div>' +
       '<script src=http://localhost:4566/site.js></script>'
     )
-    $widget = $j('.eps-site-widget')
+    $widget = $j('.epages-shop-widget')
     expect($widget.text()).toEqual("FIXTURE")
-    setTimeout(done, 100)
+    waitForWidget = setInterval(->
+      console.log "text: " + $widget.text()
+      if $widget.text() != 'FIXTURE'
+        done && clearInterval(waitForWidget)
+    , 10)
 
   it 'works', ->
     expect($widget).toExist()
