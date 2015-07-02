@@ -5,7 +5,8 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "pretest": "PORT=4321 node index.js & ./node_modules/karma/bin/karma start karma.conf.coffee"
   },
   "engines": {
     "node": "0.12.2"
