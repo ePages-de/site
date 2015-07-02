@@ -1,0 +1,10 @@
+{
+  "name": "Site Prototype",
+  "description": "Heroku App to host site.js for the staging environment",
+  "keywords": [],
+  "addons": [],
+  "env": {},
+  "scripts": {
+    "postdeploy": "gulp build"
+  }
+}
