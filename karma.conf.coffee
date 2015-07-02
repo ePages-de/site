@@ -3,7 +3,7 @@ module.exports = (config) ->
     basePath: ''
     frameworks: [ 'jasmine-jquery', 'jasmine' ]
     files: [
-      'src/**/*.coffee'
+      'public/site.js'
       'spec/**/*.coffee'
     ]
     exclude: []
