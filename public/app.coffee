@@ -63,11 +63,11 @@ initializeWidget = (widget) ->
 
 initializeWidgets = ->
   style = """
-    <style type="text/css">
+    <style type="text/css" id="epages-shop-styles">
       .epages-shop-widget  {
         overflow: auto;
       }
-      .epages-shop-product {
+      .epages-shop-widget .epages-shop-product {
         float: left;
         width: 100px;
         margin: 10px;
@@ -75,7 +75,8 @@ initializeWidgets = ->
       }
     </style>
   """
-  document.getElementsByTagName("head")[0].insertAdjacentHTML "beforeend", style
+  head = document.getElementsByTagName("head")[0]
+  head.insertAdjacentHTML("afterbegin", style)
   _.each Widget.all(), (widget) ->
     widget.grabShopId()
     initializeWidget(widget)
