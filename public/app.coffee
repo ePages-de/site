@@ -14,10 +14,15 @@ class Product
     @attributes = attributes
 
   template: _.template """
-    <div class="product">
+    <style>
+      .epages-shop-product { float: left; width: 100px; }
+    </style>
+    <div class="epages-shop-product">
       <img src="<%= image %>"/>
-      <div class="product-name"><%= name %></div>
-      <div class="product-price"><%= price %></div>
+      <div class="epages-shop-product-name"><%= name %></div>
+      <div class="epages-shop-product-price" style="font-weight: bold">
+        <%= price %>
+      </div>
     </div>
   """
 
