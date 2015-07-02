@@ -14,9 +14,6 @@ class Product
     @attributes = attributes
 
   template: _.template """
-    <style>
-      .epages-shop-product { float: left; width: 100px; }
-    </style>
     <div class="epages-shop-product">
       <img src="<%= image %>"/>
       <div class="epages-shop-product-name"><%= name %></div>
@@ -53,8 +50,8 @@ class Widget
   render: (html) ->
     @$el.innerHTML = html
 
-
 initializeWidget = (widget) ->
+  widget.renderStyle
   widget.render "Loading ..."
 
   Products.all widget.shopId, (products) ->
@@ -65,6 +62,20 @@ initializeWidget = (widget) ->
 
 
 initializeWidgets = ->
+  style = """
+    <style type="text/css">
+      .epages-shop-widget  {
+        overflow: auto;
+      }
+      .epages-shop-product {
+        float: left;
+        width: 100px;
+        margin: 10px;
+        height: 200px;
+      }
+    </style>
+  """
+  document.getElementsByTagName("head")[0].insertAdjacentHTML "beforeend", style
   _.each Widget.all(), (widget) ->
     widget.grabShopId()
     initializeWidget(widget)
