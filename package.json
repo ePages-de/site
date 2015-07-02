@@ -5,7 +5,7 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "gulp build && node index.js",
     "test": "gulp build && PORT=4321 npm start & ./node_modules/karma/bin/karma start karma.conf.coffee",
     "ci":   "gulp build && PORT=4321 npm start & ./node_modules/karma/bin/karma start karma.conf.coffee --single-run --browsers PhantomJS"
   },
