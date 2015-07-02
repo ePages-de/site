@@ -36,7 +36,5 @@ gulp watch
 ## Testing
 
 ```sh
-npm install -g karma-cli # run once to have the karma binary handy
-
-karma start karma.conf.coffee
+npm test
 ```
