@@ -3,7 +3,7 @@ util   = require("gulp-util")
 wrap   = require("gulp-wrap")
 concat = require("gulp-concat")
 coffee = require("gulp-coffee")
-merge  = require("merge-stream")
+series = require("stream-series")
 
 env = process.env.NODE_ENV or "development"
 
@@ -34,7 +34,7 @@ gulp.task "build", ->
     gulp.src(path.public + "app.coffee")
     .pipe(coffee(bare: true).on("error", util.log))
 
-  merge(reqwest, underscore, app)
+  series(reqwest, underscore, app)
     .pipe(concat("site.js"))
     .pipe(wrap(src: path.wrapper + "iife.js"))
     .pipe(gulp.dest(path.public))
