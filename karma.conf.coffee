@@ -1,7 +1,7 @@
 module.exports = (config) ->
   config.set
     basePath: ''
-    frameworks: [ 'jasmine' ]
+    frameworks: [ 'jasmine-jquery', 'jasmine' ]
     files: [
       'src/**/*.coffee'
       'spec/**/*.coffee'
@@ -17,5 +17,6 @@ module.exports = (config) ->
     autoWatch: true
     browsers: [
       'PhantomJS'
+      'Chrome'
     ]
     singleRun: false
