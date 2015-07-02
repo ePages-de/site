@@ -18,4 +18,4 @@ describe 'Hello Word', ->
   it 'works', ->
     expect($widget).toExist()
     expect($widget.data("shopid")).toEqual("DemoShop")
-    expect($widget.text()).toEqual("WIDGET")
+    expect($widget.text()).toEqual("Loading ...")
