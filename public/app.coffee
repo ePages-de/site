@@ -1,6 +1,5 @@
 class Products
   @url: (shopId) ->
-    "https://site-cors-api-proxy.herokuapp.com/" +
     "https://developer.epages.com/api/shops/#{shopId}/products"
 
   @all: (shopId, fn) ->
