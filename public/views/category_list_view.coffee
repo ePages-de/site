@@ -1,7 +1,11 @@
 class CategoryListView extends Backbone.View
+  tagName: "ul"
+
   render: ->
     html = @collection.map (category) ->
       view = new CategoryListItemView(model: category)
       view.render()
+      view.$el.prop("outerHTML")
 
-    html.join("")
+    @$el.html html.join("")
+    this

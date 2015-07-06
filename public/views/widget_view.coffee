@@ -3,12 +3,12 @@ class WidgetView extends Backbone.View
     @_grabShopId()
 
   regions:
-    loading: "esw-loading"
-    content: "esw-content"
-    categoryList: "esw-category-list"
+    loading: ".esw-loading"
+    content: ".esw-content"
+    categoryList: ".esw-category-list"
 
   template: _.template """
-    <div class="esw-category-list"></div>
+    <ul class="esw-category-list"></ul>
     <div class="esw-loading">Loading ...</div>
     <div class="esw-content"></div>
   """
@@ -33,8 +33,10 @@ class WidgetView extends Backbone.View
     categories = new Categories(null, shopId: @shopId)
     categories.fetch
       success: =>
-        view = new CategoryListView(collection: categories)
-        @regions.categoryList.html view.render()
+        view = new CategoryListView
+          el: @regions.categoryList
+          collection: categories
+        view.render()
 
   _grabShopId: ->
     @shopId = @$el.attr("data-shopid")
@@ -44,4 +46,4 @@ class WidgetView extends Backbone.View
 
   _initRegions: ->
     for name, className of @regions
-      @regions[name] = @$(".#{className}")
+      @regions[name] = @$(className)

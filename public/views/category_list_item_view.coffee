@@ -1,7 +1,10 @@
 class CategoryListItemView extends Backbone.View
+  tagName: "li"
+
   template: _.template """
-    <li><%= name %></li>
+    <%= name %>
   """
 
   render: ->
-    @template(name: @model.name())
+    @$el.html @template(name: @model.name())
+    this
