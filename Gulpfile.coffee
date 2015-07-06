@@ -60,4 +60,4 @@ gulp.task "build", ->
 
 gulp.task "watch", ["build"], ->
   gulp.watch path.wrapper + "*.js", ["build"]
-  gulp.watch path.public + "app.coffee", ["build"]
+  gulp.watch path.public + "**/*.coffee", ["build"]
