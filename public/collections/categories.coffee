@@ -5,4 +5,4 @@ class Categories extends Backbone.Collection
   model: Category
 
   url: ->
-    "http://crossorigin.me/https://developer.epages.com/api/shops/#{@shopId}/categories"
+    "https://developer.epages.com/api/shops/#{@shopId}/categories"

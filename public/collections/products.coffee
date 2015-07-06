@@ -5,7 +5,7 @@ class Products extends Backbone.Collection
   model: Product
 
   url: ->
-    "http://crossorigin.me/https://developer.epages.com/api/shops/#{@shopId}/products?resultsPerPage=9"
+    "https://developer.epages.com/api/shops/#{@shopId}/products?resultsPerPage=9"
 
   parse: (response) ->
     response.items

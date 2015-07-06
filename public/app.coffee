@@ -3,6 +3,8 @@ class App
 
 
 initializeWidgets = ->
+  $.ajaxSettings.accepts.json = null # required to work with the epages API
+
   style = """
     <style type="text/css" id="epages-shop-styles">
       .epages-shop-widget  {
