@@ -18,4 +18,4 @@ describe 'Integration', ->
   it 'loads site.js from another server', ->
     expect($widget).toExist()
     expect($widget.data("shopid")).toEqual("DemoShop")
-    expect($widget.text()).toContainText("Loading")
+    expect($widget).toContainText("Loading")
