@@ -1,63 +1,5 @@
-class Products
-  @url: (shopId) ->
-    "https://developer.epages.com/api/shops/#{shopId}/products"
-
-  @all: (shopId, fn) ->
-    reqwest @url(shopId), (response) ->
-      fn _.map response.items, (item) ->
-        new Product(item)
-
-
-class Product
-  constructor: (attributes) ->
-    @attributes = attributes
-
-  template: _.template """
-    <div class="epages-shop-product">
-      <img src="<%= image %>"/>
-      <div class="epages-shop-product-name"><%= name %></div>
-      <div class="epages-shop-product-price" style="font-weight: bold">
-        <%= price %>
-      </div>
-    </div>
-  """
-
-  render: ->
-    @template
-      image: _.findWhere(@attributes.images, classifier: "Small").url
-      name:  @attributes.name
-      price: @attributes.priceInfo.price.formatted
-
-
-class Widget
+class App
   @className: "epages-shop-widget"
-
-  @all: ->
-    _.map document.getElementsByClassName(@className), (el) ->
-      new Widget
-        el: el
-
-  constructor: (options = {}) ->
-    @$el = options.el
-
-  grabShopId: ->
-    @shopId = @$el.getAttribute("data-shopid")
-
-    if !@shopId or !@shopId.length
-      @render "Widget container is missing a data-shopid attribute."
-
-  render: (html) ->
-    @$el.innerHTML = html
-
-initializeWidget = (widget) ->
-  widget.renderStyle
-  widget.render "Loading ..."
-
-  Products.all widget.shopId, (products) ->
-    html = _.map products, (product) ->
-      product.render()
-
-    widget.render html.join("")
 
 
 initializeWidgets = ->
@@ -76,9 +18,13 @@ initializeWidgets = ->
   """
   head = document.getElementsByTagName("head")[0]
   head.insertAdjacentHTML("afterbegin", style)
-  _.each Widget.all(), (widget) ->
-    widget.grabShopId()
-    initializeWidget(widget)
+
+  _.each document.getElementsByClassName(App.className), (el) ->
+    widget = new WidgetView(el: el)
+    widget.init()
+    widget.render()
+    widget.loadProducts()
+    widget.loadCategoryList()
 
 
 initializeWidgets()

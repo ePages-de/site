@@ -1,7 +1,7 @@
 (function(window, document, undefined) {
 
-	var module,
-		exports;
+	// var module,
+	// 	exports;
 
 <%= contents %>
 
