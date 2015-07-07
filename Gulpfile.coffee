@@ -11,6 +11,7 @@ dependencies =
   zepto:      "1.1.6"
   underscore: "1.8.3"
   backbone:   "1.2.1"
+  pico_modal: "2.1.0"
 
 path =
   public:       "public/"
@@ -29,8 +30,9 @@ gulp.task "build", ->
   zepto      = gulp.src(vendorPath("zepto"))
   underscore = gulp.src(vendorPath("underscore"))
   backbone   = gulp.src(vendorPath("backbone"))
+  picoModal  = gulp.src(vendorPath("pico_modal"))
 
-  vendor = series(zepto, underscore, backbone)
+  vendor = series(zepto, underscore, backbone, picoModal)
     .pipe(concat("site.js"))
     .pipe(wrap(src: path.wrapper + "vendor.js"))
 
