@@ -10,7 +10,9 @@ class ProductView extends Backbone.View
   """
 
   render: ->
-    @template
+    @$el.html @template
       image: _.findWhere(@model.attributes.images, classifier: "Small").url
       name:  @model.attributes.name
       price: @model.attributes.priceInfo.price.formatted
+
+    this

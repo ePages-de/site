@@ -23,11 +23,10 @@ class WidgetView extends Backbone.View
       success: =>
         @regions.loading.hide()
 
-        html = products.map (product) ->
-          view = new ProductView(model: product)
-          view.render()
-
-        @regions.content.html html.join("")
+        view = new ProductListView
+          el: @regions.content
+          collection: products
+        view.render()
 
   loadCategoryList: ->
     categories = new Categories(null, shopId: @shopId)
