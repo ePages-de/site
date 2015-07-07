@@ -26,16 +26,17 @@ vendorPath = (name) ->
   path.vendor + name + "-" + version + min + ".js"
 
 gulp.task "build", ->
-  zepto =
-    gulp.src(vendorPath("zepto"))
-        .pipe(wrap(src: path.wrapper + "zepto.js"))
+  zepto      = gulp.src(vendorPath("zepto"))
+  underscore = gulp.src(vendorPath("underscore"))
+  backbone   = gulp.src(vendorPath("backbone"))
 
-  underscore =
-    gulp.src(vendorPath("underscore"))
-#        .pipe(wrap(src: path.wrapper + "underscore.js"))
+  vendor = series(zepto, underscore, backbone)
+    .pipe(concat("site.js"))
+    .pipe(wrap(src: path.wrapper + "vendor.js"))
 
-  backbone =
-    gulp.src(vendorPath("backbone"))
+  app =
+    gulp.src(path.public + "app.coffee")
+    .pipe(coffee(bare: true).on("error", util.log))
 
   models =
     gulp.src(path.models + "*.coffee")
@@ -49,13 +50,13 @@ gulp.task "build", ->
     gulp.src(path.views + "*.coffee")
         .pipe(coffee(bare: true).on("error", util.log))
 
-  app =
-    gulp.src(path.public + "app.coffee")
+  init =
+    gulp.src(path.public + "init.coffee")
     .pipe(coffee(bare: true).on("error", util.log))
 
-  series(zepto, underscore, backbone, models, collections, views, app)
+  series(vendor, app, models, collections, views, init)
     .pipe(concat("site.js"))
-    .pipe(wrap(src: path.wrapper + "iife.js"))
+    .pipe(wrap(src: path.wrapper + "app.js"))
     .pipe(gulp.dest(path.public))
 
 gulp.task "watch", ["build"], ->

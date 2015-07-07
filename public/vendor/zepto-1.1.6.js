@@ -1584,4 +1584,4 @@ window.$ === undefined && (window.$ = Zepto)
       }
     }
   }
-})(Zepto)
+})(Zepto);
