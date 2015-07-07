@@ -5,7 +5,7 @@ class ProductView extends Backbone.View
 
   template: _.template """
     <div class="epages-shop-product">
-      <a href="#" class="epages-shop-product-link"><img src="<%= image %>"/></a>
+      <a href="<%= link %>" class="epages-shop-product-link"><img src="<%= image %>"/></a>
       <div class="epages-shop-product-name"><%= name %></div>
       <div class="epages-shop-product-price" style="font-weight: bold">
         <%= price %>
@@ -15,9 +15,10 @@ class ProductView extends Backbone.View
 
   render: ->
     @$el.html @template
-      image: _.findWhere(@model.attributes.images, classifier: "Small").url
-      name:  @model.attributes.name
-      price: @model.attributes.priceInfo.price.formatted
+      image: @model.image()
+      name:  @model.name()
+      price: @model.price()
+      link:  @model.link()
 
     this
 
