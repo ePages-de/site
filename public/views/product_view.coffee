@@ -24,4 +24,9 @@ class ProductView extends Backbone.View
 
   openProductDetails: (event) ->
     event.preventDefault()
-    picoModal("Here goes the modal.").show()
+
+    productDetailView = new ProductDetailView()
+    productDetailView.render()
+
+    modal = picoModal(productDetailView.el)
+    modal.show()
