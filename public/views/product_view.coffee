@@ -1,7 +1,11 @@
 class ProductView extends Backbone.View
+
+  events:
+    "click .epages-shop-product-link": "openProductDetails"
+
   template: _.template """
     <div class="epages-shop-product">
-      <img src="<%= image %>"/>
+      <a href="#" class="epages-shop-product-link"><img src="<%= image %>"/></a>
       <div class="epages-shop-product-name"><%= name %></div>
       <div class="epages-shop-product-price" style="font-weight: bold">
         <%= price %>
@@ -16,3 +20,7 @@ class ProductView extends Backbone.View
       price: @model.attributes.priceInfo.price.formatted
 
     this
+
+  openProductDetails: (event) ->
+    event.preventDefault()
+    picoModal("Here goes the modal.").show()
