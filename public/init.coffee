@@ -19,12 +19,13 @@ insertStyles = ->
   head.insertAdjacentHTML("afterbegin", style)
 
 initializeWidgets = ->
-  _.each document.getElementsByClassName(App.className), (el) ->
-    widget = new WidgetView(el: el)
+  $(App.className).each ->
+    widget = new WidgetView(el: this)
     widget.init()
     widget.render()
-    widget.loadProducts()
-    widget.loadCategoryList()
+
+    App.loadCategoryList(widget: widget)
+    App.loadProducts(widget: widget)
 
 
 setup()

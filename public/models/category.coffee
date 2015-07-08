@@ -6,5 +6,5 @@ class Category extends Backbone.Model
     @attributes.name
 
   subCategories: ->
-    _.map @attribures.subCategories, (attributes) ->
+    _.map @attributes.subCategories, (attributes) ->
       new SubCategory(attributes)

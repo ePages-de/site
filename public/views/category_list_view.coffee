@@ -1,10 +1,24 @@
 class CategoryListView extends Backbone.View
-  tagName: "ul"
+  tagName: "select"
+
+  events:
+    "change": "onSelectionChange"
 
   render: ->
-    html = @collection.map (category) ->
+    html = @collection.at(0).subCategories().map (category) ->
       view = new CategoryListItemView(model: category)
       view.render().el
 
+    allProducts = new SubCategory(title: "Alle Produkte")
+    allView = new CategoryListItemView(model: allProducts)
+    allView.render()
+
+    html.unshift(allView.el)
+
     @$el.html html
     this
+
+  onSelectionChange: (event) ->
+    App.loadProducts
+      categoryId: event.target.value
+      event: event

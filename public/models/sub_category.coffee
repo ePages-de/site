@@ -1,7 +1,9 @@
 class SubCategory extends Backbone.Model
   id: ->
-    split = @attributes.href.split("/")
+    return "" unless @get("href")
+
+    split = @get("href").split("/")
     split[split.length - 1]
 
   name: ->
-    @attributes.title
+    @get("title")

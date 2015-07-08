@@ -1,4 +1,5 @@
 class Categories extends Backbone.Collection
+
   initialize: (models, options) ->
     { @shopId } = options
 

@@ -1,11 +1,15 @@
 class Products extends Backbone.Collection
+
   initialize: (models, options) ->
-    { @shopId } = options
+    { @shopId, @categoryId } = options
 
   model: Product
 
   url: ->
-    "https://developer.epages.com/api/shops/#{@shopId}/products?resultsPerPage=9"
+    url = "https://developer.epages.com/api/shops/#{@shopId}/products?resultsPerPage=9"
+    if @categoryId
+      url += "&categoryId=#{@categoryId}"
+    url
 
   parse: (response) ->
     response.items

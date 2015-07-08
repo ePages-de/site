@@ -1,5 +1,8 @@
 class CategoryListItemView extends Backbone.View
-  tagName: "li"
+  tagName: "option"
+
+  attributes: ->
+  	value: @model.id()
 
   template: _.template """
     <%= name %>
