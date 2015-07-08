@@ -2,7 +2,7 @@
 
 // Store original globals.
 var originals = {
-	Zepto:     window.Zepto,
+	jQuery:    window.jQuery,
 	$:         window.$,
 	_:         window._,
 	Backbone:  window.Backbone,
@@ -12,14 +12,14 @@ var originals = {
 <%= contents %>
 
 // Define local variables.
-var Zepto     = window.Zepto,
+var jQuery    = window.jQuery,
 	$         = window.$,
 	_ 		  = window._,
 	Backbone  = window.Backbone.noConflict(),
 	picoModal = window.picoModal;
 
 // Reset globals to their original values.
-window.Zepto     = originals.Zepto;
+window.jQuery    = originals.jQuery;
 window.$         = originals.$;
 window._ 		 = originals._;
 window.picoModal = originals.picoModal;
