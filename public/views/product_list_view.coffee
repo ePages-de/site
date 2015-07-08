@@ -1,5 +1,4 @@
 class ProductListView extends Backbone.View
-  tagName: "ul"
 
   render: ->
     html = @collection.map (product) ->

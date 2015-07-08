@@ -4,7 +4,7 @@ class WidgetView extends Backbone.View
     @_defineRegions()
 
   template: _.template """
-    <select class="epages-shop-category-list"></select>
+    <div class="epages-shop-category-list"></div>
     <div class="epages-shop-product-list">Loading ...</div>
   """
 
@@ -14,6 +14,9 @@ class WidgetView extends Backbone.View
 
   shopId: ->
     @$el.data("shopid")
+
+  showCategoryList: ->
+    @$el.data("category-list") != undefined
 
   _defineRegions: ->
     @regions =

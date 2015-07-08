@@ -10,10 +10,9 @@ class App
     products = new Products(null, shopId: widget.shopId(), categoryId: categoryId)
     products.fetch
       success: =>
-        view = new ProductListView
-          el: widget.regions.productList
-          collection: products
+        view = new ProductListView(collection: products)
         view.render()
+        widget.regions.productList.html(view.el)
 
   @loadCategoryList: (options) ->
     { widget } = options
@@ -21,10 +20,9 @@ class App
     categories = new Categories(null, shopId: widget.shopId())
     categories.fetch
       success: =>
-        view = new CategoryListView
-          el: widget.regions.categoryList
-          collection: categories
+        view = new CategoryListView(collection: categories)
         view.render()
+        widget.regions.categoryList.append(view.el)
 
   @_findWidget: (event) ->
     $(event.target).parents(App.className).data("widget")

@@ -25,7 +25,9 @@ initializeWidgets = ->
 
     widget.$el.data("widget", widget)
 
-    App.loadCategoryList(widget: widget)
+    if widget.showCategoryList()
+      App.loadCategoryList(widget: widget)
+
     App.loadProducts(widget: widget)
 
 

@@ -1,15 +1,14 @@
 class ProductView extends Backbone.View
+  className: "epages-shop-product"
 
   events:
     "click .epages-shop-product-link": "openProductDetails"
 
   template: _.template """
-    <div class="epages-shop-product">
-      <a href="<%= link %>" class="epages-shop-product-link"><img src="<%= image %>"/></a>
-      <div class="epages-shop-product-name"><%= name %></div>
-      <div class="epages-shop-product-price" style="font-weight: bold">
-        <%= price %>
-      </div>
+    <a href="<%= link %>" class="epages-shop-product-link"><img src="<%= image %>"/></a>
+    <div class="epages-shop-product-name"><%= name %></div>
+    <div class="epages-shop-product-price" style="font-weight: bold">
+      <%= price %>
     </div>
   """
 
