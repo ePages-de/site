@@ -5,7 +5,9 @@ class ProductView extends Backbone.View
     "click .epages-shop-product-link": "openProductDetails"
 
   template: _.template """
-    <a href="<%= link %>" class="epages-shop-product-link"><img src="<%= image %>"/></a>
+    <a href="<%= link %>" class="epages-shop-product-link">
+      <img src="<%= image %>"/>
+    </a>
     <div class="epages-shop-product-name"><%= name %></div>
     <div class="epages-shop-product-price" style="font-weight: bold">
       <%= price %>
@@ -14,7 +16,7 @@ class ProductView extends Backbone.View
 
   render: ->
     @$el.html @template
-      image: @model.image()
+      image: @model.smallImage()
       name:  @model.name()
       price: @model.price()
       link:  @model.link()
@@ -24,7 +26,7 @@ class ProductView extends Backbone.View
   openProductDetails: (event) ->
     event.preventDefault()
 
-    productDetailView = new ProductDetailView()
+    productDetailView = new ProductDetailView(model: @model)
     productDetailView.render()
 
     modal = picoModal(productDetailView.el)
