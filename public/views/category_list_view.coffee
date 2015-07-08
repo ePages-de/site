@@ -9,7 +9,7 @@ class CategoryListView extends Backbone.View
       view = new CategoryListItemView(model: category)
       view.render().el
 
-    allProducts = new SubCategory(title: "Alle Produkte")
+    allProducts = new SubCategory(title: "All products")
     allView = new CategoryListItemView(model: allProducts)
     allView.render()
 
