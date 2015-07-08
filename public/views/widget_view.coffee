@@ -4,14 +4,14 @@ class WidgetView extends Backbone.View
     @_grabShopId()
 
   regions:
-    loading: ".esw-loading"
-    content: ".esw-content"
-    categoryList: ".esw-category-list"
+    loading: ".epages-shop-loading"
+    productList: ".epages-shop-product-list"
+    categoryList: ".epages-shop-category-list"
 
   template: _.template """
-    <select class="esw-category-list"></select>
-    <div class="esw-loading">Loading ...</div>
-    <div class="esw-content"></div>
+    <select class="epages-shop-category-list"></select>
+    <div class="epages-shop-loading">Loading ...</div>
+    <div class="epages-shop-product-list"></div>
   """
 
   render: ->

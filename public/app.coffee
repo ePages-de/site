@@ -13,7 +13,7 @@ class App
         widget.regions.loading.hide()
 
         view = new ProductListView
-          el: widget.regions.content
+          el: widget.regions.productList
           collection: products
         view.render()
 
