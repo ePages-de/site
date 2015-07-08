@@ -27,7 +27,7 @@ vendorPath = (name) ->
   path.vendor + name + "-" + version + min + ".js"
 
 gulp.task "build", ->
-  jquery     = gulp.src(vendorPath("jquery")).pipe(wrap(src: path.wrapper + "jquery.js"))
+  jquery     = gulp.src(vendorPath("jquery"))
   underscore = gulp.src(vendorPath("underscore"))
   backbone   = gulp.src(vendorPath("backbone"))
   picoModal  = gulp.src(vendorPath("pico_modal"))
