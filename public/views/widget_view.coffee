@@ -3,10 +3,8 @@ class WidgetView extends Backbone.View
     @$el.data("widget", this)
     @_grabShopId()
 
-  regions:
-    loading: ".epages-shop-loading"
-    productList: ".epages-shop-product-list"
-    categoryList: ".epages-shop-category-list"
+  initialize: ->
+    @_defineRegions()
 
   template: _.template """
     <select class="epages-shop-category-list"></select>
@@ -23,6 +21,10 @@ class WidgetView extends Backbone.View
 
     if !@shopId or !@shopId.length
       @render "Widget container is missing a data-shopid attribute."
+  _defineRegions: ->
+    @regions =
+      productList: ".epages-shop-product-list"
+      categoryList: ".epages-shop-category-list"
 
   _initRegions: ->
     for name, className of @regions
