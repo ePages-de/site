@@ -21,8 +21,9 @@ insertStyles = ->
 initializeWidgets = ->
   $(App.className).each ->
     widget = new WidgetView(el: this)
-    widget.init()
     widget.render()
+
+    widget.$el.data("widget", widget)
 
     App.loadCategoryList(widget: widget)
     App.loadProducts(widget: widget)

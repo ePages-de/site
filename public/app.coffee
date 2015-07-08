@@ -7,11 +7,9 @@ class App
 
     widget = @_findWidget(event) if event
 
-    products = new Products(null, shopId: widget.shopId, categoryId: categoryId)
+    products = new Products(null, shopId: widget.shopId(), categoryId: categoryId)
     products.fetch
       success: =>
-        widget.regions.loading.hide()
-
         view = new ProductListView
           el: widget.regions.productList
           collection: products
@@ -20,7 +18,7 @@ class App
   @loadCategoryList: (options) ->
     { widget } = options
 
-    categories = new Categories(null, shopId: widget.shopId)
+    categories = new Categories(null, shopId: widget.shopId())
     categories.fetch
       success: =>
         view = new CategoryListView
