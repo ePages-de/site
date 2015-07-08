@@ -1,21 +1,25 @@
+waitFor = (condition, next) ->
+  interval = setInterval(->
+    if condition()
+      next()
+      clearInterval(interval)
+  , 10)
+
 describe 'Integration', ->
-  $widget = null
   jasmine.DEFAULT_TIMEOUT_INTERVAL = 2000
 
-  beforeEach (done) ->
-    jasmine.getFixtures().set(
-      '<div class="epages-shop-widget" data-shopid="DemoShop">FIXTURE</div>' +
-      '<script src=http://localhost:4321/site.js></script>'
-    )
-    $widget = $j('.epages-shop-widget')
-    expect($widget.text()).toEqual("FIXTURE")
-    waitForWidget = setInterval(->
-      if $widget.text() != 'FIXTURE'
-        done()
-        clearInterval(waitForWidget)
-    , 10)
+  beforeEach ->
+    jasmine.getFixtures().set """
+      <div class="epages-shop-widget" data-shopid="DemoShop">FIXTURE1</div>
+      <div class="epages-shop-widget" data-shopid="DemoShop">FIXTURE2</div>
+      <script src=http://localhost:4321/site.js></script>
+    """
 
-  it 'loads site.js from another server', ->
-    expect($widget).toExist()
-    expect($widget.data("shopid")).toEqual("DemoShop")
-    expect($widget).toContainText("Loading")
+  it 'loads site.js from another server', (done) ->
+    $widget = $j('.epages-shop-widget:first')
+    ready = -> $widget.text().indexOf("FIXTURE") == -1
+
+    waitFor ready, ->
+      expect($widget).toExist()
+      expect($widget).toContainText("Loading")
+      done()
