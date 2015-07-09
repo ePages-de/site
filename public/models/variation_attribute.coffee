@@ -1,4 +1,4 @@
-class Variation extends Backbone.Model
+class VariationAttribute extends Backbone.Model
 
   initialize: ->
     @set("selected", null)

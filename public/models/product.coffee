@@ -1,11 +1,5 @@
 class Product extends Backbone.Model
 
-  initialize: ->
-    @variations = new Variations
-    @variations.url = "#{@url()}/variations"
-    @variations.on "reset", @updateVariations
-    @variations.on "change", @updateProduct
-
   url: ->
     url = new URL(@collection.url())
     url = url.href.substr(0, url.href.indexOf("?")) # remove query string
@@ -31,6 +25,13 @@ class Product extends Backbone.Model
 
   link: ->
     _.findWhere(@get("links"), rel: "self").href
+
+  loadVariations: =>
+    $.getJSON "#{@url()}/variations"
+      .done (json) =>
+        @set("variationAttributes", new VariationAttributes json.variationAttributes)
+        @get("variationAttributes").on "change", @updateProduct
+        @set("variationItems", new VariationItems json.items)
 
   updateVariations: (variations) ->
     @variations = variations

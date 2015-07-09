@@ -28,12 +28,12 @@ class ProductDetailView extends Backbone.View
       price: @model.price()
       shopId: "TODO" # TODO
 
-    @model.variations.fetch
-      reset: true
-      success: =>
+    @model.loadVariations()
+      .done =>
         @$el.find("#variations").
-          html(new VariationListView(collection: @model.variations).render().el)
-      error: =>
+          html(new VariationAttributeListView( \
+            collection: @model.get("variationAttributes")).render().el)
+      .fail =>
         @$el.find("#variations").html "No variations found"
 
     this

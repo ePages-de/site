@@ -1,4 +1,4 @@
-class VariationView extends Backbone.View
+class VariationAttributeView extends Backbone.View
   className: "epages-shop-variation"
 
   events:
