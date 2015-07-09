@@ -1,5 +1,18 @@
 class Product extends Backbone.Model
 
+  initialize: ->
+    @variations = new Variations
+    @variations.url = "#{@url()}/variations"
+    @variations.on "reset", @updateVariations
+
+  url: ->
+    url = new URL(@collection.url())
+    url = url.href.substr(0, url.href.indexOf("?")) # remove query string
+    "#{url}/#{@id()}"
+
+  id: ->
+    @get("productId")
+
   name: ->
     @get("name")
 
@@ -17,3 +30,6 @@ class Product extends Backbone.Model
 
   link: ->
     _.findWhere(@get("links"), rel: "self").href
+
+  updateVariations: (variations) ->
+    @variations = variations
