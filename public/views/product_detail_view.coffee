@@ -18,15 +18,19 @@ class ProductDetailView extends Backbone.View
   """
 
   render: ->
-    @model.variations.fetch(reset: true).done =>
-      @$el.html @template
-        name: @model.name()
-        image: @model.mediumImage()
-        description: @model.get("description")
-        availabilityText: @model.get("availabilityText")
-        price: @model.price()
-        shopId: "TODO" # TODO
-      @$el.find("#variations").
-        html(new VariationListView(collection: @model.variations).render().el)
+    @$el.html @template
+      name: @model.name()
+      image: @model.mediumImage()
+      description: @model.get("description")
+      availabilityText: @model.get("availabilityText")
+      price: @model.price()
+      shopId: "TODO" # TODO
+    @model.variations.fetch
+      reset: true
+      success: =>
+        @$el.find("#variations").
+          html(new VariationListView(collection: @model.variations).render().el)
+      error: =>
+        @$el.find("#variations").html "No variations found"
 
     this
