@@ -9,7 +9,7 @@ class App
 
     products = new Products(null, shopId: widget.shopId(), categoryId: categoryId)
     products.fetch
-      success: =>
+      success: ->
         view = new ProductListView(collection: products)
         view.render()
         widget.regions.productList.html(view.el)
@@ -19,7 +19,7 @@ class App
 
     categories = new Categories(null, shopId: widget.shopId())
     categories.fetch
-      success: =>
+      success: ->
         view = new CategoryListView(collection: categories)
         view.render()
         widget.regions.categoryList.append(view.el)

@@ -1,7 +1,8 @@
 class VariationView extends Backbone.View
   className: "epages-shop-variation"
 
-  #events:
+  events:
+    "change": "onChange"
 
   template: _.template """
     <label for="epages-shop-variation-<%= name %>"><%= displayName %></label>
@@ -10,8 +11,11 @@ class VariationView extends Backbone.View
   """
 
   optionTemplate: _.template """
-      <option value="<%= value %>"><%= displayValue %></option>
+    <option value="<%= value %>"><%= displayValue %></option>
   """
+
+  onChange: (event) ->
+    @model.set("selected", event.target.value)
 
   render: ->
     @$el.html @template
@@ -21,4 +25,8 @@ class VariationView extends Backbone.View
       @optionTemplate
         value: option.value
         displayValue: option.displayValue
+    @$el.find("select").prepend =>
+      @optionTemplate
+        value: null
+        displayValue: "Choose"
     this

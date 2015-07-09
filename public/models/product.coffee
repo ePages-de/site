@@ -4,6 +4,7 @@ class Product extends Backbone.Model
     @variations = new Variations
     @variations.url = "#{@url()}/variations"
     @variations.on "reset", @updateVariations
+    @variations.on "change", @updateProduct
 
   url: ->
     url = new URL(@collection.url())
@@ -33,3 +34,7 @@ class Product extends Backbone.Model
 
   updateVariations: (variations) ->
     @variations = variations
+
+  updateProduct: ->
+    console.log @models.map (variation) ->
+      variation.get("selected")
