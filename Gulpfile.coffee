@@ -8,7 +8,7 @@ series = require("stream-series")
 env = process.env.NODE_ENV or "development"
 
 dependencies =
-  jquery:     "2.1.4"
+  zepto:      "1.1.4"
   underscore: "1.8.3"
   backbone:   "1.2.1"
   pico_modal: "2.1.0"
@@ -27,12 +27,12 @@ vendorPath = (name) ->
   path.vendor + name + "-" + version + min + ".js"
 
 gulp.task "build", ->
-  jquery     = gulp.src(vendorPath("jquery"))
+  zepto      = gulp.src(vendorPath("zepto"))
   underscore = gulp.src(vendorPath("underscore"))
   backbone   = gulp.src(vendorPath("backbone"))
   picoModal  = gulp.src(vendorPath("pico_modal"))
 
-  vendor = series(jquery, underscore, backbone, picoModal)
+  vendor = series(zepto, underscore, backbone, picoModal)
     .pipe(concat("site.js"))
     .pipe(wrap(src: path.wrapper + "vendor.js"))
 

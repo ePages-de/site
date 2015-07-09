@@ -20,10 +20,12 @@ insertStyles = ->
 
 initializeWidgets = ->
   $(App.className).each ->
-    widget = new WidgetView(el: this)
+    widget = new WidgetView()
     widget.render()
 
-    widget.$el.data("widget", widget)
+    $el = $(this)
+    $el.append(widget.el)
+    $el.data("widget", widget)
 
     if widget.showCategoryList()
       App.loadCategoryList(widget: widget)

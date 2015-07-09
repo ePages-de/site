@@ -1,38 +1,63 @@
 waitFor = (condition, next) ->
-  interval = setInterval(->
+  interval = setInterval ->
     if condition()
-      next()
       clearInterval(interval)
-  , 10)
+      next()
+  , 10
 
-describe 'Integration', ->
+
+class TestWidget
+  constructor: (options) ->
+    @$el = options.el
+
+  $: (selector) ->
+    @$el.find(selector)
+
+  hasCategoryList: ->
+    @$("option").length > 0
+
+  hasProductList: ->
+    @$(".epages-shop-product").length > 0
+
+  hasCategoryOption: (name) ->
+    @$("option:contains(#{name})").length > 0
+
+  selectCategory: (name) ->
+    value = @$("option:contains(#{name})").val()
+    @$("select").val(value).change()
+
+  hasProduct: (name) ->
+    @$(".epages-shop-product-name:contains(#{name})").length == 1
+
+
+describe "Integration", ->
   jasmine.DEFAULT_TIMEOUT_INTERVAL = 5000
 
   beforeEach ->
     jasmine.getFixtures().set """
-      <div
-        class="epages-shop-widget"
-        data-shopid="DemoShop"
-        data-category-list>FIXTURE1</div>
-      <div class="epages-shop-widget" data-shopid="DemoShop">FIXTURE2</div>
+      <div class="epages-shop-widget"
+           data-shopid="DemoShop"
+           data-category-list>FIXTURE1</div>
+
+      <div class="epages-shop-widget"
+           data-shopid="DemoShop">FIXTURE2</div>
+
       <script src=http://localhost:4321/site.js></script>
     """
 
-  it 'loads site.js from another server', (done) ->
-    $widget = jQuery('.epages-shop-widget:first')
-    ready = ->
-      $widget.find("option").length > 0 &&
-      $widget.find(".epages-shop-product").length > 0
+  it "loads site.js from another server", (done) ->
+    widget = new TestWidget(el: $j(".epages-shop-widget:first"))
 
-    waitFor ready, ->
-      changeEvent = document.createEvent "MouseEvent"
-      changeEvent.initEvent('change', true, true)
-      expect($widget.find("option:contains(Equipment)")).toExist()
-      $widget.find("select").val(jQuery("option:contains(Equipment)").val())
-      document.getElementsByTagName("select")[0].dispatchEvent(changeEvent)
+    widgetLoaded = ->
+      widget.hasCategoryList() && widget.hasProductList()
+
+    waitFor widgetLoaded, ->
+      expect(widget.hasCategoryOption("Equipment")).toBeTruthy()
+      widget.selectCategory("Equipment")
 
       categoryLoaded = ->
-        $widget.find(".epages-shop-product-name:contains(Mag-Lite)").length == 1
+        widget.hasProduct("Mag-Lite")
 
       waitFor categoryLoaded, ->
         done()
+
