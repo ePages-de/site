@@ -21,13 +21,12 @@ insertStyles = ->
 initializeWidgets = ->
   $(App.className).each ->
     widget = new WidgetView()
+    $(this).append(widget.el)
+
+    widget.setup()
     widget.render()
 
-    $el = $(this)
-    $el.append(widget.el)
-    $el.data("widget", widget)
-
-    if widget.showCategoryList()
+    if widget.showCategoryList
       App.loadCategoryList(widget: widget)
 
     App.loadProducts(widget: widget)

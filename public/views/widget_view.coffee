@@ -12,11 +12,9 @@ class WidgetView extends Backbone.View
     @$el.html @template()
     @_initRegions()
 
-  shopId: ->
-    @$el.parent().data("shopid")
-
-  showCategoryList: ->
-    @$el.parent().data("category-list") != undefined
+  setup: ->
+    @shopId = @$el.parent().data("shopid")
+    @showCategoryList = @$el.parent().data("category-list") != undefined
 
   _defineRegions: ->
     @regions =

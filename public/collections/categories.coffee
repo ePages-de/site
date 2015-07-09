@@ -1,9 +1,9 @@
 class Categories extends Backbone.Collection
 
   initialize: (models, options) ->
-    { @shopId } = options
+    { @widget } = options
 
   model: Category
 
   url: ->
-    "https://developer.epages.com/api/shops/#{@shopId}/categories"
+    "https://developer.epages.com/api/shops/#{@widget.shopId}/categories"

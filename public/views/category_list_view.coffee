@@ -20,5 +20,5 @@ class CategoryListView extends Backbone.View
 
   onSelectionChange: (event) ->
     App.loadProducts
+      widget: @collection.widget,
       categoryId: event.target.value
-      event: event
