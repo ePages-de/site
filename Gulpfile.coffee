@@ -1,9 +1,10 @@
-gulp   = require("gulp")
-util   = require("gulp-util")
-wrap   = require("gulp-wrap")
-concat = require("gulp-concat")
-coffee = require("gulp-coffee")
-series = require("stream-series")
+gulp     = require("gulp")
+util     = require("gulp-util")
+wrap     = require("gulp-wrap")
+concat   = require("gulp-concat")
+coffee   = require("gulp-coffee")
+series   = require("stream-series")
+notifier = require("node-notifier")
 
 env = process.env.NODE_ENV or "development"
 
@@ -38,29 +39,37 @@ gulp.task "build", ->
 
   app =
     gulp.src(path.public + "app.coffee")
-    .pipe(coffee(bare: true).on("error", util.log))
+        .pipe(coffee(bare: true))
 
   models =
     gulp.src(path.models + "*.coffee")
-        .pipe(coffee(bare: true).on("error", util.log))
+        .pipe(coffee(bare: true))
 
   collections =
     gulp.src(path.collections + "*.coffee")
-        .pipe(coffee(bare: true).on("error", util.log))
+        .pipe(coffee(bare: true))
 
   views =
     gulp.src(path.views + "*.coffee")
-        .pipe(coffee(bare: true).on("error", util.log))
+        .pipe(coffee(bare: true))
 
   init =
     gulp.src(path.public + "init.coffee")
-    .pipe(coffee(bare: true).on("error", util.log))
+    .pipe(coffee(bare: true))
 
   series(vendor, app, models, collections, views, init)
     .pipe(concat("site.js"))
     .pipe(wrap(src: path.wrapper + "app.js"))
     .pipe(gulp.dest(path.public))
 
+
 gulp.task "watch", ["build"], ->
   gulp.watch path.wrapper + "*.js", ["build"]
   gulp.watch path.public + "**/*.coffee", ["build"]
+
+
+process.on "uncaughtException", (error) ->
+  console.error(error)
+  if typeof error is "object"
+    notifier.notify
+      message: "Error [#{error.plugin}] #{error.message}"
