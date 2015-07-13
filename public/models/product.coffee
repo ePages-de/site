@@ -1,9 +1,12 @@
 class Product extends Backbone.Model
 
   url: ->
-    url = new URL(@collection.url())
-    url = url.href.substr(0, url.href.indexOf("?")) # remove query string
-    "#{url}/#{@id()}"
+    if @collection
+      url = new URL(@collection.url())
+      url = url.href.substr(0, url.href.indexOf("?")) # remove query string
+      "#{url}/#{@id()}"
+    else
+      @get("url")
 
   id: ->
     @get("productId")
@@ -30,12 +33,4 @@ class Product extends Backbone.Model
     $.getJSON "#{@url()}/variations"
       .done (json) =>
         @set("variationAttributes", new VariationAttributes json.variationAttributes)
-        @get("variationAttributes").on "change", @updateProduct
         @set("variationItems", new VariationItems json.items)
-
-  updateVariations: (variations) ->
-    @variations = variations
-
-  updateProduct: ->
-    console.log @models.map (variation) ->
-      variation.get("selected")
