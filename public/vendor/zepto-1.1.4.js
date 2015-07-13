@@ -1892,4 +1892,4 @@ window.$ === undefined && (window.$ = Zepto)
   }
 
   $.Deferred = Deferred
-})(Zepto)
+})(Zepto);
