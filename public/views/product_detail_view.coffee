@@ -3,21 +3,22 @@ class ProductDetailView extends Backbone.View
   events:
     "change select": "updateVariations"
 
+  initialize: =>
+    @listenTo @model, "change", @render
+
   updateVariations: =>
-    matchingVariationItem = _.find @model.attributes.variationItems.models, (item) =>
-      _.all item.attributes.attributeSelection, (selection) =>
-        _.some @model.attributes.variationAttributes.models, (attribute) ->
+    matchingVariationItem = @model.get("variationItems").find (item) =>
+      _.all item.get("attributeSelection"), (selection) =>
+        @model.get("variationAttributes").some (attribute) ->
           attribute.get("name") == selection.name &&
           attribute.get("selected") == selection.value
 
     if matchingVariationItem
       p = new Product(url: matchingVariationItem.get("link").href)
-      p.fetch(
+      p.fetch
         success: (newModel) =>
-          newModel.set("variationItems", @model.attributes.variationItems)
-          newModel.set("variationAttributes", @model.attributes.variationAttributes)
-          @model = newModel
-          @render())
+          @model.set(newModel.toJSON())
+          @render()
 
   template: _.template """
     <div>
@@ -38,8 +39,6 @@ class ProductDetailView extends Backbone.View
   """
 
   render: ->
-    oldVariations = @$el.find("#variations")
-
     @$el.html @template
       name: @model.name()
       id: @model.id()
@@ -50,16 +49,9 @@ class ProductDetailView extends Backbone.View
       price: @model.price()
       shopId: "TODO" # TODO
 
-    if @variationsLoaded == true
-      @$el.find("#variations").html(oldVariations)
-    else
-      @model.loadVariations()
-        .done =>
-          @$el.find("#variations").
-            html(new VariationAttributeListView( \
-              collection: @model.get("variationAttributes")).render().el)
-        .fail =>
-          @$el.find("#variations").html "No variations found"
-        .always =>
-          @variationsLoaded = true
+    @$el.find("#variations").html(
+      new VariationAttributeListView(
+        collection: @model.variationAttributes()
+      ).render().el)
+
     this

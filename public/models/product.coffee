@@ -1,5 +1,10 @@
 class Product extends Backbone.Model
 
+  variationAttributes: =>
+    if @get("variationAttributes") == undefined
+      @set("variationAttributes", new VariationAttributes)
+    @get("variationAttributes")
+
   url: ->
     if @collection
       url = new URL(@collection.url())

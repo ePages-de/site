@@ -11,7 +11,11 @@ class VariationAttributeView extends Backbone.View
   """
 
   optionTemplate: _.template """
-    <option value="<%= value %>"><%= displayValue %></option>
+    <option
+      value="<%= value %>"
+      <%= selected === value ? "selected=selected" : null %>>
+      <%= displayValue %>
+    </option>
   """
 
   onChange: (event) ->
@@ -19,14 +23,16 @@ class VariationAttributeView extends Backbone.View
 
   render: ->
     @$el.html @template
-      name: @model.name()
-      displayName: @model.displayName()
+      name: @model.get("name")
+      displayName: @model.get("displayName")
     @$el.find("select").html(@model.get("values").map((option) =>
       @optionTemplate
         value: option.value
+        selected: @model.get("selected")
         displayValue: option.displayValue).join(""))
     @$el.find("select").prepend(
       @optionTemplate
         value: null
-        displayValue: "Choose")
+        displayValue: "Choose"
+        selected: @model.get("selected"))
     this
