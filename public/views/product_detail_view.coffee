@@ -14,6 +14,8 @@ class ProductDetailView extends Backbone.View
       p = new Product(url: matchingVariationItem.get("link").href)
       p.fetch(
         success: (newModel) =>
+          newModel.set("variationItems", @model.attributes.variationItems)
+          newModel.set("variationAttributes", @model.attributes.variationAttributes)
           @model = newModel
           @render())
 
