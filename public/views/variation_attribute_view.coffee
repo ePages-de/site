@@ -21,12 +21,12 @@ class VariationAttributeView extends Backbone.View
     @$el.html @template
       name: @model.name()
       displayName: @model.displayName()
-    @$el.find("select").html @model.get("values").map (option) =>
+    @$el.find("select").html(@model.get("values").map((option) =>
       @optionTemplate
         value: option.value
-        displayValue: option.displayValue
-    @$el.find("select").prepend =>
+        displayValue: option.displayValue).join(""))
+    @$el.find("select").prepend(
       @optionTemplate
         value: null
-        displayValue: "Choose"
+        displayValue: "Choose")
     this
