@@ -7,7 +7,7 @@ class App
 
     products = new Products(null, widget: widget, categoryId: categoryId)
     products.fetch
-      success: =>
+      success: ->
         view = new ProductListView(collection: products)
         view.render()
         widget.regions.productList.html(view.el)
@@ -17,7 +17,7 @@ class App
 
     categories = new Categories(null, widget: widget)
     categories.fetch
-      success: =>
+      success: ->
         view = new CategoryListView(collection: categories)
         view.render()
         widget.regions.categoryList.append(view.el)
