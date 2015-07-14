@@ -21,21 +21,42 @@ class ProductDetailView extends Backbone.View
           @render()
 
   template: _.template """
-    <div>
-      <h2><%= name %></h2>
-      <p><%= id %> <%= description %></p>
-      availabilityText: <%= availabilityText %><br/>
-      availability: <%= availability %><br/>
-      price: <%= price %><br/>
-      shopId: <%= shopId %><br/>
-      variations: <div id="variations"></div>
-      <br/>
-      <img src="<%= image %>" />
-      <a href="#TODO">
-        Versandinformation
-      </a>
+    <div class="epages-shop-overlay">
+      <div class="epages-shop-overlay-box">
+        <img class="epages-shop-overlay-product-image" src="<%= image %>" />
+      </div>
+      <div class="epages-shop-overlay-box">
+        <h2><%= name %></h2>
+        <div class="epages-shop-overlay-product-availability-<%= availability %>">
+          <%= availabilityText %>
+        </div>
+        <div class="epages-shop-overlay-product-price"><%= price %></div>
+        <div class="epages-shop-overlay-product-shipping">
+          Price includes VAT, plus <a href="#">Shipping</a>.
+        </div>
+        <div id="variations"></div>
+        <button>Add to basket</button>
+        <p><%= description %></p>
+      </div>
     </div>
 
+    <style type="text/css">
+      .epages-shop-overlay-box {
+        float: left;
+        max-width: 500px;
+      }
+      .epages-shop-overlay-product-availability-OnStock { color: green; }
+      .epages-shop-overlay-product-availability-WarnStock { color: orange; }
+      .epages-shop-overlay-product-availability-OutStock { color: red; }
+      .epages-shop-overlay-product-price {
+        font-weight: bold;
+        font-size: 135%;
+      }
+      .epages-shop-variation label {
+        min-width: 50px;
+        display: inline-block;
+      }
+    </style>
   """
 
   render: ->
