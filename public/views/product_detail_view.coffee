@@ -2,23 +2,10 @@ class ProductDetailView extends Backbone.View
 
   events:
     "change select": "updateVariations"
+    "click .epages-shop-overlay-buy-button": "addProduct"
 
   initialize: =>
     @listenTo @model, "change", @render
-
-  updateVariations: =>
-    matchingVariationItem = @model.get("variationItems").find (item) =>
-      _.all item.get("attributeSelection"), (selection) =>
-        @model.get("variationAttributes").some (attribute) ->
-          attribute.get("name") == selection.name &&
-          attribute.get("selected") == selection.value
-
-    if matchingVariationItem
-      p = new Product(url: matchingVariationItem.get("link").href)
-      p.fetch
-        success: (newModel) =>
-          @model.set(newModel.toJSON())
-          @render()
 
   template: _.template """
     <div class="epages-shop-overlay">
@@ -79,3 +66,22 @@ class ProductDetailView extends Backbone.View
       ).render().el)
 
     this
+
+  addProduct: (event) ->
+    event.preventDefault()
+    App.cart.addProduct @model.id()
+
+  updateVariations: =>
+    matchingVariationItem = @model.get("variationItems").find (item) =>
+      _.all item.get("attributeSelection"), (selection) =>
+        @model.get("variationAttributes").some (attribute) ->
+          attribute.get("name") == selection.name &&
+          attribute.get("selected") == selection.value
+
+    if matchingVariationItem
+      p = new Product(url: matchingVariationItem.get("link").href)
+      p.fetch
+        success: (newModel) =>
+          @model.set(newModel.toJSON())
+          @render()
+

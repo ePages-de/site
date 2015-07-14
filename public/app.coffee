@@ -1,23 +1,55 @@
 class App
 
-  @className: ".epages-shop-widget"
+  @selectors:
+    scriptTag:  "#epages-widget"
+    shopWidget: ".epages-shop-widget"
+    cartWidget: ".epages-cart-widget"
 
-  @loadProducts: (options) ->
-    { widget, categoryId } = options
+  @modal: (view) ->
+    @_modal = picoModal
+      content: view.el
+      modalStyles:
+        "min-width": "500px"
+        "max-width": "1000px"
+        "width": "95%"
+        "background-color": "white"
+        "padding": "20px"
+    @_modal.show()
 
-    products = new Products(null, widget: widget, categoryId: categoryId)
-    products.fetch
-      success: ->
-        view = new ProductListView(collection: products)
-        view.render()
-        widget.regions.productList.html(view.el)
+  @closeModal: ->
+    @_modal?.close()
 
-  @loadCategoryList: (options) ->
-    { widget } = options
+  @start: ->
+    shopId = $(@selectors.scriptTag).data("shopid")
 
-    categories = new Categories(null, widget: widget)
-    categories.fetch
-      success: ->
-        view = new CategoryListView(collection: categories)
-        view.render()
-        widget.regions.categoryList.append(view.el)
+    App.cart = cart = new Cart(null, shopId: shopId)
+
+    # Widgets
+    $(@selectors.shopWidget).each ->
+      widgetView = new WidgetView(el: $(this)).render()
+
+      # Products
+      products = new Products(null, shopId: shopId)
+      products.fetch(reset: true)
+
+      # Products view
+      productsView = new ProductListView(collection: products)
+      widgetView.regions.productList.html(productsView.el)
+
+      # Categories
+      if widgetView.showCategoryList
+        categories = new Categories(null, shopId: shopId)
+        categories.fetch(reset: true)
+
+        # Categories view
+        categoriesView = new CategoryListView(collection: categories)
+        widgetView.regions.categoryList.append(categoriesView.el)
+
+        # Categories view events
+        categoriesView.on "change:category", (categoryId) ->
+          products.categoryId = categoryId
+          products.fetch(reset: true)
+
+    # Cart views
+    $(@selectors.cartWidget).each ->
+      cartView = new CartView(el: $(this), model: cart).render()

@@ -1,10 +1,16 @@
 class CategoryListView extends Backbone.View
+
+  initialize: ->
+    @listenTo @collection, "reset", @render
+
   tagName: "select"
 
   events:
     "change": "onSelectionChange"
 
   render: ->
+    return this if @collection.isEmpty()
+
     html = @collection.at(0).subCategories().map (category) ->
       view = new CategoryListItemView(model: category)
       view.render().el
@@ -19,6 +25,5 @@ class CategoryListView extends Backbone.View
     this
 
   onSelectionChange: (event) ->
-    App.loadProducts
-      widget: @collection.widget,
-      categoryId: event.target.value
+    categoryId = event.target.value
+    @trigger "change:category", categoryId

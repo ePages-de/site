@@ -1,5 +1,8 @@
 class ProductListView extends Backbone.View
 
+  initialize: ->
+    @listenTo @collection, "reset", @render
+
   render: ->
     html = @collection.map (product) ->
       view = new ProductView(model: product)

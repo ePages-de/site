@@ -1,4 +1,8 @@
 class ProductView extends Backbone.View
+
+  initialize: (options) ->
+    { @cart } = options
+
   className: "epages-shop-product"
 
   events:
@@ -30,13 +34,4 @@ class ProductView extends Backbone.View
     @model.loadVariations()
     productDetailView.render()
 
-    modal = picoModal(
-      content: productDetailView.el
-      modalStyles:
-        "min-width": "500px"
-        "max-width": "1000px"
-        "width": "95%"
-        "background-color": "white"
-        "padding": "20px"
-    )
-    modal.show()
+    App.modal(productDetailView)
