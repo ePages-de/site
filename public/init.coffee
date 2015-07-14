@@ -1,7 +1,6 @@
 $.ajaxSettings.accepts.json = null # required to work with the epages API
 
-# TODO: move this out into a CSS file and add a fallback
-#       in case the <head> cannot be found.
+# TODO: Add a fallback in case <head> cannot be found.
 style = """
   <style type="text/css" id="epages-shop-styles">
     .epages-shop-widget  {
