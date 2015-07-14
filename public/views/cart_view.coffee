@@ -4,17 +4,17 @@ class CartView extends Backbone.View
     @listenTo @model, "update", @render
 
   events:
-    "click a": "onClick"
+    "click .epages-cart-button": "openCartDetails"
 
   template: _.template """
-  <p><a href="#">Your cart</a> contains <%= count %> products.</p>
+    <button class="epages-cart-button">Shopping cart (<%= count %>)</button>
   """
 
   render: ->
     @$el.html @template(count: @model.count())
     this
 
-  onClick: (event) ->
+  openCartDetails: (event) ->
     event.preventDefault()
 
     view = new CartDetailView(model: @model).render()
