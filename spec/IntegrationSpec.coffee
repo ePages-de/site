@@ -19,6 +19,9 @@ class TestWidget
   hasProductList: ->
     @$(".epages-shop-product").length > 0
 
+  variationsLoaded: ->
+    $j(".pico-content").find(".epages-shop-variation").length > 0
+
   hasCategoryOption: (name) ->
     @$("option:contains(#{name})").length > 0
 
@@ -28,6 +31,9 @@ class TestWidget
 
   hasProduct: (name) ->
     @$(".epages-shop-product-name:contains(#{name})").length == 1
+
+  productLink: (name) ->
+    @$(".epages-shop-product-name:contains(#{name})").parent().find("a").click()
 
 
 describe "Integration", ->
@@ -52,12 +58,15 @@ describe "Integration", ->
       widget.hasCategoryList() && widget.hasProductList()
 
     waitFor widgetLoaded, ->
-      expect(widget.hasCategoryOption("Equipment")).toBeTruthy()
-      widget.selectCategory("Equipment")
+      expect(widget.hasCategoryOption("Shoes")).toBeTruthy()
+      widget.selectCategory("Shoes")
 
       categoryLoaded = ->
-        widget.hasProduct("Mag-Lite")
+        widget.hasProduct("Meindl RFS Tibet")
 
       waitFor categoryLoaded, ->
-        done()
+        widget.productLink("Meindl RFS Tibet").click()
+        waitFor widget.variationsLoaded, ->
+          expect("label[for='epages-shop-variation-USSize']").toBeVisible()
+          done()
 
