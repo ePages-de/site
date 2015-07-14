@@ -33,7 +33,7 @@ class TestWidget
     @$(".epages-shop-product-name:contains(#{name})").length == 1
 
   productLink: (name) ->
-    @$(".epages-shop-product-name:contains(#{name})").parent().find("a").click()
+    @$(".epages-shop-product-name:contains(#{name})").parent().find("a")
 
 
 describe "Integration", ->

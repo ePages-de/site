@@ -7,7 +7,7 @@
   "scripts": {
     "start": "gulp build && node index.js",
     "test": "gulp build && PORT=4321 npm start & ./node_modules/karma/bin/karma start karma.conf.coffee",
-    "ci":   "gulp build && PORT=4321 npm start & ./node_modules/karma/bin/karma start karma.conf.coffee --single-run --browsers PhantomJS"
+    "ci":   "gulp build && PORT=4321 npm start & ./node_modules/karma/bin/karma start karma.conf.coffee --single-run"
   },
   "engines": {
     "node": "0.12.2"
