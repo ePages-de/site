@@ -35,7 +35,7 @@ class ProductDetailView extends Backbone.View
           Price includes VAT, plus <a href="#">Shipping</a>.
         </div>
         <div id="variations"></div>
-        <button>Add to basket</button>
+        <button class="epages-shop-overlay-buy-button">Add to basket</button>
         <p><%= description %></p>
       </div>
     </div>
@@ -55,6 +55,9 @@ class ProductDetailView extends Backbone.View
       .epages-shop-variation label {
         min-width: 50px;
         display: inline-block;
+      }
+      .epages-shop-overlay-buy-button {
+        margin: 10px auto;
       }
     </style>
   """
