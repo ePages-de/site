@@ -16,7 +16,6 @@ module.exports = (config) ->
     logLevel: config.LOG_INFO
     autoWatch: true
     browsers: [
-      # 'PhantomJS' # can not open the pico modal :-(
       'Chrome'
     ]
     singleRun: false
