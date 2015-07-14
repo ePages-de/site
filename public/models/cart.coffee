@@ -33,7 +33,7 @@ class Cart extends Backbone.Model
 
     @lineItems.create attributes,
       wait: true
-      success: (response) =>
+      success: (model, response) =>
         @update(response)
         App.closeModal()
 
