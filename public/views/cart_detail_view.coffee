@@ -7,11 +7,11 @@ class CartDetailView extends Backbone.View
         <table class="epages-cart-overlay-line-items">
           <tr>
             <th></th>
-            <th>Quantity</th>
+            <th>Qty</th>
             <th>Unit</th>
             <th>Description</th>
             <th>Price</th>
-            <th>Total price</th>
+            <th>Subtotal</th>
             <th></th>
           </tr>
         </table>
