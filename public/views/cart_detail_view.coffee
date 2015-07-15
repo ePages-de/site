@@ -1,22 +1,32 @@
 class CartDetailView extends Backbone.View
 
   initialize: =>
-    @listenTo @model, "sync destroy", @render
+    @listenTo @model, "change update destroy", @render
 
   template: _.template """
     <div class="epages-cart-overlay">
       <h3>Shopping cart</h3>
       <div class="epages-cart-overlay-not-empty" style="display:none">
         <table class="epages-cart-overlay-line-items">
-          <tr>
-            <th></th>
-            <th>Qty</th>
-            <th>Unit</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Subtotal</th>
-            <th></th>
-          </tr>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Qty</th>
+              <th>Unit</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Subtotal</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <td colspan="5"><b>Grand total</b></td>
+              <td><b><%= grandTotal %></b></td>
+              <td></td>
+            </tr>
+          </tfoot>
         </table>
         <button class="epages-cart-overlay-checkout-button">Checkout</button>
       </div>
@@ -47,7 +57,8 @@ class CartDetailView extends Backbone.View
   """
 
   render: ->
-    @$el.html @template()
+    @$el.html @template
+      grandTotal: @model.get("grandTotal")?.formatted
 
     if @model.isEmpty()
       @$(".epages-cart-overlay-is-empty").show()
@@ -56,7 +67,7 @@ class CartDetailView extends Backbone.View
         view = new CartLineItemView(model: lineItem)
         view.render().el
 
-      @$(".epages-cart-overlay-line-items").append html
+      @$(".epages-cart-overlay-line-items tbody").html html
       @$(".epages-cart-overlay-not-empty").show()
 
     this

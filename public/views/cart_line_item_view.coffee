@@ -4,7 +4,7 @@ class CartLineItemView extends Backbone.View
 
   events:
     "change .epages-cart-overlay-line-item-quantity": "changeQuantity"
-    "click .epages-cart-overlay-line-item-destroy": "destroyLineItem"
+    "click .epages-cart-overlay-line-item-remove": "removeLineItem"
 
   template: _.template """
   <td>
@@ -21,7 +21,7 @@ class CartLineItemView extends Backbone.View
   <td><%= name %></td>
   <td><%= singleItemPrice %></td>
   <td><%= lineItemPrice %></td>
-  <td><a href="#" class="epages-cart-overlay-line-item-destroy">Remove</a></td>
+  <td><a href="#" class="epages-cart-overlay-line-item-remove">Remove</a></td>
   """
 
   render: ->
@@ -36,8 +36,8 @@ class CartLineItemView extends Backbone.View
 
   changeQuantity: (event) ->
     quantity = parseInt(event.target.value)
-    @model.save(quantity: quantity)
+    App.cart.changeQuantity(@model, quantity)
 
-  destroyLineItem: (event) ->
+  removeLineItem: (event) ->
     event.preventDefault()
-    @model.destroy()
+    App.cart.removeLineItem(@model)

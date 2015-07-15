@@ -2,7 +2,7 @@ class ProductDetailView extends Backbone.View
 
   events:
     "change select": "updateVariations"
-    "click .epages-shop-overlay-buy-button": "addProduct"
+    "click .epages-shop-overlay-buy-button": "addLineItem"
 
   initialize: =>
     @listenTo @model, "change", @render
@@ -68,9 +68,9 @@ class ProductDetailView extends Backbone.View
 
     this
 
-  addProduct: (event) ->
+  addLineItem: (event) ->
     event.preventDefault()
-    App.cart.addProduct @model.id()
+    App.cart.addLineItem @model.id()
 
   updateVariations: =>
     matchingVariationItem = @model.variationItems().find (item) =>

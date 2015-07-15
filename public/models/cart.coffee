@@ -15,16 +15,26 @@ class Cart extends Backbone.Model
     @count() <= 0
 
   update: (data) ->
-    console.log "TODO: UPDATE CART WITH:"
-    console.log data
+    @set("grandTotal", data.lineItemContainer.grandTotal)
 
-  addProduct: (productId) ->
+  addLineItem: (productId) ->
     if @isNew()
-      @save().done => @_addProduct(productId)
+      @save().done => @addLineItem(productId)
     else
-      @_addProduct(productId)
+      @_addLineItem(productId)
 
-  _addProduct: (productId) ->
+  changeQuantity: (lineItem, quantity) ->
+    lineItem.save { quantity: quantity },
+      success: (model, response) =>
+        @update(response)
+
+  removeLineItem: (lineItem) ->
+    lineItem.destroy
+      success: (model, response) =>
+        @update(response)
+
+
+  _addLineItem: (productId) ->
     @_createLineItems() unless @lineItems
 
     attributes =
