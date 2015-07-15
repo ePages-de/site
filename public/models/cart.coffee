@@ -15,7 +15,7 @@ class Cart extends Backbone.Model
     @count() <= 0
 
   update: (data) ->
-    @set("grandTotal", data.lineItemContainer.grandTotal)
+    @set("lineItemsSubTotal", data.lineItemContainer.lineItemsSubTotal)
 
   addLineItem: (productId) ->
     if @isNew()

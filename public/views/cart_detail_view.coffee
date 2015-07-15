@@ -17,16 +17,16 @@ class CartDetailView extends Backbone.View
               <th>Qty</th>
               <th>Unit</th>
               <th>Description</th>
-              <th>Price</th>
-              <th>Subtotal</th>
+              <th>Unit price</th>
+              <th>Total price</th>
               <th></th>
             </tr>
           </thead>
           <tbody></tbody>
           <tfoot>
             <tr>
-              <td colspan="5"><b>Grand total</b></td>
-              <td><b><%= grandTotal %></b></td>
+              <td colspan="5"><b>Subtotal (incl. VAT)</b></td>
+              <td><b><%= subTotal %></b></td>
               <td></td>
             </tr>
           </tfoot>
@@ -61,7 +61,7 @@ class CartDetailView extends Backbone.View
 
   render: ->
     @$el.html @template
-      grandTotal: @model.get("grandTotal")?.formatted
+      subTotal: @model.get("lineItemsSubTotal")?.formatted
 
     if @model.isEmpty()
       @$(".epages-cart-overlay-is-empty").show()
