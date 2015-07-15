@@ -30,12 +30,17 @@ class ProductDetailView extends Backbone.View
             </td>
           </tr>
           <tr>
-          <td></td>
+            <td></td>
             <td>
               <div
                 class="epages-shop-overlay-product-availability-<%= availability %>">
                 <%= availabilityText %>
               </div>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
               <button
                 class="epages-shop-overlay-buy-button"
                 <%= disabled %>>Add to basket</button>
@@ -75,11 +80,12 @@ class ProductDetailView extends Backbone.View
       .epages-shop-overlay-product-shipping {
         font-size: 80%;
       }
-      .epages-shop-overlay-buy-button {
-        margin: 10px auto;
+      .epages-shop-overlay select, .epages-shop-overlay-buy-button {
+        min-width: 9em;
       }
       .epages-shop-overlay-table th, .epages-shop-overlay-table td {
         vertical-align: baseline;
+        padding: 2px;
       }
       .epages-shop-overlay-table th {
         font-weight: normal;
