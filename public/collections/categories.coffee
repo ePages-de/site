@@ -6,4 +6,4 @@ class Categories extends Backbone.Collection
   model: Category
 
   url: ->
-    "https://developer.epages.com/api/shops/#{@shopId}/categories"
+    "#{App.rootUrl}/shops/#{@shopId}/categories"

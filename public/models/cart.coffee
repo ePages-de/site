@@ -6,7 +6,7 @@ class Cart extends Backbone.Model
   idAttribute: "cartId"
 
   url: ->
-    "https://developer.epages.com/api/shops/#{@shopId}/carts"
+    "#{App.rootUrl}/shops/#{@shopId}/carts"
 
   count: ->
     if @lineItems then @lineItems.length else 0

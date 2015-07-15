@@ -6,7 +6,7 @@ class Products extends Backbone.Collection
   model: Product
 
   url: ->
-    url = "https://developer.epages.com/api/shops/#{@shopId}/products?resultsPerPage=9"
+    url = "#{App.rootUrl}/shops/#{@shopId}/products?resultsPerPage=9"
     if @categoryId
       url += "&categoryId=#{@categoryId}"
     url

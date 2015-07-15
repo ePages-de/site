@@ -1,5 +1,7 @@
 class App
 
+  @rootUrl: "https://developer.epages.com/api"
+
   @selectors:
     scriptTag:  "#epages-widget"
     shopWidget: ".epages-shop-widget"
