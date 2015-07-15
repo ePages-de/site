@@ -22,10 +22,10 @@ class ProductDetailView extends Backbone.View
           <tr>
             <th>Price:</th>
             <td>
-              <span class="epages-shop-overlay-product-price"><%= price%></span>
-              <span class="epages-shop-overlay-product-shipping">
+              <div class="epages-shop-overlay-product-price"><%= price%></div>
+              <div class="epages-shop-overlay-product-shipping">
                 Price includes VAT, plus <a href="#">Shipping</a>.
-              </span>
+              </div>
             </td>
           </tr>
           <tr>
@@ -38,8 +38,7 @@ class ProductDetailView extends Backbone.View
             </td>
           </tr>
           <tr>
-            <td></td>
-            <td>
+            <td colspan=2>
               <button
                 class="epages-shop-overlay-buy-button"
                 <%= disabled %>>Add to basket</button>
@@ -82,8 +81,11 @@ class ProductDetailView extends Backbone.View
       .epages-shop-overlay-product-shipping {
         font-size: 80%;
       }
-      .epages-shop-overlay select, .epages-shop-overlay-buy-button {
-        min-width: 9em;
+      .epages-shop-overlay-buy-button {
+        width: 100%;
+      }
+      .epages-shop-overlay-table {
+        width: 100%;
       }
       .epages-shop-overlay-buy-button[disabled=disabled], .epages-shop-overlay-buy-button:disabled {
         color: #ddd;
@@ -95,8 +97,10 @@ class ProductDetailView extends Backbone.View
       .epages-shop-overlay-table th {
         font-weight: normal;
         padding-right: 0.5em;
-        text-align: right;
+        text-align: left;
         color: #777;
+        white-space: no-break;
+        width: 1%;
       }
       .epages-shop-overlay-hr {
         border-width: 1px 0 0 0;
