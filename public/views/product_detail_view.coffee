@@ -50,17 +50,16 @@ class ProductDetailView extends Backbone.View
   """
 
   render: ->
-    disabled = !@model.get("forSale") || @model.get("availability") == "OutStock"
     @$el.html @template
       name: @model.name()
       id: @model.id()
       image: @model.mediumImage()
-      description: @model.get("description")
-      availability: @model.get("availability")
-      availabilityText: @model.get("availabilityText")
+      description: @model.description()
+      availability: @model.availability()
+      availabilityText: @model.availabilityText()
       price: @model.price()
       shopId: "TODO" # TODO
-      disabled: "disabled" if disabled
+      disabled: "disabled" if !@model.isAvailable()
 
     @$el.find("#variations").html(
       new VariationAttributeListView(
@@ -74,14 +73,14 @@ class ProductDetailView extends Backbone.View
     App.cart.addProduct @model.id()
 
   updateVariations: =>
-    matchingVariationItem = @model.get("variationItems").find (item) =>
-      _.all item.get("attributeSelection"), (selection) =>
-        @model.get("variationAttributes").some (attribute) ->
-          attribute.get("name") == selection.name &&
-          attribute.get("selected") == selection.value
+    matchingVariationItem = @model.variationItems().find (item) =>
+      _.all item.attributeSelection(), (selection) =>
+        @model.variationAttributes().some (attribute) ->
+          attribute.name() == selection.name &&
+          attribute.selected() == selection.value
 
     if matchingVariationItem
-      p = new Product(url: matchingVariationItem.get("link").href)
+      p = new Product(url: matchingVariationItem.link().href)
       p.fetch
         success: (newModel) =>
           @model.set(newModel.toJSON())

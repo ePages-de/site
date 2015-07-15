@@ -16,11 +16,26 @@ class Product extends Backbone.Model
   id: ->
     @get("productId")
 
+  description: ->
+    @get("description")
+
+  availability: ->
+    @get("availability")
+
+  availabilityText: ->
+    @get("availabilityText")
+
   name: ->
     @get("name")
 
+  variationItems: ->
+    @get("variationItems")
+
   price: ->
     @get("priceInfo").price.formatted
+
+  isAvailable: ->
+    @get("forSale") && @get("availability") != "OutStock"
 
   smallImage: ->
     _.findWhere(@get("images"), classifier: "Small").url
