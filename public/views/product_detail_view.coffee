@@ -18,10 +18,9 @@ class ProductDetailView extends Backbone.View
 
         <h2><%= name %></h2>
 
-        <hr class="epages-shop-overlay-hr" />
         <table class="epages-shop-overlay-table">
           <tr>
-            <th>Price</th>
+            <th>Price:</th>
             <td>
               <span class="epages-shop-overlay-product-price"><%= price%></span>
               <span class="epages-shop-overlay-product-shipping">
@@ -57,9 +56,12 @@ class ProductDetailView extends Backbone.View
 
     <style type="text/css">
       .epages-shop-overlay {
-        color: #333;
+        color: #444;
       }
       .epages-shop-overlay h1, .epages-shop-overlay h2, .epages-shop-overlay h3 {
+        color: #333;
+      }
+      .epages-shop-overlay h3 {
         margin: 0;
       }
       .epages-shop-overlay-box {
@@ -91,6 +93,16 @@ class ProductDetailView extends Backbone.View
         font-weight: normal;
         padding-right: 0.5em;
         text-align: right;
+        color: #777;
+      }
+      .epages-shop-overlay-hr {
+        border-width: 1px 0 0 0;
+        border-color: #ccc;
+        border-style: solid;
+        margin: 1em 0;
+      }
+      .epages-shop-overlay p {
+        margin-top: 3px;
       }
     </style>
   """
