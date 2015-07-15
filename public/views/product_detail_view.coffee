@@ -22,7 +22,7 @@ class ProductDetailView extends Backbone.View
           Price includes VAT, plus <a href="#">Shipping</a>.
         </div>
         <div id="variations"></div>
-        <button class="epages-shop-overlay-buy-button">Add to basket</button>
+        <button class="epages-shop-overlay-buy-button" <%= disabled %>>Add to basket</button>
         <p><%= description %></p>
       </div>
     </div>
@@ -50,6 +50,7 @@ class ProductDetailView extends Backbone.View
   """
 
   render: ->
+    disabled = !@model.get("forSale") || @model.get("availability") == "OutStock"
     @$el.html @template
       name: @model.name()
       id: @model.id()
@@ -59,6 +60,7 @@ class ProductDetailView extends Backbone.View
       availabilityText: @model.get("availabilityText")
       price: @model.price()
       shopId: "TODO" # TODO
+      disabled: "disabled" if disabled
 
     @$el.find("#variations").html(
       new VariationAttributeListView(
