@@ -85,6 +85,9 @@ class ProductDetailView extends Backbone.View
       .epages-shop-overlay select, .epages-shop-overlay-buy-button {
         min-width: 9em;
       }
+      .epages-shop-overlay-buy-button[disabled=disabled], .epages-shop-overlay-buy-button:disabled {
+        color: #ddd;
+      }
       .epages-shop-overlay-table th, .epages-shop-overlay-table td {
         vertical-align: baseline;
         padding: 2px;
