@@ -15,17 +15,13 @@
   <body>
     <h1>SITe Demo</h1>
 
+    <div class="epages-cart-widget"></div>
     <div
       class="epages-shop-widget"
-      data-shopid="DemoShop">
+      data-category-list>
     </div>
 
-    <script type="text/javascript">
-      if (window.location.hostname.match(/localhost|127\.0\.0\.1|0\.0\.0\.0/)) {
-        document.write("<script src=http://localhost:4566/site.js async=true><\/script>");
-      } else {
-        document.write("<script src=https://site-prototype.herokuapp.com/site.js async=true><\/script>");
-      }
-    </script>
+    <script src="/site.js" id="epages-widget" data-shopid="DemoShop"></script>
+
   </body>
 </html>
