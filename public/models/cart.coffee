@@ -41,4 +41,4 @@ class Cart extends Backbone.Model
     @lineItems = new CartLineItems [],
       shopId: @shopId
       cartId: @id
-    @listenTo @lineItems, "update", => @trigger "update"
+    @lineItems.on "all", (event) => @trigger event

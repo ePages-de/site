@@ -2,6 +2,9 @@ class CartLineItemView extends Backbone.View
 
   tagName: "tr"
 
+  events:
+    'click .epages-cart-overlay-line-item-destroy': 'destroyLineItem'
+
   template: _.template """
   <td>
     <img src="<%= thumbnail %>">
@@ -11,7 +14,7 @@ class CartLineItemView extends Backbone.View
   <td><%= name %></td>
   <td><%= singleItemPrice %></td>
   <td><%= lineItemPrice %></td>
-  <td>TODO</td>
+  <td><a href="#" class="epages-cart-overlay-line-item-destroy">Remove</a></td>
   """
 
   render: ->
@@ -23,3 +26,7 @@ class CartLineItemView extends Backbone.View
       singleItemPrice: @model.singleItemPrice()
       lineItemPrice:   @model.lineItemPrice()
     this
+
+  destroyLineItem: (event) ->
+    event.preventDefault()
+    @model.destroy()

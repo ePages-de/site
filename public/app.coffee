@@ -22,7 +22,7 @@ class App
   @start: ->
     shopId = $(@selectors.scriptTag).data("shopid")
 
-    App.cart = cart = new Cart(null, shopId: shopId)
+    App.cart = new Cart(null, shopId: shopId)
 
     # Widgets
     $(@selectors.shopWidget).each ->
@@ -52,4 +52,4 @@ class App
 
     # Cart views
     $(@selectors.cartWidget).each ->
-      cartView = new CartView(el: $(this), model: cart).render()
+      cartView = new CartView(el: $(this), model: App.cart).render()

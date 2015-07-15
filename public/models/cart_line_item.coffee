@@ -6,7 +6,10 @@ class CartLineItem extends Backbone.Model
   idAttribute: "lineItemId"
 
   url: ->
-    "https://developer.epages.com/api/shops/#{@shopId}/carts/#{@cartId}/line-items"
+    url = "https://developer.epages.com/api/shops/#{@shopId}/carts/#{@cartId}/line-items"
+    unless @isNew()
+      url += "/#{@id}"
+    url
 
   parse: (response) ->
     lineItems = response.lineItemContainer.productLineItems
