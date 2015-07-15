@@ -37,7 +37,7 @@ class TestWidget
 
 
 describe "Integration", ->
-  jasmine.DEFAULT_TIMEOUT_INTERVAL = 5000
+  jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000
 
   beforeEach ->
     jasmine.getFixtures().set """
