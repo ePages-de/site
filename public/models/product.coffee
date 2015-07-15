@@ -23,7 +23,7 @@ class Product extends Backbone.Model
     @get("availability")
 
   availabilityText: ->
-    @get("availabilityText")
+    @get("availabilityText") || "Please choose your option(s) first"
 
   name: ->
     @get("name")
