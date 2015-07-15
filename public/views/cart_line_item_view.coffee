@@ -3,13 +3,20 @@ class CartLineItemView extends Backbone.View
   tagName: "tr"
 
   events:
-    'click .epages-cart-overlay-line-item-destroy': 'destroyLineItem'
+    "change .epages-cart-overlay-line-item-quantity": "changeQuantity"
+    "click .epages-cart-overlay-line-item-destroy": "destroyLineItem"
 
   template: _.template """
   <td>
     <img src="<%= thumbnail %>">
   </td>
-  <td><%= quantity %></td>
+  <td>
+    <select class="epages-cart-overlay-line-item-quantity">
+      <% _.map([0, 1,2,3,4,5], function(num) { %>
+        <option value="<%= num %>" <%= quantity === num ? "selected" : void 0 %> ><%= num %></option>
+      <% }); %>
+    </select>
+  </td>
   <td><%= unit %></td>
   <td><%= name %></td>
   <td><%= singleItemPrice %></td>
@@ -26,6 +33,10 @@ class CartLineItemView extends Backbone.View
       singleItemPrice: @model.singleItemPrice()
       lineItemPrice:   @model.lineItemPrice()
     this
+
+  changeQuantity: (event) ->
+    quantity = parseInt(event.target.value)
+    @model.save(quantity: quantity)
 
   destroyLineItem: (event) ->
     event.preventDefault()

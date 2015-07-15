@@ -15,6 +15,10 @@ class CartLineItem extends Backbone.Model
     lineItems = response.lineItemContainer.productLineItems
     _.findWhere lineItems, productId: @get("productId")
 
+  toJSON: ->
+    productId: @get("productId")
+    quantity: @get("quantity")
+
   name: ->
     @get("name")
 

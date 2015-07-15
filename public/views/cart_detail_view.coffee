@@ -1,7 +1,7 @@
 class CartDetailView extends Backbone.View
 
   initialize: =>
-    @listenTo @model, "all", @render
+    @listenTo @model, "sync destroy", @render
 
   template: _.template """
     <div class="epages-cart-overlay">
