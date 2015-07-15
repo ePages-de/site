@@ -3,6 +3,9 @@ class CartDetailView extends Backbone.View
   initialize: =>
     @listenTo @model, "change update destroy", @render
 
+  events:
+    "click .epages-cart-overlay-checkout-button": "checkout"
+
   template: _.template """
     <div class="epages-cart-overlay">
       <h3>Shopping cart</h3>
@@ -71,3 +74,7 @@ class CartDetailView extends Backbone.View
       @$(".epages-cart-overlay-not-empty").show()
 
     this
+
+  checkout: ->
+    console.log "checkout"
+    window.location.href = @model.get("checkoutUrl")
