@@ -12,7 +12,7 @@ class CartLineItemView extends Backbone.View
   </td>
   <td>
     <select class="epages-cart-overlay-line-item-quantity">
-      <% _.map([0, 1,2,3,4,5], function(num) { %>
+      <% _.map([1,2,3,4,5], function(num) { %>
         <option value="<%= num %>" <%= quantity === num ? "selected" : void 0 %> ><%= num %></option>
       <% }); %>
     </select>
