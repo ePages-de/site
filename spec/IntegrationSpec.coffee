@@ -45,7 +45,10 @@ describe "Integration", ->
 
       <div class="epages-shop-widget">FIXTURE2</div>
 
-      <script src=http://localhost:4321/site.js id="epages-widget" data-shopid="DemoShop"></script>
+      <script
+        src=http://localhost:4321/site.js
+        id="epages-widget"
+        data-shopid="DemoShop"></script>
     """
 
   it "loads site.js from another server", (done) ->
