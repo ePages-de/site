@@ -25,7 +25,7 @@ class CartDetailView extends Backbone.View
           <tbody></tbody>
           <tfoot>
             <tr>
-              <td colspan="5"><b>Subtotal (incl. VAT)</b></td>
+              <td colspan="5"><b>Price includes VAT, plus <a href="#">Shipping</a>.</b></td>
               <td><b><%= subTotal %></b></td>
               <td></td>
             </tr>
