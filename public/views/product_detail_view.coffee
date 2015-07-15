@@ -82,8 +82,9 @@ class ProductDetailView extends Backbone.View
         vertical-align: baseline;
       }
       .epages-shop-overlay-table th {
-        text-align: left;
+        font-weight: normal;
         padding-right: 0.5em;
+        text-align: right;
       }
     </style>
   """
