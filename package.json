@@ -7,7 +7,7 @@
   "scripts": {
     "start": "gulp build && node index.js",
     "test": "gulp build && PORT=4321 npm start & ./node_modules/karma/bin/karma start karma.conf.coffee",
-    "ci":   "gulp build && PORT=4321 npm start & ./node_modules/karma/bin/karma start karma.conf.coffee --single-run"
+    "ci": "gulp build && PORT=4321 npm start & ./node_modules/karma/bin/karma start karma.conf.coffee --single-run"
   },
   "engines": {
     "node": "0.12.2"
@@ -35,11 +35,13 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "http-proxy": "^1.11.1",
     "jasmine-core": "^2.3.4",
     "karma": "^0.12.37",
     "karma-chrome-launcher": "^0.2.0",
     "karma-coffee-preprocessor": "^0.2.1",
     "karma-jasmine": "^0.3.6",
-    "karma-jasmine-jquery": "^0.1.1"
+    "karma-jasmine-jquery": "^0.1.1",
+    "replay": "^2.0.6"
   }
 }

@@ -5,7 +5,7 @@ class App
   else
     "https://site-prototype.herokuapp.com"
 
-  @apiUrl: "https://developer.epages.com/api"
+  @apiUrl: "http://localhost:4322/api"
 
   @selectors:
     scriptTag:  "#epages-widget"
