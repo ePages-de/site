@@ -26,12 +26,14 @@ class CartDetailView extends Backbone.View
           <tfoot>
             <tr>
               <td colspan="4">
-                <div class="epages-cart-overlay-product-price">Subtotal</div>
+                <div class="epages-cart-overlay-product-price-desc">Subtotal</div>
                 <div class="epages-cart-overlay-product-shipping">
                   includes VAT, plus <a href="#">Shipping</a>.
                 </div>
               </td>
-              <td><b><%= subTotal %></b></td>
+              <td class="epages-cart-overlay-product-price">
+                <b><%= subTotal %></b>
+              </td>
               <td></td>
             </tr>
           </tfoot>
@@ -73,9 +75,12 @@ class CartDetailView extends Backbone.View
       .epages-cart-overlay table tfoot td {
         padding: 10px 10px 20px;
       }
-      .epages-cart-overlay-product-price {
+      .epages-cart-overlay-product-price-desc {
         font-weight: bold;
-        font-size: 135%;
+        font-size: 120%;
+      }
+      .epages-cart-overlay-product-price {
+        vertical-align: top;
       }
       .epages-cart-overlay-product-shipping {
         font-size: 80%;
