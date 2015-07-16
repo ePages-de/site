@@ -3,6 +3,18 @@ $.ajaxSettings.accepts.json = null # required to work with the epages API
 # TODO: Add a fallback in case <head> cannot be found.
 style = """
   <style type="text/css" id="epages-shop-styles">
+    #epages-shop-widget-loading {
+      background-image: url(http://localhost:4566/loading.gif);
+      background-color: white;
+      border-radius: 6px;
+      display: none;
+      height: 32px;
+      left: 50%;
+      position: fixed;
+      top: 50px;
+      width: 32px;
+      z-index: 10002;
+    }
     .epages-shop-widget  {
       overflow: auto;
     }
