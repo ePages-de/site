@@ -16,8 +16,8 @@ class CartLineItemView extends Backbone.View
         <option value="<%= num %>" <%= quantity === num ? "selected" : void 0 %> ><%= num %></option>
       <% }); %>
     </select>
+    <%= unit %>
   </td>
-  <td><%= unit %></td>
   <td><%= name %></td>
   <td><%= singleItemPrice %></td>
   <td><%= lineItemPrice %></td>
