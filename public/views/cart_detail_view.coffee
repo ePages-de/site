@@ -19,7 +19,7 @@ class CartDetailView extends Backbone.View
               <th>Name</th>
               <th>Unit price</th>
               <th>Total price</th>
-              <th></th>
+              <th>Remove</th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -36,8 +36,15 @@ class CartDetailView extends Backbone.View
             </tr>
           </tfoot>
         </table>
+
+        <div class="epages-cart-overlay-secure">
+          Your data will be transmitted through an encrypted connection (SSL)<br>
+          and will not be disclosed to third parties.
+        </div>
+
         <button class="epages-cart-overlay-checkout-button">Checkout</button>
       </div>
+
       <div class="epages-cart-overlay-is-empty" style="display:none">
         <p>Your cart is empty.</p>
       </div>
@@ -73,12 +80,24 @@ class CartDetailView extends Backbone.View
       .epages-cart-overlay-product-shipping {
         font-size: 80%;
       }
+      .epages-cart-overlay-secure {
+        padding: 20px 10px 0 50px;
+        background: url(#{App.rootUrl}/images/secure.png) 0 25px no-repeat;
+      }
       .epages-cart-overlay-checkout-button {
         float: right;
-        margin: 20px auto 10px;
+        margin: 0 auto 10px;
+        vertical-align: right;
       }
+
       .epages-cart-overlay-line-item-quantity {
         margin-right: 5px;
+      }
+      .epages-cart-overlay-line-item-remove {
+        display: block;
+        background: url(#{App.rootUrl}/images/remove.png) 0 0 no-repeat;
+        width: 20px;
+        height: 20px;
       }
     </style>
   """
@@ -100,5 +119,4 @@ class CartDetailView extends Backbone.View
     this
 
   checkout: ->
-    console.log "checkout"
     window.location.href = @model.get("checkoutUrl")

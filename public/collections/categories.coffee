@@ -6,4 +6,4 @@ class Categories extends Backbone.Collection
   model: Category
 
   url: ->
-    "#{App.rootUrl}/shops/#{@shopId}/categories"
+    "#{App.apiUrl}/shops/#{@shopId}/categories"

@@ -21,7 +21,7 @@ class CartLineItemView extends Backbone.View
   <td><%= name %></td>
   <td><%= singleItemPrice %></td>
   <td><%= lineItemPrice %></td>
-  <td><a href="#" class="epages-cart-overlay-line-item-remove">Remove</a></td>
+  <td><a href="#" class="epages-cart-overlay-line-item-remove" alt="Remove product"></a></td>
   """
 
   render: ->

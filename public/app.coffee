@@ -1,6 +1,11 @@
 class App
 
-  @rootUrl: "https://developer.epages.com/api"
+  @rootUrl: if window.location.hostname.match(/localhost|127\.0\.0\.1|0\.0\.0\.0/)
+    "http://localhost:4566"
+  else
+    "https://site-prototype.herokuapp.com"
+
+  @apiUrl: "https://developer.epages.com/api"
 
   @selectors:
     scriptTag:  "#epages-widget"
