@@ -52,8 +52,6 @@ describe "Integration", ->
     """
 
   it "loads site.js from another server", (done) ->
-    console.log "running spec"
-
     widget = new TestWidget(el: $j(".epages-shop-widget:first"))
 
     widgetLoaded = ->
