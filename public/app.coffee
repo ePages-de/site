@@ -1,11 +1,15 @@
 class App
 
-  @rootUrl: if window.location.hostname.match(/localhost|127\.0\.0\.1|0\.0\.0\.0/)
+  @rootUrl: if window.location.hostname.match(/^localhost|127\.|0\./)
     "http://localhost:4566"
   else
     "https://site-prototype.herokuapp.com"
 
-  @apiUrl: "http://localhost:4322/api"
+
+  @apiUrl: if window.location.hostname.match(/^localhost|127\.|0\./)
+    "http://localhost:4322/api"
+  else
+    "https://developer.epages.com/api"
 
   @selectors:
     scriptTag:  "#epages-widget"
