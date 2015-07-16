@@ -57,7 +57,9 @@ class ProductDetailView extends Backbone.View
       .epages-shop-overlay {
         color: #444;
       }
-      .epages-shop-overlay h1, .epages-shop-overlay h2, .epages-shop-overlay h3 {
+      .epages-shop-overlay h1,
+      .epages-shop-overlay h2,
+      .epages-shop-overlay h3 {
         color: #333;
       }
       .epages-shop-overlay h3 {
@@ -87,10 +89,12 @@ class ProductDetailView extends Backbone.View
       .epages-shop-overlay-table {
         width: 100%;
       }
-      .epages-shop-overlay-buy-button[disabled=disabled], .epages-shop-overlay-buy-button:disabled {
+      .epages-shop-overlay-buy-button[disabled=disabled],
+      .epages-shop-overlay-buy-button:disabled {
         color: #ddd;
       }
-      .epages-shop-overlay-table th, .epages-shop-overlay-table td {
+      .epages-shop-overlay-table th,
+      .epages-shop-overlay-table td {
         vertical-align: baseline;
         padding: 2px;
       }
