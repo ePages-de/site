@@ -16,6 +16,7 @@ class Cart extends Backbone.Model
 
   update: (data) ->
     @set("lineItemsSubTotal", data.lineItemContainer.lineItemsSubTotal)
+    @trigger("update")
 
   addLineItem: (productId) ->
     if @isNew()
@@ -37,18 +38,16 @@ class Cart extends Backbone.Model
   _addLineItem: (productId) ->
     @_createLineItems() unless @lineItems
 
-    attributes =
+    @lineItems.create {
       productId: productId
       quantity: 1
-
-    @lineItems.create attributes,
-      wait: true
-      success: (model, response) =>
-        @update(response)
-        App.closeModal()
+    },
+    wait: true
+    success: (model, response) =>
+      @update(response)
+      App.closeModal()
 
   _createLineItems: ->
     @lineItems = new CartLineItems [],
       shopId: @shopId
       cartId: @id
-    @lineItems.on "all", (event) => @trigger event

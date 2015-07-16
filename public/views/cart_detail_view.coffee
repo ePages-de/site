@@ -1,7 +1,7 @@
 class CartDetailView extends Backbone.View
 
   initialize: =>
-    @listenTo @model, "change update destroy", @render
+    @listenTo @model, "update", @render
 
   events:
     "click .epages-cart-overlay-checkout-button": "checkout"
