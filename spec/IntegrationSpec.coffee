@@ -52,33 +52,22 @@ describe "Integration", ->
     """
 
   it "loads site.js from another server", (done) ->
-    console.log "running spec"
-
     widget = new TestWidget(el: $j(".epages-shop-widget:first"))
 
     widgetLoaded = ->
       widget.hasCategoryList() && widget.hasProductList()
 
-    console.log "waiting for widget to load"
     waitFor widgetLoaded, ->
-      console.log "widget loaded"
-
       expect(widget.hasCategoryOption("Shoes")).toBeTruthy()
       widget.selectCategory("Shoes")
 
       categoryLoaded = ->
         widget.hasProduct("Meindl RFS Tibet")
 
-      console.log "waiting for category to load"
       waitFor categoryLoaded, ->
-        console.log "category loaded"
-
         widget.productLink("Meindl RFS Tibet").click()
 
-        console.log "waiting for variations to load"
         waitFor widget.variationsLoaded, ->
-          console.log "variations loaded"
-
           expect("label[for='epages-shop-variation-USSize']").toBeVisible()
           done()
 
