@@ -6,8 +6,10 @@ class App
     "https://site-prototype.herokuapp.com"
 
   @apiUrl: if window.location.hostname.match(/^localhost|127\.|0\./)
+    console.log "I AM LOCALHOST", window.location
     "http://localhost:4322/rs"
   else
+    console.log "I AM SOMETHING ELSE", window.location
     "https://pm.epages.com/rs"
 
 
