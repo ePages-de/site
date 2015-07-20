@@ -3,16 +3,12 @@ util     = require("gulp-util")
 wrap     = require("gulp-wrap")
 concat   = require("gulp-concat")
 coffee   = require("gulp-coffee")
+uglify   = require("gulp-uglify")
 series   = require("stream-series")
 notifier = require("node-notifier")
 
-env = process.env.NODE_ENV or "development"
-
-dependencies =
-  zepto:      "1.1.4"
-  underscore: "1.8.3"
-  backbone:   "1.2.1"
-  pico_modal: "2.1.0"
+# Set NODE_ENV=development for non-unglified JS.
+env = process.env.NODE_ENV or "production"
 
 path =
   public:       "public/"
@@ -22,16 +18,12 @@ path =
   vendor:       "public/vendor/"
   wrapper:      "public/wrapper/"
 
-vendorPath = (name) ->
-  version = dependencies[name]
-  min = if env == "production" then ".min" else ""
-  path.vendor + name + "-" + version + min + ".js"
 
 gulp.task "build", ->
-  zepto      = gulp.src(vendorPath("zepto"))
-  underscore = gulp.src(vendorPath("underscore"))
-  backbone   = gulp.src(vendorPath("backbone"))
-  picoModal  = gulp.src(vendorPath("pico_modal"))
+  zepto      = gulp.src(path.vendor + "zepto-*.js")
+  underscore = gulp.src(path.vendor + "underscore-*.js")
+  backbone   = gulp.src(path.vendor + "backbone-*.js")
+  picoModal  = gulp.src(path.vendor + "pico_modal-*.js")
 
   vendor = series(zepto, underscore, backbone, picoModal)
     .pipe(concat("site.js"))
@@ -57,10 +49,14 @@ gulp.task "build", ->
     gulp.src(path.public + "init.coffee")
     .pipe(coffee(bare: true))
 
-  series(vendor, app, models, collections, views, init)
+  result = series(vendor, app, models, collections, views, init)
     .pipe(concat("site.js"))
     .pipe(wrap(src: path.wrapper + "app.js"))
-    .pipe(gulp.dest(path.public))
+
+  if env is "production"
+    result = result.pipe(uglify())
+
+  result.pipe(gulp.dest(path.public))
 
 
 gulp.task "watch", ["build"], ->
