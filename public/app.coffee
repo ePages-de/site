@@ -63,4 +63,4 @@ class App
 
     # Cart views
     $(@selectors.cartWidget).each ->
-      cartView = new CartView(el: $(this), model: App.cart).render()
+      new CartView(el: $(this), model: App.cart).render()
