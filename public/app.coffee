@@ -5,11 +5,7 @@ class App
   else
     "https://site-prototype.herokuapp.com"
 
-
-  @apiUrl: if window.location.hostname.match(/^localhost|127\.|0\./)
-    "http://localhost:4322/api"
-  else
-    "https://developer.epages.com/api"
+  @apiUrl: "https://pm.epages.com/rs"
 
   @selectors:
     scriptTag:  "#epages-widget"
@@ -30,20 +26,14 @@ class App
   @closeModal: ->
     @_modal?.close()
 
-  @_initLoadingIndicator: ->
-    $loading = $("<div id=epages-shop-widget-loading></div>")
-    $("body").prepend($loading)
-    $(document).on "ajaxStart", ->
-      $loading.show()
-    $(document).on "ajaxStop", ->
-      $loading.hide()
-
   @start: ->
-    shopId = $(@selectors.scriptTag).data("shopid")
+    scriptTag = $(@selectors.scriptTag)
+    shopId = scriptTag.data("shopid")
+
+    scriptTag.after new StylesView().render().el
+    scriptTag.after new LoadingView().render().el
 
     App.cart = new Cart(null, shopId: shopId)
-
-    @_initLoadingIndicator()
 
     # Widgets
     $(@selectors.shopWidget).each ->
@@ -73,4 +63,4 @@ class App
 
     # Cart views
     $(@selectors.cartWidget).each ->
-      cartView = new CartView(el: $(this), model: App.cart).render()
+      new CartView(el: $(this), model: App.cart).render()

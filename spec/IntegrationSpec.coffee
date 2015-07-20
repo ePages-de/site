@@ -48,7 +48,7 @@ describe "Integration", ->
       <script
         src=http://localhost:4321/site.js
         id="epages-widget"
-        data-shopid="DemoShop"></script>
+        data-shopid="mindmatters"></script>
     """
 
   it "loads site.js from another server", (done) ->
