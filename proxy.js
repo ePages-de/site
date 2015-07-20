@@ -1,6 +1,6 @@
 /*
  * using https://github.com/assaf/node-replay and https://github.com/nodejitsu/node-http-proxy
- * to proxy and replay requests to developer.epages.com
+ * to proxy and replay requests to pm.epages.com
  */
 
 var replay = require("replay"),
@@ -12,6 +12,6 @@ console.log("Starting node-replay proxy on port " + port);
 console.log(replay.version);
 
 httpProxy.createProxyServer({
-    target: "https://developer.epages.com"
+    target: "https://pm.epages.com"
   , changeOrigin: true
 }).listen(port);
