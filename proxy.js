@@ -3,13 +3,13 @@
  * to proxy and replay requests to developer.epages.com
  */
 
-var Replay = require("Replay"),
+var replay = require("replay"),
     httpProxy = require("http-proxy");
 
 var port = 4322;
 
 console.log("Starting node-replay proxy on port " + port);
-console.log(Replay.version);
+console.log(replay.version);
 
 httpProxy.createProxyServer({
     target: "https://developer.epages.com"
