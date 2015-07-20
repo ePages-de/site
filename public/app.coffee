@@ -26,20 +26,14 @@ class App
   @closeModal: ->
     @_modal?.close()
 
-  @_initLoadingIndicator: ->
-    $loading = $("<div id=epages-shop-widget-loading></div>")
-    $("body").prepend($loading)
-    $(document).on "ajaxStart", ->
-      $loading.show()
-    $(document).on "ajaxStop", ->
-      $loading.hide()
-
   @start: ->
-    shopId = $(@selectors.scriptTag).data("shopid")
+    scriptTag = $(@selectors.scriptTag)
+    shopId = scriptTag.data("shopid")
+
+    scriptTag.after new StylesView().render().el
+    scriptTag.after new LoadingView().render().el
 
     App.cart = new Cart(null, shopId: shopId)
-
-    @_initLoadingIndicator()
 
     # Widgets
     $(@selectors.shopWidget).each ->
