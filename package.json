@@ -7,7 +7,7 @@
   "scripts": {
     "start": "gulp build && node index.js",
     "watch": "PORT=4321 npm start & node proxy.js & ./node_modules/karma/bin/karma start karma.conf.coffee",
-    "test": "ci.sh"
+    "test": "./ci.sh"
   },
   "engines": {
     "node": "0.12.2"
