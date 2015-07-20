@@ -5,7 +5,7 @@ class App
   else
     "https://site-prototype.herokuapp.com"
 
-  @apiUrl: if window.location.hostname.match(/^localhost:9876/) # karma
+  @apiUrl: if window.location.port == "9876" # karma
     "http://localhost:4041/rs"
   else if window.location.hostname.match(/^localhost|127\.|0\./) # development
     "http://localhost:4040/rs"
