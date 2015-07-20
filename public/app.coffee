@@ -5,7 +5,11 @@ class App
   else
     "https://site-prototype.herokuapp.com"
 
-  @apiUrl: "https://pm.epages.com/rs"
+  @apiUrl: if window.location.hostname.match(/^localhost|127\.|0\./)
+    "http://localhost:4322/rs"
+  else
+    "https://pm.epages.com/rs"
+
 
   @selectors:
     scriptTag:  "#epages-widget"

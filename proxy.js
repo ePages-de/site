@@ -8,8 +8,7 @@ var replay = require("replay"),
 
 var port = 4322;
 
-console.log("Starting node-replay proxy on port " + port);
-console.log(replay.version);
+console.log("Starting node-replay proxy in '" + replay.mode + "' mode on port " + port);
 
 httpProxy.createProxyServer({
     target: "https://pm.epages.com"
