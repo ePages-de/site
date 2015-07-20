@@ -5,8 +5,8 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "start": "gulp build && node index.js",
-    "watch": "PORT=4321 npm start & node proxy.js & ./node_modules/karma/bin/karma start karma.conf.coffee",
+    "start": "REPLAY=cheat node proxy.js & gulp build && node index.js",
+    "watch": "PORT=4321 node index.js & PROXY_PORT=4041 node proxy.js & ./node_modules/karma/bin/karma start karma.conf.coffee",
     "test": "./ci.sh"
   },
   "engines": {

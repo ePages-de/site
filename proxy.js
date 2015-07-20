@@ -6,7 +6,7 @@
 var replay = require("replay"),
     httpProxy = require("http-proxy");
 
-var port = 4322;
+var port = process.env.PROXY_PORT || 4040;
 
 console.log("Starting node-replay proxy in '" + replay.mode + "' mode on port " + port);
 
