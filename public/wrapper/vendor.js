@@ -18,6 +18,9 @@ var Zepto   = window.Zepto,
 	Backbone  = window.Backbone.noConflict(),
 	picoModal = window.picoModal;
 
+// Make sure Backbone uses our Zepto and not some globale jQuery/Zepto
+Backbone.$ = $;
+
 // Reset globals to their original values.
 window.Zepto     = originals.Zepto;
 window.$         = originals.$;

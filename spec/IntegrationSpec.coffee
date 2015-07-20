@@ -27,7 +27,11 @@ class TestWidget
 
   selectCategory: (name) ->
     value = @$("option:contains(#{name})").val()
-    @$("select").val(value).change()
+    # workaround: must create event by hand because .change() would only
+    # fire within karmas jquery 2.1 and not the actual element
+    event = document.createEvent("HTMLEvents")
+    event.initEvent("change", true, true )
+    @$("select").val(value)[0].dispatchEvent(event)
 
   hasProduct: (name) ->
     @$(".epages-shop-product-name:contains(#{name})").length == 1
