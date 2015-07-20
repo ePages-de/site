@@ -36,6 +36,12 @@ gulp watch
 
 ## Testing
 
+Tests are run against a caching proxy for the API. When adding new tests you
+have to record new responses with `REPLAY=record npm test` and then modify the
+new files in ./fixtures/ by deleting the "accept-language" and
+"accept-encoding" headers from requests to workaround different chrome version
+on your machine and CircleCI
+
 ```sh
-npm test
+npm test # or npm run watch to keep running
 ```
