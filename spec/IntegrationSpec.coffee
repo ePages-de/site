@@ -39,14 +39,15 @@ class TestWidget
     @$("a .epages-shop-product-name:contains(#{name})")
 
 
-describe "Integration", ->
+describe "Widget", ->
   jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000
 
   beforeEach ->
     @$container = $ """
       <div id="test-container">
-        <div class="epages-shop-widget" data-category-list>FIXTURE1</div>
-        <div class="epages-shop-widget">FIXTURE2</div>
+        <div id="widget-with-categories" class="epages-shop-widget" data-category-list>FIXTURE1</div>
+        <div id="widget-default" class="epages-shop-widget">FIXTURE2</div>
+        <div id="widget-disabled" class="epages-shop-widget" data-search-form=false data-sort=false>FIXTURE2</div>
       </div>
     """
 
@@ -66,7 +67,7 @@ describe "Integration", ->
 
   it "loads categories, product details and variations", (done) ->
     widget = new TestWidget
-      el: $(".epages-shop-widget:first")
+      el: $("#widget-with-categories")
 
     waitUntil widget.isReady, ->
       expect( widget.hasCategoryOption("Shoes") ).toBeTruthy()
@@ -76,5 +77,26 @@ describe "Integration", ->
         widget.productLink("Meindl RFS Tibet").click()
 
         waitUntil widget.variationsLoaded, ->
-          expect( $("label[for='epages-shop-variation-USSize']").is(':visible') ).toBeTruthy()
+          expect(
+            $("label[for='epages-shop-variation-USSize']").is(':visible')
+          ).toBeTruthy()
           done()
+
+  it "enabled search form and sort by default", (done) ->
+    widget = new TestWidget
+      el: $("#widget-default")
+
+    $(document).on "ajaxStop", ->
+      expect(widget.$(".epages-shop-category-list").html()).toEqual ""
+      expect(widget.$(".epages-shop-search-form form").length).toEqual 1
+      expect(widget.$(".epages-shop-sort a").length).toEqual 3
+      done()
+
+  it "allows disabled search form and sort", (done) ->
+    widget = new TestWidget
+      el: $("#widget-disabled")
+
+    $(document).on "ajaxStop", ->
+      expect(widget.$(".epages-shop-search-form").html()).toEqual ""
+      expect(widget.$(".epages-shop-sort").html()).toEqual ""
+      done()
