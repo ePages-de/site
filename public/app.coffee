@@ -81,6 +81,17 @@ class App
           products.query = query
           products.fetch(reset: true)
 
+      # Sorting
+      if widgetView.showSort
+        sortView = new SortView
+        widgetView.regions.sort.append(sortView.render().el)
+
+        sortView.on "change", () ->
+          products.sort = @sort
+          products.direction = @direction
+          console.log "app.coffee", @sort, @direction
+          products.fetch(reset: true)
+
     # Cart views
     $(@selectors.cartWidget).each ->
       new CartView(el: $(this), model: App.cart).render()

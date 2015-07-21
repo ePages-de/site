@@ -2,6 +2,7 @@ class Products extends Backbone.Collection
 
   initialize: (models, options) ->
     { @shopId, @categoryId, @productIds } = options
+    @sort = @direction = null
 
   model: Product
 
@@ -15,6 +16,10 @@ class Products extends Backbone.Collection
       .join ""
     if @query
       url += "&q=" + @query
+    if @sort
+      url += "&sort=" + @sort
+    if @direction
+      url += "&direction=" + @direction
     url
 
   parse: (response) ->
