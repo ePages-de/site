@@ -4,7 +4,6 @@ module.exports = (config) ->
     frameworks: [ 'jasmine' ]
     files: [
       'public/vendor/zepto-1.1.4.js'
-      'public/site.js'
       'spec/**/*.coffee'
     ]
     exclude: []
