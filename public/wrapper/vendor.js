@@ -26,4 +26,5 @@ Backbone.$ = Zepto;
 window.Zepto     = originals.Zepto;
 window.$         = originals.$;
 window._ 		     = originals._;
+window.Backbone  = originals.Backbone;
 window.picoModal = originals.picoModal;
