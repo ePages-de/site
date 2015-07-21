@@ -1,6 +1,6 @@
-waitFor = (condition, next) ->
+waitUntil = (condition, args..., next) ->
   interval = setInterval ->
-    if condition()
+    if condition(args...)
       clearInterval(interval)
       next()
   , 10
@@ -10,29 +10,32 @@ class TestWidget
   constructor: (options) ->
     @$el = options.el
 
-  $: (selector) ->
+  $: (selector) =>
     @$el.find(selector)
 
-  hasCategoryList: ->
+  hasCategoryList: =>
     @$("option").length > 0
 
-  hasProductList: ->
+  hasProductList: =>
     @$(".epages-shop-product").length > 0
 
-  variationsLoaded: ->
+  isReady: =>
+    @hasCategoryList() && @hasProductList()
+
+  variationsLoaded: =>
     $(".pico-content").find(".epages-shop-variation").length > 0
 
-  hasCategoryOption: (name) ->
+  hasCategoryOption: (name) =>
     @$("option:contains(#{name})").length > 0
 
-  selectCategory: (name) ->
+  selectCategory: (name) =>
     value = @$("option:contains(#{name})").val()
     @$("select").val(value).change()
 
-  hasProduct: (name) ->
+  hasProduct: (name) =>
     @$(".epages-shop-product-name:contains(#{name})").length == 1
 
-  productLink: (name) ->
+  productLink: (name) =>
     @$("a .epages-shop-product-name:contains(#{name})")
 
 
@@ -60,23 +63,18 @@ describe "Integration", ->
   afterEach ->
     @$container.remove()
 
-  it "loads site.js from another server", (done) ->
-    widget = new TestWidget(el: $(".epages-shop-widget:first"))
 
-    widgetLoaded = ->
-      widget.hasCategoryList() && widget.hasProductList()
+  it "loads categories, product details and variations", (done) ->
+    widget = new TestWidget
+      el: $(".epages-shop-widget:first")
 
-    waitFor widgetLoaded, ->
-      expect(widget.hasCategoryOption("Shoes")).toBeTruthy()
+    waitUntil widget.isReady, ->
+      expect( widget.hasCategoryOption("Shoes") ).toBeTruthy()
       widget.selectCategory("Shoes")
 
-      categoryLoaded = ->
-        widget.hasProduct("Meindl RFS Tibet")
-
-      waitFor categoryLoaded, ->
+      waitUntil widget.hasProduct, "Meindl RFS Tibet", ->
         widget.productLink("Meindl RFS Tibet").click()
 
-        waitFor widget.variationsLoaded, ->
+        waitUntil widget.variationsLoaded, ->
           expect( $("label[for='epages-shop-variation-USSize']").is(':visible') ).toBeTruthy()
           done()
-
