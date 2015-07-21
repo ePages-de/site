@@ -48,13 +48,12 @@ gulp.task "build", ->
 
   init =
     gulp.src(path.public + "init.coffee")
-    .pipe(wrap({ src: path.wrapper + "init.js" }, { env: env }, { variable: "data" }))
-    .on("error", util.log)
     .pipe(coffee(bare: true))
 
   result = series(vendor, app, models, collections, views, init)
     .pipe(concat("site.js"))
-    .pipe(wrap(src: path.wrapper + "app.js"))
+    .pipe(wrap({ src: path.wrapper + "app.js" }, { env: env }, { variable: "data" }))
+    .on("error", util.log)
 
   if env is "production"
     result = result.pipe(uglify())
