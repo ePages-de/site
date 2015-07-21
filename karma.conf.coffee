@@ -5,6 +5,7 @@ module.exports = (config) ->
     files: [
       'public/vendor/zepto-1.1.4.js'
       'spec/**/*.coffee'
+      # adding public/site.js here breaks the correct loading order
     ]
     exclude: []
     preprocessors: {
