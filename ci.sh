@@ -1,6 +1,7 @@
 #!/bin/sh
 set -ex # fail completely at first failure
-gulp build
+
+NODE_ENV="test" gulp build
 
 PORT=4321 node index.js &
 NODE_PID=$!

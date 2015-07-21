@@ -15,11 +15,12 @@ var originals = {
 var Zepto   = window.Zepto,
 	$         = window.$,
 	_ 		    = window._,
-	Backbone  = window.Backbone.noConflict(),
+	Backbone  = window.Backbone,
 	picoModal = window.picoModal;
 
-// Make sure Backbone uses our Zepto and not some globale jQuery/Zepto
-Backbone.$ = $;
+// Make sure Backbone uses our Zepto and not
+// just any global jQuery/Zepto.
+Backbone.$ = Zepto;
 
 // Reset globals to their original values.
 window.Zepto     = originals.Zepto;

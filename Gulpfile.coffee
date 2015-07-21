@@ -28,6 +28,7 @@ gulp.task "build", ->
   vendor = series(zepto, underscore, backbone, picoModal)
     .pipe(concat("site.js"))
     .pipe(wrap(src: path.wrapper + "vendor.js"))
+    .on("error", util.log)
 
   app =
     gulp.src(path.public + "app.coffee")
@@ -47,6 +48,8 @@ gulp.task "build", ->
 
   init =
     gulp.src(path.public + "init.coffee")
+    .pipe(wrap({ src: path.wrapper + "init.js" }, { env: env }, { variable: "data" }))
+    .on("error", util.log)
     .pipe(coffee(bare: true))
 
   result = series(vendor, app, models, collections, views, init)
