@@ -16,6 +16,8 @@ class WidgetView extends Backbone.View
 
   _grabOptions: ->
     @showCategoryList = @$el.data("category-list") != undefined
+    @categoryId = @$el.data("category-id")
+    @productIds = @$el.data("product-ids")?.split(/, */)
 
   _defineRegions: ->
     @regions =

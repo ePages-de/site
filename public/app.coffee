@@ -46,7 +46,12 @@ class App
       widgetView = new WidgetView(el: $(this)).render()
 
       # Products
-      products = new Products(null, shopId: shopId)
+      products = new Products(
+        null,
+        shopId: shopId,
+        categoryId: widgetView.categoryId
+        productIds: widgetView.productIds
+      )
       products.fetch(reset: true)
 
       # Products view
