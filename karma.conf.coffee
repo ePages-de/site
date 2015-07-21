@@ -1,9 +1,9 @@
 module.exports = (config) ->
   config.set
     basePath: ''
-    frameworks: [ 'jasmine-jquery', 'jasmine' ]
+    frameworks: [ 'jasmine' ]
     files: [
-      'public/site.js'
+      'public/vendor/zepto-1.1.4.js'
       'spec/**/*.coffee'
     ]
     exclude: []

@@ -20,7 +20,7 @@ class TestWidget
     @$(".epages-shop-product").length > 0
 
   variationsLoaded: ->
-    $j(".pico-content").find(".epages-shop-variation").length > 0
+    $(".pico-content").find(".epages-shop-variation").length > 0
 
   hasCategoryOption: (name) ->
     @$("option:contains(#{name})").length > 0
@@ -40,19 +40,28 @@ describe "Integration", ->
   jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000
 
   beforeEach ->
-    jasmine.getFixtures().set """
-      <div class="epages-shop-widget" data-category-list>FIXTURE1</div>
-
-      <div class="epages-shop-widget">FIXTURE2</div>
-
-      <script
-        src=http://localhost:4321/site.js
-        id="epages-widget"
-        data-shopid="mindmatters"></script>
+    @$container = $ """
+      <div id="test-container">
+        <div class="epages-shop-widget" data-category-list>FIXTURE1</div>
+        <div class="epages-shop-widget">FIXTURE2</div>
+      </div>
     """
 
+    # Creating the script tag via Zepto does not load the script.
+    script = document.createElement("script")
+    script.type = "text/javascript"
+    script.src  = "http://localhost:4321/site.js"
+    script.id   = "epages-widget"
+    script.dataset.shopid = "mindmatters"
+
+    @$container.append script
+    $(document.body).append @$container
+
+  afterEach ->
+    @$container.remove()
+
   it "loads site.js from another server", (done) ->
-    widget = new TestWidget(el: $j(".epages-shop-widget:first"))
+    widget = new TestWidget(el: $(".epages-shop-widget:first"))
 
     widgetLoaded = ->
       widget.hasCategoryList() && widget.hasProductList()
@@ -68,6 +77,6 @@ describe "Integration", ->
         widget.productLink("Meindl RFS Tibet").click()
 
         waitFor widget.variationsLoaded, ->
-          expect("label[for='epages-shop-variation-USSize']").toBeVisible()
+          expect( $("label[for='epages-shop-variation-USSize']").is(':visible') ).toBeTruthy()
           done()
 

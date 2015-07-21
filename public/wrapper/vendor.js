@@ -13,7 +13,7 @@ var originals = {
 
 // Define local variables.
 var Zepto   = window.Zepto,
-	$         = window.$,
+	$         = window.Zepto,
 	_ 		    = window._,
 	Backbone  = window.Backbone,
 	picoModal = window.picoModal;

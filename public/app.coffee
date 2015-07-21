@@ -43,7 +43,7 @@ class App
 
     # Widgets
     $(@selectors.shopWidget).each ->
-      widgetView = new WidgetView(el: $(this)).render()
+      widgetView = new WidgetView(el: this).render()
 
       # Products
       products = new Products(
