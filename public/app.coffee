@@ -70,6 +70,15 @@ class App
           products.categoryId = categoryId
           products.fetch(reset: true)
 
+      # Search form
+      if widgetView.showSearchForm
+        searchFormView = new SearchFormView
+        widgetView.regions.searchForm.append(searchFormView.render().el)
+
+        searchFormView.on "change:query", (query) ->
+          products.query = query
+          products.fetch(reset: true)
+
     # Cart views
     $(@selectors.cartWidget).each ->
       new CartView(el: $(this), model: App.cart).render()

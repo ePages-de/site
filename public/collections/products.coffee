@@ -13,6 +13,8 @@ class Products extends Backbone.Collection
       url += _.map @productIds, (productId) ->
         "&id=#{productId}"
       .join ""
+    if @query
+      url += "&q=" + @query
     url
 
   parse: (response) ->
