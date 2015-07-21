@@ -19,10 +19,16 @@ class TestWidget
   hasProductList: =>
     @$(".epages-shop-product").length > 0
 
+  hasSearchForm: =>
+    @$(".epages-shop-search-form form input").length > 0
+
+  hasSorting: =>
+    @$(".epages-shop-sort a").length > 0
+
   isReady: =>
     @hasCategoryList() && @hasProductList()
 
-  variationsLoaded: =>
+  variationsLoaded: ->
     $(".pico-content").find(".epages-shop-variation").length > 0
 
   hasCategoryOption: (name) =>
@@ -87,9 +93,9 @@ describe "Widget", ->
       el: $("#widget-default")
 
     $(document).on "ajaxStop", ->
-      expect(widget.$(".epages-shop-category-list").html()).toEqual ""
-      expect(widget.$(".epages-shop-search-form form").length).toEqual 1
-      expect(widget.$(".epages-shop-sort a").length).toEqual 3
+      expect(widget.hasCategoryList()).toBeFalsy()
+      expect(widget.hasSearchForm()).toBeTruthy()
+      expect(widget.hasSorting()).toBeTruthy()
       done()
 
   it "allows disabled search form and sort", (done) ->
@@ -97,6 +103,7 @@ describe "Widget", ->
       el: $("#widget-disabled")
 
     $(document).on "ajaxStop", ->
-      expect(widget.$(".epages-shop-search-form").html()).toEqual ""
-      expect(widget.$(".epages-shop-sort").html()).toEqual ""
+      expect(widget.hasCategoryList()).toBeFalsy()
+      expect(widget.hasSearchForm()).toBeFalsy()
+      expect(widget.hasSorting()).toBeFalsy()
       done()
