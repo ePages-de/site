@@ -6,7 +6,7 @@ class Cart extends Backbone.Model
   idAttribute: "cartId"
 
   url: ->
-    "#{App.apiUrl}/shops/#{@shopId}/carts"
+    "#{App.apiUrl()}/shops/#{@shopId}/carts"
 
   count: ->
     if @lineItems then @lineItems.length else 0

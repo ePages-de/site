@@ -1,17 +1,15 @@
 class App
 
-  @rootUrl: if window.location.hostname.match(/^localhost|127\.|0\./)
-    "http://localhost:4566"
-  else
-    "https://site-prototype.herokuapp.com"
+  @rootUrl: ->
+    switch @env
+      when "production" then "https://site-prototype.herokuapp.com"
+      else                   "http://localhost:4566"
 
-  @apiUrl: if window.location.port == "9876" # karma
-    "http://localhost:4041/rs"
-  else if window.location.hostname.match(/^localhost|127\.|0\./) # development
-    "http://localhost:4040/rs"
-  else
-    "https://pm.epages.com/rs" # production
-
+  @apiUrl: ->
+    switch @env
+      when "production" then "https://pm.epages.com/rs"
+      when "test"       then "http://localhost:4041/rs"
+      else                   "http://localhost:4040/rs"
 
   @selectors:
     scriptTag:  "#epages-widget"

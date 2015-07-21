@@ -87,7 +87,7 @@ class CartDetailView extends Backbone.View
       }
       .epages-cart-overlay-secure {
         padding: 20px 10px 0 50px;
-        background: url(#{App.rootUrl}/images/secure.png) 0 25px no-repeat;
+        background: url(#{App.rootUrl()}/images/secure.png) 0 25px no-repeat;
       }
       .epages-cart-overlay-checkout-button {
         float: right;
@@ -100,7 +100,7 @@ class CartDetailView extends Backbone.View
       }
       .epages-cart-overlay-line-item-remove {
         display: block;
-        background: url(#{App.rootUrl}/images/remove.png) 0 0 no-repeat;
+        background: url(#{App.rootUrl()}/images/remove.png) 0 0 no-repeat;
         width: 20px;
         height: 20px;
       }

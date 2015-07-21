@@ -7,7 +7,7 @@ class StylesView extends Backbone.View
 
   template: _.template """
     #epages-shop-widget-loading {
-      background-image: url(#{App.rootUrl}/images/spinner.gif);
+      background-image: url(#{App.rootUrl()}/images/spinner.gif);
       background-color: white;
       border-radius: 6px;
       display: none;

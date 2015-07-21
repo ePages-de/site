@@ -6,7 +6,7 @@ class Products extends Backbone.Collection
   model: Product
 
   url: ->
-    url = "#{App.apiUrl}/shops/#{@shopId}/products?resultsPerPage=12"
+    url = "#{App.apiUrl()}/shops/#{@shopId}/products?resultsPerPage=12"
     if @categoryId
       url += "&categoryId=#{@categoryId}"
     if @productIds?.length > 0
