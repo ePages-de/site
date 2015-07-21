@@ -1,5 +1,3 @@
-<%= data.contents %>
-
-App.env = "<%= data.env %>";
+<%= contents %>
 
 }(window, document));

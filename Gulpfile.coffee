@@ -1,6 +1,7 @@
 gulp     = require("gulp")
 util     = require("gulp-util")
 wrap     = require("gulp-wrap")
+template = require("gulp-template")
 concat   = require("gulp-concat")
 coffee   = require("gulp-coffee")
 uglify   = require("gulp-uglify")
@@ -32,6 +33,7 @@ gulp.task "build", ->
 
   app =
     gulp.src(path.public + "app.coffee")
+        .pipe(template(env: env))
         .pipe(coffee(bare: true))
 
   models =
@@ -52,8 +54,7 @@ gulp.task "build", ->
 
   result = series(vendor, app, models, collections, views, init)
     .pipe(concat("site.js"))
-    .pipe(wrap({ src: path.wrapper + "app.js" }, { env: env }, { variable: "data" }))
-    .on("error", util.log)
+    .pipe(wrap(src: path.wrapper + "app.js"))
 
   if env is "production"
     result = result.pipe(uglify())

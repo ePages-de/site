@@ -1,11 +1,13 @@
 class App
 
-  @rootUrl: ->
+  @env: "<%= env %>"
+
+  @rootUrl:
     switch @env
       when "production" then "https://site-prototype.herokuapp.com"
       else                   "http://localhost:4566"
 
-  @apiUrl: ->
+  @apiUrl:
     switch @env
       when "production" then "https://pm.epages.com/rs"
       when "test"       then "http://localhost:4041/rs"
