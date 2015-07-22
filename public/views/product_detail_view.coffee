@@ -67,7 +67,8 @@ class ProductDetailView extends Backbone.View
       }
       .epages-shop-overlay-box {
         float: left;
-        width: 500px;
+        min-width: 400px;
+        max-width: 490px;
       }
       .epages-shop-overlay-product-availability-OnStock { color: green; }
       .epages-shop-overlay-product-availability-WarnStock { color: orange; }
