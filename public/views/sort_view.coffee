@@ -12,8 +12,8 @@ class SortView extends Backbone.View
     Sort by:
     <select name="sort">
       <option value="">Name</option>
-      <option value="price,asc">Price 0..9</option>
-      <option value="price,desc">Price 9..0</option>
+      <option value="price,asc">Price: low to high</option>
+      <option value="price,desc">Price: high to low</option>
     </select>
   """
 
