@@ -14,7 +14,7 @@ class TestWidget
     @$el.find(selector)
 
   hasCategoryList: =>
-    @$("option").length > 0
+    @$(".epages-shop-category-list select option").length > 0
 
   hasProductList: =>
     @$(".epages-shop-product").length > 0
@@ -23,7 +23,7 @@ class TestWidget
     @$(".epages-shop-search-form form input").length > 0
 
   hasSorting: =>
-    @$(".epages-shop-sort a").length > 0
+    @$(".epages-shop-sort select option").length > 0
 
   isReady: =>
     @hasCategoryList() && @hasProductList()
