@@ -5,15 +5,20 @@ class WidgetView extends Backbone.View
     @_grabOptions()
 
   template: _.template """
-    <div class="epages-shop-category-list"></div>
-    <div class="epages-shop-search-form"></div>
-    <div class="epages-shop-sort"></div>
+    <div class="epages-shop-navigation">
+      <div class="epages-shop-category-list"></div>
+      <div class="epages-shop-sort"></div>
+      <div class="epages-shop-search-form"></div>
+    </div>
     <div class="epages-shop-product-list">Loading ...</div>
 
     <style type="text/css">
-      .epages-shop-category-list, .epages-shop-search-form, .epages-shop-sort {
+      .epages-shop-navigation > div {
         float: left;
         margin-right: 1em;
+      }
+      .epages-shop-navigation > div:last-child {
+        margin-right: 0;
       }
       .epages-shop-product-list {
         clear: both;
