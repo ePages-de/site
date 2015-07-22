@@ -8,20 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <style type="text/css">
-        body { font: 14px/20px "Helvetica Neue", Arial, sans-serif; }
+        body { font: 14px/20px "Helvetica Neue", Arial, sans-serif; margin: 50px; }
+        h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; margin-bottom: 40px; }
+        #container { max-width: 800px; }
     </style>
   </head>
 
   <body>
-    <h1>SITe Demo</h1>
+    <h1>SITe</h1>
 
-    <div class="epages-cart-widget"></div>
-    <div
-      class="epages-shop-widget"
-      data-category-list>
+    <div id="container">
+      <div class="epages-cart-widget"></div>
+      <div class="epages-shop-widget" data-category-list></div>
     </div>
 
     <script src="/site.js" id="epages-widget" data-shopid="mindmatters"></script>
-
   </body>
 </html>
