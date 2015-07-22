@@ -21,7 +21,7 @@ class CartLineItemView extends Backbone.View
   <td><%= name %></td>
   <td><%= singleItemPrice %></td>
   <td><%= lineItemPrice %></td>
-  <td><a href="#" class="epages-cart-overlay-line-item-remove" alt="Remove product"></a></td>
+  <td><button class="epages-cart-overlay-line-item-remove" alt="Remove product"></button></td>
   """
 
   render: ->
@@ -40,4 +40,10 @@ class CartLineItemView extends Backbone.View
 
   removeLineItem: (event) ->
     event.preventDefault()
+
+    @_disableRemoveButton()
     App.cart.removeLineItem(@model)
+
+  _disableRemoveButton: ->
+    @$(".epages-cart-overlay-line-item-remove")
+      .prop("disabled", true)

@@ -100,9 +100,14 @@ class CartDetailView extends Backbone.View
       }
       .epages-cart-overlay-line-item-remove {
         display: block;
+        cursor: pointer;
         background: url(#{App.rootUrl}/images/remove.png) 0 0 no-repeat;
+        border: 0;
         width: 20px;
         height: 20px;
+      }
+      .epages-cart-overlay-line-item-remove:disabled {
+        cursor: auto;
       }
     </style>
   """
