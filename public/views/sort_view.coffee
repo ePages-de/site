@@ -6,21 +6,22 @@ class SortView extends Backbone.View
   tagName: "div"
 
   events:
-    "click": "onClick"
+    "change": "onChange"
 
   template: _.template """
     Sort by:
-    <a href="#" data-sort="name" data-direction="asc">Name</a>
-    <a href="#" data-sort="price" data-direction="asc">Price 0..9</a>
-    <a href="#" data-sort="price" data-direction="desc">Price 9..0</a>
+    <select name="sort">
+      <option value="">Name</option>
+      <option value="price,asc">Price 0..9</option>
+      <option value="price,desc">Price 9..0</option>
+    </select>
   """
 
   render: ->
     @$el.html @template
     this
 
-  onClick: (event) ->
+  onChange: (event) ->
     event.preventDefault()
-    @sort = $(event.target).data("sort")
-    @direction = $(event.target).data("direction")
+    [ @sort, @direction ] = event.target.value.split(",")
     @trigger "change"
