@@ -13,13 +13,13 @@ npm install
 Starting the test server:
 
 ```sh
-npm start
+NODE_ENV=development npm start
 ```
 
 Building the JavaScript (Development):
 
 ```
-gulp build
+NODE_ENV=development gulp build
 ```
 
 Building the JavaScript (Production):
@@ -31,7 +31,7 @@ NODE_ENV=production gulp build
 Watch for changes and build for development:
 
 ```
-gulp watch
+NODE_ENV=development gulp watch
 ```
 
 ## Testing
@@ -43,5 +43,5 @@ new files in ./fixtures/ by deleting the "accept-language" and
 on your machine and CircleCI
 
 ```sh
-npm test # or npm run watch to keep running
+NODE_ENV=development npm test # or npm run watch to keep running
 ```
