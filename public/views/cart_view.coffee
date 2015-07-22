@@ -3,11 +3,15 @@ class CartView extends Backbone.View
   initialize: ->
     @listenTo @model, "update refresh", @render
 
+  tagName: "button"
+
+  className: "epages-cart-button"
+
   events:
-    "click .epages-cart-button": "openCart"
+    "click": "openCart"
 
   template: _.template """
-    <button class="epages-cart-button">Shopping cart (<%= count %>)</button>
+    Basket (<%= count %>)
   """
 
   render: ->

@@ -16,7 +16,6 @@ class App
   @selectors:
     scriptTag:  "#epages-widget"
     shopWidget: ".epages-shop-widget"
-    cartWidget: ".epages-cart-widget"
 
 
   @start: ->
@@ -34,7 +33,11 @@ class App
     $(@selectors.shopWidget).each (index, el) =>
       widgetView = new WidgetView(el: el).render()
 
+      # Product list
       products = @_setupProductList(widgetView, shopId)
+
+      # Cart button
+      @_setupCartButton(widgetView)
 
       # Option: Categories
       if widgetView.showCategoryList
@@ -48,10 +51,10 @@ class App
       if widgetView.showSort
         @_setupSortView(widgetView, products)
 
-    # Initialize: carts
-    $(@selectors.cartWidget).each ->
-      new CartView(el: $(this), model: App.cart).render()
 
+  @_setupCartButton: (widgetView) ->
+    cartView = new CartView(model: App.cart).render()
+    widgetView.regions.cart.html(cartView.el)
 
   @_setupProductList: (widgetView, shopId) ->
     products = new Products(
@@ -62,7 +65,6 @@ class App
     )
     products.fetch(reset: true)
 
-    # Products view
     productsView = new ProductListView(collection: products)
     widgetView.regions.productList.html(productsView.el)
     products
@@ -71,22 +73,20 @@ class App
     categories = new Categories(null, shopId: shopId)
     categories.fetch(reset: true)
 
-    # Categories view
-    categoriesView = new CategoryListView(collection: categories)
+    categoriesView = new CategoryListView(collection: categories).render()
     widgetView.regions.categoryList.append(categoriesView.el)
 
     products.on "sync", ->
       categoriesView.reset() if products.query
 
-    # Categories view events
     categoriesView.on "change:category", (selectedCategoryId) ->
       products.selectedCategoryId = selectedCategoryId
       products.query = null # category selection resets search query
       products.fetch(reset: true)
 
   @_setupSearchForm: (widgetView, products) ->
-    searchFormView = new SearchFormView
-    widgetView.regions.searchForm.append(searchFormView.render().el)
+    searchFormView = new SearchFormView().render()
+    widgetView.regions.searchForm.append(searchFormView.el)
 
     products.on "sync", ->
       searchFormView.reset() if products.selectedCategoryId
@@ -97,8 +97,8 @@ class App
       products.fetch(reset: true)
 
   @_setupSortView: (widgetView, products) ->
-    sortView = new SortView
-    widgetView.regions.sort.append(sortView.render().el)
+    sortView = new SortView().render()
+    widgetView.regions.sort.append(sortView.el)
 
     sortView.on "change", () ->
       products.sort = @sort

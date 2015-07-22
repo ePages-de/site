@@ -8,7 +8,7 @@ class CartDetailView extends Backbone.View
 
   template: _.template """
     <div class="epages-cart-overlay">
-      <h2>Shopping cart</h2>
+      <h2>Basket</h2>
 
       <div class="epages-cart-overlay-not-empty" style="display:none">
         <table class="epages-cart-overlay-line-table">
@@ -44,11 +44,11 @@ class CartDetailView extends Backbone.View
           and will not be disclosed to third parties.
         </div>
 
-        <button class="epages-cart-overlay-checkout-button">Checkout</button>
+        <button class="epages-cart-overlay-checkout-button">Check out</button>
       </div>
 
       <div class="epages-cart-overlay-is-empty" style="display:none">
-        <p>Your cart is empty.</p>
+        <p>Your basket is empty.</p>
       </div>
     </div>
 
@@ -103,6 +103,7 @@ class CartDetailView extends Backbone.View
         cursor: pointer;
         background: url(#{App.rootUrl}/images/remove.png) 0 0 no-repeat;
         border: 0;
+        outline: none;
         width: 20px;
         height: 20px;
       }
