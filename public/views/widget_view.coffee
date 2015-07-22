@@ -6,10 +6,12 @@ class WidgetView extends Backbone.View
 
   template: _.template """
     <div class="epages-shop-navigation">
+      <div class="epages-shop-cart"></div>
       <div class="epages-shop-category-list"></div>
       <div class="epages-shop-sort"></div>
       <div class="epages-shop-search-form"></div>
     </div>
+
     <div class="epages-shop-product-list">Loading ...</div>
 
     <style type="text/css">
@@ -36,17 +38,18 @@ class WidgetView extends Backbone.View
 
   _grabOptions: ->
     @showCategoryList = @$el.data("category-list") != undefined
-    @showSearchForm = _.contains [undefined, true], @$el.data("search-form")
-    @showSort = _.contains [undefined, true], @$el.data("sort")
+    @showSearchForm   = _.contains [undefined, true], @$el.data("search-form")
+    @showSort         = _.contains [undefined, true], @$el.data("sort")
     @staticCategoryId = @$el.data("category-id")
-    @productIds = @$el.data("product-ids")?.split(/, */)
+    @productIds       = @$el.data("product-ids")?.split(/, */)
 
   _defineRegions: ->
     @regions =
-      productList: ".epages-shop-product-list"
+      productList:  ".epages-shop-product-list"
       categoryList: ".epages-shop-category-list"
-      searchForm: ".epages-shop-search-form"
-      sort: ".epages-shop-sort"
+      searchForm:   ".epages-shop-search-form"
+      sort:         ".epages-shop-sort"
+      cart:         ".epages-shop-cart"
 
   _initRegions: ->
     for name, className of @regions
