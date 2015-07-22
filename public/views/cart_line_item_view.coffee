@@ -40,10 +40,6 @@ class CartLineItemView extends Backbone.View
 
   removeLineItem: (event) ->
     event.preventDefault()
+    event.target.disabled = true # disable button
 
-    @_disableRemoveButton()
     App.cart.removeLineItem(@model)
-
-  _disableRemoveButton: ->
-    @$(".epages-cart-overlay-line-item-remove")
-      .prop("disabled", true)
