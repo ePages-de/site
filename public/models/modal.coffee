@@ -3,8 +3,6 @@ class Modal
   constructor: ->
     @actions = new Actions()
     @actions.on "action", (action) =>
-      console.log 'RECEIVED ACTION'
-      console.log action
       if action is "closeModal"
         @close()
 
