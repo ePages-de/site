@@ -128,7 +128,6 @@ class CartDetailView extends Backbone.View
 
     if win
       App.closeModal()
-      App.cart.needsRefresh()
     else
       # In case something blocked the new tab/window,
       # just open the checkout in the current page.
