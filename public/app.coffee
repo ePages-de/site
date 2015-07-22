@@ -18,6 +18,7 @@ class App
     shopWidget: ".epages-shop-widget"
     cartWidget: ".epages-cart-widget"
 
+
   @start: ->
     @modal = new Modal()
 
@@ -29,64 +30,77 @@ class App
 
     App.cart = new Cart(null, shopId: shopId)
 
-    # Widgets
-    $(@selectors.shopWidget).each ->
-      widgetView = new WidgetView(el: this).render()
+    # Initialize: widgets
+    $(@selectors.shopWidget).each (index, el) =>
+      widgetView = new WidgetView(el: el).render()
 
-      # Products
-      products = new Products(
-        null,
-        shopId: shopId,
-        staticCategoryId: widgetView.staticCategoryId
-        productIds: widgetView.productIds
-      )
-      products.fetch(reset: true)
+      products = @_setupProductList(widgetView, shopId)
 
-      # Products view
-      productsView = new ProductListView(collection: products)
-      widgetView.regions.productList.html(productsView.el)
-
-      # Categories
+      # Option: Categories
       if widgetView.showCategoryList
-        categories = new Categories(null, shopId: shopId)
-        categories.fetch(reset: true)
+        @_setupCategoryList(widgetView, products, shopId)
 
-        # Categories view
-        categoriesView = new CategoryListView(collection: categories)
-        widgetView.regions.categoryList.append(categoriesView.el)
-
-        products.on "sync", ->
-          categoriesView.reset() if products.query
-
-        # Categories view events
-        categoriesView.on "change:category", (selectedCategoryId) ->
-          products.selectedCategoryId = selectedCategoryId
-          products.query = null # category selection resets search query
-          products.fetch(reset: true)
-
-      # Search form
+      # Option: Search
       if widgetView.showSearchForm
-        searchFormView = new SearchFormView
-        widgetView.regions.searchForm.append(searchFormView.render().el)
+        @_setupSearchForm(widgetView, products)
 
-        products.on "sync", ->
-          searchFormView.reset() if products.selectedCategoryId
-
-        searchFormView.on "change:query", (query) ->
-          products.query = query
-          products.selectedCategoryId = null # search query resets category selection
-          products.fetch(reset: true)
-
-      # Sorting
+      # Option: Sorting
       if widgetView.showSort
-        sortView = new SortView
-        widgetView.regions.sort.append(sortView.render().el)
+        @_setupSortView(widgetView, products)
 
-        sortView.on "change", () ->
-          products.sort = @sort
-          products.direction = @direction
-          products.fetch(reset: true)
-
-    # Cart views
+    # Initialize: carts
     $(@selectors.cartWidget).each ->
       new CartView(el: $(this), model: App.cart).render()
+
+
+  @_setupProductList: (widgetView, shopId) ->
+    products = new Products(
+      null,
+      shopId: shopId,
+      staticCategoryId: widgetView.staticCategoryId
+      productIds: widgetView.productIds
+    )
+    products.fetch(reset: true)
+
+    # Products view
+    productsView = new ProductListView(collection: products)
+    widgetView.regions.productList.html(productsView.el)
+    products
+
+  @_setupCategoryList: (widgetView, products, shopId) ->
+    categories = new Categories(null, shopId: shopId)
+    categories.fetch(reset: true)
+
+    # Categories view
+    categoriesView = new CategoryListView(collection: categories)
+    widgetView.regions.categoryList.append(categoriesView.el)
+
+    products.on "sync", ->
+      categoriesView.reset() if products.query
+
+    # Categories view events
+    categoriesView.on "change:category", (selectedCategoryId) ->
+      products.selectedCategoryId = selectedCategoryId
+      products.query = null # category selection resets search query
+      products.fetch(reset: true)
+
+  @_setupSearchForm: (widgetView, products) ->
+    searchFormView = new SearchFormView
+    widgetView.regions.searchForm.append(searchFormView.render().el)
+
+    products.on "sync", ->
+      searchFormView.reset() if products.selectedCategoryId
+
+    searchFormView.on "change:query", (query) ->
+      products.query = query
+      products.selectedCategoryId = null # search query resets category selection
+      products.fetch(reset: true)
+
+  @_setupSortView: (widgetView, products) ->
+    sortView = new SortView
+    widgetView.regions.sort.append(sortView.render().el)
+
+    sortView.on "change", () ->
+      products.sort = @sort
+      products.direction = @direction
+      products.fetch(reset: true)
