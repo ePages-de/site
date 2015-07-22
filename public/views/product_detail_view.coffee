@@ -154,13 +154,11 @@ class ProductDetailView extends Backbone.View
     matchingVariationItem = @model.variationItems().find (item) =>
       _.all item.attributeSelection(), (selection) =>
         @model.variationAttributes().some (attribute) ->
-          attribute.name() == selection.name &&
-          attribute.selected() == selection.value
+          attribute.name() is selection.name and
+          attribute.selected() is selection.value
 
     if matchingVariationItem
-      p = new Product(url: matchingVariationItem.link().href)
-      p.fetch
-        success: (newModel) =>
-          @model.set(newModel.toJSON())
+      new Product(url: matchingVariationItem.link().href)
+        .fetch success: (newModel) =>
+          @model.set newModel.toJSON()
           @render()
-
