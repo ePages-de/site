@@ -1,10 +1,8 @@
 class Modal
 
   constructor: ->
-    @actions = new Actions()
-    @actions.on "action", (action) =>
-      if action is "closeModal"
-        @close()
+    @commands = new Commands()
+    @commands.subscribe "closeModal", @close
 
   open: (view) ->
     @_modal = picoModal
@@ -19,9 +17,9 @@ class Modal
         "width": "95%"
     @_modal.show()
 
-  close: ->
+  close: =>
     @_modal?.close()
 
   closeAll: ->
     @close()
-    @actions.send "closeModal"
+    @commands.send "closeModal"
