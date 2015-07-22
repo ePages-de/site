@@ -139,6 +139,7 @@ class ProductDetailView extends Backbone.View
 
   addLineItem: (event) ->
     event.preventDefault()
+    event.target.disabled = true # disable button
 
     if App.cart.isNew()
       App.cart.save().done =>
