@@ -3,14 +3,14 @@ class SortView extends Backbone.View
   initialize: ->
     @sort = @direction = null
 
-  tagName: "div"
+  tagName: "label"
 
   events:
-    "change": "onChange"
+    "change select": "onChange"
 
   template: _.template """
     Sort by:
-    <select name="sort">
+    <select>
       <option value="">Name</option>
       <option value="price,asc">Price: low to high</option>
       <option value="price,desc">Price: high to low</option>
