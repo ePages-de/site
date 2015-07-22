@@ -24,6 +24,8 @@ class CategoryListView extends Backbone.View
     @$el.html html
     this
 
+  reset: ->
+    @$el.find("option:first").attr("selected", true)
+
   onSelectionChange: (event) ->
-    categoryId = event.target.value
-    @trigger "change:category", categoryId
+    @trigger "change:category", event.target.value

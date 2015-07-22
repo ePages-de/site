@@ -30,7 +30,7 @@ class WidgetView extends Backbone.View
     @showCategoryList = @$el.data("category-list") != undefined
     @showSearchForm = _.contains [undefined, true], @$el.data("search-form")
     @showSort = _.contains [undefined, true], @$el.data("sort")
-    @categoryId = @$el.data("category-id")
+    @staticCategoryId = @$el.data("category-id")
     @productIds = @$el.data("product-ids")?.split(/, */)
 
   _defineRegions: ->

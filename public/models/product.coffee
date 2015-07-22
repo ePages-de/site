@@ -11,7 +11,13 @@ class Product extends Backbone.Model
       url = url.href.substr(0, url.href.indexOf("?")) # remove query string
       "#{url}/#{@id()}"
     else
-      @get("url")
+      # override url to use proxy when neccessary
+      url = new URL(@get("url"))
+      apiUrl = new URL(App.apiUrl)
+
+      url.host = apiUrl.host
+      url.protocol = apiUrl.protocol
+      url.toString()
 
   id: ->
     @get("productId")

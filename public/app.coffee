@@ -49,7 +49,7 @@ class App
       products = new Products(
         null,
         shopId: shopId,
-        categoryId: widgetView.categoryId
+        staticCategoryId: widgetView.staticCategoryId
         productIds: widgetView.productIds
       )
       products.fetch(reset: true)
@@ -67,9 +67,13 @@ class App
         categoriesView = new CategoryListView(collection: categories)
         widgetView.regions.categoryList.append(categoriesView.el)
 
+        products.on "sync", ->
+          categoriesView.reset() if products.query
+
         # Categories view events
-        categoriesView.on "change:category", (categoryId) ->
-          products.categoryId = categoryId
+        categoriesView.on "change:category", (selectedCategoryId) ->
+          products.selectedCategoryId = selectedCategoryId
+          products.query = null # category selection resets search query
           products.fetch(reset: true)
 
       # Search form
@@ -77,8 +81,12 @@ class App
         searchFormView = new SearchFormView
         widgetView.regions.searchForm.append(searchFormView.render().el)
 
+        products.on "sync", ->
+          searchFormView.reset() if products.selectedCategoryId
+
         searchFormView.on "change:query", (query) ->
           products.query = query
+          products.selectedCategoryId = null # search query resets category selection
           products.fetch(reset: true)
 
       # Sorting
@@ -89,7 +97,6 @@ class App
         sortView.on "change", () ->
           products.sort = @sort
           products.direction = @direction
-          console.log "app.coffee", @sort, @direction
           products.fetch(reset: true)
 
     # Cart views

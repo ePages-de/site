@@ -14,6 +14,9 @@ class SearchFormView extends Backbone.View
     @$el.html @template
     this
 
+  reset: ->
+    @$el.find("input[type='text']").val(null)
+
   onSubmit: (event) ->
     event.preventDefault()
     @trigger "change:query", @$el.find("input[type='text']").val()
