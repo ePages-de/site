@@ -3,26 +3,40 @@ class Cart extends Backbone.Model
   initialize: (attributes, options) ->
     { @shopId } = options
 
+    @lineItems = new CartLineItems [], cart: this
+
+    @storage = new Storage("cart")
+    @storage.on "update", @_loadFromStorage
+    @on "update", @_dumpToStorage
+
   idAttribute: "cartId"
 
   url: ->
-    "#{App.apiUrl}/shops/#{@shopId}/carts"
+    url = "#{App.apiUrl}/shops/#{@shopId}/carts"
+    unless @isNew()
+      url += "/#{@id}"
+    url
 
-  count: ->
-    if @lineItems then @lineItems.length else 0
+  lineItemsSubTotal: ->
+    container = @get("lineItemContainer")
+    return unless container
 
-  isEmpty: ->
-    @count() <= 0
+    container.lineItemsSubTotal.formatted
 
   update: (data) ->
-    @set("lineItemsSubTotal", data.lineItemContainer.lineItemsSubTotal)
+    @clear()
+    @set(data)
     @trigger("update")
 
   addLineItem: (productId) ->
-    if @isNew()
-      @save().done => @addLineItem(productId)
-    else
-      @_addLineItem(productId)
+    @lineItems.create {
+      productId: productId
+      quantity: 1
+    },
+    wait: true
+    success: (model, response) =>
+      @update(response)
+      App.closeModal() # TODO: move this to the view
 
   changeQuantity: (lineItem, quantity) ->
     lineItem.save { quantity: quantity },
@@ -34,20 +48,15 @@ class Cart extends Backbone.Model
       success: (model, response) =>
         @update(response)
 
+  _loadFromStorage: (event) =>
+    switch event.key
+      when @storage.key("cart")
+        @clear() and @set @storage.get("cart")
+        @trigger "refresh"
+      when @storage.key("lineItems")
+        @lineItems.reset @storage.get("lineItems")
+        @trigger "refresh"
 
-  _addLineItem: (productId) ->
-    @_createLineItems() unless @lineItems
-
-    @lineItems.create {
-      productId: productId
-      quantity: 1
-    },
-    wait: true
-    success: (model, response) =>
-      @update(response)
-      App.closeModal()
-
-  _createLineItems: ->
-    @lineItems = new CartLineItems [],
-      shopId: @shopId
-      cartId: @id
+  _dumpToStorage: =>
+    @storage.set "cart", @attributes
+    @storage.set "lineItems", @lineItems.map (item) -> item.attributes

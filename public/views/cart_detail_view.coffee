@@ -1,7 +1,7 @@
 class CartDetailView extends Backbone.View
 
-  initialize: =>
-    @listenTo @model, "update", @render
+  initialize: ->
+    @listenTo @model, "update refresh", @render
 
   events:
     "click .epages-cart-overlay-checkout-button": "checkout"
@@ -109,9 +109,9 @@ class CartDetailView extends Backbone.View
 
   render: ->
     @$el.html @template
-      subTotal: @model.get("lineItemsSubTotal")?.formatted
+      subTotal: @model.lineItemsSubTotal()
 
-    if @model.isEmpty()
+    if @model.lineItems.isEmpty()
       @$(".epages-cart-overlay-is-empty").show()
     else
       html = @model.lineItems.map (lineItem) ->
@@ -124,4 +124,12 @@ class CartDetailView extends Backbone.View
     this
 
   checkout: ->
-    window.location.href = @model.get("checkoutUrl")
+    win = window.open @model.get("checkoutUrl"), "_blank"
+
+    if win
+      App.closeModal()
+      App.cart.needsRefresh()
+    else
+      # In case something blocked the new tab/window,
+      # just open the checkout in the current page.
+      window.location @model.get("checkoutUrl")

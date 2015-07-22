@@ -139,7 +139,12 @@ class ProductDetailView extends Backbone.View
 
   addLineItem: (event) ->
     event.preventDefault()
-    App.cart.addLineItem @model.id()
+
+    if App.cart.isNew()
+      App.cart.save().done =>
+        App.cart.addLineItem @model.id()
+    else
+      App.cart.addLineItem @model.id()
 
   updateVariations: =>
     matchingVariationItem = @model.variationItems().find (item) =>

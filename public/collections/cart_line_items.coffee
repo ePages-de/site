@@ -1,7 +1,7 @@
 class CartLineItems extends Backbone.Collection
 
   initialize: (models, options) ->
-    { @shopId, @cartId } = options
+    { @cart } = options
 
   model: CartLineItem
 
@@ -9,6 +9,5 @@ class CartLineItems extends Backbone.Collection
     model = super
     return model unless model
 
-    model.shopId = @shopId
-    model.cartId = @cartId
+    model.cart = @cart
     model

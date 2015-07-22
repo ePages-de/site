@@ -1,12 +1,9 @@
 class CartLineItem extends Backbone.Model
 
-  initialize: (attributes, options) ->
-    { @shopId, @cartId } = options
-
   idAttribute: "lineItemId"
 
   url: ->
-    url = "#{App.apiUrl}/shops/#{@shopId}/carts/#{@cartId}/line-items"
+    url = "#{App.apiUrl}/shops/#{@cart.shopId}/carts/#{@cart.id}/line-items"
     unless @isNew()
       url += "/#{@id}"
     url
