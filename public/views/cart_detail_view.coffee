@@ -132,7 +132,7 @@ class CartDetailView extends Backbone.View
     win = window.open @model.get("checkoutUrl"), "_blank"
 
     if win
-      App.closeModal()
+      App.modal.closeAll()
     else
       # In case something blocked the new tab/window,
       # just open the checkout in the current page.

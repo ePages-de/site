@@ -1,13 +1,12 @@
 class Storage
   _(@::).extend Backbone.Events
 
-  constructor: (@name) ->
+  constructor: (name) ->
+    @prefix = "epages-shop-#{name}-"
+    @testToken = "#{@prefix}storage-test"
+
     @storage = @_localStorage()
     @_subscribeToStorageEvents() if @storage
-
-  prefix: "epages-shop"
-
-  testToken: "#{@::prefix}-storage-test"
 
   set: (key, value) ->
     return unless @storage
@@ -22,7 +21,7 @@ class Storage
     @storage.removeItem @key(key)
 
   key: (key) ->
-    "#{@prefix}-#{@name}-#{key}"
+    "#{@prefix}#{key}"
 
   # Returns localStorage if it’s supported by the browser.
   # Feature detection by: http://is.gd/modernizer_localstorage
@@ -35,5 +34,6 @@ class Storage
 
   _subscribeToStorageEvents: ->
     $(window).on "storage", (event) =>
-      unless event.key is @testToken
-        @trigger "update", event
+      if event.key.indexOf(@prefix) is 0
+        unless event.key is @testToken
+          @trigger "update", event

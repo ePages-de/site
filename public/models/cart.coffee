@@ -36,7 +36,7 @@ class Cart extends Backbone.Model
     wait: true
     success: (model, response) =>
       @update(response)
-      App.closeModal() # TODO: move this to the view
+      App.modal.close() # TODO: move this to the view
 
   changeQuantity: (lineItem, quantity) ->
     lineItem.save { quantity: quantity },

@@ -43,4 +43,4 @@ class ProductView extends Backbone.View
     @model.loadVariations()
     productDetailView.render()
 
-    App.modal(productDetailView)
+    App.modal.open(productDetailView)

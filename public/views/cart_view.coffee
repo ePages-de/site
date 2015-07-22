@@ -18,4 +18,4 @@ class CartView extends Backbone.View
     event.preventDefault()
 
     view = new CartDetailView(model: @model).render()
-    App.modal(view)
+    App.modal.open(view)

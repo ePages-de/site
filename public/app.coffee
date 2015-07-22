@@ -18,23 +18,9 @@ class App
     shopWidget: ".epages-shop-widget"
     cartWidget: ".epages-cart-widget"
 
-  @modal: (view) ->
-    @_modal = picoModal
-      content: view.el
-      modalStyles:
-        "background-color": "white"
-        "max-height": "80%"
-        "max-width": "1000px"
-        "min-width": "500px"
-        "overflow": "auto"
-        "padding": "20px"
-        "width": "95%"
-    @_modal.show()
-
-  @closeModal: ->
-    @_modal?.close()
-
   @start: ->
+    @modal = new Modal()
+
     scriptTag = $(@selectors.scriptTag)
     shopId = scriptTag.data("shopid")
 
