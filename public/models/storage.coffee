@@ -1,3 +1,4 @@
+# Web Storage abstraction. Currently uses localStorage.
 class Storage
   _(@::).extend Backbone.Events
 

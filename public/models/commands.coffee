@@ -1,3 +1,5 @@
+# Sends commands to subscribers across multiple windows
+# via the `Storage` class.
 class Commands
 
   constructor: ->
