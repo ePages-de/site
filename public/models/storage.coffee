@@ -34,6 +34,11 @@ class Storage
 
   _subscribeToStorageEvents: ->
     $(window).on "storage", (event) =>
-      if event.key.indexOf(@prefix) is 0
-        unless event.key is @testToken
-          @trigger "update", event
+      if _eventIsOurs(event) and not _eventIsFeatureDetection(event)
+        @trigger "update", event
+
+  _eventIsOurs: (event) ->
+    event.key.indexOf(@prefix) is 0
+
+  _eventIsFeatureDetection: (event) ->
+    event.key is @testToken
