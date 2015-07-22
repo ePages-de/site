@@ -142,11 +142,13 @@ class ProductDetailView extends Backbone.View
     event.preventDefault()
     event.target.disabled = true # disable button
 
-    if App.cart.isNew()
-      App.cart.save().done =>
-        App.cart.addLineItem @model.id()
-    else
+    addLineItem = =>
       App.cart.addLineItem @model.id()
+
+    if App.cart.isNew()
+      App.cart.save().done(addLineItem)
+    else
+      addLineItem()
 
   updateVariations: =>
     matchingVariationItem = @model.variationItems().find (item) =>
