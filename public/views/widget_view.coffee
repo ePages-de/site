@@ -13,6 +13,9 @@ class WidgetView extends Backbone.View
     <div class="epages-shop-product-list">Loading ...</div>
 
     <style type="text/css">
+      .epages-shop-navigation {
+        margin-bottom: 30px;
+      }
       .epages-shop-navigation > div {
         float: left;
         margin-right: 1em;
