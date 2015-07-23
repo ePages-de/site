@@ -35,7 +35,7 @@ class Storage
 
   _subscribeToStorageEvents: ->
     $(window).on "storage", (event) =>
-      if _eventIsOurs(event) and not _eventIsFeatureDetection(event)
+      if @_eventIsOurs(event) and not @_eventIsFeatureDetection(event)
         @trigger "update", event
 
   _eventIsOurs: (event) ->
