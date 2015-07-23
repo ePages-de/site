@@ -17,10 +17,13 @@ class Commands
     for subscription in subscriptions
       subscription.callback(command)
 
-  send: (action) ->
-    randomValue = new Date().getTime()
-    @storage.set action, randomValue
+  send: (command) ->
+    @notify command # notify current window
+    @storage.set command, @_randomValue()
 
   _dispatchCommand: (event) =>
     command = event.key.replace(@storage.prefix, "")
     @notify command
+
+  _randomValue: ->
+    new Date().getTime()
