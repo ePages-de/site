@@ -3,10 +3,15 @@ class CategoryListView extends Backbone.View
   initialize: ->
     @listenTo @collection, "reset", @render
 
-  tagName: "select"
+  tagName: "label"
 
   events:
-    "change": "onSelectionChange"
+    "change select": "onSelectionChange"
+
+  template: _.template """
+    Category:
+    <select></select>
+  """
 
   render: ->
     return this if @collection.isEmpty()
@@ -21,7 +26,8 @@ class CategoryListView extends Backbone.View
 
     html.unshift(allView.el)
 
-    @$el.html html
+    @$el.html @template()
+    @$("select").html html
     this
 
   reset: ->
