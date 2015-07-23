@@ -21,6 +21,9 @@ class StylesView extends Backbone.View
     .epages-shop-widget  {
       overflow: auto;
     }
+    .epages-shop-widget label {
+      font-size: 80%;
+    }
   """
 
   render: ->
