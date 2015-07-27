@@ -21,14 +21,12 @@ class WidgetView extends Backbone.View
         float: left;
         margin-right: 1em;
       }
-      .epages-shop-navigation > div:last-child {
-        margin-right: 0;
-      }
       .epages-shop-product-list {
         clear: both;
       }
       .epages-shop-navigation > .epages-shop-cart {
         float: right;
+        margin-right: 0;
       }
       .epages-cart-button {
         background: url(#{App.rootUrl}/images/cart.png) left center no-repeat;
