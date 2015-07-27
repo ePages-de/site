@@ -1,14 +1,74 @@
 # SITe
 
+SITe is javascript widget that allows webmasters to embed an epages shop into
+their website.
+
+## For webmasters
+
+### Getting started
+
+1. Embed the javascript tag right before the closing ```</html>``` in your
+   webpage:
+    ```html
+    <script src="https://TODO/site.js" async="true" id="epages-widget" data-shopid="YOUR_SHOP_ID"></script>
+    ```
+
+2. Insert the widget ```div``` into your page. This is where the products will be shown.
+    ```html
+    <div class="epages-shop-widget"></div>
+    ```
+
+### Widget options
+
+The widget supports multiple options that can be combined:
+
+* **data-category-list** (default: disabled):  
+  To display a drop down with all of your categories, add `data-category-list` to the widget ```div```:
+
+    ```html
+    <div class="epages-shop-widget" data-category-list></div>
+    ```
+
+* **data-search-form** (default: enabled):  
+  To hide the search form, add `data-search-form="false"` to the widget ```div```:
+
+    ```html
+    <div class="epages-shop-widget" data-search-form="false"></div>
+    ```
+
+* **data-sort** (default: enabled):  
+  To hide the sorting options, add  `data-sort="false"` to the widget ```div```:
+
+    ```html
+    <div class="epages-shop-widget" data-search-form="false"></div>
+    ```
+
+* **data-product-ids** (default: empty):  
+  To only show preselected products, add their comma-separated IDs to the `data-product-ids` attribute:
+
+    ```html
+    <div class="epages-shop-widget" data-product-ids="559CE8CA-40A4-01E2-5957-D5809AB3FEA7,559CE8CB-05B5-5A70-1349-D5809AB3FEA1"></div>
+    ```
+
+* **data-category-id** (default: empty):  
+  To only show one preselected category, add the ```data-category-id``` attribute:
+
+    ```html
+    <div class="epages-shop-widget" data-category-id="559CE8D5-181B-4F27-37BC-D5809AB3FE11"></div>
+    ```
+  This disables the category drop-down.
+
+## For developers
+
 [![Circle CI](https://circleci.com/gh/ePages-de/site.svg?style=svg)](https://circleci.com/gh/ePages-de/site)
 
-## Installation
+### Installation
 
 ```sh
 npm install
 ```
 
-## Usage
+### Usage
 
 Starting the test server:
 
@@ -34,7 +94,7 @@ Watch for changes and build for development:
 NODE_ENV=development gulp watch
 ```
 
-## Testing
+### Testing
 
 Tests are run against a caching proxy for the API. When adding new tests you
 have to record new responses with `REPLAY=record npm test` and then modify the
