@@ -27,6 +27,9 @@ class WidgetView extends Backbone.View
       .epages-shop-product-list {
         clear: both;
       }
+      .epages-shop-navigation > .epages-shop-cart {
+        float: right;
+      }
       .epages-cart-button {
         background: url(#{App.rootUrl}/images/cart.png) left center no-repeat;
         padding-left: 25px;
