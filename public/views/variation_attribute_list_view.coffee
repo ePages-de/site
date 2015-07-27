@@ -5,6 +5,5 @@ class VariationAttributeListView extends Backbone.View
       view = new VariationAttributeView(model: variation)
       view.render().el
 
-    # TODO: Ist das okay? Wie könnte man sonst Table-Rows einschieben?
     @$el.find("tr:last-of-type").before html
     this
