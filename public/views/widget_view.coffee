@@ -4,8 +4,8 @@ class WidgetView extends Backbone.View
     @_grabOptions()
 
   template: _.template """
+    <div class="epages-shop-cart"></div>
     <div class="epages-shop-navigation">
-      <div class="epages-shop-cart"></div>
       <div class="epages-shop-category-list"></div>
       <div class="epages-shop-sort"></div>
       <div class="epages-shop-search-form"></div>
@@ -17,6 +17,9 @@ class WidgetView extends Backbone.View
       .epages-shop-navigation {
         margin-bottom: 50px;
       }
+      .epages-shop-navigation {
+        clear: both;
+      }
       .epages-shop-navigation > div {
         float: left;
         margin-right: 1em;
@@ -24,7 +27,7 @@ class WidgetView extends Backbone.View
       .epages-shop-product-list {
         clear: both;
       }
-      .epages-shop-navigation > .epages-shop-cart {
+      .epages-shop-cart {
         float: right;
         margin-right: 0;
       }
