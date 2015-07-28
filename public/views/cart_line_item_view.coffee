@@ -7,21 +7,27 @@ class CartLineItemView extends Backbone.View
     "click .epages-cart-overlay-line-item-remove": "removeLineItem"
 
   template: _.template """
-  <td>
-    <img src="<%= thumbnail %>">
-  </td>
-  <td>
-    <select class="epages-cart-overlay-line-item-quantity">
-      <% _.map([1,2,3,4,5], function(num) { %>
-        <option value="<%= num %>" <%= quantity === num ? "selected" : void 0 %> ><%= num %></option>
-      <% }); %>
-    </select>
-    <%= unit %>
-  </td>
-  <td><%= name %></td>
-  <td><%= singleItemPrice %></td>
-  <td><%= lineItemPrice %></td>
-  <td><button class="epages-cart-overlay-line-item-remove" alt="Remove product"></button></td>
+    <td>
+      <img src="<%= thumbnail %>">
+    </td>
+    <td>
+      <select class="epages-cart-overlay-line-item-quantity">
+        <% _.map([1,2,3,4,5], function(num) { %>
+          <option value="<%= num %>" <%= quantity === num ? "selected" : void 0 %> >
+            <%= num %>
+          </option>
+        <% }); %>
+      </select>
+      <%= unit %>
+    </td>
+    <td><%= name %></td>
+    <td><%= singleItemPrice %></td>
+    <td><%= lineItemPrice %></td>
+    <td>
+      <button class="epages-cart-overlay-line-item-remove"
+              alt="Remove product">
+      </button>
+    </td>
   """
 
   render: ->
