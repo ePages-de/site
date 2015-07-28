@@ -58,6 +58,15 @@ The widget supports multiple options that can be combined:
     ```
   This disables the category drop-down.
 
+### Custom shopping cart position
+
+By default, the shopping cart is displayed within the widget itself. You can place the shopping cart at
+a custom position by inserting
+```html
+<div class="epages-shop-cart"></div>
+```
+somewhere on the page.
+
 ## For developers
 
 [![Circle CI](https://circleci.com/gh/ePages-de/site.svg?style=svg)](https://circleci.com/gh/ePages-de/site)

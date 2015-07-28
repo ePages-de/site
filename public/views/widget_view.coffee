@@ -61,4 +61,9 @@ class WidgetView extends Backbone.View
       categoryList: @$(".epages-shop-category-list")
       searchForm:   @$(".epages-shop-search-form")
       sort:         @$(".epages-shop-sort")
-      cart:         @$(".epages-shop-cart")
+      cart:         @_findCart()
+
+  _findCart: ->
+    external_cart = $(":not(.epages-shop-widget) > .epages-shop-cart").first()
+    internal_cart = @$(".epages-shop-cart")
+    if external_cart.length > 0 then external_cart else internal_cart
