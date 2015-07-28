@@ -9,7 +9,6 @@ class WidgetView extends Backbone.View
       <div class="epages-shop-category-list"></div>
       <div class="epages-shop-sort"></div>
       <div class="epages-shop-search-form"></div>
-      <div class="epages-shop-cart"></div>
     </div>
 
     <div class="epages-shop-product-list">Loading ...</div>
