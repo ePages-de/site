@@ -40,7 +40,7 @@ The widget supports multiple options that can be combined:
   To hide the sorting options, add  `data-sort="false"` to the widget ```div```:
 
     ```html
-    <div class="epages-shop-widget" data-search-form="false"></div>
+    <div class="epages-shop-widget" data-sort="false"></div>
     ```
 
 * **data-product-ids** (default: empty):  
@@ -61,11 +61,11 @@ The widget supports multiple options that can be combined:
 ### Custom shopping cart position
 
 By default, the shopping cart is displayed within the widget itself. You can place the shopping cart at
-a custom position by inserting
+a custom position by inserting your own cart  ```div``` somewhere into the page.
+
 ```html
 <div class="epages-shop-cart"></div>
 ```
-somewhere on the page.
 
 ## For developers
 
