@@ -36,16 +36,16 @@ class CartLineItemView extends Backbone.View
       name:            @model.name()
       quantity:        @model.quantity()
       unit:            @model.unit()
-      singleItemPrice: @model.singleItemPrice()
-      lineItemPrice:   @model.lineItemPrice()
+      singleItemPrice: @model.formattedPrice()
+      lineItemPrice:   @model.formattedTotalPrice()
     this
 
   changeQuantity: (event) ->
     quantity = parseInt(event.target.value)
-    App.cart.changeQuantity(@model, quantity)
+    @model.set(quantity: quantity)
 
   removeLineItem: (event) ->
     event.preventDefault()
     event.target.disabled = true # disable button
 
-    App.cart.removeLineItem(@model)
+    @model.collection.remove(@model)

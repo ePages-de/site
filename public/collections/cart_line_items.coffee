@@ -3,7 +3,7 @@ class CartLineItems extends Backbone.Collection
   initialize: (models, options) ->
     { @cart } = options
 
-  model: CartLineItem
+  model: Product
 
   _prepareModel: (attributes, options) ->
     model = super

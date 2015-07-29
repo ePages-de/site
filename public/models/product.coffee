@@ -1,5 +1,8 @@
 class Product extends Backbone.Model
 
+  defaults:
+    quantity: 1
+
   variationAttributes: =>
     if @get("variationAttributes") == undefined
       @set("variationAttributes", new VariationAttributes)
@@ -34,14 +37,32 @@ class Product extends Backbone.Model
   name: ->
     @get("name")
 
+  quantity: ->
+    @get("quantity")
+
+  unit: ->
+    @get("priceInfo").quantity.unit
+
   variationItems: ->
     @get("variationItems")
 
   price: ->
+    @get("priceInfo").price.amount
+
+  formattedPrice: ->
     @get("priceInfo").price.formatted
+
+  totalPrice: ->
+    @quantity() * @price()
+
+  formattedTotalPrice: ->
+    "#{ @totalPrice().toFixed(2) } €"
 
   isAvailable: ->
     @get("forSale") && @get("availability") != "OutStock"
+
+  thumbnailImage: ->
+    _.findWhere(@get("images"), classifier: "Thumbnail").url
 
   smallImage: ->
     _.findWhere(@get("images"), classifier: "Small").url
@@ -54,6 +75,10 @@ class Product extends Backbone.Model
 
   link: ->
     _.findWhere(@get("links"), rel: "self").href
+
+  toJSON: ->
+    productId: @id()
+    quantity: @get("quantity")
 
   loadVariations: =>
     $.getJSON "#{@url()}/variations"

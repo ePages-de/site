@@ -28,6 +28,7 @@ class App
     scriptTag.after new LoadingView().render().el
 
     App.cart = new Cart(null, shopId: shopId)
+    App.cart.loadFromStorage()
 
     # Initialize: widgets
     $(@selectors.shopWidget).each (index, el) =>
@@ -53,7 +54,7 @@ class App
 
 
   @_setupCartButton: (widgetView) ->
-    cartView = new CartView(model: App.cart).render()
+    cartView = new CartView(collection: App.cart).render()
     widgetView.regions.cart.html(cartView.el)
 
   @_setupProductList: (widgetView, shopId) ->

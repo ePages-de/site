@@ -127,7 +127,7 @@ class ProductDetailView extends Backbone.View
       description: @model.description()
       availability: @model.availability()
       availabilityText: @model.availabilityText()
-      price: @model.price()
+      price: @model.formattedPrice()
       disabled: "disabled" if !@model.isAvailable()
 
     new VariationAttributeListView(
@@ -141,13 +141,8 @@ class ProductDetailView extends Backbone.View
     event.preventDefault()
     event.target.disabled = true # disable button
 
-    addLineItem = =>
-      App.cart.addLineItem @model.id()
-
-    if App.cart.isNew()
-      App.cart.save().done(addLineItem)
-    else
-      addLineItem()
+    App.cart.add(@model.clone())
+    App.modal.close()
 
   updateVariations: =>
     matchingVariationItem = @model.variationItems().find (item) =>

@@ -1,7 +1,7 @@
 class CartDetailView extends Backbone.View
 
   initialize: ->
-    @listenTo @model, "update refresh", @render
+    @listenTo @collection, "reset update change", @render
 
   events:
     "click .epages-cart-overlay-checkout-button": "checkout"
@@ -115,12 +115,12 @@ class CartDetailView extends Backbone.View
 
   render: ->
     @$el.html @template
-      subTotal: @model.lineItemsSubTotal()
+      subTotal: @collection.lineItemsSubTotal()
 
-    if @model.lineItems.isEmpty()
+    if @collection.isEmpty()
       @$(".epages-cart-overlay-is-empty").show()
     else
-      html = @model.lineItems.map (lineItem) ->
+      html = @collection.map (lineItem) ->
         view = new CartLineItemView(model: lineItem)
         view.render().el
 
@@ -130,11 +130,15 @@ class CartDetailView extends Backbone.View
     this
 
   checkout: ->
-    win = window.open @model.get("checkoutUrl"), "_blank"
+    checkoutWindow = window.open("#{App.rootUrl}/checkout.html", "_blank")
 
+    # XXX: can we get rid of this maybe?
     App.modal.closeAll()
 
-    # In case something blocked the new tab/window,
-    # just open the checkout in the current page.
-    unless win
-      window.location = @model.get("checkoutUrl")
+    App.cart.save()
+      .done (response) ->
+        checkoutWindow.location = response.checkoutUrl
+      .fail ->
+        # TODO: do something useful
+        console.log 'FAILED TO CREATE A CART'
+        console.log arguments

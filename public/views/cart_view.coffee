@@ -1,7 +1,7 @@
 class CartView extends Backbone.View
 
   initialize: ->
-    @listenTo @model, "update refresh", @render
+    @listenTo @collection, "reset update", @render
 
   tagName: "button"
 
@@ -15,11 +15,11 @@ class CartView extends Backbone.View
   """
 
   render: ->
-    @$el.html @template(count: @model.lineItems.length)
+    @$el.html @template(count: @collection.length)
     this
 
   openCart: (event) ->
     event.preventDefault()
 
-    view = new CartDetailView(model: @model).render()
+    view = new CartDetailView(collection: @collection).render()
     App.modal.open(view)
