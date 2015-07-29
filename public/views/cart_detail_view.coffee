@@ -10,6 +10,12 @@ class CartDetailView extends Backbone.View
     <div class="epages-cart-overlay">
       <h2>Basket</h2>
 
+      <% if (failedToCreateCart) { %>
+        <div class="epages-cart-overlay-fail">
+          Oops. This took longer than it should. Please try again now!
+        </div>
+      <% } %>
+
       <div class="epages-cart-overlay-not-empty" style="display:none">
         <table class="epages-cart-overlay-line-table">
           <thead>
@@ -58,6 +64,12 @@ class CartDetailView extends Backbone.View
       }
       .epages-cart-overlay h2 {
         color: #333;
+      }
+      .epages-cart-overlay-fail {
+        background-color: #e00;
+        color: #fff;
+        padding: 10px 15px;
+        margin-bottom: 20px;
       }
       .epages-cart-overlay table {
         border: 1px solid #ccc;
@@ -116,6 +128,7 @@ class CartDetailView extends Backbone.View
   render: ->
     @$el.html @template
       subTotal: @collection.lineItemsSubTotal()
+      failedToCreateCart: @failedToCreateCart
 
     if @collection.isEmpty()
       @$(".epages-cart-overlay-is-empty").show()
@@ -138,7 +151,11 @@ class CartDetailView extends Backbone.View
     App.cart.save()
       .done (response) ->
         checkoutWindow.location = response.checkoutUrl
-      .fail ->
-        # TODO: do something useful
-        console.log 'FAILED TO CREATE A CART'
-        console.log arguments
+      .fail =>
+        checkoutWindow.close()
+
+        @failedToCreateCart = true
+        @render()
+        @failedToCreateCart = false
+
+        App.modal.open(this)

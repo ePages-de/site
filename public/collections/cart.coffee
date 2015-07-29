@@ -11,8 +11,7 @@ class Cart extends Backbone.Collection
   model: Product
 
   save: ->
-    timeout = 10 # seconds
-    Backbone.sync("create", this, timeout: timeout * 1000)
+    Backbone.sync("create", this, timeout: 10 * 1000)
 
   url: ->
     "#{App.apiUrl}/shops/#{@shopId}/carts"
