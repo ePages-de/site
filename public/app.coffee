@@ -22,7 +22,16 @@ class App
     @modal = new Modal()
 
     scriptTag = $(@selectors.scriptTag)
-    shopId = scriptTag.data("shopid")
+    shopUrl = scriptTag.data("shop-url")
+
+    matches = shopUrl.match(/(https?:\/\/.+\/rs)\/shops\/([\w() -]+)(\/?)/)
+    shopId = matches[2]
+
+    if @env is "production"
+      @apiUrl = matches[1]
+
+    console.log shopUrl
+    console.log matches
 
     scriptTag.after new StylesView().render().el
     scriptTag.after new LoadingView().render().el
