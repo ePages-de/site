@@ -51,7 +51,7 @@ describe "Widget", ->
   beforeEach ->
     @$container = $ """
       <div id="test-container">
-        <div id="widget-with-categories" class="epages-shop-widget" data-category-list>FIXTURE1</div>
+        <div id="widget-with-categories" class="epages-shop-widget" data-category-list="true">FIXTURE1</div>
         <div id="widget-default" class="epages-shop-widget">FIXTURE2</div>
         <div id="widget-disabled" class="epages-shop-widget" data-search-form=false data-sort=false>FIXTURE2</div>
       </div>

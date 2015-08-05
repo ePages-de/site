@@ -26,7 +26,7 @@ The widget supports multiple options that can be combined:
   To display a drop down with all of your categories, add `data-category-list` to the widget ```div```:
 
     ```html
-    <div class="epages-shop-widget" data-category-list></div>
+    <div class="epages-shop-widget" data-category-list="true"></div>
     ```
 
 * **data-search-form** (default: enabled):  
