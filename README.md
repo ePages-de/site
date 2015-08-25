@@ -10,7 +10,7 @@ their website. The live demo is on http://site-prototype.herokuapp.com/
 1. Embed the javascript tag right before the closing ```</html>``` in your
    webpage:
     ```html
-    <script src="https://TODO/site.js" async="true" id="epages-widget" data-shopid="YOUR_SHOP_ID"></script>
+    <script src="https://TODO/site.js" async="true" id="epages-widget" data-shop-url="YOUR_API_URL"></script>
     ```
 
 2. Insert the widget ```div``` into your page. This is where the products will be shown.
