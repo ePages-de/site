@@ -112,3 +112,6 @@ on your machine and CircleCI
 ```sh
 NODE_ENV=development npm test # or npm run watch to keep running
 ```
+
+### License
+SITe is released under the [MIT License](http://opensource.org/licenses/MIT).
