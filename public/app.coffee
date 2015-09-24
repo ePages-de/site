@@ -4,7 +4,7 @@ class App
 
   @rootUrl:
     switch @env
-      when "production" then "https://site-prototype.herokuapp.com"
+      when "production" then "https://site-production.herokuapp.com"
       else                   "http://localhost:4566"
 
   @apiUrl:
