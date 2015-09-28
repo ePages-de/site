@@ -43,6 +43,9 @@ class App
       # Product list
       products = @_setupProductList(widgetView, shopId)
 
+      # Pagination
+      @_setupPagination(widgetView, products)
+
       # Cart button
       @_setupCartButton(widgetView)
 
@@ -58,7 +61,6 @@ class App
       if widgetView.showSort
         @_setupSortView(widgetView, products)
 
-
   @_setupCartButton: (widgetView) ->
     cartView = new CartView(collection: App.cart).render()
     widgetView.regions.cart.html(cartView.el)
@@ -67,8 +69,9 @@ class App
     products = new Products(
       null,
       shopId: shopId,
-      staticCategoryId: widgetView.staticCategoryId
-      productIds: widgetView.productIds
+      staticCategoryId: widgetView.staticCategoryId,
+      productIds: widgetView.productIds,
+      resultsPerPage: widgetView.resultsPerPage
     )
     products.fetch(reset: true)
 
@@ -111,3 +114,12 @@ class App
       products.sort = @sort
       products.direction = @direction
       products.fetch(reset: true)
+
+  @_setupPagination: (widgetView, products) ->
+    products.fetch(reset: true).done ->
+      paginationView = new PaginationView(collection: products).render()
+      widgetView.regions.pagination.append(paginationView.el)
+
+      paginationView.on "change:page", () ->
+        products.page = @page
+        products.fetch(reset: true)

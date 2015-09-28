@@ -57,6 +57,13 @@ The widget supports multiple options that can be combined:
     <div class="epages-shop-widget" data-category-id="559CE8D5-181B-4F27-37BC-D5809AB3FE11"></div>
     ```
   This disables the category drop-down.
+  
+* **data-products-per-page** (default: 12):  
+  To only show a specific number of products per page, add the ```data-products-per-page``` attribute:
+
+    ```html
+    <div class="epages-shop-widget" data-products-per-page="6"></div>
+    ```
 
 ### Custom shopping cart position
 

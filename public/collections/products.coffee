@@ -1,13 +1,17 @@
 class Products extends Backbone.Collection
 
   initialize: (models, options) ->
-    { @shopId, @staticCategoryId, @productIds } = options
+    { @shopId, @staticCategoryId, @productIds, @resultsPerPage } = options
     @sort = @direction = @query = @selectedCategoryId = null
+    @page = @pages = 1
 
   model: Product
 
   url: ->
-    url = "#{App.apiUrl}/shops/#{@shopId}/products?resultsPerPage=12"
+    url = "#{App.apiUrl}/shops/#{@shopId}/products?resultsPerPage=#{@resultsPerPage}"
+    if @page
+      url += "&page=" + @page
+
     if @staticCategoryId
       url += "&categoryId=#{@staticCategoryId}"
     else if @selectedCategoryId
@@ -26,4 +30,5 @@ class Products extends Backbone.Collection
     url
 
   parse: (response) ->
+    @pages = Math.ceil(response.results / response.resultsPerPage)
     response.items

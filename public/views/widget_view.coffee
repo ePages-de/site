@@ -13,6 +13,8 @@ class WidgetView extends Backbone.View
 
     <div class="epages-shop-product-list">Loading ...</div>
 
+    <div class="epages-shop-pagination"></div>
+
     <style type="text/css">
       .epages-shop-navigation {
         margin-bottom: 50px;
@@ -26,6 +28,10 @@ class WidgetView extends Backbone.View
       }
       .epages-shop-product-list {
         clear: both;
+      }
+      .epages-shop-pagination {
+        clear: both;
+        text-align: center;
       }
       .epages-shop-cart {
         float: right;
@@ -51,6 +57,7 @@ class WidgetView extends Backbone.View
     @showCategoryList = _.contains [true], @$el.data("category-list")
     @showSearchForm   = _.contains [undefined, true], @$el.data("search-form")
     @showSort         = _.contains [undefined, true], @$el.data("sort")
+    @resultsPerPage   = @$el.data("products-per-page") || 12
     @staticCategoryId = @$el.data("category-id")
     @productIds       = @$el.data("product-ids")?.split(/, */)
 
@@ -60,6 +67,7 @@ class WidgetView extends Backbone.View
       categoryList: @$(".epages-shop-category-list")
       searchForm:   @$(".epages-shop-search-form")
       sort:         @$(".epages-shop-sort")
+      pagination:   @$(".epages-shop-pagination")
       cart:         @_findCart()
 
   _findCart: ->
