@@ -128,7 +128,7 @@ class ProductDetailView extends Backbone.View
       availability: @model.availability()
       availabilityText: @model.availabilityText()
       price: @model.formattedPrice()
-      disabled: "disabled" if !@model.isAvailable()
+      disabled: @model.isAvailable()
 
     new VariationAttributeListView(
       collection: @model.variationAttributes()

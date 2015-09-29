@@ -59,7 +59,12 @@ class Product extends Backbone.Model
     "#{ @totalPrice().toFixed(2) } €"
 
   isAvailable: ->
-    @get("forSale") && @get("availability") != "OutStock"
+    $.getJSON @url()
+      .done (response) =>
+        if response.forSale && response.availability != "OutStock"
+          $(".epages-shop-overlay-buy-button").prop('disabled', false)
+
+    return "disabled"
 
   thumbnailImage: ->
     _.findWhere(@get("images"), classifier: "Thumbnail").url
