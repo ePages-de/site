@@ -5,6 +5,8 @@ class Products extends Backbone.Collection
     @sort = @direction = @query = @selectedCategoryId = null
     @page = @pages = 1
 
+    @getShippingUrl()
+
   model: Product
 
   url: ->
@@ -29,6 +31,14 @@ class Products extends Backbone.Collection
       url += "&direction=" + @direction
     url
 
+  shippingUrl: ->
+    "#{App.apiUrl}/shops/#{@shopId}/categories"
+
   parse: (response) ->
     @pages = Math.ceil(response.results / response.resultsPerPage)
     response.items
+
+  getShippingUrl: ->
+    $.getJSON @shippingUrl()
+      .done (response) =>
+        @shippingUrl = response[0].sfUrl + "/Shipping"

@@ -28,6 +28,9 @@ class Product extends Backbone.Model
   description: ->
     @get("description")
 
+  shortDescription: ->
+    @get("shortDescription")
+
   availability: ->
     @get("availability")
 

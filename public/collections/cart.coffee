@@ -6,6 +6,8 @@ class Cart extends Backbone.Collection
     @storage = new Storage("cart")
     @storage.on "update", @_loadFromStorage
 
+    @getShippingUrl()
+
     @on "reset update change", @_dumpToStorage
 
   model: Product
@@ -16,9 +18,18 @@ class Cart extends Backbone.Collection
   url: ->
     "#{App.apiUrl}/shops/#{@shopId}/carts"
 
+  shippingUrl: ->
+    "#{App.apiUrl}/shops/#{@shopId}/categories"
+
   toJSON: ->
     lineItems = @map (model) -> model.toJSON()
     lineItems: lineItems
+
+  getShippingUrl: ->
+    $.getJSON @shippingUrl()
+      .done (response) =>
+        @shippingUrl = response[0].sfUrl + "/Shipping"
+
 
   lineItemsSubTotal: ->
     sum = (sum, model) -> sum + model.totalPrice()

@@ -24,7 +24,7 @@ class ProductDetailView extends Backbone.View
             <td>
               <div class="epages-shop-overlay-product-price"><%= price%></div>
               <div class="epages-shop-overlay-product-shipping">
-                Price includes VAT, plus <a href="#">Shipping</a>.
+                Price includes VAT, plus <a href="<%= shippingUrl %>" target="_blank">Shipping</a>.
               </div>
             </td>
           </tr>
@@ -124,11 +124,12 @@ class ProductDetailView extends Backbone.View
       name: @model.name()
       id: @model.id()
       image: @model.mediumImage()
-      description: @model.description()
+      description: @model.shortDescription()
       availability: @model.availability()
       availabilityText: @model.availabilityText()
       price: @model.formattedPrice()
       disabled: @model.isAvailable()
+      shippingUrl: @model.collection.shippingUrl
 
     new VariationAttributeListView(
       collection: @model.variationAttributes()

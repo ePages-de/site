@@ -34,7 +34,7 @@ class CartDetailView extends Backbone.View
               <td colspan="4">
                 <div class="epages-cart-overlay-product-price-desc">Subtotal</div>
                 <div class="epages-cart-overlay-product-shipping">
-                  includes VAT, plus <a href="#">Shipping</a>.
+                  includes VAT, plus <a href="<%= shippingUrl %>" target="_blank">Shipping</a>.
                 </div>
               </td>
               <td class="epages-cart-overlay-product-price">
@@ -128,6 +128,7 @@ class CartDetailView extends Backbone.View
   render: ->
     @$el.html @template
       subTotal: @collection.lineItemsSubTotal()
+      shippingUrl: @collection.shippingUrl
       failedToCreateCart: @failedToCreateCart
 
     if @collection.isEmpty()
