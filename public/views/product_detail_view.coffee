@@ -12,6 +12,7 @@ class ProductDetailView extends Backbone.View
 
       <div class="epages-shop-overlay-box">
         <img class="epages-shop-overlay-product-image" src="<%= image %>" />
+        <ul class="epages-shop-overlay-slideshow"></ul>
       </div>
 
       <div class="epages-shop-overlay-box">
@@ -20,16 +21,20 @@ class ProductDetailView extends Backbone.View
 
         <table class="epages-shop-overlay-table">
           <tr>
-            <th>Price:</th>
             <td>
+              <% if (manufacturerPrice) { %>
+                <div style="text-decoration: line-through;"><%= manufacturerPrice %></div>
+              <% } %>
               <div class="epages-shop-overlay-product-price"><%= price%></div>
+              <% if (manufacturerPrice) { %>
+                <div><%= basePrice %></div>
+              <% } %>
               <div class="epages-shop-overlay-product-shipping">
                 Price includes VAT, plus <a href="<%= shippingUrl %>" target="_blank">Shipping</a>.
               </div>
             </td>
           </tr>
           <tr>
-            <td></td>
             <td>
               <div
                 class="epages-shop-overlay-product-availability-<%= availability %>">
@@ -38,17 +43,19 @@ class ProductDetailView extends Backbone.View
             </td>
           </tr>
           <tr>
-            <td colspan=2>
+            <td>
               <button
                 class="epages-shop-overlay-buy-button"
                 <%= disabled %>>Add to basket</button>
             </td>
           </tr>
         </table>
-
-        <hr class="epages-shop-overlay-hr" />
-        <h3>Description</h3>
-        <p><%= description %></p>
+        <% if (description) { %>
+          <hr class="epages-shop-overlay-hr" />
+          <h3>Description</h3>
+          <%= description %>
+        <% } %>
+        <table class="epages-shop-overlay-custom-attributes"></table>
       </div>
 
     </div>
@@ -69,6 +76,22 @@ class ProductDetailView extends Backbone.View
         float: left;
         min-width: 400px;
         max-width: 490px;
+      }
+      .epages-shop-overlay-product-image {
+        transition: 0.6s;
+      }
+      .epages-shop-overlay-slideshow {
+        display: inline-flex;
+        list-style-type: none;
+      }
+      .slideshow-image {
+        display: inline-block;
+        margin: 5px 10px;
+        border: 1px solid #ccc;
+      }
+      .slideshow-image img {
+        height: 44px;
+        margin: 3px;
       }
       .epages-shop-overlay-product-availability-OnStock { color: green; }
       .epages-shop-overlay-product-availability-WarnStock { color: orange; }
@@ -118,8 +141,15 @@ class ProductDetailView extends Backbone.View
       }
     </style>
   """
+  $(".slideshow-image img").live 'click', ->
+    url = $(this).data("image")
+    $(".epages-shop-overlay-product-image").css("opacity", "0")
+    setTimeout (-> $(".epages-shop-overlay-product-image").prop('src', url).css("opacity", "1") ), 600
 
   render: ->
+    @model.loadCustomAttributes()
+    @model.loadSlideshow()
+
     @$el.html @template
       name: @model.name()
       id: @model.id()
@@ -127,9 +157,11 @@ class ProductDetailView extends Backbone.View
       description: @model.shortDescription()
       availability: @model.availability()
       availabilityText: @model.availabilityText()
+      manufacturerPrice: @model.manufacturerPrice()
+      basePrice: @model.basePrice()
       price: @model.formattedPrice()
       disabled: @model.isAvailable()
-      shippingUrl: @model.collection.shippingUrl
+      shippingUrl: @model.shippingUrl()
 
     new VariationAttributeListView(
       collection: @model.variationAttributes()

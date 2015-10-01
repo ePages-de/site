@@ -55,11 +55,22 @@ class Product extends Backbone.Model
   formattedPrice: ->
     @get("priceInfo").price.formatted
 
+  manufacturerPrice: ->
+    if @get("priceInfo").manufacturerPrice
+      @get("priceInfo").manufacturerPrice.formatted
+
+  basePrice: ->
+    if @get("priceInfo").basePrice
+      @get("priceInfo").basePrice.formatted
+
   totalPrice: ->
     @quantity() * @price()
 
   formattedTotalPrice: ->
     "#{ @totalPrice().toFixed(2) } €"
+
+  shippingUrl: ->
+    @collection.shippingUrl
 
   isAvailable: ->
     $.getJSON @url()
@@ -84,6 +95,14 @@ class Product extends Backbone.Model
   link: ->
     _.findWhere(@get("links"), rel: "self").href
 
+  customAttributesLink: ->
+    if _.findWhere(@get("links"), rel: "slideshow")
+      _.findWhere(@get("links"), rel: "custom-attributes").href
+
+  slideshowLink: ->
+    if _.findWhere(@get("links"), rel: "slideshow")
+      _.findWhere(@get("links"), rel: "slideshow").href
+
   toJSON: ->
     productId: @id()
     quantity: @get("quantity")
@@ -93,3 +112,26 @@ class Product extends Backbone.Model
       .done (json) =>
         @set("variationAttributes", new VariationAttributes json.variationAttributes)
         @set("variationItems", new VariationItems json.items)
+
+  loadCustomAttributes: =>
+    if url = @customAttributesLink()
+      $.getJSON url
+        .done (json) =>
+          if(json.items.length <= 2)
+            return undefined
+          $(".epages-shop-overlay-custom-attributes").html('<tr>Additional product information</tr>')
+          json.items.slice(2).map (item) ->
+            if item.values[0].displayValue != ""
+              $(".epages-shop-overlay-custom-attributes").append("<tr><td>#{item.displayKey}</td><td>#{item.values[0].displayValue}</td></tr>")
+
+  loadSlideshow: =>
+    if url = @slideshowLink()
+      $.getJSON url
+        .done (json) =>
+          $(".epages-shop-overlay-slideshow").empty()
+          json.items.map (image) ->
+            slide_image = _.findWhere(image.sizes, classifier: "Small").url
+            ref_image = _.findWhere(image.sizes, classifier: "Medium").url
+            if slide_image && ref_image
+              $(".epages-shop-overlay-slideshow").append("<li class=\"slideshow-image\"><img src=\"#{slide_image}\" data-image=\"#{ref_image}\"></li>")
+
