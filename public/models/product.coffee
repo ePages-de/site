@@ -119,9 +119,10 @@ class Product extends Backbone.Model
         .done (json) =>
           if(json.items.length <= 2)
             return undefined
-          $(".epages-shop-overlay-custom-attributes").html('<tr>Additional product information</tr>')
+          $(".epages-shop-overlay-custom-attributes").html('<tr><td>Additional product information</td></tr>')
           json.items.slice(2).map (item) ->
             if item.values[0].displayValue != ""
+              $(".epages-shop-overlay-custom-attributes").css("display", "initial") #if any object has a value the table is not displayed
               $(".epages-shop-overlay-custom-attributes").append("<tr><td>#{item.displayKey}</td><td>#{item.values[0].displayValue}</td></tr>")
 
   loadSlideshow: =>

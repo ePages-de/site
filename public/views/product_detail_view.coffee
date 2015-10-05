@@ -9,55 +9,45 @@ class ProductDetailView extends Backbone.View
 
   template: _.template """
     <div class="epages-shop-overlay">
-
       <div class="epages-shop-overlay-box">
         <img class="epages-shop-overlay-product-image" src="<%= image %>" />
         <ul class="epages-shop-overlay-slideshow"></ul>
       </div>
-
       <div class="epages-shop-overlay-box">
-
         <h2><%= name %></h2>
-
-        <table class="epages-shop-overlay-table">
-          <tr>
-            <td>
-              <% if (manufacturerPrice) { %>
-                <div style="text-decoration: line-through;"><%= manufacturerPrice %></div>
-              <% } %>
-              <div class="epages-shop-overlay-product-price"><%= price%></div>
-              <% if (manufacturerPrice) { %>
-                <div><%= basePrice %></div>
-              <% } %>
-              <div class="epages-shop-overlay-product-shipping">
-                Price includes VAT, plus <a href="<%= shippingUrl %>" target="_blank">Shipping</a>.
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div
-                class="epages-shop-overlay-product-availability-<%= availability %>">
-                <%= availabilityText %>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button
-                class="epages-shop-overlay-buy-button"
-                <%= disabled %>>Add to basket</button>
-            </td>
-          </tr>
-        </table>
+        <div class="epages-shop-overlay-product-details">
+          <% if (manufacturerPrice) { %>
+            <div class="epages-shop-overlay-manufacturer-price">
+              <span style="text-decoration: line-through;"><%= manufacturerPrice %></span>
+            </div>
+          <% } %>
+          <div class="epages-shop-overlay-product-price">
+             <span><%= price %></span>
+          </div>
+          <% if (basePrice) { %>
+            <div class="epages-shop-overlay-base-price">
+              <span><%= basePrice %></span>
+            </div>
+          <% } %>
+          <div class="epages-shop-overlay-product-shipping">
+            <span>Price includes VAT, plus <a href="<%= shippingUrl %>" target="_blank">Shipping</a>.</span>
+          </div>
+          <div class="epages-shop-overlay-product-availability-<%= availability %>">
+            <span><%= availabilityText %></span>
+          </div>
+          <button class="epages-shop-overlay-buy-button" <%= disabled %>>Add to basket</button>
+        </div>
         <% if (description) { %>
-          <hr class="epages-shop-overlay-hr" />
-          <h3>Description</h3>
-          <%= description %>
+          <hr class="epages-shop-overlay-hr"/>
+          <div class="epages-shop-overlay-product-description">
+            <h3>Description</h3>
+            <div class="epages-product-description">
+              <%= description %>
+            </div>
+          </div>
         <% } %>
         <table class="epages-shop-overlay-custom-attributes"></table>
       </div>
-
     </div>
 
     <style type="text/css">
@@ -110,9 +100,6 @@ class ProductDetailView extends Backbone.View
       .epages-shop-overlay-buy-button {
         width: 100%;
       }
-      .epages-shop-overlay-table {
-        width: 100%;
-      }
       .epages-shop-overlay-buy-button[disabled=disabled],
       .epages-shop-overlay-buy-button:disabled {
         color: #ddd;
@@ -122,14 +109,6 @@ class ProductDetailView extends Backbone.View
         vertical-align: baseline;
         padding: 2px;
       }
-      .epages-shop-overlay-table th {
-        font-weight: normal;
-        padding-right: 0.5em;
-        text-align: left;
-        color: #777;
-        white-space: no-break;
-        width: 1%;
-      }
       .epages-shop-overlay-hr {
         border-width: 1px 0 0 0;
         border-color: #ccc;
@@ -138,6 +117,9 @@ class ProductDetailView extends Backbone.View
       }
       .epages-shop-overlay p {
         margin-top: 3px;
+      }
+      .epages-shop-overlay-custom-attributes{
+        display: none;
       }
     </style>
   """

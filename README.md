@@ -1,7 +1,7 @@
 # SITe [![CircleCI Status](https://circleci.com/gh/ePages-de/site.svg?style=shield&circle-token=a4c66cf0c56d2d8887f300fd888e7a8a5e17b33a)](https://circleci.com/gh/ePages-de/site)
 
 SITe is javascript widget that allows webmasters to embed an epages shop into
-their website. The live demo is on http://site-prototype.herokuapp.com/
+their website. The live demo is on http://site-production.herokuapp.com/
 
 ## For webmasters
 
