@@ -1,10 +1,13 @@
 class CartDetailView extends Backbone.View
 
   initialize: ->
+    @collection.sync()
     @listenTo @collection, "reset update change", @render
 
   events:
     "click .epages-cart-overlay-checkout-button": "checkout"
+    "click .epages-cart-overlay-line-item-remove": "sync"
+    "change .epages-cart-overlay-line-item-quantity": "sync"
 
   template: _.template """
     <div class="epages-cart-overlay">
@@ -30,6 +33,13 @@ class CartDetailView extends Backbone.View
           </thead>
           <tbody></tbody>
           <tfoot>
+            <% if (deliveryPrice) { %>
+              <tr>
+                <td colspan="4">Delivery Price</td>
+                <td class="epages-cart-overlay-delivery-price"><%= deliveryPrice.formatted %></td>
+                <td></td>
+              </tr>
+            <% } %>
             <tr>
               <td colspan="4">
                 <div class="epages-cart-overlay-product-price-desc">Subtotal</div>
@@ -129,6 +139,7 @@ class CartDetailView extends Backbone.View
     @$el.html @template
       subTotal: @collection.lineItemsSubTotal()
       shippingUrl: @collection.shippingUrl
+      deliveryPrice: @collection.deliveryPrice
       failedToCreateCart: @failedToCreateCart
 
     if @collection.isEmpty()
@@ -142,6 +153,9 @@ class CartDetailView extends Backbone.View
       @$(".epages-cart-overlay-not-empty").show()
 
     this
+
+  sync: ->
+    @collection.sync()
 
   checkout: ->
     checkoutWindow = window.open("#{App.rootUrl}/checkout.html", "_blank")
