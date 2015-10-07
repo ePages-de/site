@@ -5,5 +5,5 @@ class VariationAttributeListView extends Backbone.View
       view = new VariationAttributeView(model: variation)
       view.render().el
 
-    @$el.find("tr:last-of-type").before html
+    @$el.html html
     this

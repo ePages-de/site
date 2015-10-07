@@ -33,8 +33,9 @@ class ProductDetailView extends Backbone.View
             <span>Price includes VAT, plus <a href="<%= shippingUrl %>" target="_blank">Shipping</a>.</span>
           </div>
           <div class="epages-shop-overlay-product-availability-<%= availability %>">
-            <span><%= availabilityText %></span>
+            <%= availabilityText %>
           </div>
+          <div class="epages-shop-overlay-product-variations"></div>
           <button class="epages-shop-overlay-buy-button" <%= disabled %>>Add to basket</button>
         </div>
         <% if (description) { %>
@@ -131,7 +132,6 @@ class ProductDetailView extends Backbone.View
   render: ->
     @model.loadCustomAttributes()
     @model.loadSlideshow()
-
     @$el.html @template
       name: @model.name()
       id: @model.id()
@@ -147,7 +147,7 @@ class ProductDetailView extends Backbone.View
 
     new VariationAttributeListView(
       collection: @model.variationAttributes()
-      el: @$el.find("table.epages-shop-overlay-table")
+      el: @$el.find(".epages-shop-overlay-product-variations")
     ).render()
 
     this

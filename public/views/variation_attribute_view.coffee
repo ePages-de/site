@@ -1,17 +1,12 @@
 class VariationAttributeView extends Backbone.View
   className: "epages-shop-variation"
-  tagName: "tr"
 
   events:
     "change": "onChange"
 
   template: _.template """
-    <th>
       <label for="epages-shop-variation-<%= name %>"><%= displayName%>:</label>
-    </th>
-    <td>
       <select name="epage-shop-variation-<%= name %>"></select>
-    </td>
   """
 
   optionTemplate: _.template """
