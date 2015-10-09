@@ -30,7 +30,6 @@ class App
     if @env is "production"
       @apiUrl = matches[1]
 
-    scriptTag.after new StylesView().render().el
     scriptTag.after new LoadingView().render().el
 
     App.cart = new Cart(null, shopId: shopId)

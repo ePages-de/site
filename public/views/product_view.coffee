@@ -16,15 +16,6 @@ class ProductView extends Backbone.View
         <%= price %>
       </div>
     </a>
-
-    <style type="text/css">
-      .epages-shop-widget .epages-shop-product {
-        float: left;
-        width: 100px;
-        margin: 10px;
-        height: 200px;
-      }
-    </style>
   """
 
   render: ->

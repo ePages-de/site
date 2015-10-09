@@ -14,38 +14,6 @@ class WidgetView extends Backbone.View
     <div class="epages-shop-product-list container-fluid">Loading ...</div>
 
     <div class="epages-shop-pagination"></div>
-
-    <style type="text/css">
-      .epages-shop-navigation {
-        margin-bottom: 50px;
-      }
-      .epages-shop-navigation {
-        clear: both;
-      }
-      .epages-shop-navigation > div {
-        float: left;
-        margin-right: 1em;
-      }
-      .epages-shop-product-list {
-        clear: both;
-      }
-      .epages-shop-pagination {
-        clear: both;
-        text-align: center;
-      }
-      .epages-shop-cart {
-        float: right;
-        margin-right: 0;
-      }
-      .epages-cart-button {
-        background: url(#{App.rootUrl}/images/cart.png) left center no-repeat;
-        padding-left: 25px;
-        padding-right: 2px;
-        cursor: pointer;
-        border: 0;
-        outline: none;
-      }
-    </style>
   """
 
   render: ->

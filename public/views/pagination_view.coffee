@@ -14,37 +14,6 @@ class PaginationView extends Backbone.View
       <% }); %>
       <li><a href="#">&gt;</a></li>
     </ul>
-    <style type="text/css">
-      .shop-pagination li {
-        display:inline;
-        color:#fff;
-      }
-
-      .shop-pagination>li:first-child>a, .shop-pagination>li:first-child>span {
-        margin-left: 0;
-        border-top-left-radius: 4px;
-        border-bottom-left-radius: 4px;
-      }
-
-      .shop-pagination>li:last-child>a, .shop-pagination>li:last-child>span {
-        margin-right: 0;
-        border-top-right-radius: 4px;
-        border-bottom-right-radius: 4px;
-      }
-      .shop-pagination>li>a, .shop-pagination>li>span {
-        padding: 6px 12px;
-        margin-left: -5px;
-        color: #337ab7;
-        text-decoration: none;
-        background-color: #fff;
-        border: 1px solid #dedede;
-      }
-
-      .shop-pagination>li.active>a{
-        background-color: #337ab7;
-        color: #fff;
-      }
-    </style>
   """
 
   render: ->
