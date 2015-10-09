@@ -13,7 +13,7 @@ class ProductDetailView extends Backbone.View
         <img class="epages-shop-overlay-product-image" src="<%= image %>" />
         <ul class="epages-shop-overlay-slideshow"></ul>
       </div>
-      <div class="epages-shop-overlay-box">
+      <div class="epages-shop-overlay-box-1">
         <h2><%= name %></h2>
         <div class="epages-shop-overlay-product-details">
           <% if (manufacturerPrice) { %>
@@ -38,6 +38,8 @@ class ProductDetailView extends Backbone.View
           <div class="epages-shop-overlay-product-variations"></div>
           <button class="epages-shop-overlay-buy-button" <%= disabled %>>Add to basket</button>
         </div>
+      </div>
+      <div class="epages-shop-overlay-box-2">
         <% if (description) { %>
           <hr class="epages-shop-overlay-hr"/>
           <div class="epages-shop-overlay-product-description">

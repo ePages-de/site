@@ -17,6 +17,9 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
     min-width: 400px;
     max-width: 490px;
 }
+.epages-shop-overlay-box-1 {
+    display: inline-block;
+}
 .epages-shop-overlay-product-image {
     transition: 0.6s;
 }
