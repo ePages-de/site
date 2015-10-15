@@ -240,21 +240,14 @@
     function buildClose ( elem, getOption ) {
         if ( getOption('closeButton', true) ) {
             return elem.child()
-                .html( getOption('closeHtml', "&#xD7;") )
-                .clazz("pico-close")
+                .html( getOption('closeHtml', "") )
+                .clazz("pico-close fa fa-2x fa-times-circle")
                 .clazz( getOption("closeClass") )
                 .stylize( getOption('closeStyles', {
-                    borderRadius: "2px",
                     cursor: "pointer",
-                    height: "15px",
-                    width: "15px",
                     position: "absolute",
                     top: "5px",
                     right: "5px",
-                    fontSize: "16px",
-                    textAlign: "center",
-                    lineHeight: "15px",
-                    background: "#CCC"
                 }) );
         }
     }

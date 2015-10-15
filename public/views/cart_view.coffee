@@ -11,7 +11,7 @@ class CartView extends Backbone.View
     "click": "openCart"
 
   template: _.template """
-    Basket (<%= count %>)
+    <i class="fa fa-2x fa-shopping-cart"></i><span>(<%= count %>)</span>
   """
 
   render: ->
