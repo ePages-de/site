@@ -91,13 +91,17 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
     border-left: 0;
     border-right: 0;
     width: 100%;
+    border-collapse: collapse;
 }
 .epages-cart-overlay table th {
     text-align: left;
     padding: 20px 10px 5px;
 }
+.epages-cart-overlay table tr {
+    border-bottom: 1px solid #ddd;
+}
 .epages-cart-overlay table td {
-    padding: 5px 10px;
+    padding: 10px;
 }
 .epages-cart-overlay table tfoot td {
     padding: 10px 10px 20px;
@@ -114,7 +118,7 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
 }
 .epages-cart-overlay-secure {
     padding: 20px 10px 0 50px;
-    background: url(#{App.rootUrl}/images/secure.png) 0 25px no-repeat;
+    background: url(/images/secure.png) 0 25px no-repeat;
 }
 .epages-cart-overlay-checkout-button {
     float: right;
@@ -128,7 +132,7 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
 .epages-cart-overlay-line-item-remove {
     display: block;
     cursor: pointer;
-    background: url(#{App.rootUrl}/images/remove.png) 0 0 no-repeat;
+    background: url(/images/remove.png) 0 0 no-repeat;
     border: 0;
     outline: none;
     width: 20px;
@@ -180,7 +184,7 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
     height: 200px;
 }
 #epages-shop-widget-loading {
-    background-image: url(#{App.rootUrl}/images/spinner.gif);
+    background-image: url(/images/spinner.gif);
     background-color: white;
     border-radius: 6px;
     display: none;
