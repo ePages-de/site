@@ -59,7 +59,9 @@ class ProductDetailView extends Backbone.View
     setTimeout (-> $(".epages-shop-overlay-product-image").prop('src', url).css("opacity", "1") ), 600
 
   render: ->
-    @model.loadCustomAttributes()
+    if @model.changed.productId == undefined
+      @model.loadCustomAttributes()
+
     @model.loadSlideshow()
     @$el.html @template
       name: @model.name()
