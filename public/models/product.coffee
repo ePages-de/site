@@ -96,7 +96,7 @@ class Product extends Backbone.Model
     _.findWhere(@get("links"), rel: "self").href
 
   customAttributesLink: ->
-    if _.findWhere(@get("links"), rel: "slideshow")
+    if _.findWhere(@get("links"), rel: "custom-attributes")
       _.findWhere(@get("links"), rel: "custom-attributes").href
 
   slideshowLink: ->
