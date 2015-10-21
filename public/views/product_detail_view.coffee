@@ -100,5 +100,5 @@ class ProductDetailView extends Backbone.View
     if matchingVariationItem
       new Product(url: matchingVariationItem.link().href)
         .fetch success: (newModel) =>
-          @model.set newModel.toJSON()
+          @model.set newModel.variationJSON()
           @render()

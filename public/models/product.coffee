@@ -107,6 +107,12 @@ class Product extends Backbone.Model
     productId: @id()
     quantity: @quantity()
 
+  variationJSON: ->
+    @loadCustomAttributes()
+    productId: @id()
+    quantity: @quantity()
+    shortDescription: @shortDescription()
+
   loadVariations: =>
     $.getJSON "#{@url()}/variations"
       .done (json) =>
