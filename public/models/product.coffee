@@ -104,10 +104,8 @@ class Product extends Backbone.Model
       _.findWhere(@get("links"), rel: "slideshow").href
 
   toJSON: ->
-    @loadCustomAttributes()
     productId: @id()
     quantity: @quantity()
-    shortDescription: @shortDescription()
 
   loadVariations: =>
     $.getJSON "#{@url()}/variations"
