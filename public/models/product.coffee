@@ -69,6 +69,9 @@ class Product extends Backbone.Model
   formattedTotalPrice: ->
     "#{ @totalPrice().toFixed(2) } €"
 
+  productFormattedPrice: ->
+    @get("variationPrice") || @formattedTotalPrice()
+
   shippingUrl: ->
     @collection.shippingUrl
 
@@ -92,6 +95,9 @@ class Product extends Backbone.Model
   largeImage: ->
     _.findWhere(@get("images"), classifier: "Large").url
 
+  productImage: ->
+    @get("variationImage") || @mediumImage()
+
   link: ->
     _.findWhere(@get("links"), rel: "self").href
 
@@ -109,9 +115,14 @@ class Product extends Backbone.Model
 
   variationJSON: ->
     @loadCustomAttributes()
+    @loadSlideshow()
+
+    name: @name()
     productId: @id()
+    variationPrice: @price()
     quantity: @quantity()
     shortDescription: @shortDescription()
+    variationImage: @mediumImage()
 
   loadVariations: =>
     $.getJSON "#{@url()}/variations"

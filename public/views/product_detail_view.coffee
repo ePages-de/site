@@ -61,18 +61,18 @@ class ProductDetailView extends Backbone.View
   render: ->
     if @model.changed.productId == undefined
       @model.loadCustomAttributes()
+      @model.loadSlideshow()
 
-    @model.loadSlideshow()
     @$el.html @template
       name: @model.name()
       id: @model.id()
-      image: @model.mediumImage()
+      image: @model.productImage()
       description: @model.shortDescription()
       availability: @model.availability()
       availabilityText: @model.availabilityText()
       manufacturerPrice: @model.manufacturerPrice()
       basePrice: @model.basePrice()
-      price: @model.formattedPrice()
+      price: @model.productFormattedPrice()
       disabled: @model.isAvailable()
       shippingUrl: @model.shippingUrl()
 
