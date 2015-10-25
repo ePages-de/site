@@ -70,7 +70,7 @@ class Product extends Backbone.Model
     "#{ @totalPrice().toFixed(2) } €"
 
   productFormattedPrice: ->
-    @get("variationPrice") || @formattedTotalPrice()
+    @get("variationPrice") || @loadLowestPrice() || @formattedTotalPrice()
 
   shippingUrl: ->
     @collection.shippingUrl
@@ -108,6 +108,10 @@ class Product extends Backbone.Model
   slideshowLink: ->
     if _.findWhere(@get("links"), rel: "slideshow")
       _.findWhere(@get("links"), rel: "slideshow").href
+
+  lowestPriceLink: ->
+    if _.findWhere(@get("links"), rel: "lowest-price")
+      _.findWhere(@get("links"), rel: "lowest-price").href
 
   toJSON: ->
     productId: @id()
@@ -153,3 +157,9 @@ class Product extends Backbone.Model
             if slide_image && ref_image
               $(".epages-shop-overlay-slideshow").append("<li class=\"slideshow-image\"><img src=\"#{slide_image}\" data-image=\"#{ref_image}\"></li>")
 
+  loadLowestPrice: =>
+    if url = @lowestPriceLink()
+      $.getJSON url
+        .done (product) =>
+          $(".epages-shop-overlay-product-price span").html(product.priceInfo.price.formatted)
+    return undefined
