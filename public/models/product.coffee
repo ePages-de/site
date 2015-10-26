@@ -69,8 +69,8 @@ class Product extends Backbone.Model
   formattedTotalPrice: ->
     "#{ @totalPrice().toFixed(2) } €"
 
-  productFormattedPrice: ->
-    @get("variationPrice") || @loadLowestPrice() || @formattedTotalPrice()
+  productFormattedPrice: (selector) ->
+    @get("variationPrice") || @loadLowestPrice(selector) || @formattedTotalPrice()
 
   shippingUrl: ->
     @collection.shippingUrl
@@ -157,9 +157,12 @@ class Product extends Backbone.Model
             if slide_image && ref_image
               $(".epages-shop-overlay-slideshow").append("<li class=\"slideshow-image\"><img src=\"#{slide_image}\" data-image=\"#{ref_image}\"></li>")
 
-  loadLowestPrice: =>
+  loadLowestPrice: (selector) =>
     if url = @lowestPriceLink()
       $.getJSON url
         .done (product) =>
-          $(".epages-shop-overlay-product-price span").html(product.priceInfo.price.formatted)
+          selector = if selector == "card"
+          then ".epages-shop-product-link[href*='#{@id()}'] .epages-shop-product-price"
+          else ".epages-shop-overlay-product-price span"
+          $(selector).html(product.priceInfo.price.formatted)
     return undefined

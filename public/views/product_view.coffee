@@ -22,7 +22,7 @@ class ProductView extends Backbone.View
     @$el.html @template
       image: @model.smallImage()
       name:  @model.name()
-      price: @model.formattedPrice()
+      price: @model.productFormattedPrice("card")
       link:  @model.link()
 
     this
