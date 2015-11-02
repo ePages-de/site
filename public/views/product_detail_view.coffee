@@ -30,7 +30,7 @@ class ProductDetailView extends Backbone.View
             </div>
           <% } %>
           <div class="epages-shop-overlay-product-shipping">
-            <span>Price includes VAT, plus <a href="<%= shippingUrl %>" target="_blank">Shipping</a>.</span>
+            <span>Price includes VAT, plus <a href="<%= shippingUrl %>" target="_blank">Delivery</a>.</span>
           </div>
           <div class="epages-shop-overlay-product-availability-<%= availability %>">
             <%= availabilityText %>
@@ -49,7 +49,9 @@ class ProductDetailView extends Backbone.View
             </div>
           </div>
         <% } %>
-        <table class="epages-shop-overlay-custom-attributes"></table>
+        <div class="epages-shop-overlay-custom-attributes">
+          <table class="epages-shop-overlay-custom-attributes-table"></table>
+        </div>
       </div>
     </div>
   """

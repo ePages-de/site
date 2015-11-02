@@ -138,13 +138,8 @@ class Product extends Backbone.Model
     if url = @customAttributesLink()
       $.getJSON url
         .done (json) =>
-          if(json.items.length <= 2)
-            return undefined
-          $(".epages-shop-overlay-custom-attributes").html('<tr><td>Additional product information</td><td></td></tr>')
-          json.items.slice(2).map (item) ->
-            if item.values[0].displayValue != ""
-              $(".epages-shop-overlay-custom-attributes").css("display", "initial") #if any object has a value the table is not displayed
-              $(".epages-shop-overlay-custom-attributes").append("<tr><td>#{item.displayKey}</td><td>#{item.values[0].displayValue}</td></tr>")
+          @displayCustomAttributes(json.items)
+
 
   loadSlideshow: =>
     if url = @slideshowLink()
@@ -166,3 +161,28 @@ class Product extends Backbone.Model
           else ".epages-shop-overlay-product-price span"
           $(selector).html(product.priceInfo.price.formatted)
     return undefined
+
+  displayCustomAttributes: (items) ->
+    displayTitle = false
+    value = ""
+    items.map (item) ->
+      if item.values[0].displayValue != ""
+        displayTitle = true
+        value += "<tr><th>#{item.displayKey}</th><td>"
+
+        if item.type == 'string' && item.singleValue == false
+          value += "<ul>"
+          item.values.map (val) ->
+            value += "<li>#{val.displayValue}</li>"
+          value += "</ul>"
+        else if item.type == 'url'
+          value += "<a href='#{item.values[0].displayValue}' target='Download'>Download</a>"
+        else
+          value += "#{item.values[0].displayValue}"
+        value += "</td></tr>"
+
+    if displayTitle
+      $(".epages-shop-overlay-custom-attributes h4").remove()
+      $(".epages-shop-overlay-custom-attributes-table").before('<h4>Additional product information</h4>')
+
+    $(".epages-shop-overlay-custom-attributes-table").html(value)

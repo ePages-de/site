@@ -71,8 +71,16 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
 .epages-shop-overlay p {
     margin-top: 3px;
 }
-.epages-shop-overlay-custom-attributes{
-    display: none;
+.epages-shop-overlay-custom-attributes-table th {
+    text-align: left;
+    vertical-align: top;
+}
+.epages-shop-overlay-custom-attributes-table td {
+    padding: 0px 1em;
+}
+.epages-shop-overlay-custom-attributes-table td ul {
+    margin: 0px;
+    padding-left: 1em;
 }
 .epages-cart-overlay {
     color: #444;
