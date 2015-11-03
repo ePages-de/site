@@ -10,7 +10,9 @@ class ProductView extends Backbone.View
 
   template: _.template """
     <a href="<%= link %>" class="epages-shop-product-link">
-      <img src="<%= image %>"/>
+      <div class="epages-shop-product-list-image-container">
+        <img src="<%= image %>"/>
+      </div>
       <div class="epages-shop-product-name"><%= name %></div>
       <div class="epages-shop-product-price" style="font-weight: bold">
         <%= price %>
