@@ -17,7 +17,8 @@ class PaginationView extends Backbone.View
   """
 
   render: ->
-    @$el.html @template({pages: @collection.pages, current_page: @collection.page})
+    if @collection.pages > 1
+      @$el.html @template({pages: @collection.pages, current_page: @collection.page})
     this
 
   onClick: (event) ->
