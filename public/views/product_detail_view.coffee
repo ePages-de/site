@@ -30,20 +30,20 @@ class ProductDetailView extends Backbone.View
             </div>
           <% } %>
           <div class="epages-shop-overlay-product-shipping">
-            <span>Price includes VAT, plus <a href="<%= shippingUrl %>" target="_blank">Delivery</a>.</span>
+            <span data-i18n='include-vat-price'></span> <a href="<%= shippingUrl %>" target="_blank" data-i18n='shipping'></a>
           </div>
           <div class="epages-shop-overlay-product-availability-<%= availability %>">
             <%= availabilityText %>
           </div>
           <div class="epages-shop-overlay-product-variations"></div>
-          <button class="epages-shop-overlay-buy-button" <%= disabled %>>Add to basket</button>
+          <button class="epages-shop-overlay-buy-button" data-i18n='basket-add' <%= disabled %>></button>
         </div>
       </div>
       <div class="epages-shop-overlay-box-2">
         <% if (description) { %>
           <hr class="epages-shop-overlay-hr"/>
           <div class="epages-shop-overlay-product-description">
-            <h3>Description</h3>
+            <h3 data-i18n='description'></h3>
             <div class="epages-product-description">
               <%= description %>
             </div>
@@ -83,6 +83,7 @@ class ProductDetailView extends Backbone.View
       el: @$el.find(".epages-shop-overlay-product-variations")
     ).render()
 
+    App.i18n(this)
     this
 
   addLineItem: (event) ->

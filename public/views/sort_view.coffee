@@ -12,13 +12,14 @@ class SortView extends Backbone.View
     Sort by:
     <select>
       <option value="">Name</option>
-      <option value="price,asc">Price: low to high</option>
-      <option value="price,desc">Price: high to low</option>
+      <option value="price,asc" data-i18n='price-asc'></option>
+      <option value="price,desc" data-i18n='price-desc'></option>
     </select>
   """
 
   render: ->
     @$el.html @template
+    App.i18n(this)
     this
 
   onChange: (event) ->

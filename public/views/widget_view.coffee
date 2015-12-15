@@ -11,7 +11,7 @@ class WidgetView extends Backbone.View
       <div class="epages-shop-sort"></div>
     </div>
 
-    <div class="epages-shop-product-list container-fluid">Loading ...</div>
+    <div class="epages-shop-product-list container-fluid" data-i18n='loading'></div>
 
     <div class="epages-shop-pagination"></div>
   """
@@ -19,6 +19,7 @@ class WidgetView extends Backbone.View
   render: ->
     @$el.html @template()
     @_initRegions()
+    App.i18n(this)
     this
 
   _grabOptions: ->

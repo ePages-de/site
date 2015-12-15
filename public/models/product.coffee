@@ -166,6 +166,8 @@ class Product extends Backbone.Model
     displayTitle = false
     value = ""
     items.map (item) ->
+      if typeof(item.values[0]) == "undefined"
+        return
       if item.values[0].displayValue != ""
         displayTitle = true
         value += "<tr><th>#{item.displayKey}</th><td>"

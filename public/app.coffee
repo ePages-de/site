@@ -17,6 +17,9 @@ class App
     scriptTag:  "#epages-widget"
     shopWidget: ".epages-shop-widget"
 
+  @i18n: (view) ->
+    for el in view.$el.find("[data-i18n]")
+      $(el).html(App.translations[$(el).data("i18n")])
 
   @start: ->
     @modal = new Modal()
@@ -29,6 +32,21 @@ class App
 
     if @env is "production"
       @apiUrl = matches[1]
+
+    # Setting language
+    App.lang = "en"
+    $.ajax
+      url: shopUrl + "/locales",
+      async: false,
+      dataType: 'json',
+      success: (response) => App.lang = response.default.split('_')[0]
+
+    App.translations = null
+    $.ajax
+      url: "/locales/" + App.lang + ".json",
+      async: false,
+      dataType: 'json',
+      success: (response) => App.translations = response
 
     scriptTag.after new LoadingView().render().el
 

@@ -11,12 +11,10 @@ class CartDetailView extends Backbone.View
 
   template: _.template """
     <div class="epages-cart-overlay">
-      <h2>Basket</h2>
+      <h2 data-i18n='basket'></h2>
 
       <% if (failedToCreateCart) { %>
-        <div class="epages-cart-overlay-fail">
-          Oops. This took longer than it should. Please try again now!
-        </div>
+        <div class="epages-cart-overlay-fail" data-i18n='basket-fail'></div>
       <% } %>
 
       <div class="epages-cart-overlay-not-empty" style="display:none">
@@ -24,27 +22,27 @@ class CartDetailView extends Backbone.View
           <thead>
             <tr>
               <th></th>
-              <th>Quantity</th>
-              <th>Name</th>
-              <th>Unit price</th>
-              <th>Total price</th>
-              <th>Remove</th>
+              <th data-i18n='quantity'></th>
+              <th data-i18n='name'></th>
+              <th data-i18n='unit-price'></th>
+              <th data-i18n='total-price'></th>
+              <th data-i18n='remove'></th>
             </tr>
           </thead>
           <tbody></tbody>
           <tfoot>
             <% if (deliveryPrice) { %>
               <tr>
-                <td colspan="4">Delivery Price</td>
+                <td colspan="4" data-i18n='shipping-price'></td>
                 <td class="epages-cart-overlay-delivery-price"><%= deliveryPrice.formatted %></td>
                 <td></td>
               </tr>
             <% } %>
             <tr>
               <td colspan="4">
-                <div class="epages-cart-overlay-product-price-desc">Subtotal</div>
+                <div class="epages-cart-overlay-product-price-desc" data-i18n='subtotal'></div>
                 <div class="epages-cart-overlay-product-shipping">
-                  includes VAT, plus <a href="<%= shippingUrl %>" target="_blank">Shipping</a>.
+                  <span data-i18n='include-vat'></span> <a href="<%= shippingUrl %>" target="_blank" data-i18n='shipping'></a>.
                 </div>
               </td>
               <td class="epages-cart-overlay-product-price">
@@ -55,16 +53,13 @@ class CartDetailView extends Backbone.View
           </tfoot>
         </table>
 
-        <div class="epages-cart-overlay-secure">
-          Your data will be transmitted through an encrypted connection (SSL)<br>
-          and will not be disclosed to third parties.
-        </div>
+        <div class="epages-cart-overlay-secure" data-i18n='ssl'></div>
 
-        <button class="epages-cart-overlay-checkout-button">Check out</button>
+        <button class="epages-cart-overlay-checkout-button" data-i18n='checkout'></button>
       </div>
 
       <div class="epages-cart-overlay-is-empty" style="display:none">
-        <p>Your basket is empty.</p>
+        <p data-i18n='basket-empty'></p>
       </div>
     </div>
   """
@@ -86,6 +81,7 @@ class CartDetailView extends Backbone.View
       @$(".epages-cart-overlay-line-table tbody").html html
       @$(".epages-cart-overlay-not-empty").show()
 
+    App.i18n(this)
     this
 
   sync: ->

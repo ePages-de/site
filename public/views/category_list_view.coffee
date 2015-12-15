@@ -9,7 +9,7 @@ class CategoryListView extends Backbone.View
     "change select": "onSelectionChange"
 
   template: _.template """
-    Category:
+    <span data-i18n='category'></span>:
     <select></select>
   """
 
@@ -28,6 +28,7 @@ class CategoryListView extends Backbone.View
 
     @$el.html @template()
     @$("select").html html
+    App.i18n(this)
     this
 
   reset: ->

@@ -7,11 +7,12 @@ class SearchFormView extends Backbone.View
 
   template: _.template """
     <input type="text">
-    <input type="submit" value="Search">
+    <button type="submit" data-i18n="search" value="search"></button>
   """
 
   render: ->
     @$el.html @template
+    App.i18n(this)
     this
 
   reset: ->
