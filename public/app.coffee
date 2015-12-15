@@ -47,6 +47,14 @@ class App
       async: false,
       dataType: 'json',
       success: (response) => App.translations = response
+      error: () =>
+        # support for wordpress plugin
+        $.ajax
+          url: "/wp-content/plugins/site-wordpress/assets/locales/" + App.lang + ".json",
+          async: false,
+          dataType: 'json',
+          success: (response) =>
+            App.translations = response
 
     scriptTag.after new LoadingView().render().el
 
