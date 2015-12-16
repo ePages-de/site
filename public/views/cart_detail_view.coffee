@@ -22,11 +22,11 @@ class CartDetailView extends Backbone.View
           <thead>
             <tr>
               <th></th>
-              <th data-i18n='quantity'></th>
               <th data-i18n='name'></th>
               <th data-i18n='unit-price'></th>
+              <th data-i18n='quantity'></th>
+              <th></th>
               <th data-i18n='total-price'></th>
-              <th data-i18n='remove'></th>
             </tr>
           </thead>
           <tbody></tbody>
