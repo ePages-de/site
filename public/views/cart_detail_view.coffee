@@ -34,8 +34,8 @@ class CartDetailView extends Backbone.View
             <% if (deliveryPrice) { %>
               <tr>
                 <td colspan="4" data-i18n='shipping-price'></td>
-                <td class="epages-cart-overlay-delivery-price"><%= deliveryPrice.formatted %></td>
                 <td></td>
+                <td class="epages-cart-overlay-delivery-price"><%= deliveryPrice.formatted %></td>
               </tr>
             <% } %>
             <tr>
@@ -45,10 +45,10 @@ class CartDetailView extends Backbone.View
                   <span data-i18n='include-vat'></span> <a href="<%= shippingUrl %>" target="_blank" data-i18n='shipping'></a>.
                 </div>
               </td>
+              <td></td>
               <td class="epages-cart-overlay-product-price">
                 <b><%= subTotal %></b>
               </td>
-              <td></td>
             </tr>
           </tfoot>
         </table>
