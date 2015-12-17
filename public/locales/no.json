@@ -20,5 +20,5 @@
   "ssl": "Dataene blir overført gjennom en kryptert kobling (SSL)<br>og vil ikke bli avslørt til tredjepart.",
   "subtotal": "Delsum",
   "total-price": "Pris totalt",
-  "unit-price": "Enhetspris"
+  "unit-price": "Pris"
 }

@@ -20,5 +20,5 @@
   "ssl": "Sus datos se transferirán a través de una conexión cifrada (SSL)<br>y no se revelarán a terceros.",
   "subtotal": "Subtotal",
   "total-price": "Precio total",
-  "unit-price": "Precio unidad"
+  "unit-price": "Precio"
 }

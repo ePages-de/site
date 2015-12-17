@@ -20,5 +20,5 @@
   "ssl": "Les vostres dades es transmetran per una connexió xifrada (SSL)<br>i no es revelaran a tercers.",
   "subtotal": "Subtotal",
   "total-price": "Preu total",
-  "unit-price": "Preu unitat"
+  "unit-price": "Preu"
 }
