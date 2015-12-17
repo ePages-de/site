@@ -10,7 +10,7 @@ class CartDetailView extends Backbone.View
     "change .epages-cart-overlay-line-item-quantity": "sync"
 
   template: _.template """
-  <div class="epages-cart-overlay">
+  <div class="container-fluid epages-cart-overlay">
     <h2 class="epages-cart-healine" data-i18n='basket'></h2>
 
     <% if (failedToCreateCart) { %>
