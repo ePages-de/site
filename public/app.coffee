@@ -36,14 +36,17 @@ class App
     # Setting language
     App.lang = "en"
     $.ajax
-      url: shopUrl + "/locales",
+      url: shopUrl.replace(/\/$/, "") + "/locales",
       async: false,
       dataType: 'json',
       success: (response) => App.lang = response.default.split('_')[0]
 
     App.translations = null
     $.ajax
-      url: "/locales/" + App.lang + ".json",
+      url: "https://site-production.herokuapp.com/locales/" + App.lang + ".json",
+      crossDomain: true,
+      beforeSend: (request) =>
+        request.setRequestHeader("Access-Control-Allow-Origin", '*')
       async: false,
       dataType: 'json',
       success: (response) => App.translations = response

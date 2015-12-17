@@ -9,8 +9,10 @@ var port = process.env.PORT || 4566;
 
 var connect = require("connect"),
     serveStatic = require("serve-static"),
+    cors = require('cors'),
     app = connect();
 
+app.use(cors());
 
 app.use(serveStatic(__dirname + '/public'));
 
