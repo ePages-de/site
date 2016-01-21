@@ -3,7 +3,7 @@ class ProductView extends Backbone.View
   initialize: (options) ->
     { @cart } = options
 
-  className: "epages-shop-product col-lg-3 col-md-3 col-sm-4 col-xs-12"
+  className: "epages-shop-product"
 
   events:
     "click .epages-shop-product-link": "openProductDetails"
