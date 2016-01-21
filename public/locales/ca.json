@@ -14,12 +14,11 @@
   "price-asc": "Preu: de més baix a més alt",
   "price-desc": "Preu: de més alt a més baix",
   "quantity": "Quantitat",
-  "remove": "Treu",
   "search": "Cerca",
   "shipping": "Enviament",
   "shipping-price": "Preu d'enviament",
   "ssl": "Les vostres dades es transmetran per una connexió xifrada (SSL)<br>i no es revelaran a tercers.",
   "subtotal": "Subtotal",
   "total-price": "Preu total",
-  "unit-price": "Preu unitat"
+  "unit-price": "Preu"
 }

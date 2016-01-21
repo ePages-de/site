@@ -14,12 +14,11 @@
   "price-asc": "Preço: mais barato",
   "price-desc": "Preço: mais caro",
   "quantity": "Quantidade",
-  "remove": "Remover",
   "search": "Pesquisar",
   "shipping": "Envio",
   "shipping-price": "Preço do envio",
   "ssl": "Os seus dados serão transmitidos através de uma ligação encriptada (SSL)<br>e não serão revelados a terceiros.",
   "subtotal": "Subtotal",
   "total-price": "Preço total",
-  "unit-price": "Preço unitário"
+  "unit-price": "Preço"
 }

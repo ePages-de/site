@@ -14,12 +14,11 @@
   "price-asc": "Hinta: alhaisesta korkeaan",
   "price-desc": "Hinta: korkeasta alhaiseen",
   "quantity": "Määrä",
-  "remove": "Poista",
   "search": "Haku",
   "shipping": "Lähetys",
   "shipping-price": "Lähetyshinta",
   "ssl": "Tietosi siirretään salatun yhteyden (SSL) välityksellä<br>, ja niitä ei anneta ulkopuolisten tahojen käyttöön.",
   "subtotal": "Yhteensä",
   "total-price": "Hinta yhteensä",
-  "unit-price": "Yksikköhinta"
+  "unit-price": "Hinta"
 }

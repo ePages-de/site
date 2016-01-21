@@ -14,12 +14,11 @@
   "price-asc": "Pris: lågt till högt",
   "price-desc": "Pris: högt till lågt",
   "quantity": "Antal",
-  "remove": "Ta bort",
   "search": "Sök",
   "shipping": "Frakt",
   "shipping-price": "Fraktpris",
   "ssl": "Dina uppgifter överförs via en krypterad anslutning (SSL)<br>och lämnas inte ut till tredje part.",
   "subtotal": "Delsumma",
   "total-price": "Totalt pris",
-  "unit-price": "Enhetspris"
+  "unit-price": "Pris"
 }

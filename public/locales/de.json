@@ -14,12 +14,11 @@
   "price-asc": "Preis aufsteigend",
   "price-desc": "Preis absteigend",
   "quantity": "Anzahl",
-  "remove": "Entfernen",
   "search": "Suchen",
   "shipping": "Versand",
   "shipping-price": "Versandkosten",
   "ssl": "Ihre Daten werden über eine verschlüsselte Verbindung übertragen (SSL) <br>und nicht an Dritte weitergegeben.",
   "subtotal": "Zwischensumme",
   "total-price": "Gesamtpreis",
-  "unit-price": "Stückpreis"
+  "unit-price": "Preis"
 }

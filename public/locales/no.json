@@ -14,12 +14,11 @@
   "price-asc": "Pris: lav til høy",
   "price-desc": "Pris: høy til lav",
   "quantity": "Kvantitet",
-  "remove": "Fjern",
   "search": "Søk",
   "shipping": "Frakt",
   "shipping-price": "Pris for frakt",
   "ssl": "Dataene blir overført gjennom en kryptert kobling (SSL)<br>og vil ikke bli avslørt til tredjepart.",
   "subtotal": "Delsum",
   "total-price": "Pris totalt",
-  "unit-price": "Enhetspris"
+  "unit-price": "Pris"
 }
