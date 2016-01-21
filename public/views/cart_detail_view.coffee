@@ -10,11 +10,11 @@ class CartDetailView extends Backbone.View
     "change .epages-cart-overlay-line-item-quantity": "sync"
 
   template: _.template """
-    <div class="epages-cart-overlay">
-      <h2 data-i18n='basket'></h2>
+  <div class="epages-cart-overlay">
+    <h2 class="epages-cart-healine" data-i18n='basket'></h2>
 
-      <% if (failedToCreateCart) { %>
-        <div class="epages-cart-overlay-fail" data-i18n='basket-fail'></div>
+    <% if (failedToCreateCart) { %>
+      <div class="epages-cart-overlay-fail" data-i18n='basket-fail'></div>
       <% } %>
 
       <div class="epages-cart-overlay-not-empty" style="display:none">
@@ -22,11 +22,16 @@ class CartDetailView extends Backbone.View
           <thead>
             <tr>
               <th></th>
-              <th data-i18n='quantity'></th>
               <th data-i18n='name'></th>
               <th data-i18n='unit-price'></th>
+              <th data-i18n='quantity'></th>
+<<<<<<< HEAD
               <th data-i18n='total-price'></th>
-              <th data-i18n='remove'></th>
+              <th></th>
+=======
+              <th></th>
+              <th data-i18n='total-price'></th>
+>>>>>>> styles-and-optimisation
             </tr>
           </thead>
           <tbody></tbody>
@@ -34,35 +39,34 @@ class CartDetailView extends Backbone.View
             <% if (deliveryPrice) { %>
               <tr>
                 <td colspan="4" data-i18n='shipping-price'></td>
-                <td class="epages-cart-overlay-delivery-price"><%= deliveryPrice.formatted %></td>
                 <td></td>
+                <td class="epages-cart-overlay-delivery-price"><%= deliveryPrice.formatted %></td>
               </tr>
-            <% } %>
-            <tr>
-              <td colspan="4">
-                <div class="epages-cart-overlay-product-price-desc" data-i18n='subtotal'></div>
-                <div class="epages-cart-overlay-product-shipping">
-                  <span data-i18n='include-vat'></span> <a href="<%= shippingUrl %>" target="_blank" data-i18n='shipping'></a>.
-                </div>
-              </td>
-              <td class="epages-cart-overlay-product-price">
-                <b><%= subTotal %></b>
-              </td>
-              <td></td>
-            </tr>
-          </tfoot>
-        </table>
-
-        <div class="epages-cart-overlay-secure" data-i18n='ssl'></div>
-
-        <button class="epages-cart-overlay-checkout-button" data-i18n='checkout'></button>
+              <% } %>
+              <tr>
+                <td colspan="4">
+                  <div class="epages-cart-overlay-product-price-desc" data-i18n='subtotal'></div>
+                  <div class="epages-cart-overlay-product-shipping">
+                    <span data-i18n='include-vat'></span> <a href="<%= shippingUrl %>" target="_blank" data-i18n='shipping'></a>.
+                  </div>
+                </td>
+                <td></td>
+                <td class="epages-cart-overlay-product-price">
+                  <b><%= subTotal %></b>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+          <div class="row">
+          <div class="epages-cart-overlay-secure col-xs-12 col-sm-6 col-md-8" data-i18n='ssl'></div>
+          <div class="col-xs-2 col-md-4">
+          <button class="epages-cart-overlay-checkout-button" data-i18n='checkout'></button></div>
+        </div></div>
+        <div class="epages-cart-overlay-is-empty" style="display:none">
+          <p data-i18n='basket-empty'></p>
+        </div>
       </div>
-
-      <div class="epages-cart-overlay-is-empty" style="display:none">
-        <p data-i18n='basket-empty'></p>
-      </div>
-    </div>
-  """
+"""
 
   render: ->
     @$el.html @template
