@@ -263,4 +263,13 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
     background-color: #f2dede;
     border-color: #ebccd1;
     color: #a94442;
+<<<<<<< HEAD
 }
+=======
+}
+
+.nopadding {
+   padding-left: 0 !important;
+   margin: 0 !important;
+}
+>>>>>>> styles-and-optimisation
