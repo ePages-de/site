@@ -188,7 +188,7 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
 .epages-shop-widget .epages-shop-product {
     float: left;
     width: 100px;
-    margin: 10px;
+
     height: 200px;
 }
 #epages-shop-widget-loading {
@@ -211,13 +211,13 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
 }
 .epages-shop-navigation {
     margin-bottom: 50px;
+    text-align: left;
 }
 .epages-shop-navigation {
     clear: both;
 }
 .epages-shop-navigation > div {
     float: left;
-    margin-right: 1em;
 }
 .epages-shop-product-list {
     clear: both;

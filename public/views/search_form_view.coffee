@@ -6,8 +6,11 @@ class SearchFormView extends Backbone.View
     "submit": "onSubmit"
 
   template: _.template """
-    <input type="text">
-    <button type="submit" data-i18n="search" value="search"></button>
+    <div class="input-group">
+    <input type="text" class="form-control">
+    <span class="input-group-btn">
+    <button type="submit" class="btn btn-default" data-i18n="search" value="search"> </span>
+    </button></div>
   """
 
   render: ->
