@@ -3,7 +3,7 @@ class ProductView extends Backbone.View
   initialize: (options) ->
     { @cart } = options
 
-  className: "epages-shop-product col-lg-3 col-md-3 col-sm-4 col-xs-12"
+  className: "epages-shop-product"
 
   events:
     "click .epages-shop-product-link": "openProductDetails"
@@ -11,7 +11,7 @@ class ProductView extends Backbone.View
   template: _.template """
     <a href="<%= link %>" class="epages-shop-product-link">
       <div class="epages-shop-product-list-image-container">
-        <img src="<%= image %>"/>
+        <img class="img-responsive" src="<%= image %>"/>
       </div>
       <div class="epages-shop-product-name"><%= name %></div>
       <div class="epages-shop-product-price" style="font-weight: bold">
