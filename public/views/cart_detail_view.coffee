@@ -25,18 +25,8 @@ class CartDetailView extends Backbone.View
               <th data-i18n='name'></th>
               <th data-i18n='unit-price'></th>
               <th data-i18n='quantity'></th>
-<<<<<<< HEAD
-<<<<<<< HEAD
-              <th data-i18n='total-price'></th>
-              <th></th>
-=======
               <th></th>
               <th data-i18n='total-price'></th>
->>>>>>> styles-and-optimisation
-=======
-              <th></th>
-              <th data-i18n='total-price'></th>
->>>>>>> styles-and-optimisation
             </tr>
           </thead>
           <tbody></tbody>
