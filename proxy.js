@@ -11,6 +11,6 @@ var port = process.env.PROXY_PORT || 4040;
 console.log("Starting node-replay proxy in '" + replay.mode + "' mode on port " + port);
 
 httpProxy.createProxyServer({
-    target: "https://pm.epages.com"
+    target: "https://sandbox.epages.com"
   , changeOrigin: true
 }).listen(port);

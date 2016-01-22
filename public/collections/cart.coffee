@@ -19,7 +19,9 @@ class Cart extends Backbone.Collection
   sync: ->
     @deliveryPrice = undefined # reset to avoid render previous delivery prices
     Backbone.sync("create", this, timeout: 10 * 1000)
-      .done (response) => @trigger("update:cartId", response.cartId)
+      .done (response) =>
+        @deliveryPrice = response.lineItemContainer.shippingPrice
+        @trigger("update:cartId", response.cartId)
 
   url: ->
     "#{App.apiUrl}/shops/#{@shopId}/carts"
@@ -34,10 +36,6 @@ class Cart extends Backbone.Collection
   getShippingUrl: ->
     $.getJSON @shippingUrl()
       .done (response) => @shippingUrl = response[0].sfUrl + "/Shipping"
-
-  getDeliveryPrice: (cartId) ->
-    $.getJSON "#{@url()}/#{cartId}"
-      .done (response) => @deliveryPrice = response.lineItemContainer.shippingPrice
 
   lineItemsSubTotal: ->
     shipping = if @deliveryPrice then @deliveryPrice.amount else 0
@@ -56,7 +54,6 @@ class Cart extends Backbone.Collection
     @storage.set "cart", @map (product) -> product.attributes
 
   _updateSubTotal: (cartId) =>
-    @getDeliveryPrice(cartId)
-      .done () => @trigger "change" # manual trigger because the items didn't change
+    @trigger "change" # manual trigger because the items didn't change
 
 
