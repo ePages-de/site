@@ -87,7 +87,9 @@ class CartDetailView extends Backbone.View
     @collection.sync()
 
   checkout: ->
-    checkoutWindow = window.open("#{App.rootUrl}/checkout.html", "_blank")
+    left = (screen.width - 600)/2
+    top = (screen.height - 520)/2
+    checkoutWindow = window.open("#{App.rootUrl}/checkout.html", 'newwindow',"width=600px, height=500px, top=#{top}px, left=#{left}px")
 
     # XXX: can we get rid of this maybe?
     App.modal.closeAll()
