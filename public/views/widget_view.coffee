@@ -6,15 +6,15 @@ class WidgetView extends Backbone.View
   template: _.template """
   <div class="epages-shop-cart"></div>
   <div class="epages-shop-navigation">
-    <div class="epages-shop-category-list"></div>
-    <div class="epages-shop-search-form"></div>
-    <div class="epages-shop-sort"></div>
+  <div class="epages-shop-search-form"></div>
+  <div class="epages-shop-sort"></div>
+  <div class="epages-shop-category-list"></div>
   </div>
-
-  <div class="epages-shop-product-list container-fluid">Loading ...</div>
-
+  <div class="epages-shop-product-list" data-i18n='loading'></div>
   <div class="epages-shop-pagination"></div>
+
 """
+
 
   render: ->
     @$el.html @template()
