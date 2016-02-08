@@ -160,13 +160,22 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
     margin-right: 5px;
 }
 .epages-cart-overlay-line-item-remove {
-    display: block;
-    cursor: pointer;
-    background: url(/images/remove.png) 0 0 no-repeat;
-    border: 0;
-    outline: none;
-    width: 20px;
-    height: 20px;
+     position:relative;
+     text-align: center;
+     border: none;
+     background: none;
+ }
+
+ .epages-cart-overlay-line-item-remove:before {
+   content: "\f1f8";
+    font-family: FontAwesome;
+    border: none;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    font-size: 22px;
+    padding-right: 0.5em;
+    left: 0;
 }
 .epages-cart-overlay-line-item-remove:disabled {
     cursor: auto;
