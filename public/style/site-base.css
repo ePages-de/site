@@ -265,8 +265,17 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
 .epages-shop-widget label {
     font-size: 80%;
 }
+
+.earch-cart-line {
+    display: inline-block;
+}
+.epages-shop-search-form {
+  max-width: 150px;
+}
+
 .epages-shop-navigation {
     margin-bottom: 50px;
+    margin-top: 10px;
 }
 .epages-shop-navigation {
     clear: both;
@@ -284,16 +293,17 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
 }
 .epages-shop-cart {
     float: right;
-    margin-right: 0;
+    margin: 0 auto;
 }
+
 .epages-cart-button {
     background-color: white;
+    float: right;
     cursor: pointer;
     border: 0;
     outline: none;
 }
 .epages-cart-button span {
     font-size: 16px;
-    vertical-align: text-bottom;
     padding-left: 5px;
 }
