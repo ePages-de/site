@@ -266,11 +266,12 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
     font-size: 80%;
 }
 
-.earch-cart-line {
+.search-cart-line {
     display: inline-block;
 }
 .epages-shop-search-form {
   max-width: 150px;
+  float: left;
 }
 
 .epages-shop-navigation {
@@ -284,6 +285,11 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
     float: left;
     margin-right: 1em;
 }
+
+.search-cart-line {
+    margin-top: 10px;
+}
+
 .epages-shop-product-list {
     clear: both;
 }

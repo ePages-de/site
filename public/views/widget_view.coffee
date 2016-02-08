@@ -5,8 +5,8 @@ class WidgetView extends Backbone.View
 
   template: _.template """
   <div class="row search-cart-line">
-  <div class="col-sm-4 epages-shop-search-form"></div>
-  <div class="col-sm-8 epages-shop-cart"></div>
+  <div class="epages-shop-search-form"></div>
+  <div class="epages-shop-cart"></div>
   </div>
   <div class="row epages-shop-navigation">
   <div class="epages-shop-sort"></div>
