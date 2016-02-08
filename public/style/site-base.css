@@ -158,7 +158,31 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
 }
 .epages-cart-overlay-line-item-quantity {
     margin-right: 5px;
+    padding:3px;
+    margin: 0;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    border-color: #888;
+    background: #f8f8f8;
+    color:#575757;
+    border:none;
+    outline:none;
+    display: inline-block;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    cursor:pointer;
 }
+
+
+/* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .epages-cart-overlay-line-item-quantity {padding-right:18px}
+}
+
+.epages-cart-overlay-line-item-quantity {position:relative}
+
 .epages-cart-overlay-line-item-remove {
      position:relative;
      text-align: center;
@@ -176,6 +200,7 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
     font-size: 22px;
     padding-right: 0.5em;
     left: 0;
+
 }
 .epages-cart-overlay-line-item-remove:disabled {
     cursor: auto;

@@ -13,7 +13,7 @@ class CartLineItemView extends Backbone.View
     <td><%= name %></td>
     <td><%= singleItemPrice %></td>
     <td>
-      <select class="form-control epages-cart-overlay-line-item-quantity">
+      <select class="epages-cart-overlay-line-item-quantity">
         <% _.map([1,2,3,4,5], function(num) { %>
           <option value="<%= num %>" <%= quantity === num ? "selected" : void 0 %> >
             <%= num %>
