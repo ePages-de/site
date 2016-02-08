@@ -205,7 +205,7 @@
             .clazz( getOption("modalClass", "") )
             .stylize({
                 display: 'block',
-                position: 'fixed',
+                position: 'absolute',
                 zIndex: 10001,
                 left: "50%",
                 top: "50px",

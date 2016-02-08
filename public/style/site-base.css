@@ -126,15 +126,31 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
     font-size: 80%;
 }
 .epages-cart-overlay-secure {
-    padding: 0px 10px 0 50px;
-    background: url(/images/secure.png) 0 25px no-repeat;
+  padding: 10px 10px 0 0px;
+  position:relative;
+  border: none;
+  background: none;
 }
+
+.epages-cart-overlay-secure:before {
+  content: "\f023";
+   font-family: FontAwesome;
+   border: none;
+   font-style: normal;
+   font-weight: normal;
+   text-decoration: inherit;
+   color: #141414;
+   font-size: 22px;
+   padding-right: 0.5em;
+   left: 0;
+}
+
 .epages-cart-overlay-checkout-button {
     float: right;
     margin: 0 auto;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .epages-cart-overlay-checkout-button {
     float: left;
     margin: 10px auto;

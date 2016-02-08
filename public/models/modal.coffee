@@ -9,10 +9,10 @@ class Modal
       content: view.el
       modalStyles:
         "background-color": "white"
-        "max-height": "80%"
+        "max-height": "100%"
         "max-width": "1000px"
         "min-width": "200px"
-        "overflow": "auto"
+        "overflow": "scroll"
         "padding": "20px"
         "width": "95%"
     @_modal.show()
