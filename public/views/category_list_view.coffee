@@ -9,8 +9,7 @@ class CategoryListView extends Backbone.View
     "change select": "onSelectionChange"
 
   template: _.template """
-  <div class="input-group">
-  <span data-i18n='category'></span><select class="form-control" id="sel1"></div>
+  <div class="input-group"><select class="form-control"></div>
   """
   render: ->
     return this if @collection.isEmpty()
