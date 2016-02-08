@@ -270,7 +270,7 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
     display: inline-block;
 }
 .epages-shop-search-form {
-  max-width: 150px;
+  max-width: 350px;
   float: left;
 }
 
