@@ -260,7 +260,7 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
     z-index: 10002;
 }
 .epages-shop-widget  {
-    overflow: auto;
+    max-width: 800px;
 }
 .epages-shop-widget label {
     font-size: 80%;
