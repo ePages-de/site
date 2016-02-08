@@ -61,6 +61,7 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
 .epages-shop-overlay-table td {
     vertical-align: baseline;
     padding: 2px;
+    text-align: left;
 }
 .epages-shop-overlay-hr {
     border-width: 1px 0 0 0;
@@ -130,10 +131,15 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
 }
 .epages-cart-overlay-checkout-button {
     float: right;
-    margin: 0 auto 10px;
-    vertical-align: right;
+    margin: 0 auto;
 }
 
+@media (max-width: 600px) {
+  .epages-cart-overlay-checkout-button {
+    float: left;
+    margin: 10px auto;
+  }
+}
 .epages-cart-overlay-line-item-quantity {
     margin-right: 5px;
 }

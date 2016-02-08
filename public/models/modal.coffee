@@ -11,7 +11,7 @@ class Modal
         "background-color": "white"
         "max-height": "80%"
         "max-width": "1000px"
-        "min-width": "500px"
+        "min-width": "200px"
         "overflow": "auto"
         "padding": "20px"
         "width": "95%"
