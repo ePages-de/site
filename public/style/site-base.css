@@ -40,8 +40,10 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
 .epages-shop-overlay-product-availability-WarnStock { color: orange; }
 .epages-shop-overlay-product-availability-OutStock { color: red; }
 .epages-shop-overlay-product-price {
-    font-weight: bold;
+    float: left;
     font-size: 135%;
+    font-weight: bold;
+    margin-right: 0.5em;
 }
 .epages-shop-variation label {
     min-width: 50px;
