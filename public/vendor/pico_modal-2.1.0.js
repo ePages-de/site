@@ -230,9 +230,7 @@
             width = "" + width + "px";
         }
 
-        var id = getOption("modalId", "pico-" + autoinc++);
-        var elem = Elem.make( getOption("parent") )
-
+        var elem = Elem.div()
             .clazz("pico-content")
             .clazz( getOption("modalClass", "") )
             .stylize({
