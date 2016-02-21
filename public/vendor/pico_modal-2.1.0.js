@@ -18,23 +18,10 @@
  * SOFTWARE.
  */
 
-(function (root, factory) {
-    "use strict";
-
-    if (typeof define === 'function' && define.amd) {
-        define([], factory);
-    }
-    else if (typeof module === 'object' && module.exports) {
-        module.exports = factory();
-    }
-    else {
-        root.picoModal = factory();
-    }
-}(this, function () {
-
-    /**
-     * A self-contained modal library
-     */
+/**
+ * A self-contained modal library
+ */
+(function(window, document) {
     "use strict";
 
     /** Returns whether a value is a dom node */
@@ -61,7 +48,7 @@
         var callbacks = [];
         return {
             watch: callbacks.push.bind(callbacks),
-            trigger: function( context ) {
+            trigger: function( modal ) {
 
                 var unprevented = true;
                 var event = {
@@ -71,19 +58,12 @@
                 };
 
                 for (var i = 0; i < callbacks.length; i++) {
-                    callbacks[i](context, event);
+                    callbacks[i](modal, event);
                 }
 
                 return unprevented;
             }
         };
-    }
-
-
-    /** Whether an element is hidden */
-    function isHidden ( elem ) {
-        // @see http://stackoverflow.com/questions/19669786
-        return window.getComputedStyle(elem).display === 'none';
     }
 
 
@@ -94,12 +74,11 @@
         this.elem = elem;
     }
 
-    /** Creates a new div */
-    Elem.make = function ( parent, tag ) {
-        if ( typeof parent === "string" ) {
-            parent = document.querySelector(parent);
-        }
-        var elem = document.createElement(tag || 'div');
+    /**
+     * Creates a new div
+     */
+    Elem.div = function ( parent ) {
+        var elem = document.createElement('div');
         (parent || document.body).appendChild(elem);
         return new Elem(elem);
     };
@@ -107,8 +86,8 @@
     Elem.prototype = {
 
         /** Creates a child of this node */
-        child: function (tag) {
-            return Elem.make(this.elem, tag);
+        child: function () {
+            return Elem.div(this.elem);
         },
 
         /** Applies a set of styles to an element */
@@ -154,7 +133,7 @@
 
         /** Removes this element from the DOM */
         destroy: function() {
-            this.elem.parentNode.removeChild(this.elem);
+            document.body.removeChild(this.elem);
         },
 
         /** Hides this element */
@@ -169,9 +148,7 @@
 
         /** Sets an attribute on this element */
         attr: function ( name, value ) {
-            if (value !== undefined) {
-                this.elem.setAttribute(name, value);
-            }
+            this.elem.setAttribute(name, value);
             return this;
         },
 
@@ -187,13 +164,9 @@
                 }
             }
             return false;
-        },
-
-        /** Whether this element is visible */
-        isVisible: function () {
-            return !isHidden(this.elem);
         }
     };
+
 
     /** Generates the grey-out effect */
     function buildOverlay( getOption, close ) {
@@ -201,7 +174,7 @@
             .clazz("pico-overlay")
             .clazz( getOption("overlayClass", "") )
             .stylize({
-                display: "none",
+                display: "block",
                 position: "fixed",
                 top: "0px",
                 left: "0px",
@@ -219,9 +192,6 @@
                 }
             });
     }
-
-    // An auto incrementing ID assigned to each modal
-    var autoinc = 1;
 
     /** Builds the content of a modal */
     function buildModal( getOption, close ) {
