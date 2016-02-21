@@ -240,9 +240,7 @@
                 position: 'absolute',
                 zIndex: 10001,
                 left: "50%",
-                top: "38.1966%",
-                maxHeight: '90%',
-                boxSizing: 'border-box',
+                top: "50px",
                 width: width,
                 '-ms-transform': 'translateX(-50%)',
                 '-moz-transform': 'translateX(-50%)',
@@ -256,10 +254,7 @@
                 borderRadius: "5px"
             }))
             .html( getOption('content') )
-            .attr("id", id)
             .attr("role", "dialog")
-            .attr("aria-labelledby", getOption("ariaLabelledBy"))
-            .attr("aria-describedby", getOption("ariaDescribedBy", id))
             .onClick(function (event) {
                 var isCloseClick = new Elem(event.target)
                     .anyAncestor(function (elem) {
@@ -276,26 +271,16 @@
     /** Builds the close button */
     function buildClose ( elem, getOption ) {
         if ( getOption('closeButton', true) ) {
-            return elem.child('button')
-                .html( getOption('closeHtml', "&#xD7;") )
-                .clazz("pico-close")
-                .clazz( getOption("closeClass", "") )
+            return elem.child()
+                .html( getOption('closeHtml', "") )
+                .clazz("pico-close fa fa-2x fa-times-circle")
+                .clazz( getOption("closeClass") )
                 .stylize( getOption('closeStyles', {
-                    borderRadius: "2px",
-                    border: 0,
-                    padding: 0,
                     cursor: "pointer",
-                    height: "15px",
-                    width: "15px",
                     position: "absolute",
                     top: "5px",
                     right: "5px",
-                    fontSize: "16px",
-                    textAlign: "center",
-                    lineHeight: "15px",
-                    background: "#CCC"
-                }) )
-                .attr("aria-label", getOption("close-label", "Close"));
+                }) );
         }
     }
 
@@ -307,148 +292,10 @@
     }
 
 
-    // An observable that is triggered whenever the escape key is pressed
-    var escapeKey = observable();
-
-    // An observable that is triggered when the user hits the tab key
-    var tabKey = observable();
-
-    /** A global event handler to detect the escape key being pressed */
-    document.documentElement.addEventListener(
-        'keydown',
-        function onKeyPress (event) {
-            var keycode = event.which || event.keyCode;
-
-            // If this is the escape key
-            if ( keycode === 27 ) {
-                escapeKey.trigger();
-            }
-
-            // If this is the tab key
-            else if ( keycode === 9 ) {
-                tabKey.trigger(event);
-            }
-        }
-    );
-
-
-    /** Attaches focus management events */
-    function manageFocus ( iface, isEnabled ) {
-
-        /** Whether an element matches a selector */
-        function matches ( elem, selector ) {
-            var fn = elem.msMatchesSelector ||
-                elem.webkitMatchesSelector ||
-                elem.matches;
-            return fn.call(elem, selector);
-        }
-
-        /**
-         * Returns whether an element is focusable
-         * @see http://stackoverflow.com/questions/18261595
-         */
-        function canFocus( elem ) {
-            if (
-                isHidden(elem) ||
-                matches(elem, ":disabled") ||
-                elem.hasAttribute("contenteditable")
-            ) {
-                return false;
-            }
-            else {
-                return elem.hasAttribute("tabindex") ||
-                    matches(
-                        elem,
-                        "input,select,textarea,button,a[href],area[href],iframe"
-                    );
-            }
-        }
-
-        /** Returns the first descendant that can be focused */
-        function firstFocusable ( elem ) {
-            var items = elem.getElementsByTagName("*");
-            for (var i = 0; i < items.length; i++) {
-                if ( canFocus(items[i]) ) {
-                    return items[i];
-                }
-            }
-        }
-
-        /** Returns the last descendant that can be focused */
-        function lastFocusable ( elem ) {
-            var items = elem.getElementsByTagName("*");
-            for (var i = items.length; i--;) {
-                if ( canFocus(items[i]) ) {
-                    return items[i];
-                }
-            }
-        }
-
-        // The element focused before the modal opens
-        var focused;
-
-        // Records the currently focused element so state can be returned
-        // after the modal closes
-        iface.beforeShow(function getActiveFocus() {
-            focused = document.activeElement;
-        });
-
-        // Shift focus into the modal
-        iface.afterShow(function focusModal() {
-            if ( isEnabled() ) {
-                var focusable = firstFocusable(iface.modalElem());
-                if ( focusable ) {
-                    focusable.focus();
-                }
-            }
-        });
-
-        // Restore the previously focused element when the modal closes
-        iface.afterClose(function returnFocus() {
-            if ( isEnabled() && focused ) {
-                focused.focus();
-            }
-            focused = null;
-        });
-
-        // Capture tab key presses and loop them within the modal
-        tabKey.watch(function tabKeyPress (event) {
-            if ( isEnabled() && iface.isVisible() ) {
-                var first = firstFocusable(iface.modalElem());
-                var last = lastFocusable(iface.modalElem());
-
-                var from = event.shiftKey ? first : last;
-                if ( from === document.activeElement ) {
-                    (event.shiftKey ? last : first).focus();
-                    event.preventDefault();
-                }
-            }
-        });
-    }
-
-    /** Manages setting the 'overflow: hidden' on the body tag */
-    function manageBodyOverflow(iface, isEnabled) {
-        var origOverflow;
-        var body = new Elem(document.body);
-
-        iface.beforeShow(function () {
-            // Capture the current values so they can be restored
-            origOverflow = body.elem.style.overflow;
-
-            if (isEnabled()) {
-                body.stylize({ overflow: "hidden" });
-            }
-        });
-
-        iface.afterClose(function () {
-            body.stylize({ overflow: origOverflow });
-        });
-    }
-
     /**
      * Displays a modal
      */
-    return function picoModal(options) {
+    function picoModal(options) {
 
         if ( isString(options) || isNode(options) ) {
             options = { content: options };
@@ -471,16 +318,6 @@
             }
             return value === undefined ? defaultValue : value;
         }
-
-
-        // The various DOM elements that constitute the modal
-        var modalElem = build.bind(window, 'modal');
-        var shadowElem = build.bind(window, 'overlay');
-        var closeElem = build.bind(window, 'close');
-
-        // This will eventually contain the modal API returned to the user
-        var iface;
-
 
         /** Hides this modal */
         function forceClose () {
@@ -522,7 +359,12 @@
             return built[name];
         }
 
-        iface = {
+        var modalElem = build.bind(window, 'modal');
+        var shadowElem = build.bind(window, 'overlay');
+        var closeElem = build.bind(window, 'close');
+
+
+        var iface = {
 
             /** Returns the wrapping modal element */
             modalElem: buildElemAccessor(modalElem),
@@ -532,14 +374,6 @@
 
             /** Returns the overlay element */
             overlayElem: buildElemAccessor(shadowElem),
-
-            /** Builds the dom without showing the modal */
-            buildDom: returnIface(build),
-
-            /** Returns whether this modal is currently being shown */
-            isVisible: function () {
-                return !!(built && modalElem && modalElem().isVisible());
-            },
 
             /** Shows this modal */
             show: function () {
@@ -563,9 +397,9 @@
 
             /** Destroys this modal */
             destroy: function () {
-                modalElem().destroy();
-                shadowElem().destroy();
-                shadowElem = modalElem = closeElem = undefined;
+                modalElem = modalElem().destroy();
+                shadowElem = shadowElem().destroy();
+                closeElem = undefined;
             },
 
             /**
@@ -574,9 +408,7 @@
              * `overlayClose`.
              */
             options: function ( opts ) {
-                Object.keys(opts).map(function (key) {
-                    options[key] = opts[key];
-                });
+                options = opts;
             },
 
             /** Executes after the DOM nodes are created */
@@ -595,18 +427,16 @@
             afterClose: returnIface(afterCloseEvent.watch)
         };
 
-        manageFocus(iface, getOption.bind(null, "focus", true));
-
-        manageBodyOverflow(iface, getOption.bind(null, "bodyOverflow", true));
-
-        // If a user presses the 'escape' key, close the modal.
-        escapeKey.watch(function escapeKeyPress () {
-            if ( getOption("escCloses", true) && iface.isVisible() ) {
-                iface.close();
-            }
-        });
-
         return iface;
-    };
+    }
 
-}));
+    if ( typeof window.define === "function" && window.define.amd ) {
+        window.define(function () {
+            return picoModal;
+        });
+    }
+    else {
+        window.picoModal = picoModal;
+    }
+
+}(window, document));
