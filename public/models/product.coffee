@@ -96,7 +96,7 @@ class Product extends Backbone.Model
     _.findWhere(@get("images"), classifier: "Large").url
 
   productImage: ->
-    @get("variationImage") || @mediumImage()
+    @get("variationImage") || @largeImage()
 
   link: ->
     _.findWhere(@get("links"), rel: "self").href
