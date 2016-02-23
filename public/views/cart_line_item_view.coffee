@@ -13,13 +13,7 @@ class CartLineItemView extends Backbone.View
     <td><%= name %></td>
     <td><%= singleItemPrice %></td>
     <td>
-      <select class="epages-cart-overlay-line-item-quantity">
-        <% _.map([1,2,3,4,5], function(num) { %>
-          <option value="<%= num %>" <%= quantity === num ? "selected" : void 0 %> >
-            <%= num %>
-          </option>
-        <% }); %>
-      </select>
+      <input type="number" class="epages-cart-overlay-line-item-quantity" value="<%= quantity %>">
       <%= unit %>
     </td>
     <td>
@@ -43,6 +37,7 @@ class CartLineItemView extends Backbone.View
   changeQuantity: (event) ->
     quantity = parseInt(event.target.value)
     @model.set(quantity: quantity)
+
 
   removeLineItem: (event) ->
     event.preventDefault()
