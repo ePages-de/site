@@ -126,7 +126,7 @@ class Product extends Backbone.Model
     variationPrice: @price()
     quantity: @quantity()
     shortDescription: @shortDescription()
-    variationImage: @mediumImage()
+    variationImage: @largeImage()
 
   loadVariations: =>
     $.getJSON "#{@url()}/variations"
@@ -148,7 +148,7 @@ class Product extends Backbone.Model
           $(".epages-shop-overlay-slideshow").empty()
           json.items.map (image) ->
             slide_image = _.findWhere(image.sizes, classifier: "Small").url
-            ref_image = _.findWhere(image.sizes, classifier: "Medium").url
+            ref_image = _.findWhere(image.sizes, classifier: "Large").url
             if slide_image && ref_image
               $(".epages-shop-overlay-slideshow").append("<li class=\"slideshow-image\"><img src=\"#{slide_image}\" data-image=\"#{ref_image}\"></li>")
 
