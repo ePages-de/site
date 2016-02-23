@@ -3,8 +3,6 @@ class ProductListView extends Backbone.View
   initialize: ->
     @listenTo @collection, "reset", @render
 
-  className: "row"
-
   render: ->
     if @collection.length == 0
       html = '<div class="alert alert-danger"><strong data-i18n="no-products">No products found</strong></div>'

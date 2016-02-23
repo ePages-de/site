@@ -4,16 +4,16 @@ class WidgetView extends Backbone.View
     @_grabOptions()
 
   template: _.template """
-  <div class="row search-cart-line">
-  <div class="epages-shop-cart col-md-push"></div>
-  <div class="epages-shop-search-form col-md-pull"></div>
+  <div class="row">
+  <div class="epages-shop-search-form col-xs-2 col-sm-6 col-md-4 col-lg-2"></div>
+  <div class="epages-shop-cart col-xs-10 col-sm-6 col-md-8 col-lg-10"></div>
   </div>
   <div class="row epages-shop-navigation">
-  <div class="epages-shop-sort"></div>
-  <div class="epages-shop-category-list"></div>
+  <div class="epages-shop-sort col-xs"></div>
+  <div class="epages-shop-category-list col-xs"></div>
   </div>
-  <div class="epages-shop-product-list" data-i18n='loading'></div>
-  <div class="epages-shop-pagination"></div>
+  <div class="epages-shop-product-list row" data-i18n='loading'></div>
+  <div class="epages-shop-pagination col-xs"></div>
 
 """
 
