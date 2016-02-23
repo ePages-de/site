@@ -52,9 +52,9 @@ class CartDetailView extends Backbone.View
               </tr>
             </tfoot>
           </table>
-          <div class="row">
-          <div class="epages-cart-overlay-secure col-xs-10 col-sm-6 col-md-8 col-lg-10" data-i18n='ssl'></div>
-          <div class="col-xs-2 col-sm-6 col-md-4 col-lg-2">
+          <div class="epages-row">
+          <div class="epages-cart-overlay-secure epages-col-xs-10 epages-col-sm-6 epages-col-md-8 epages-col-lg-10" data-i18n='ssl'></div>
+          <div class="epages-col-xs-2 epages-col-sm-6 epages-col-md-4 epages-col-lg-2">
           <button class="epages-cart-overlay-checkout-button" data-i18n='checkout'></button></div>
         </div></div>
         <div class="epages-cart-overlay-is-empty" style="display:none">
