@@ -123,7 +123,7 @@ class Product extends Backbone.Model
 
     name: @name()
     productId: @id()
-    variationPrice: @price()
+    variationPrice: @formattedPrice()
     quantity: @quantity()
     shortDescription: @shortDescription()
     variationImage: @largeImage()
