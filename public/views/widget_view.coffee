@@ -9,8 +9,8 @@ class WidgetView extends Backbone.View
   <div class="epages-shop-cart epages-col-xs-10 epages-col-sm-6 epages-col-md-8 epages-col-lg-10"></div>
   </div>
   <div class="epages-row epages-shop-navigation">
-  <div class="epages-shop-sort epages-col-xs"></div>
-  <div class="epages-shop-category-list epages-col-xs"></div>
+  <div class="epages-shop-sort epages-col-xs-2"></div>
+  <div class="epages-shop-category-list epages-col-xs-2"></div>
   </div>
   <div class="epages-shop-product-list epages-row" data-i18n='loading'></div>
   <div class="epages-shop-pagination epages-col-xs"></div>
