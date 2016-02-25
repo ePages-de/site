@@ -6,7 +6,7 @@ class SearchFormView extends Backbone.View
     "submit": "onSubmit"
 
   template: _.template """
-    <input type="text" class="form-control"  placeholder="Search">
+    <input type="text" class="epages-search-form"  placeholder="Search">
   """
 
   render: ->
