@@ -205,10 +205,10 @@
             .clazz( getOption("modalClass", "") )
             .stylize({
                 display: 'block',
-                position: 'absolute',
+                position: 'fixed',
                 zIndex: 10001,
                 left: "50%",
-                top: "50px",
+                top: "25%",
                 width: width,
                 '-ms-transform': 'translateX(-50%)',
                 '-moz-transform': 'translateX(-50%)',
@@ -219,7 +219,7 @@
             .stylize(getOption('modalStyles', {
                 backgroundColor: "white",
                 padding: "20px",
-                borderRadius: "5px"
+                borderRadius: "0px"
             }))
             .html( getOption('content') )
             .attr("role", "dialog")
