@@ -208,7 +208,7 @@
                 position: 'fixed',
                 zIndex: 10001,
                 left: "50%",
-                top: "25%",
+                top: "10%",
                 width: width,
                 '-ms-transform': 'translateX(-50%)',
                 '-moz-transform': 'translateX(-50%)',
