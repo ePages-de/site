@@ -9,10 +9,10 @@ class SortView extends Backbone.View
     "change select": "onChange"
 
   template: _.template """
-    <select class="form-control" >
-      <option value="">Name</option>
-      <option value="price,asc">Price: low to high</option>
-      <option value="price,desc">Price: high to low</option>
+    <select class="form-control">
+      <option value="" data-i18n='name'></option>
+      <option value="price,asc" data-i18n='price-asc'></option>
+      <option value="price,desc" data-i18n='price-desc'></option>
     </select>
   """
 
