@@ -178,7 +178,7 @@
                 position: "fixed",
                 top: "0px",
                 left: "0px",
-                height: "100%",
+                height: "80%",
                 width: "100%",
                 zIndex: 10000
             })
