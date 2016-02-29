@@ -178,7 +178,7 @@
                 position: "fixed",
                 top: "0px",
                 left: "0px",
-                height: "80%",
+                height: "100%",
                 width: "100%",
                 zIndex: 10000
             })
@@ -219,7 +219,7 @@
             .stylize(getOption('modalStyles', {
                 backgroundColor: "white",
                 padding: "20px",
-                borderRadius: "0px"
+                borderRadius: "0"
             }))
             .html( getOption('content') )
             .attr("role", "dialog")
