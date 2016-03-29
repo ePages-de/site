@@ -11,6 +11,7 @@
   "exclude-vat-prices": "Priser plus moms, plus ",
   "include-vat": "inkluderer moms, plus ",
   "include-vat-price": "Pris inklusive moms, plus ",
+  "include-vat-prices": "Priser er inklusive moms, plus ",
   "loading": "Indlæser ...",
   "name": "Navn",
   "no-products": "Søgningen fandt ingen matches.",

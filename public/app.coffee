@@ -74,6 +74,9 @@ class App
       # Pagination
       @_setupPagination(widgetView, products)
 
+      # Taxes
+      @_setupTaxes(widgetView, products)
+
       # Cart button
       @_setupCartButton(widgetView)
 
@@ -151,3 +154,7 @@ class App
       paginationView.on "change:page", () ->
         products.page = @page
         products.fetch(reset: true)
+
+  @_setupTaxes: (widgetView, products) ->
+    taxesView = new TaxesView(collection: products).render()
+    widgetView.regions.taxes.append(taxesView.el)

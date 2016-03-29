@@ -11,6 +11,7 @@
   "exclude-vat-prices": "Prijzen plus btw plus ",
   "include-vat": "inclusief btw, plus ",
   "include-vat-price": "Prijs inclusief btw, plus ",
+  "include-vat-prices": "Prijzen inclusief btw plus ",
   "loading": "Laden...",
   "name": "Naam",
   "no-products": "Er zijn geen producten die voldoen aan uw zoekcriteria.",

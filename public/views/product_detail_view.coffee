@@ -31,7 +31,8 @@ class ProductDetailView extends Backbone.View
             </div>
           <% } %>
           <div class="epages-shop-overlay-product-shipping">
-            <span data-i18n='include-vat-price'></span> <a href="<%= shippingUrl %>" target="_blank" data-i18n='shipping'></a>
+            <span data-i18n="<% if (taxType == 'GROSS') { %>include-vat-price<% } else { %>exclude-vat-price<% } %>"></span>
+            <a href="<%= shippingUrl %>" target="_blank" data-i18n='shipping'></a>
           </div>
           <div class="epages-shop-overlay-product-availability-<%= availability %>">
             <%= availabilityText %>
@@ -79,6 +80,7 @@ class ProductDetailView extends Backbone.View
       price: @model.productFormattedPrice()
       disabled: @model.isAvailable()
       shippingUrl: @model.shippingUrl()
+      taxType: @model.taxType()
 
     new VariationAttributeListView(
       collection: @model.variationAttributes()

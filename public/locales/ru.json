@@ -11,6 +11,7 @@
   "exclude-vat-prices": "Цены плюс НДС, плюс",
   "include-vat": "включает НДС и ",
   "include-vat-price": "Цена включает НДС и ",
+  "include-vat-prices": "Цены включают НДС и ",
   "loading": "Загрузка...",
   "name": "Название",
   "no-products": "Поиск не принес результатов.",

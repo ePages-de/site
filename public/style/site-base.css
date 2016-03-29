@@ -51,8 +51,10 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
     min-width: 50px;
     display: inline-block;
 }
+.epages-shop-taxes,
 .epages-shop-overlay-product-shipping {
     font-size: 80%;
+    clear: both;
 }
 .epages-shop-overlay-buy-button {
     width: 100%;

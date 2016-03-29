@@ -11,6 +11,7 @@
   "exclude-vat-prices": "Le prix n'inclut la TVA ni la ",
   "include-vat": "TVA incluse, plus ",
   "include-vat-price": "Prix TVA incluse, plus ",
+  "include-vat-prices": "Le prix inclut la TVA mais pas la ",
   "loading": "Chargement...",
   "name": "Nom",
   "no-products": "Votre recherche n'a donné aucun résultat.",

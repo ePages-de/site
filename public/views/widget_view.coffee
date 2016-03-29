@@ -13,6 +13,7 @@ class WidgetView extends Backbone.View
   <div class="epages-shop-category-list epages-col-xs-4 epages-col-sm-3 epages-col-md-3 epages-col-lg-3"></div>
   </div>
   <div class="epages-shop-product-list epages-row" data-i18n='loading'></div>
+  <div class="epages-shop-taxes"></div>
   <div class="epages-shop-pagination epages-xs"></div>
 
 """
@@ -39,6 +40,7 @@ class WidgetView extends Backbone.View
       searchForm:   @$(".epages-shop-search-form")
       sort:         @$(".epages-shop-sort")
       pagination:   @$(".epages-shop-pagination")
+      taxes:        @$(".epages-shop-taxes")
       cart:         @_findCart()
 
   _findCart: ->

@@ -11,6 +11,7 @@
   "exclude-vat-prices": "Prezzi più IVA più ",
   "include-vat": "include IVA e ",
   "include-vat-price": "Il prezzo include l'IVA e ",
+  "include-vat-prices": "Prezzi comprensivi di IVA più ",
   "loading": "Caricamento in corso...",
   "name": "Nome",
   "no-products": "La ricerca non ha prodotto risultati.",

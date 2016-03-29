@@ -63,6 +63,10 @@ class Product extends Backbone.Model
     if @get("priceInfo").basePrice
       @get("priceInfo").basePrice.formatted
 
+  taxType: ->
+    if @get("priceInfo")
+      @get("priceInfo").price.taxType
+
   totalPrice: ->
     @quantity() * @price()
 

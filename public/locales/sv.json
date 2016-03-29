@@ -11,6 +11,7 @@
   "exclude-vat-prices": "Priser plus moms, plus ",
   "include-vat": "inklusive moms, plus ",
   "include-vat-price": "Pris inklusive moms, plus ",
+  "include-vat-prices": "Priser inklusive moms, plus ",
   "loading": "Läser in ...",
   "name": "Namn",
   "no-products": "Din sökning matchade inga produkter.",

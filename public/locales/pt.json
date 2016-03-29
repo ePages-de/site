@@ -11,6 +11,7 @@
   "exclude-vat-prices": "Os preços excluem IVA e ",
   "include-vat": "inclui IVA e ",
   "include-vat-price": "Os preços incluem IVA e ",
+  "include-vat-prices": "Os preços incluem IVA e ",
   "loading": "A carregar...",
   "name": "Nome",
   "no-products": "Sem resultados de pesquisa",
