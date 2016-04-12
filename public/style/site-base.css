@@ -89,6 +89,21 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
     margin: 0px;
     padding-left: 1em;
 }
+.epages-shop-product-price {
+    font-weight: bold;
+}
+.epages-shop-product-manufacturer-price div{
+    display: inline-block;
+    font-size: 12px;
+}
+.epages-shop-product-manufacturer-price .price{
+    text-decoration: line-through;
+}
+.epages-shop-product-base-price {
+    color: #aaa;
+    font-weight: lighter;
+    font-size: 12px;
+}
 .epages-cart-overlay {
     color: #444;
 }
@@ -251,6 +266,7 @@ input[type=number]::-webkit-outer-spin-button {
 .epages-shop-product-link {
     text-decoration: none;
     color: inherit;
+    text-align: center;
 }
 .epages-shop-product-link:hover {
     text-decoration: underline;
@@ -329,13 +345,14 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .epages-shop-product-list-image-container {
-margin-bottom: 10px;
-height: 100px;
-max-height: 100px;
+    margin-bottom: 10px;
+    height: 100px;
+    max-height: 100px;
 }
 
 .img-product-list-thumbnail {
-  display: block;
-  max-height: 200px;
-  max-width: 200px;
+    display: block;
+    max-height: 200px;
+    max-width: 200px;
+    margin: 0 auto;
 }
