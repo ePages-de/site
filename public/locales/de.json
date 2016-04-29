@@ -9,6 +9,7 @@
   "exclude-vat": "zzgl. MwSt., zzgl. ",
   "exclude-vat-price": "Preis zzgl. MwSt., zzgl. ",
   "exclude-vat-prices": "Preise zzgl. MwSt., zzgl. ",
+  "include-vat-cart": "inkl. MwSt.",
   "include-vat": "inkl. MwSt. und ",
   "include-vat-price": "Preis inkl. MwSt. und ",
   "include-vat-prices": "Preise inkl. MwSt., plus ",

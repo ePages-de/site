@@ -9,6 +9,7 @@
   "exclude-vat": "plus VAT, plus ",
   "exclude-vat-price": "Price plus VAT, plus ",
   "exclude-vat-prices": "Prices plus VAT, plus ",
+  "include-vat-cart": "includes VAT",
   "include-vat": "includes VAT, plus ",
   "include-vat-price": "Price includes VAT, plus ",
   "include-vat-prices": "Prices include VAT, plus ",
@@ -24,5 +25,6 @@
   "ssl": "Your data will be transmitted through an encrypted connection (SSL)<br>and will not be disclosed to third parties.",
   "subtotal": "Subtotal",
   "total-price": "Total price",
-  "unit-price": "Price"
+  "unit-price": "Price",
+  "remove-line-item": "Remove product"
 }

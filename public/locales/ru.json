@@ -9,6 +9,7 @@
   "exclude-vat": "Плюс НДС, плюс ",
   "exclude-vat-price": "Цена плюс НДС, плюс",
   "exclude-vat-prices": "Цены плюс НДС, плюс",
+  "include-vat-cart": "включает НДС",
   "include-vat": "включает НДС и ",
   "include-vat-price": "Цена включает НДС и ",
   "include-vat-prices": "Цены включают НДС и ",

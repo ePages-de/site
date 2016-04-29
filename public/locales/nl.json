@@ -9,6 +9,7 @@
   "exclude-vat": "plus btw plus ",
   "exclude-vat-price": "Prijs plus btw plus ",
   "exclude-vat-prices": "Prijzen plus btw plus ",
+  "include-vat-cart": "inclusief btw",
   "include-vat": "inclusief btw, plus ",
   "include-vat-price": "Prijs inclusief btw, plus ",
   "include-vat-prices": "Prijzen inclusief btw plus ",
