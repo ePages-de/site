@@ -6,6 +6,7 @@
   "category": "Category",
   "checkout": "Check out",
   "description": "Description",
+  "manufacturer-price": "Old price",
   "exclude-vat": "plus VAT, plus ",
   "exclude-vat-price": "Price plus VAT, plus ",
   "exclude-vat-prices": "Prices plus VAT, plus ",
