@@ -257,9 +257,6 @@ input[type=number]::-webkit-outer-spin-button {
     width: 32px;
     z-index: 10002;
 }
-.epages-shop-widget  {
-    max-width: 800px;
-}
 .epages-shop-widget label {
     font-size: 80%;
 }
@@ -318,7 +315,6 @@ input[type=number]::-webkit-outer-spin-button {
 
 .epages-cart-overlay, .epages-shop-overlay {padding: 10px 15px 50px;}
 
-.epages-cart-overlay-line-table th, .epages-cart-overlay-line-table td {padding: 20px 15px 15px 0 !important; float: none;}
 .epages-cart-overlay-line-table th .epages-cart-overlay-price {text-align:right;}
 .epages-cart-overlay-line-table .epages-cart-overlay-image {width: 10%;} 
 .epages-cart-overlay-line-table .epages-cart-overlay-image img {width: 100%;} 
@@ -331,7 +327,7 @@ input[type=number]::-webkit-outer-spin-button {
 .epages-cart-overlay-line-item-remove::before {padding-right: 0;}
 .epages-cart-overlay-line-table .epages-cart-overlay-remove span {display: none;}
 .epages-cart-overlay-line-table .epages-cart-overlay-subhead-narrow {display: none;}
-.epages-cart-overlay-line-table tfoot td {text-align: right; width: 75%;padding: 20px 0 !important;}
+.epages-cart-overlay-line-table tfoot td {text-align: right; width: 75%;}
 .epages-cart-overlay-line-table tfoot td.epages-cart-overlay-delivery-price,
 .epages-cart-overlay-line-table tfoot td.epages-cart-overlay-product-price {width: 25%; min-width: 80px;}
 
@@ -389,19 +385,28 @@ input[type=number]::-webkit-outer-spin-button {
 .epages-shop-widget .epages-shop-product {
 	float: left; width: 100%; min-width:200px;height: auto;margin-bottom:20px;
 }	
-@media (min-width: 564px) {
+@media (min-width: 564px) and (max-width: 763px) {
 	.epages-shop-widget .epages-shop-product {
     width: 50%;
   }
+	.epages-shop-widget .epages-shop-product:nth-child(odd) {
+    clear: both;
+  }
 }
-@media (min-width: 764px) {
+@media (min-width: 764px) and (max-width: 963px) {
 	.epages-shop-widget .epages-shop-product {
     width: 33%;
+  }
+	.epages-shop-widget .epages-shop-product:nth-child(3n+1) {
+    clear: both;
   }
 }
 @media (min-width: 964px) {
 	.epages-shop-widget .epages-shop-product {
     width: 25%;
+  }
+	.epages-shop-widget .epages-shop-product:nth-child(4n+1) {
+    clear: both;
   }
 }
 /* List view: Fixed aspect ratio for responsive product image container unless only one column */
