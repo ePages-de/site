@@ -9,6 +9,7 @@
   "exclude-vat": "plus moms, plus ",
   "exclude-vat-price": "Pris plus moms, plus ",
   "exclude-vat-prices": "Priser plus moms, plus ",
+  "include-vat-cart": "inklusive moms",
   "include-vat": "inklusive moms, plus ",
   "include-vat-price": "Pris inklusive moms, plus ",
   "include-vat-prices": "Priser inklusive moms, plus ",

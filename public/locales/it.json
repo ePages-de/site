@@ -9,6 +9,7 @@
   "exclude-vat": "più IVA più ",
   "exclude-vat-price": "Prezzo più IVA più ",
   "exclude-vat-prices": "Prezzi più IVA più ",
+  "include-vat-cart": "include IVA",
   "include-vat": "include IVA e ",
   "include-vat-price": "Il prezzo include l'IVA e ",
   "include-vat-prices": "Prezzi comprensivi di IVA più ",

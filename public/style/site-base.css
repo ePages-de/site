@@ -1,4 +1,8 @@
 body { font: 14px/20px "Helvetica Neue", Arial, sans-serif; margin: 50px; }
+@media (max-width: 564px) {
+body {margin: 25px;}
+}
+
 h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; margin-bottom: 40px; }
 #container { max-width: 800px; }
 .epages-shop-overlay {
@@ -24,6 +28,7 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
     transition: 0.6s;
     max-width: 490px;
     min-width: 400px;
+    width: 100%
 }
 .epages-shop-overlay-slideshow {
     display: inline-flex;
@@ -131,13 +136,6 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
 .epages-cart-overlay-product-shipping {
     font-size: 80%;
 }
-.epages-cart-overlay-secure {
-  padding: 10px 10px 0 0px;
-  position:relative;
-  border: none;
-  background: none;
-}
-
 .epages-cart-overlay-secure:before {
   content: "\f023";
    font-family: FontAwesome;
@@ -151,17 +149,6 @@ h1 { font-family: georgia, times, serif; font-size: 36px; font-weight: 300; marg
    left: 0;
 }
 
-.epages-cart-overlay-checkout-button {
-    float: right;
-    margin: 0 auto;
-}
-
-@media (max-width: 900px) {
-  .epages-cart-overlay-checkout-button {
-    float: left;
-    margin: 10px auto;
-  }
-}
 .epages-cart-overlay-line-item-quantity {
     margin-right: 5px;
     padding:3px;
@@ -255,11 +242,8 @@ input[type=number]::-webkit-outer-spin-button {
 .epages-shop-product-link:hover {
     text-decoration: underline;
 }
-.epages-shop-widget .epages-shop-product {
-    float: left;
-    width: 200px;
-    margin-bottom: 10px;
-    height: 200px;
+.epages-shop-widget .epages-shop-product-price {
+    font-weight: bold;
 }
 #epages-shop-widget-loading {
     background-image: url(/images/spinner.gif);
@@ -328,14 +312,140 @@ input[type=number]::-webkit-outer-spin-button {
     padding-left: 5px;
 }
 
-.epages-shop-product-list-image-container {
-margin-bottom: 10px;
-height: 100px;
-max-height: 100px;
+/* Fixes and additions */
+
+/* Responsive cart overlay */
+
+.epages-cart-overlay, .epages-shop-overlay {padding: 10px 15px 50px;}
+
+.epages-cart-overlay-line-table th, .epages-cart-overlay-line-table td {padding: 20px 15px 15px 0 !important; float: none;}
+.epages-cart-overlay-line-table th .epages-cart-overlay-price {text-align:right;}
+.epages-cart-overlay-line-table .epages-cart-overlay-image {width: 10%;} 
+.epages-cart-overlay-line-table .epages-cart-overlay-image img {width: 100%;} 
+.epages-cart-overlay-line-table .epages-cart-overlay-name {width:auto;} 
+.epages-cart-overlay-line-table .epages-cart-overlay-price {width: 10%; min-width: 65px; text-align:right;}
+.epages-cart-overlay-line-table .epages-cart-overlay-quantity {width: 20%; min-width: 125px;}
+.epages-cart-overlay-line-table .epages-cart-overlay-total {width: 12%; min-width: 65px; text-align:right;}
+.epages-cart-overlay-line-table .epages-cart-overlay-remove,
+.epages-cart-overlay-line-table .epages-cart-overlay-remove button {width: 25px;padding: 0;}
+.epages-cart-overlay-line-item-remove::before {padding-right: 0;}
+.epages-cart-overlay-line-table .epages-cart-overlay-remove span {display: none;}
+.epages-cart-overlay-line-table .epages-cart-overlay-subhead-narrow {display: none;}
+.epages-cart-overlay-line-table tfoot td {text-align: right; width: 75%;padding: 20px 0 !important;}
+.epages-cart-overlay-line-table tfoot td.epages-cart-overlay-delivery-price,
+.epages-cart-overlay-line-table tfoot td.epages-cart-overlay-product-price {width: 25%; min-width: 80px;}
+
+.epages-cart-overlay .epages-row {margin: 0 !important; padding: 10px 0;}
+.epages-cart-overlay .epages-row div {padding:0 !important;}
+.epages-cart-overlay-secure {width:66.667%; padding: 10px 0;}
+.epages-cart-overlay-checkout-button {float: right; margin: 10px 0; padding: 10px 20px;font-weight: bold;text-transform: uppercase;border-radius: 4px;border: 1px solid #999;background-color: #eee;font-size: 16px;text-shadow: 1px 1px 0px #fff;}
+
+
+@media (max-width: 768px) {
+.epages-cart-overlay-line-table thead {display: none;}
+.epages-cart-overlay-line-table .epages-cart-overlay-subhead-narrow {display: block;line-height: 2; font-weight: bold;}
+.epages-cart-overlay-line-table td {padding: 20px 0 15px 0px !important; float: left;}
+.epages-cart-overlay-line-table .epages-cart-overlay-image {width: 20%; float:right;} 
+.epages-cart-overlay-line-table .epages-cart-overlay-name {width: 80%;font-size:16px; font-weight:bold;} 
+.epages-cart-overlay-line-table .epages-cart-overlay-price {width: 33.333%;clear:both;border-top:1px dashed #e3e0e0; text-align: left;}
+.epages-cart-overlay-line-table .epages-cart-overlay-quantity {width: 33.333%; text-align: center;border-top:1px dashed #e3e0e0;}
+.epages-cart-overlay-line-table .epages-cart-overlay-total {width: 33.333%; text-align: right;border-top:1px dashed #e3e0e0;}
+.epages-cart-overlay-line-table .epages-cart-overlay-remove {width: 100%; text-align: center !important;}
+.epages-cart-overlay-line-table .epages-cart-overlay-remove span {display: inline;}
+.epages-cart-overlay-line-table tfoot .epages-cart-overlay-remove {height: 0; padding:0 !important;border-width: 0;}
 }
 
-.img-product-list-thumbnail {
-  display: block;
-  max-height: 200px;
-  max-width: 200px;
+@media (max-width: 480px) {
+.epages-cart-overlay-line-table thead {display: none;}
+.epages-cart-overlay-line-table td {padding: 20px 0 15px 0px !important; float: left;}
+.epages-cart-overlay-line-table .epages-cart-overlay-image {width: 30%; float:right;} 
+.epages-cart-overlay-line-table .epages-cart-overlay-image img {min-width: 80px;}
+.epages-cart-overlay-line-table .epages-cart-overlay-name {width: 70%;} 
+.epages-cart-overlay-line-table .epages-cart-overlay-price {width: 100%;border-top-width:0;}
+.epages-cart-overlay-line-table .epages-cart-overlay-quantity {width: 100%; text-align: left;border-top-width:0;}
+.epages-cart-overlay-line-table .epages-cart-overlay-quantity input {max-width: none;width: 98%;}
+.epages-cart-overlay-line-table .epages-cart-overlay-total {width: 100%; text-align: left;border-top-width:0;}
+.epages-cart-overlay-line-table .epages-cart-overlay-remove {width: 100%; text-align: right !important;}
+.epages-cart-overlay table tfoot tr {background: #fefefe none repeat scroll 0 0; border-top: 1px solid #ebebeb;}
+.epages-cart-overlay-line-table tfoot td {float: right; text-align: left; padding: 0; border-width: 0 !important; width: 70%;}
+.epages-cart-overlay-line-table tfoot td.epages-cart-overlay-delivery-price,
+.epages-cart-overlay-line-table tfoot td.epages-cart-overlay-product-price {float:left; padding-right: 10px !important; width: 10%; min-width:70px;}
+/* cart checkout row */
+.epages-cart-overlay-secure {width: 100%;}
+.epages-cart-overlay-checkout-button  {float: none;width: auto;}
+}
+
+.epages-shop-widget {
+  margin-top: 20px;
+	width:100%;
+}
+.epages-row {
+  margin: 0;
+  width:100%
+}
+
+  
+/* List view: Product Container */
+.epages-shop-widget .epages-shop-product {
+	float: left; width: 100%; min-width:200px;height: auto;margin-bottom:20px;
+}	
+@media (min-width: 564px) {
+	.epages-shop-widget .epages-shop-product {
+    width: 50%;
+  }
+}
+@media (min-width: 764px) {
+	.epages-shop-widget .epages-shop-product {
+    width: 33%;
+  }
+}
+@media (min-width: 964px) {
+	.epages-shop-widget .epages-shop-product {
+    width: 25%;
+  }
+}
+/* List view: Fixed aspect ratio for responsive product image container unless only one column */
+@media (min-width: 564px) {.epages-shop-product-link::before {
+  content: "";display: block;margin-top: 105%;
+}
+.epages-shop-product-link {
+	float: left;position: relative;width: 100%;
+}
+.epages-shop-product-list-image-container {
+	position: absolute;top: 0;
+}
+}
+/* List view: Dynamic height for image container if only one column */
+.epages-shop-product-list-image-container {
+	height:auto; max-width:100%; max-height:none;
+}
+/* List view: Product image */
+.img-product-list {
+	max-height:none;height:auto; max-width:100%; object-fit:contain;width:100%;
+}
+  
+/* Product detail overlay */
+.epages-shop-overlay {
+    margin: 0;
+  width:100%
+}
+.epages-shop-overlay-box {
+    min-width: 280px;
+    padding: 0 2% 0 0;
+    width: 58%;
+    float: left;
+}
+.epages-shop-overlay-box-1, .epages-shop-overlay-box-2 {
+    float: none;
+    width: 40%;
+    min-width: 200px;
+    display: inline-block;
+}
+@media (max-width: 720px) {
+.epages-shop-overlay-box-1, .epages-shop-overlay-box-2 {
+    width: 100%;
+}
+.epages-shop-overlay-box, div.epages-shop-overlay-box-1, div.epages-shop-overlay-box-2 {
+    float: none;
+}
 }

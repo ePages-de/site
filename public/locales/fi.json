@@ -9,6 +9,7 @@
   "exclude-vat": "plus ALV, sekä ",
   "exclude-vat-price": "Hintaan plus ALV sekä ",
   "exclude-vat-prices": "Hintaan plus ALV sekä ",
+  "include-vat-cart": "hintaan sisältyy ALV",
   "include-vat": "hintaan sisältyy ALV sekä ",
   "include-vat-price": "Hintaan sisältyy ALV sekä ",
   "include-vat-prices": "Hintaan sisältyy ALV sekä ",
