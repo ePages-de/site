@@ -21,12 +21,12 @@ class CartDetailView extends Backbone.View
         <table class="epages-cart-overlay-line-table">
           <thead>
             <tr>
-              <th></th>
-              <th data-i18n='name'></th>
-              <th data-i18n='unit-price'></th>
-              <th data-i18n='quantity'></th>
-              <th></th>
-              <th data-i18n='total-price'></th>
+              <th class="epages-cart-overlay-image"></th>
+              <th class="epages-cart-overlay-name" data-i18n='name'></th>
+              <th class="epages-cart-overlay-price" data-i18n='unit-price'></th>
+              <th class="epages-cart-overlay-quantity" data-i18n='quantity'></th>
+              <th class="epages-cart-overlay-total" data-i18n='total-price'></th>
+              <th class="epages-cart-overlay-remove"></th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -34,29 +34,28 @@ class CartDetailView extends Backbone.View
             <% if (deliveryPrice) { %>
               <tr>
                 <td colspan="4" data-i18n='shipping-price'></td>
-                <td></td>
                 <td class="epages-cart-overlay-delivery-price"><%= deliveryPrice.formatted %></td>
+                <td class="epages-cart-overlay-remove"></td>
               </tr>
               <% } %>
               <tr>
                 <td colspan="4">
                   <div class="epages-cart-overlay-product-price-desc" data-i18n='subtotal'></div>
                   <div class="epages-cart-overlay-product-shipping">
-                    <span data-i18n='include-vat'></span> <a href="<%= shippingUrl %>" target="_blank" data-i18n='shipping'></a>.
+                    <span data-i18n='include-vat-cart'></span>
                   </div>
                 </td>
-                <td></td>
                 <td class="epages-cart-overlay-product-price">
                   <b><%= subTotal %></b>
                 </td>
+                <td class="epages-cart-overlay-remove"></td>
               </tr>
             </tfoot>
           </table>
-          <div class="epages-row">
-          <div class="epages-cart-overlay-secure epages-col-xs-8" data-i18n='ssl'></div>
-          <div class="epages-col-xs-4">
-          <button class="epages-cart-overlay-checkout-button" data-i18n='checkout'></button></div>
-        </div></div>
+          
+          <button class="epages-cart-overlay-checkout-button" data-i18n='checkout'></button>
+          <div class="epages-cart-overlay-secure" data-i18n='ssl'></div>
+        </div>
         <div class="epages-cart-overlay-is-empty" style="display:none">
           <p data-i18n='basket-empty'></p>
         </div>

@@ -9,6 +9,7 @@
   "exclude-vat": "n'inclut la TVA ni la ",
   "exclude-vat-price": "Le prix n'inclut la TVA ni la ",
   "exclude-vat-prices": "Le prix n'inclut la TVA ni la ",
+  "include-vat-cart": "TVA incluse",
   "include-vat": "TVA incluse, plus ",
   "include-vat-price": "Prix TVA incluse, plus ",
   "include-vat-prices": "Le prix inclut la TVA mais pas la ",

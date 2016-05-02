@@ -1,5 +1,5 @@
 class PaginationView extends Backbone.View
-  className: "epages-pagination epages-xs"
+  className: "epages-pagination"
   events:
     'click a.previous_page' : 'previous'
     'click a.next_page'     : 'next'

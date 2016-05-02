@@ -9,6 +9,7 @@
   "exclude-vat": "més l'IVA, més ",
   "exclude-vat-price": "Preu més l'IVA, més ",
   "exclude-vat-prices": "Preus més l'IVA, més ",
+  "include-vat-cart": "inclou l'IVA",
   "include-vat": "inclou l'IVA i ",
   "include-vat-price": "El preu inclou l'IVA i ",
   "include-vat-prices": "Preus inclouen l'IVA, més ",

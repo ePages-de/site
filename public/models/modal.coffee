@@ -16,7 +16,6 @@ class Modal
         "max-width": "1000px"
         "min-width": "200px"
         "overflow": "scroll"
-        "padding": "20px"
         "width": "100%"
 
     @_modal.show()
