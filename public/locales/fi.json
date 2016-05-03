@@ -6,6 +6,7 @@
   "category": "Tuoteryhmä",
   "checkout": "Tilaa",
   "description": "Kuvaus",
+  "manufacturer-price": "Aiempi hinta",
   "exclude-vat": "plus ALV, sekä ",
   "exclude-vat-price": "Hintaan plus ALV sekä ",
   "exclude-vat-prices": "Hintaan plus ALV sekä ",

@@ -6,6 +6,7 @@
   "category": "Catégorie",
   "checkout": "Payer",
   "description": "Description",
+  "manufacturer-price": "Ancien prix",
   "exclude-vat": "n'inclut la TVA ni la ",
   "exclude-vat-price": "Le prix n'inclut la TVA ni la ",
   "exclude-vat-prices": "Le prix n'inclut la TVA ni la ",

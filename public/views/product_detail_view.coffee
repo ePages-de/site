@@ -17,14 +17,15 @@ class ProductDetailView extends Backbone.View
       <div class="epages-shop-overlay-box-1">
         <h2><%= name %></h2>
         <div class="epages-shop-overlay-product-details">
-          <div class="epages-shop-overlay-product-price">
-             <span><%= price %></span>
-          </div>
           <% if (manufacturerPrice) { %>
             <div class="epages-shop-overlay-manufacturer-price">
+            	<span data-i18n='manufacturer-price'></span>
               <span style="text-decoration: line-through;"><%= manufacturerPrice %></span>
             </div>
           <% } %>
+          <div class="epages-shop-overlay-product-price">
+             <span><%= price %></span>
+          </div>
           <% if (basePrice) { %>
             <div class="epages-shop-overlay-base-price">
               <span><%= basePrice %></span>

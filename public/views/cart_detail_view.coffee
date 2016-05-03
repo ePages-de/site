@@ -40,7 +40,7 @@ class CartDetailView extends Backbone.View
               <% } %>
               <tr>
                 <td colspan="4">
-                  <div class="epages-cart-overlay-product-price-desc" data-i18n='subtotal'></div>
+                  <div class="epages-cart-overlay-product-price-desc" data-i18n='total-price'></div>
                   <div class="epages-cart-overlay-product-shipping">
                     <span data-i18n='include-vat-cart'></span>
                   </div>

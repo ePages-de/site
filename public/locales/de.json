@@ -6,6 +6,7 @@
   "category": "Kategorie",
   "checkout": "Zur Kasse",
   "description": "Beschreibung",
+  "manufacturer-price": "Alter Preis",
   "exclude-vat": "zzgl. MwSt., zzgl. ",
   "exclude-vat-price": "Preis zzgl. MwSt., zzgl. ",
   "exclude-vat-prices": "Preise zzgl. MwSt., zzgl. ",

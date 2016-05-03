@@ -6,6 +6,7 @@
   "category": "Categoria",
   "checkout": "Paga",
   "description": "Descrizione",
+  "manufacturer-price": "Prezzo vecchio",
   "exclude-vat": "più IVA più ",
   "exclude-vat-price": "Prezzo più IVA più ",
   "exclude-vat-prices": "Prezzi più IVA più ",

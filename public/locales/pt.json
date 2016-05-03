@@ -6,6 +6,7 @@
   "category": "Categoria",
   "checkout": "Pagar",
   "description": "Descrição",
+  "manufacturer-price": "Preço antigo",
   "exclude-vat": "excluem IVA e ",
   "exclude-vat-price": "Os preços excluem IVA e ",
   "exclude-vat-prices": "Os preços excluem IVA e ",
