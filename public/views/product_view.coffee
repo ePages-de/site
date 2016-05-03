@@ -24,7 +24,7 @@ class ProductView extends Backbone.View
         <%= price %>
       </div>
       <% if(basePrice) { %>
-        <div class="epages-shop-product-base-price">( <%= basePrice %> )</div>
+        <div class="epages-shop-product-base-price">(<%= basePrice %>)</div>
       <% } %>
     </a>
   """

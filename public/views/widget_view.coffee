@@ -32,6 +32,7 @@ class WidgetView extends Backbone.View
     @resultsPerPage   = @$el.data("products-per-page") || 12
     @staticCategoryId = @$el.data("category-id")
     @productIds       = @$el.data("product-ids")?.split(/, */)
+    @singleProduct    = @$el.data("product-details")
 
   _initRegions: ->
     @regions =

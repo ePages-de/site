@@ -37,10 +37,14 @@ class Cart extends Backbone.Collection
     $.getJSON @shippingUrl()
       .done (response) => @shippingUrl = response[0].sfUrl + "/Shipping"
 
-  lineItemsSubTotal: ->
+  lineItemsTotal: ->
     shipping = if @deliveryPrice then @deliveryPrice.amount else 0
     sum = (sum, model) -> sum + model.totalPrice()
     "#{ @reduce(sum, shipping).toFixed(2) } €"
+
+  lineItemsSubTotal: ->
+    sum = (sum, model) -> sum + model.totalPrice()
+    "#{ @reduce(sum, 0).toFixed(2) } €"
 
   loadFromStorage: ->
     data = @storage.get("cart")

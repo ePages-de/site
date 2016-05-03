@@ -10,7 +10,7 @@ class Products extends Backbone.Collection
   model: Product
 
   url: ->
-    url = "#{App.apiUrl}/shops/#{@shopId}/products?resultsPerPage=#{@resultsPerPage}"
+    url = "#{App.apiUrl}/shops/#{@shopId}/products?currency=#{App.currency}&resultsPerPage=#{@resultsPerPage}"
     if @page
       url += "&page=" + @page
 
