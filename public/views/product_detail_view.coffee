@@ -8,7 +8,6 @@ class ProductDetailView extends Backbone.View
     @listenTo @model, "change", @render
 
   template: _.template """
-<div class="epages-row">
     <div class="epages-shop-overlay">
       <div class="epages-shop-overlay-box">
         <img class="epages-shop-overlay-product-image img-responsive" src="<%= image %>" />
@@ -57,7 +56,7 @@ class ProductDetailView extends Backbone.View
         </div>
       </div>
     </div>
-  </div>
+
   """
   $(".slideshow-image img").live 'click', ->
     url = $(this).data("image")
