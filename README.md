@@ -58,6 +58,14 @@ The widget supports multiple options that can be combined:
     ```
   This disables the category drop-down.
   
+* **data-product-details** (default: empty):
+  To only show a preselected product, add the ```data-product-details``` attribute:
+  
+  
+    ```html
+    <div class="epages-shop-widget" data-product-details="563742F8-E839-B779-74D0-0A0C05E64C62"></div>
+    ```
+  
 * **data-products-per-page** (default: 12):  
   To only show a specific number of products per page, add the ```data-products-per-page``` attribute:
 

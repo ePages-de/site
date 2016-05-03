@@ -26,12 +26,12 @@ class CartLineItemView extends Backbone.View
 
   render: ->
     @$el.html @template
-      itemImage:       @model.largeImage()
+      itemImage:       @model.get("variationImage") || @model.largeImage()
       name:            @model.name()
       quantity:        @model.quantity()
       unit:            @model.unit()
       singleItemPrice: @model.formattedPrice()
-      lineItemPrice:   @model.formattedTotalPrice()
+      lineItemPrice:   @model.get("lineItemPrice") || ''
    
     App.i18n(this)
     this

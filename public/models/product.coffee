@@ -70,14 +70,17 @@ class Product extends Backbone.Model
   totalPrice: ->
     @quantity() * @price()
 
-  formattedTotalPrice: ->
-    "#{ @totalPrice().toFixed(2) } €"
-
   productFormattedPrice: (selector) ->
-    @get("variationPrice") || @loadLowestPrice(selector) || @formattedTotalPrice()
+    @get("variationPrice") || @loadLowestPrice(selector) || @formattedPrice()
 
   shippingUrl: ->
-    @collection.shippingUrl
+    if @collection
+      @collection.shippingUrl
+    else
+      shopId = @link().match("shops/(.*)/product").slice(-1)[0]
+      $.getJSON "#{App.apiUrl}/shops/#{shopId}/categories"
+        .done (response) =>
+          response[0].sfUrl + "/Shipping"
 
   isAvailable: ->
     $.getJSON @url()
@@ -131,8 +134,10 @@ class Product extends Backbone.Model
     quantity: @quantity()
     shortDescription: @shortDescription()
     variationImage: @largeImage()
+    disabled: @isAvailable()
 
   loadVariations: =>
+    if @variationItems() then return
     $.getJSON "#{@url()}/variations"
       .done (json) =>
         @set("variationAttributes", new VariationAttributes json.variationAttributes)

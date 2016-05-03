@@ -33,6 +33,16 @@ class App
     if @env is "production"
       @apiUrl = matches[1]
 
+    # Setting default currency
+    if $(@selectors.shopWidget).data('currency') == undefined
+      $.ajax
+        url: shopUrl.replace(/\/$/, "") + "/currencies",
+        async: false,
+        dataType: 'json',
+        success: (response) => App.currency = response.default
+    else
+      App.currency = $(@selectors.shopWidget).data('currency')
+
     # Setting language
     App.lang = "en"
     $.ajax
@@ -68,29 +78,32 @@ class App
     $(@selectors.shopWidget).each (index, el) =>
       widgetView = new WidgetView(el: el).render()
 
-      # Product list
-      products = @_setupProductList(widgetView, shopId)
-
-      # Pagination
-      @_setupPagination(widgetView, products)
-
-      # Taxes
-      @_setupTaxes(widgetView, products)
-
       # Cart button
       @_setupCartButton(widgetView)
 
-      # Option: Categories
-      if widgetView.showCategoryList
-        @_setupCategoryList(widgetView, products, shopId)
+      if widgetView.singleProduct
+        @_setupSingleProduct(widgetView, shopId)
+      else
+        # Product list
+        products = @_setupProductList(widgetView, shopId)
 
-      # Option: Search
-      if widgetView.showSearchForm
-        @_setupSearchForm(widgetView, products)
+        # Pagination
+        @_setupPagination(widgetView, products)
 
-      # Option: Sorting
-      if widgetView.showSort
-        @_setupSortView(widgetView, products)
+        # Taxes
+        @_setupTaxes(widgetView, products)
+
+        # Option: Categories
+        if widgetView.showCategoryList
+          @_setupCategoryList(widgetView, products, shopId)
+
+        # Option: Search
+        if widgetView.showSearchForm
+          @_setupSearchForm(widgetView, products)
+
+        # Option: Sorting
+        if widgetView.showSort
+          @_setupSortView(widgetView, products)
 
   @_setupCartButton: (widgetView) ->
     cartView = new CartView(collection: App.cart).render()
@@ -158,3 +171,9 @@ class App
   @_setupTaxes: (widgetView, products) ->
     taxesView = new TaxesView(collection: products).render()
     widgetView.regions.taxes.append(taxesView.el)
+
+  @_setupSingleProduct: (widgetView, shopId) ->
+    product = new Product(url: "#{App.apiUrl}/shops/#{shopId}/products/#{widgetView.singleProduct}")
+    productView = new SingleProductView(model: product)
+    widgetView.regions.productList.html(productView.el)
+    product.fetch(reset: true)

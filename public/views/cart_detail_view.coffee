@@ -15,56 +15,61 @@ class CartDetailView extends Backbone.View
 
     <% if (failedToCreateCart) { %>
       <div class="epages-cart-overlay-fail" data-i18n='basket-fail'></div>
-      <% } %>
-
-      <div class="epages-cart-overlay-not-empty" style="display:none">
-        <table class="epages-cart-overlay-line-table">
-          <thead>
+    <% } %>
+    <div class="epages-cart-overlay-not-empty" style="display:none">
+      <table class="epages-cart-overlay-line-table">
+        <thead>
+          <tr>
+            <th class="epages-cart-overlay-image"></th>
+            <th class="epages-cart-overlay-name" data-i18n='name'></th>
+            <th class="epages-cart-overlay-price" data-i18n='unit-price'></th>
+            <th class="epages-cart-overlay-quantity" data-i18n='quantity'></th>
+            <th class="epages-cart-overlay-total" data-i18n='total-price'></th>
+            <th class="epages-cart-overlay-remove"></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+          <% if (deliveryPrice) { %>
             <tr>
-              <th class="epages-cart-overlay-image"></th>
-              <th class="epages-cart-overlay-name" data-i18n='name'></th>
-              <th class="epages-cart-overlay-price" data-i18n='unit-price'></th>
-              <th class="epages-cart-overlay-quantity" data-i18n='quantity'></th>
-              <th class="epages-cart-overlay-total" data-i18n='total-price'></th>
-              <th class="epages-cart-overlay-remove"></th>
+              <td colspan="4" data-i18n='subtotal'></td>
+              <td class="epages-cart-overlay-delivery-price"><%= subTotal %></td>
+              <td class="epages-cart-overlay-remove"></td>
             </tr>
-          </thead>
-          <tbody></tbody>
-          <tfoot>
-            <% if (deliveryPrice) { %>
-              <tr>
-                <td colspan="4" data-i18n='shipping-price'></td>
-                <td class="epages-cart-overlay-delivery-price"><%= deliveryPrice.formatted %></td>
-                <td class="epages-cart-overlay-remove"></td>
-              </tr>
-              <% } %>
-              <tr>
-                <td colspan="4">
-                  <div class="epages-cart-overlay-product-price-desc" data-i18n='total-price'></div>
-                  <div class="epages-cart-overlay-product-shipping">
-                    <span data-i18n='include-vat-cart'></span>
-                  </div>
-                </td>
-                <td class="epages-cart-overlay-product-price">
-                  <b><%= subTotal %></b>
-                </td>
-                <td class="epages-cart-overlay-remove"></td>
-              </tr>
-            </tfoot>
-          </table>
+            <tr>
+              <td colspan="4" data-i18n='shipping-price'></td>
+              <td class="epages-cart-overlay-delivery-price"><%= deliveryPrice %></td>
+              <td class="epages-cart-overlay-remove"></td>
+            </tr>
+          <% } %>
+          <tr>
+            <td colspan="4">
+              <div class="epages-cart-overlay-product-price-desc" data-i18n='total-price'></div>
+              <div class="epages-cart-overlay-product-shipping">
+                <span data-i18n='include-vat-cart'></span>
+              </div>
+            </td>
+            <td class="epages-cart-overlay-product-price">
+              <b><%= total %></b>
+            </td>
+            <td class="epages-cart-overlay-remove"></td>
+          </tr>
+        </tfoot>
+      </table>
           
-          <button class="epages-cart-overlay-checkout-button" data-i18n='checkout'></button>
-          <div class="epages-cart-overlay-secure" data-i18n='ssl'></div>
-        </div>
-        <div class="epages-cart-overlay-is-empty" style="display:none">
-          <p data-i18n='basket-empty'></p>
-        </div>
-      </div>
+      <button class="epages-cart-overlay-checkout-button" data-i18n='checkout'></button>
+      <div class="epages-cart-overlay-secure" data-i18n='ssl'></div>
+    </div>
+    <div class="epages-cart-overlay-is-empty" style="display:none">
+      <p data-i18n='basket-empty'></p>
+    </div>
+  </div>
 """
 
   render: ->
     @$el.html @template
-      subTotal: @collection.lineItemsSubTotal()
+      subTotal: @collection.subTotal
+      total: @collection.total
       shippingUrl: @collection.shippingUrl
       deliveryPrice: @collection.deliveryPrice
       failedToCreateCart: @failedToCreateCart
@@ -87,8 +92,8 @@ class CartDetailView extends Backbone.View
 
   checkout: ->
     left = (screen.width - 600)/2
-    top = (screen.height - 520)/2
-    checkoutWindow = window.open("#{App.rootUrl}/checkout.html", 'newwindow',"width=600px, height=500px, top=#{top}px, left=#{left}px")
+    top = (screen.height - 700)/2
+    checkoutWindow = window.open("#{App.rootUrl}/checkout.html", 'newwindow',"width=600px, height=620px, top=#{top}px, left=#{left}px")
 
     # XXX: can we get rid of this maybe?
     App.modal.closeAll()

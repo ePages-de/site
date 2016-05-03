@@ -14,9 +14,18 @@ class ProductView extends Backbone.View
         <img class="img-product-list" src="<%= image %>"/>
       </div>
       <div class="epages-shop-product-name"><%= name %></div>
+      <% if(manufacturerPrice) { %>
+        <div class="epages-shop-product-manufacturer-price">
+          <div data-i18n="old-price"></div>
+          <div class="price"> <%= manufacturerPrice %></div>
+        </div>
+      <% } %>
       <div class="epages-shop-product-price">
         <%= price %>
       </div>
+      <% if(basePrice) { %>
+        <div class="epages-shop-product-base-price">(<%= basePrice %>)</div>
+      <% } %>
     </a>
   """
 
@@ -24,9 +33,11 @@ class ProductView extends Backbone.View
     @$el.html @template
       image: @model.largeImage()
       name:  @model.name()
-      price: @model.productFormattedPrice("card")
+      price: @model.formattedPrice()
       link:  @model.link()
-
+      basePrice: @model.basePrice()
+      manufacturerPrice: @model.manufacturerPrice()
+    App.i18n(this)
     this
 
   openProductDetails: (event) ->
