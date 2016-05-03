@@ -31,7 +31,7 @@ class CartLineItemView extends Backbone.View
       quantity:        @model.quantity()
       unit:            @model.unit()
       singleItemPrice: @model.formattedPrice()
-      lineItemPrice:   @model.formattedTotalPrice()
+      lineItemPrice:   @model.get("lineItemPrice") || ''
    
     App.i18n(this)
     this

@@ -38,7 +38,7 @@ class CartDetailView extends Backbone.View
             </tr>
             <tr>
               <td colspan="4" data-i18n='shipping-price'></td>
-              <td class="epages-cart-overlay-delivery-price"><%= deliveryPrice.formatted %></td>
+              <td class="epages-cart-overlay-delivery-price"><%= deliveryPrice %></td>
               <td class="epages-cart-overlay-remove"></td>
             </tr>
           <% } %>
@@ -68,8 +68,8 @@ class CartDetailView extends Backbone.View
 
   render: ->
     @$el.html @template
-      subTotal: @collection.lineItemsSubTotal()
-      total: @collection.lineItemsTotal()
+      subTotal: @collection.subTotal
+      total: @collection.total
       shippingUrl: @collection.shippingUrl
       deliveryPrice: @collection.deliveryPrice
       failedToCreateCart: @failedToCreateCart

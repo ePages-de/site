@@ -70,11 +70,8 @@ class Product extends Backbone.Model
   totalPrice: ->
     @quantity() * @price()
 
-  formattedTotalPrice: ->
-    "#{ @totalPrice().toFixed(2) } €"
-
   productFormattedPrice: (selector) ->
-    @get("variationPrice") || @loadLowestPrice(selector) || @formattedTotalPrice()
+    @get("variationPrice") || @loadLowestPrice(selector) || @formattedPrice()
 
   shippingUrl: ->
     if @collection

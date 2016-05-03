@@ -20,7 +20,13 @@ class Cart extends Backbone.Collection
     @deliveryPrice = undefined # reset to avoid render previous delivery prices
     Backbone.sync("create", this, timeout: 10 * 1000)
       .done (response) =>
-        @deliveryPrice = response.lineItemContainer.shippingPrice
+        for p in response.lineItemContainer.productLineItems
+          product = _(@models).chain().pluck('attributes').flatten().findWhere(productId: p.productId).value()
+          product.lineItemPrice = p.lineItemPrice.formatted
+
+        @subTotal = response.lineItemContainer.lineItemsSubTotal.formatted
+        @deliveryPrice = response.lineItemContainer.shippingPrice.formatted
+        @total = response.lineItemContainer.grandTotal.formatted
         @trigger("update:cartId", response.cartId)
 
   url: ->
@@ -36,15 +42,6 @@ class Cart extends Backbone.Collection
   getShippingUrl: ->
     $.getJSON @shippingUrl()
       .done (response) => @shippingUrl = response[0].sfUrl + "/Shipping"
-
-  lineItemsTotal: ->
-    shipping = if @deliveryPrice then @deliveryPrice.amount else 0
-    sum = (sum, model) -> sum + model.totalPrice()
-    "#{ @reduce(sum, shipping).toFixed(2) } €"
-
-  lineItemsSubTotal: ->
-    sum = (sum, model) -> sum + model.totalPrice()
-    "#{ @reduce(sum, 0).toFixed(2) } €"
 
   loadFromStorage: ->
     data = @storage.get("cart")
