@@ -94,6 +94,7 @@ class ProductDetailView extends Backbone.View
     event.target.disabled = true # disable button
 
     App.cart.add(@model.clone())
+    App.cart.sync()
     App.modal.close()
 
   updateVariations: =>
