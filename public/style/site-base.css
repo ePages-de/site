@@ -7,36 +7,221 @@ body {
         margin: 25px;
     }
 }
-h1 {
-    font-family: georgia, times, serif;
-    font-size: 36px;
-    font-weight: 300;
-    margin-bottom: 40px;
+#epages-shop-widget-loading {
+    background-image: url(/images/spinner.gif);
+    background-color: white;
+    border-radius: 6px;
+    display: none;
+    height: 32px;
+    left: 50%;
+    position: fixed;
+    top: 50px;
+    width: 32px;
+    z-index: 10002;
 }
-#container {
-    max-width: 800px;
+.epages-shop-widget {
+    margin-top: 20px;
+    width: 100%;
 }
-.epages-shop-overlay {
-    color: #444;
+.pico-content {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background-color: white;
+    display: block;
+    left: 50%;
+    max-height: 80%;
+    max-width: 1000px;
+    min-width: 200px;
+    overflow: auto;
+    position: fixed;
+    top: 10%;
+    transform: translateX(-50%);
+    width: 100%;
+    z-index: 10001;
 }
-.epages-shop-overlay h1,
-.epages-shop-overlay h2,
-.epages-shop-overlay h3 {
-    color: #333;
+.pico-content::-webkit-scrollbar {
+    width: 0 !important;
 }
-.epages-shop-overlay h3 {
-    margin: 0;
+.epages-cart-overlay, .epages-shop-overlay {
+    padding: 10px 15px 50px;
+    text-align: left;
 }
-.epages-shop-overlay-box {
+/********** Search, Cart Button & Navigation **********/
+.epages-shop-search-form {
     float: left;
-    max-width: 490px;
 }
-.epages-shop-overlay-box-1 {
+.epages-shop-cart {
+    float: right;
+    margin: 0 auto;
+}
+.epages-cart-button {
+    background-color: white;
+    float: right;
+    cursor: pointer;
+    border: 0;
+    outline: none;
+    font-family: inherit;
+    font-size: 24px;
+}
+.epages-cart-button span {
+    font-size: 20px;
+    padding-left: .5em;
+}
+.epages-shop-navigation {
+    margin: 10px 0 50px;
+    clear: both;
+}
+.epages-shop-sort {
+    float: left;
+    margin-right:1em;
+}
+/********** Product List **********/
+/* List View: Product Container */
+.epages-shop-product-list {
+    clear: both;
+}
+.epages-shop-widget .epages-shop-product {
+    float: left;
+    width: 100%;
+    min-width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+}
+@media (min-width: 564px) and (max-width: 763px) {
+    .epages-shop-widget .epages-shop-product {
+        width: 50%;
+    }
+    .epages-shop-widget .epages-shop-product:nth-child(odd) {
+        clear: both;
+    }
+}
+@media (min-width: 764px) and (max-width: 963px) {
+    .epages-shop-widget .epages-shop-product {
+        width: 33%;
+    }
+    .epages-shop-widget .epages-shop-product:nth-child(3n+1) {
+        clear: both;
+    }
+}
+@media (min-width: 964px) {
+    .epages-shop-widget .epages-shop-product {
+        width: 25%;
+    }
+    .epages-shop-widget .epages-shop-product:nth-child(4n+1) {
+        clear: both;
+    }
+}
+.epages-shop-product-link {
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+}
+.epages-shop-product-link:hover {
+    text-decoration: underline;
+}
+/* List View: Fixed aspect ratio for responsive product image container unless only one column */
+@media (min-width: 564px) {
+    .epages-shop-product-link::before {
+        content: "";
+        display: block;
+        margin-top: 120%;
+    }
+    .epages-shop-product-link {
+        float: left;
+        position: relative;
+        width: 100%;
+    }
+    .epages-shop-product-list-image-container img {
+        position: absolute;
+        top: 45%;
+        left: 0;
+        transform: translateY(-50%);
+    }
+ }
+.epages-shop-product-price {
+    font-weight: bold;
+}
+/* List View: Dynamic height for image container if only one column */
+.epages-shop-product-list-image-container {
+    height: auto;
+    max-width: 100%;
+    max-height: none;
+}
+/* List View: Product image */
+.img-product-list {
+    max-height: none;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    width: 100%;
+}
+/********** Shop Pagination **********/
+.epages-shop-pagination {
+    clear: both;
+    text-align: center;
+    margin:20px 0;
+}
+.epages-shop-pagination ul {
+    padding: 0;
+}
+.epages-shop-pagination li {
+    display: inline-flex;
+}
+.epages-shop-pagination li a,
+.epages-shop-pagination li span {
+    padding: 6px 12px;
+    margin-left: 0;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #dedede;
+}
+.epages-shop-pagination li.active a {
+    background-color: #337ab7;
+    color: #fff;
+}
+.epages-shop-pagination li:first-child a,
+.epages-shop-pagination li:first-child span {
+    margin-left: 0;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.epages-shop-pagination li:last-child a,
+.epages-shop-pagination li:last-child span {
+    margin-right: 0;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+/********** Product Details Overlay **********/
+.epages-shop-overlay-box {
+    padding: 0 2% 0 0;
+    width: 58%;
+    float: left;
+}
+.epages-shop-overlay-box-1, .epages-shop-overlay-box-2 {
+    float: none;
+    width: 40%;
+    min-width: 200px;
     display: inline-block;
+}
+@media (max-width: 720px) {
+    .epages-shop-overlay-box {
+        width: 380px;
+        float: none;
+    }
+    .epages-shop-overlay-box-1, .epages-shop-overlay-box-2 {
+        width: 100%;
+        float: none;
+    }
+}
+@media (max-width: 450px) {
+    .epages-shop-overlay-box {
+        width: 98%;
+    }
 }
 .epages-shop-overlay-product-image {
     transition: 0.6s;
-    max-width: 490px;
     width: 100%;
 }
 .epages-shop-overlay-slideshow {
@@ -52,6 +237,28 @@ h1 {
     height: 44px;
     margin: 3px;
 }
+.epages-shop-overlay-manufacturer-price {
+    font-style: italic;
+    margin-bottom: 5px;
+}
+.epages-shop-product-manufacturer-price span,
+.epages-shop-overlay-manufacturer-price span {
+    text-decoration: line-through;
+}
+.epages-shop-overlay-product-price {
+    font-size: 135%;
+    font-weight: bold;
+}
+.epages-shop-product-base-price,
+.epages-shop-overlay-base-price {
+    color: #999;
+    font-size: 12px;
+}
+.epages-shop-taxes,
+.epages-shop-overlay-product-shipping {
+    font-size: 80%;
+    clear: both;
+}
 .epages-shop-overlay-product-availability-OnStock {
     color: green;
 }
@@ -61,35 +268,11 @@ h1 {
 .epages-shop-overlay-product-availability-OutStock {
     color: red;
 }
-.epages-shop-overlay-product-price {
-    float: left;
-    font-size: 135%;
-    font-weight: bold;
-    margin-right: 0.5em;
-}
 .epages-shop-variation label {
     min-width: 50px;
     display: inline-block;
 }
-.epages-shop-taxes,
-.epages-shop-overlay-product-shipping {
-    font-size: 80%;
-    clear: both;
-}
-.epages-shop-overlay-buy-button {
-    width: 100%;
-}
-.epages-shop-overlay-buy-button[disabled=disabled],
-.epages-shop-overlay-buy-button:disabled {
-    color: #ddd;
-}
-.epages-shop-overlay-table th,
-.epages-shop-overlay-table td {
-    vertical-align: baseline;
-    padding: 2px;
-    text-align: left;
-}
-.epages-shop-overlay-hr {
+.epages-shop-overlay hr {
     border-width: 1px 0 0 0;
     border-color: #ccc;
     border-style: solid;
@@ -109,27 +292,7 @@ h1 {
     margin: 0px;
     padding-left: 1em;
 }
-.epages-shop-product-price {
-    font-weight: bold;
-}
-.epages-shop-product-manufacturer-price div {
-    display: inline-block;
-    font-size: 12px;
-}
-.epages-shop-product-manufacturer-price .price {
-    text-decoration: line-through;
-}
-.epages-shop-product-base-price {
-    color: #aaa;
-    font-weight: lighter;
-    font-size: 12px;
-}
-.epages-cart-overlay {
-    color: #444;
-}
-.epages-cart-overlay h2 {
-    color: #333;
-}
+/********** Cart Overlay **********/
 .epages-cart-overlay-fail {
     background-color: #e00;
     color: #fff;
@@ -137,10 +300,6 @@ h1 {
     margin-bottom: 20px;
 }
 .epages-cart-overlay table {
-    border: 1px solid #ccc;
-    border-left: 0;
-    border-right: 0;
-    width: 100%;
     border-collapse: collapse;
 }
 .epages-cart-overlay table th {
@@ -149,21 +308,19 @@ h1 {
 }
 .epages-cart-overlay table tr {
     border-bottom: 1px solid #ddd;
+	  border-top: 1px solid #ddd;
 }
 .epages-cart-overlay table td {
     padding: 10px;
-}
-.epages-cart-overlay table tfoot td {
-    padding: 10px 10px 20px;
 }
 .epages-cart-overlay-product-price-desc {
     font-weight: bold;
     font-size: 120%;
 }
-.epages-cart-overlay-product-price {
+.epages-cart-overlay-total-price {
     vertical-align: top;
 }
-.epages-cart-overlay-product-shipping {
+.epages-cart-overlay-product-taxes {
     font-size: 80%;
 }
 .epages-cart-overlay-secure:before {
@@ -178,7 +335,6 @@ h1 {
     padding-right: 0.5em;
     left: 0;
 }
-
 .epages-cart-overlay-line-item-quantity {
     margin-right: 5px;
     padding: 3px;
@@ -198,7 +354,6 @@ h1 {
     appearance: none;
     cursor: pointer;
 }
-
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -206,25 +361,16 @@ input[type=number]::-webkit-outer-spin-button {
     appearance: none;
     margin: 0;
 }
-
 /* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
     .epages-cart-overlay-line-item-quantity {
-        padding-right: 18px
+        padding-right: 18px;
     }
 }
-
-.epages-cart-overlay-line-item-quantity {
-    position: relative
-}
-
 .epages-cart-overlay-line-item-remove {
-    position: relative;
-    text-align: center;
     border: none;
     background: none;
 }
-
 .epages-cart-overlay-line-item-remove:before {
     content: "\f1f8";
     font-family: FontAwesome;
@@ -234,120 +380,10 @@ input[type=number]::-webkit-outer-spin-button {
     text-decoration: inherit;
     font-size: 22px;
     padding-right: 0.5em;
-    left: 0;
-
 }
 .epages-cart-overlay-line-item-remove:disabled {
     cursor: auto;
 }
-.shop-pagination li {
-    display: inline;
-    color: #fff;
-}
-
-.shop-pagination > li:first-child > a, .shop-pagination > li:first-child > span {
-    margin-left: 0;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-}
-
-.shop-pagination > li:last-child > a, .shop-pagination > li:last-child > span {
-    margin-right: 0;
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-}
-.shop-pagination > li > a, .shop-pagination > li > span {
-    padding: 6px 12px;
-    margin-left: -5px;
-    color: #337ab7;
-    text-decoration: none;
-    background-color: #fff;
-    border: 1px solid #dedede;
-}
-
-.shop-pagination > li.active > a {
-    background-color: #337ab7;
-    color: #fff;
-}
-.epages-shop-product-link {
-    text-decoration: none;
-    color: inherit;
-    text-align: center;
-}
-.epages-shop-product-link:hover {
-    text-decoration: underline;
-}
-.epages-shop-widget .epages-shop-product-price {
-    font-weight: bold;
-}
-#epages-shop-widget-loading {
-    background-image: url(/images/spinner.gif);
-    background-color: white;
-    border-radius: 6px;
-    display: none;
-    height: 32px;
-    left: 50%;
-    position: fixed;
-    top: 50px;
-    width: 32px;
-    z-index: 10002;
-}
-.epages-shop-widget label {
-    font-size: 80%;
-}
-
-.earch-cart-line {
-    display: inline-block;
-}
-.epages-shop-search-form {
-    max-width: 350px;
-    float: left;
-}
-
-.epages-shop-navigation {
-    margin-bottom: 50px;
-    margin-top: 10px;
-}
-.epages-shop-navigation {
-    clear: both;
-}
-.epages-shop-sort {
-    float: left;
-    margin-right:1em;
-}
-
-.search-cart-line {
-    margin-top: 10px;
-}
-
-.epages-shop-product-list {
-    clear: both;
-}
-.epages-shop-pagination {
-    clear: both;
-    text-align: center;
-}
-.epages-shop-cart {
-    float: right;
-    margin: 0 auto;
-}
-
-.epages-cart-button {
-    background-color: white;
-    float: right;
-    cursor: pointer;
-    border: 0;
-    outline: none;
-}
-.epages-cart-button span {
-    font-size: 16px;
-    padding-left: 5px;
-}
-
-.epages-cart-overlay, .epages-shop-overlay {
-    padding: 10px 15px 50px;
-}
-
 .epages-cart-overlay-line-table th .epages-cart-overlay-price {
     text-align: right;
 }
@@ -382,9 +418,7 @@ input[type=number]::-webkit-outer-spin-button {
 .epages-cart-overlay-line-item-remove::before {
     padding-right: 0;
 }
-.epages-cart-overlay-line-table .epages-cart-overlay-remove span {
-    display: none;
-}
+.epages-cart-overlay-line-table .epages-cart-overlay-remove span,
 .epages-cart-overlay-line-table .epages-cart-overlay-subhead-narrow {
     display: none;
 }
@@ -393,11 +427,10 @@ input[type=number]::-webkit-outer-spin-button {
     width: 75%;
 }
 .epages-cart-overlay-line-table tfoot td.epages-cart-overlay-delivery-price,
-.epages-cart-overlay-line-table tfoot td.epages-cart-overlay-product-price {
+.epages-cart-overlay-line-table tfoot td.epages-cart-overlay-total-price {
     width: 25%;
     min-width: 80px;
 }
-
 .epages-cart-overlay .epages-row {
     margin: 0 !important;
     padding: 10px 0;
@@ -422,7 +455,6 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 16px;
     text-shadow: 1px 1px 0px #fff;
 }
-
 @media (max-width: 768px) {
     .epages-cart-overlay-line-table thead {
         display: none;
@@ -445,21 +477,21 @@ input[type=number]::-webkit-outer-spin-button {
         font-size: 16px;
         font-weight: bold;
     }
-    .epages-cart-overlay-line-table .epages-cart-overlay-price {
+    .epages-cart-overlay-line-table .epages-cart-overlay-price,
+    .epages-cart-overlay-line-table .epages-cart-overlay-quantity,
+    .epages-cart-overlay-line-table .epages-cart-overlay-total {
         width: 33.333%;
-        clear: both;
         border-top: 1px dashed #e3e0e0;
+    }
+    .epages-cart-overlay-line-table .epages-cart-overlay-price {
+        clear: both;
         text-align: left;
     }
     .epages-cart-overlay-line-table .epages-cart-overlay-quantity {
-        width: 33.333%;
         text-align: center;
-        border-top: 1px dashed #e3e0e0;
     }
     .epages-cart-overlay-line-table .epages-cart-overlay-total {
-        width: 33.333%;
         text-align: right;
-        border-top: 1px dashed #e3e0e0;
     }
     .epages-cart-overlay-line-table .epages-cart-overlay-remove {
         width: 100%;
@@ -474,7 +506,6 @@ input[type=number]::-webkit-outer-spin-button {
         border-width: 0;
     }
 }
-
 @media (max-width: 480px) {
     .epages-cart-overlay-line-table thead {
         display: none;
@@ -493,26 +524,23 @@ input[type=number]::-webkit-outer-spin-button {
     .epages-cart-overlay-line-table .epages-cart-overlay-name {
         width: 70%;
     }
-    .epages-cart-overlay-line-table .epages-cart-overlay-price {
+    .epages-cart-overlay-line-table .epages-cart-overlay-price,
+    .epages-cart-overlay-line-table .epages-cart-overlay-quantity,
+    .epages-cart-overlay-line-table .epages-cart-overlay-total {
         width: 100%;
         border-top-width: 0;
     }
     .epages-cart-overlay-line-table .epages-cart-overlay-quantity {
-        width: 100%;
         text-align: left;
-        border-top-width: 0;
     }
     .epages-cart-overlay-line-table .epages-cart-overlay-quantity input {
         max-width: none;
         width: 98%;
     }
     .epages-cart-overlay-line-table .epages-cart-overlay-total {
-        width: 100%;
         text-align: left;
-        border-top-width: 0;
     }
     .epages-cart-overlay-line-table .epages-cart-overlay-remove {
-        width: 100%;
         text-align: right !important;
     }
     .epages-cart-overlay table tfoot tr {
@@ -527,7 +555,7 @@ input[type=number]::-webkit-outer-spin-button {
         width: 70%;
     }
     .epages-cart-overlay-line-table tfoot td.epages-cart-overlay-delivery-price,
-    .epages-cart-overlay-line-table tfoot td.epages-cart-overlay-product-price {
+    .epages-cart-overlay-line-table tfoot td.epages-cart-overlay-total-price {
         float: left;
         padding-right: 10px !important;
         width: 10%;
@@ -540,130 +568,4 @@ input[type=number]::-webkit-outer-spin-button {
         float: none;
         width: auto;
     }
-}
-.epages-shop-widget {
-    margin-top: 20px;
-    width: 100%;
-}
-.epages-row {
-    margin: 0;
-    width: 100%
-}
-
-/* List view: Product Container */
-.epages-shop-widget .epages-shop-product {
-    float: left;
-    width: 100%;
-    min-width: 200px;
-    height: auto;
-    margin-bottom: 20px;
-}
-
-@media (min-width: 564px) and (max-width: 763px) {
-    .epages-shop-widget .epages-shop-product {
-        width: 50%;
-    }
-    .epages-shop-widget .epages-shop-product:nth-child(odd) {
-        clear: both;
-    }
-}
-@media (min-width: 764px) and (max-width: 963px) {
-    .epages-shop-widget .epages-shop-product {
-        width: 33%;
-    }
-    .epages-shop-widget .epages-shop-product:nth-child(3n+1) {
-        clear: both;
-    }
-}
-@media (min-width: 964px) {
-    .epages-shop-widget .epages-shop-product {
-        width: 25%;
-    }
-    .epages-shop-widget .epages-shop-product:nth-child(4n+1) {
-        clear: both;
-    }
-}
-/* List view: Fixed aspect ratio for responsive product image container unless only one column */
-@media (min-width: 564px) {
-    .epages-shop-product-link::before {
-        content: "";
-        display: block;
-        margin-top: 105%;
-    }
-    .epages-shop-product-link {
-        float: left;
-        position: relative;
-        width: 100%;
-    }
-    .epages-shop-product-list-image-container {
-        position: absolute;
-        top: 0;
-    }
-}
-/* List view: Dynamic height for image container if only one column */
-.epages-shop-product-list-image-container {
-    height: auto;
-    max-width: 100%;
-    max-height: none;
-}
-/* List view: Product image */
-.img-product-list {
-    max-height: none;
-    height: auto;
-    max-width: 100%;
-    object-fit: contain;
-    width: 100%;
-}
-
-/* Product detail overlay */
-.epages-shop-overlay-box {
-    padding: 0 2% 0 0;
-    width: 58%;
-    float: left;
-}
-.epages-shop-overlay-box-1, .epages-shop-overlay-box-2 {
-    float: none;
-    width: 40%;
-    min-width: 200px;
-    display: inline-block;
-}
-@media (max-width: 720px) {
-    .epages-shop-overlay-box {
-        width: 380px;
-        float: none;
-    }
-    .epages-shop-overlay-box-1, .epages-shop-overlay-box-2 {
-        width: 100%;
-        float: none;
-    }
-}
-@media (max-width: 450px) {
-    .epages-shop-overlay-box {
-        width: 98%;
-    }
-}
-.epages-shop-overlay-manufacturer-price {
-    font-style: italic;
-    margin-bottom: 5px;
-}
-.pico-content {
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-    background-color: white;
-    display: block;
-    left: 50%;
-    max-height: 80%;
-    max-width: 1000px;
-    min-width: 200px;
-    overflow: auto;
-    position: fixed;
-    top: 10%;
-    transform: translateX(-50%);
-    width: 100%;
-    z-index: 10001;
-}
-
-.pico-content::-webkit-scrollbar {
-    width: 0 !important;
 }
