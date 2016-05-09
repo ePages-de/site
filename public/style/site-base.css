@@ -63,13 +63,14 @@ body {
     outline: none;
     font-family: inherit;
     font-size: 24px;
+    margin: 0;
 }
 .epages-cart-button span {
     font-size: 20px;
     padding-left: .5em;
 }
 .epages-shop-navigation {
-    margin: 10px 0 50px;
+    margin: 10px 0;
     clear: both;
 }
 .epages-shop-sort {
