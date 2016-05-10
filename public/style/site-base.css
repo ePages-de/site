@@ -81,6 +81,7 @@ body {
 /* List View: Product Container */
 .epages-shop-product-list {
     clear: both;
+    margin-top: 10%;
 }
 .epages-shop-widget .epages-shop-product {
     float: left;
@@ -126,7 +127,7 @@ body {
     .epages-shop-product-link::before {
         content: "";
         display: block;
-        margin-top: 120%;
+        margin-top: 100%;
     }
     .epages-shop-product-link {
         float: left;
@@ -135,10 +136,13 @@ body {
     }
     .epages-shop-product-list-image-container img {
         position: absolute;
-        top: 45%;
+        top: 30%;
         left: 0;
         transform: translateY(-50%);
     }
+    .epages-shop-product-list-text-container {
+		    height: 5em;
+		}
  }
 .epages-shop-product-price {
     font-weight: bold;
