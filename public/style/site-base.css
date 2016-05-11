@@ -73,6 +73,11 @@ body {
     margin: 10px 0;
     clear: both;
 }
+.epages-shop-navigation:after {
+    clear: both;
+    content:" ";
+    display: block;
+}
 .epages-shop-sort {
     float: left;
     margin-right:1em;
@@ -81,38 +86,10 @@ body {
 /* List View: Product Container */
 .epages-shop-product-list {
     clear: both;
-    margin-top: 10%;
+    margin-top: 30px;
 }
 .epages-shop-widget .epages-shop-product {
-    float: left;
-    width: 100%;
-    min-width: 200px;
-    height: auto;
-    margin-bottom: 20px;
-}
-@media (min-width: 564px) and (max-width: 763px) {
-    .epages-shop-widget .epages-shop-product {
-        width: 50%;
-    }
-    .epages-shop-widget .epages-shop-product:nth-child(odd) {
-        clear: both;
-    }
-}
-@media (min-width: 764px) and (max-width: 963px) {
-    .epages-shop-widget .epages-shop-product {
-        width: 33%;
-    }
-    .epages-shop-widget .epages-shop-product:nth-child(3n+1) {
-        clear: both;
-    }
-}
-@media (min-width: 964px) {
-    .epages-shop-widget .epages-shop-product {
-        width: 25%;
-    }
-    .epages-shop-widget .epages-shop-product:nth-child(4n+1) {
-        clear: both;
-    }
+    margin-bottom: 30px;
 }
 .epages-shop-product-link {
     text-decoration: none;
@@ -123,25 +100,26 @@ body {
     text-decoration: underline;
 }
 /* List View: Fixed aspect ratio for responsive product image container unless only one column */
-@media (min-width: 564px) {
-    .epages-shop-product-link::before {
+@media (min-width: 460px) {
+    .epages-shop-product-list-image-container::before {
         content: "";
         display: block;
         margin-top: 100%;
     }
-    .epages-shop-product-link {
+    .epages-shop-product-list-image-container {
         float: left;
         position: relative;
         width: 100%;
     }
     .epages-shop-product-list-image-container img {
         position: absolute;
-        top: 30%;
+        top: 50%;
         left: 0;
         transform: translateY(-50%);
     }
     .epages-shop-product-list-text-container {
-		    height: 5em;
+		    float: left;
+		    width: 100%;
 		}
  }
 .epages-shop-product-price {
@@ -149,13 +127,11 @@ body {
 }
 /* List View: Dynamic height for image container if only one column */
 .epages-shop-product-list-image-container {
-    height: auto;
-    max-width: 100%;
-    max-height: none;
+	  margin-bottom: 10px;
 }
 /* List View: Product image */
 .img-product-list {
-    max-height: none;
+    max-height: 200px;
     height: auto;
     max-width: 100%;
     object-fit: contain;
@@ -573,4 +549,11 @@ input[type=number]::-webkit-outer-spin-button {
         float: none;
         width: auto;
     }
+}
+
+.epages-shop-product-list>div {display:flex; flex-wrap:wrap;margin:0;}
+.epages-shop-widget .epages-shop-product {
+  flex: 1 0 200px;
+  box-sizing: border-box;
+  max-width:250px;
 }
