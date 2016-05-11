@@ -56,7 +56,8 @@ body {
     margin: 0 auto;
 }
 .epages-cart-button {
-    background-color: white;
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    background-color: transparent;
     float: right;
     cursor: pointer;
     border: 0;
@@ -282,16 +283,24 @@ body {
 }
 .epages-cart-overlay table {
     border-collapse: collapse;
+    border-width: 0;
 }
 .epages-cart-overlay table th {
     text-align: left;
     padding: 20px 10px 5px;
+    border-width: 0;
+    background-color: transparent;
 }
 .epages-cart-overlay table tr {
     border-bottom: 1px solid #ddd;
 	  border-top: 1px solid #ddd;
+	  border-right: none;
+	  border-left: none;
+	  background-color: transparent;
 }
 .epages-cart-overlay table td {
+    background-color: transparent;
+    border-width: 0;
     padding: 10px;
 }
 .epages-cart-overlay-product-price-desc {
@@ -348,7 +357,7 @@ input[type=number]::-webkit-outer-spin-button {
         padding-right: 18px;
     }
 }
-.epages-cart-overlay-line-item-remove {
+.epages-cart-overlay-line-item-remove, .epages-cart-overlay-line-item-remove:hover {
     border: none;
     background: none;
 }
