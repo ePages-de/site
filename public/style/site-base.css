@@ -66,6 +66,7 @@ body {
     font-family: inherit;
     font-size: 24px;
     margin: 0;
+    color: inherit !important;
 }
 .epages-cart-button span {
     font-size: 20px;
@@ -263,6 +264,10 @@ body {
 }
 .epages-shop-overlay p {
     margin-top: 3px;
+}
+.epages-product-description ul {
+    margin: 0;
+    padding: 0 0 0 2em;
 }
 .epages-shop-overlay-custom-attributes-table th {
     text-align: left;
