@@ -20,8 +20,9 @@ body {
     z-index: 10002;
 }
 .epages-shop-widget {
-    margin-top: 20px;
+    margin: 20px auto;
     width: 100%;
+    max-width: 999px;
 }
 .pico-content {
     -webkit-box-shadow: none;
@@ -290,6 +291,7 @@ body {
     padding: 20px 10px 5px;
     border-width: 0;
     background-color: transparent;
+    color: #000;
 }
 .epages-cart-overlay table tr {
     border-bottom: 1px solid #ddd;
@@ -302,6 +304,7 @@ body {
     background-color: transparent;
     border-width: 0;
     padding: 10px;
+    vertical-align: middle;
 }
 .epages-cart-overlay-product-price-desc {
     font-weight: bold;
