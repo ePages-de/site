@@ -305,6 +305,7 @@ body {
     border-width: 0;
     padding: 10px;
     vertical-align: middle;
+    text-align: left;
 }
 .epages-cart-overlay-product-price-desc {
     font-weight: bold;
