@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
 body {
     font: 14px/20px "Helvetica Neue", Arial, sans-serif;
     margin: 50px;
@@ -79,7 +82,10 @@ body {
     float: right;
     margin: 0 auto;
 }
-.epages-cart-button {
+.epages-cart-button,
+.epages-cart-button:hover,
+.epages-cart-button:active,
+.epages-cart-button:visited {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     background-color: transparent;
     float: right;
@@ -90,6 +96,7 @@ body {
     font-size: 24px;
     margin: 0;
     color: inherit !important;
+    box-shadow:none;
 }
 .epages-cart-button span {
     font-size: 20px;
@@ -397,6 +404,7 @@ input[type=number]::-webkit-outer-spin-button {
 .epages-cart-overlay-line-item-remove, .epages-cart-overlay-line-item-remove:hover {
     border: none;
     background: none;
+    box-shadow: none;
 }
 .epages-cart-overlay-line-item-remove:before {
     content: "\f1f8";
