@@ -40,6 +40,7 @@ body {
     transform: translateX(-50%);
     width: 100%;
     z-index: 10001;
+    color: #444;
 }
 .pico-content::-webkit-scrollbar {
     width: 0 !important;
@@ -106,6 +107,9 @@ body {
 .epages-shop-sort {
     float: left;
     margin-right:1em;
+}
+.form-control {
+	color: #444;
 }
 /********** Product List **********/
 /* List View: Product Container */
