@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 body {
-    font: 14px/20px "Helvetica Neue", Arial, sans-serif;
+    font: 14px/1.5 "Helvetica Neue", Arial, sans-serif;
     margin: 50px;
 }
 @media (max-width: 564px) {
@@ -374,13 +374,11 @@ body {
     padding: 3px;
     margin: 0;
     max-width: 40px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    border-color: grey;
+    border: 1px solid #999 !important;
+    -webkit-border-radius: 4px !important;
+    -moz-border-radius: 4px !important;
+    border-radius: 4px !important;
     background: #fff;
-    color: #575757;
-    border-width: 1px;
     outline: none;
     display: inline-block;
     -webkit-appearance: none;
@@ -405,6 +403,7 @@ input[type=number]::-webkit-outer-spin-button {
     border: none;
     background: none;
     box-shadow: none;
+    top: 0;
 }
 .epages-cart-overlay-line-item-remove:before {
     content: "\f1f8";
