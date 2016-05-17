@@ -289,6 +289,9 @@ body {
     min-width: 50px;
     display: inline-block;
 }
+.epages-shop-variation select {
+    margin-bottom: 0 !important;
+}
 .epages-shop-overlay hr {
     border-width: 1px 0 0 0;
     border-color: #ccc;
