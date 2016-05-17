@@ -131,6 +131,8 @@ body {
     text-decoration: none;
     color: inherit;
     text-align: center;
+    display: inline-block;
+    width: 100%;
 }
 .epages-shop-product-link:hover {
     text-decoration: underline;
