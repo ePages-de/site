@@ -305,6 +305,7 @@ body {
 .epages-product-description ul,
 .epages-product-description ol {
     margin: 0 0 2em;
+    list-style: outside none disc;
 }
 .epages-product-description ul {
     padding: 0 0 0 2em;
