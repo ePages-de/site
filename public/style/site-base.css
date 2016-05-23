@@ -26,6 +26,7 @@ body {
     margin: 20px auto;
     width: 100%;
     max-width: 999px;
+    clear: both;
 }
 .pico-content {
     -webkit-box-shadow: none;
