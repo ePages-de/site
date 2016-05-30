@@ -7,6 +7,7 @@
   "checkout": "Checka ut",
   "description": "Beskrivning",
   "manufacturer-price": "Gammalt pris",
+  "additional-product-information": "Övrig produktinformation",
   "exclude-vat": "plus moms, plus ",
   "exclude-vat-price": "Pris plus moms, plus ",
   "exclude-vat-prices": "Priser plus moms, plus ",

@@ -7,6 +7,7 @@
   "checkout": "Betalen",
   "description": "Beschrijving",
   "manufacturer-price": "Oude prijs",
+  "additional-product-information": "Aanvullende productinformatie",
   "exclude-vat": "plus btw plus ",
   "exclude-vat-price": "Prijs plus btw plus ",
   "exclude-vat-prices": "Prijzen plus btw plus ",
