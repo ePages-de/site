@@ -36,7 +36,7 @@ class CartDetailView extends Backbone.View
               <td class="epages-cart-overlay-remove"></td>
             </tr>
             <tr>
-              <td colspan="4" data-i18n='shipping-price'></td>
+              <td colspan="4"><%= deliveryName %></td>
               <td class="epages-cart-overlay-delivery-price"><%= deliveryPrice %></td>
               <td class="epages-cart-overlay-remove"></td>
             </tr>
@@ -71,6 +71,7 @@ class CartDetailView extends Backbone.View
       total: @collection.total
       shippingUrl: @collection.shippingUrl
       deliveryPrice: @collection.deliveryPrice
+      deliveryName: @collection.deliveryName
       failedToCreateCart: @failedToCreateCart
 
     if @collection.isEmpty()
