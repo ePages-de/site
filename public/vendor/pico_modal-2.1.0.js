@@ -203,24 +203,7 @@
         var elem = Elem.div()
             .clazz("pico-content")
             .clazz( getOption("modalClass", "") )
-            .stylize({
-                display: 'block',
-                position: 'fixed',
-                zIndex: 10001,
-                left: "50%",
-                top: "10%",
-                width: width,
-                '-ms-transform': 'translateX(-50%)',
-                '-moz-transform': 'translateX(-50%)',
-                '-webkit-transform': 'translateX(-50%)',
-                '-o-transform': 'translateX(-50%)',
-                'transform': 'translateX(-50%)'
-            })
-            .stylize(getOption('modalStyles', {
-                backgroundColor: "white",
-                padding: "20px",
-                borderRadius: "0"
-            }))
+            
             .html( getOption('content') )
             .attr("role", "dialog")
             .onClick(function (event) {

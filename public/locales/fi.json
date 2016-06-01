@@ -7,6 +7,7 @@
   "checkout": "Tilaa",
   "description": "Kuvaus",
   "manufacturer-price": "Aiempi hinta",
+  "additional-product-information": "Tuotteen lisätiedot",
   "exclude-vat": "plus ALV, sekä ",
   "exclude-vat-price": "Hintaan plus ALV sekä ",
   "exclude-vat-prices": "Hintaan plus ALV sekä ",
@@ -23,7 +24,7 @@
   "search": "Haku",
   "shipping": "Lähetys",
   "shipping-price": "Lähetyshinta",
-  "ssl": "Tietosi siirretään salatun yhteyden (SSL) välityksellä<br>, ja niitä ei anneta ulkopuolisten tahojen käyttöön.",
+  "ssl": "Tietosi siirretään salatun yhteyden (SSL) välityksellä, ja niitä ei anneta ulkopuolisten tahojen käyttöön.",
   "subtotal": "Yhteensä",
   "total-price": "Hinta yhteensä",
   "unit-price": "Hinta"

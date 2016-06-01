@@ -26,7 +26,7 @@ class WidgetView extends Backbone.View
     this
 
   _grabOptions: ->
-    @showCategoryList = _.contains [true], @$el.data("category-list")
+    @showCategoryList = _.contains [undefined, true], @$el.data("category-list")
     @showSearchForm   = _.contains [undefined, true], @$el.data("search-form")
     @showSort         = _.contains [undefined, true], @$el.data("sort")
     @resultsPerPage   = @$el.data("products-per-page") || 12

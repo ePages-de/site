@@ -13,19 +13,20 @@ class ProductView extends Backbone.View
       <div class="epages-shop-product-list-image-container">
         <img class="img-product-list" src="<%= image %>"/>
       </div>
-      <div class="epages-shop-product-name"><%= name %></div>
-      <% if(manufacturerPrice) { %>
-        <div class="epages-shop-product-manufacturer-price">
-          <div data-i18n="old-price"></div>
-          <div class="price"> <%= manufacturerPrice %></div>
-        </div>
-      <% } %>
-      <div class="epages-shop-product-price">
-        <%= price %>
-      </div>
-      <% if(basePrice) { %>
-        <div class="epages-shop-product-base-price">(<%= basePrice %>)</div>
-      <% } %>
+      <div class="epages-shop-product-list-text-container">
+	      <div class="epages-shop-product-name"><%= name %></div>
+	      <% if(manufacturerPrice) { %>
+	        <div class="epages-shop-product-manufacturer-price">
+	          <label data-i18n='manufacturer-price'></label>&nbsp;<span><%= manufacturerPrice %></span>
+	        </div>
+	      <% } %>
+	      <div class="epages-shop-product-price">
+	        <%= price %>
+	      </div>
+	      <% if(basePrice) { %>
+	        <div class="epages-shop-product-base-price">(<%= basePrice %>)</div>
+	      <% } %>
+	    </div>
     </a>
   """
 

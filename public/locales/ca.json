@@ -7,6 +7,7 @@
   "checkout": "Paga",
   "description": "Descripció",
   "manufacturer-price": "Preu anterior",
+  "additional-product-information": "Informació de producte addicional",
   "exclude-vat": "més l'IVA, més ",
   "exclude-vat-price": "Preu més l'IVA, més ",
   "exclude-vat-prices": "Preus més l'IVA, més ",
@@ -23,7 +24,7 @@
   "search": "Cerca",
   "shipping": "Enviament",
   "shipping-price": "Preu d'enviament",
-  "ssl": "Les vostres dades es transmetran per una connexió xifrada (SSL)<br>i no es revelaran a tercers.",
+  "ssl": "Les vostres dades es transmetran per una connexió xifrada (SSL) i no es revelaran a tercers.",
   "subtotal": "Subtotal",
   "total-price": "Preu total",
   "unit-price": "Preu"

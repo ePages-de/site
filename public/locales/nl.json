@@ -7,6 +7,7 @@
   "checkout": "Betalen",
   "description": "Beschrijving",
   "manufacturer-price": "Oude prijs",
+  "additional-product-information": "Aanvullende productinformatie",
   "exclude-vat": "plus btw plus ",
   "exclude-vat-price": "Prijs plus btw plus ",
   "exclude-vat-prices": "Prijzen plus btw plus ",
@@ -23,7 +24,7 @@
   "search": "Zoeken",
   "shipping": "Verzending",
   "shipping-price": "Verzendingskosten",
-  "ssl": "Uw gegevens worden verzonden via een versleutelde verbinding (SSL)<br>en worden niet vrijgegeven aan derden.",
+  "ssl": "Uw gegevens worden verzonden via een versleutelde verbinding (SSL) en worden niet vrijgegeven aan derden.",
   "subtotal": "Subtotaal",
   "total-price": "Totaalprijs",
   "unit-price": "Prijs"

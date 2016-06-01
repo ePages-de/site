@@ -7,6 +7,7 @@
   "checkout": "Pagar",
   "description": "Descrição",
   "manufacturer-price": "Preço antigo",
+  "additional-product-information": "Informação adicional do produto",
   "exclude-vat": "excluem IVA e ",
   "exclude-vat-price": "Os preços excluem IVA e ",
   "exclude-vat-prices": "Os preços excluem IVA e ",
@@ -23,7 +24,7 @@
   "search": "Pesquisar",
   "shipping": "Envio",
   "shipping-price": "Preço do envio",
-  "ssl": "Os seus dados serão transmitidos através de uma ligação encriptada (SSL)<br>e não serão revelados a terceiros.",
+  "ssl": "Os seus dados serão transmitidos através de uma ligação encriptada (SSL) e não serão revelados a terceiros.",
   "subtotal": "Subtotal",
   "total-price": "Preço total",
   "unit-price": "Preço"

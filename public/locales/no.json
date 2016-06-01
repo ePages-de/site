@@ -7,6 +7,7 @@
   "checkout": "Sjekk ut",
   "description": "Beskrivelse",
   "manufacturer-price": "Gammel pris",
+  "additional-product-information": "Tilleggsinformasjon for produkt",
   "exclude-vat": "pluss mva, pluss ",
   "exclude-vat-price": "Pris pluss mva, pluss ",
   "exclude-vat-prices": "Priser pluss mva, pluss ",
@@ -23,7 +24,7 @@
   "search": "Søk",
   "shipping": "Frakt",
   "shipping-price": "Pris for frakt",
-  "ssl": "Dataene blir overført gjennom en kryptert kobling (SSL)<br>og vil ikke bli avslørt til tredjepart.",
+  "ssl": "Dataene blir overført gjennom en kryptert kobling (SSL) og vil ikke bli avslørt til tredjepart.",
   "subtotal": "Delsum",
   "total-price": "Pris totalt",
   "unit-price": "Pris"

@@ -7,6 +7,7 @@
   "checkout": "Paga",
   "description": "Descrizione",
   "manufacturer-price": "Prezzo vecchio",
+  "additional-product-information": "Informazioni aggiuntive sul prodotto",
   "exclude-vat": "più IVA più ",
   "exclude-vat-price": "Prezzo più IVA più ",
   "exclude-vat-prices": "Prezzi più IVA più ",
@@ -23,7 +24,7 @@
   "search": "Cerca",
   "shipping": "Spedizione",
   "shipping-price": "Costo spedizione",
-  "ssl": "I dati vengono trasmessi tramite una connessione crittografata (SSL)<br>e non vengono divulgati a terze parti.",
+  "ssl": "I dati vengono trasmessi tramite una connessione crittografata (SSL) e non vengono divulgati a terze parti.",
   "subtotal": "Subtotale",
   "total-price": "Prezzo totale",
   "unit-price": "Prezzo"

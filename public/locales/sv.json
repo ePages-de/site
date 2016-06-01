@@ -7,6 +7,7 @@
   "checkout": "Checka ut",
   "description": "Beskrivning",
   "manufacturer-price": "Gammalt pris",
+  "additional-product-information": "Övrig produktinformation",
   "exclude-vat": "plus moms, plus ",
   "exclude-vat-price": "Pris plus moms, plus ",
   "exclude-vat-prices": "Priser plus moms, plus ",
@@ -23,7 +24,7 @@
   "search": "Sök",
   "shipping": "Frakt",
   "shipping-price": "Fraktpris",
-  "ssl": "Dina uppgifter överförs via en krypterad anslutning (SSL)<br>och lämnas inte ut till tredje part.",
+  "ssl": "Dina uppgifter överförs via en krypterad anslutning (SSL) och lämnas inte ut till tredje part.",
   "subtotal": "Delsumma",
   "total-price": "Totalt pris",
   "unit-price": "Pris"

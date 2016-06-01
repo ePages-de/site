@@ -193,7 +193,6 @@ class Product extends Backbone.Model
         value += "</td></tr>"
 
     if displayTitle
-      $(".epages-shop-overlay-custom-attributes h4").remove()
-      $(".epages-shop-overlay-custom-attributes-table").before('<h4>Additional product information</h4>')
+      $(".epages-shop-overlay-custom-attributes-header").css("display", "block")
 
     $(".epages-shop-overlay-custom-attributes-table").html(value)
