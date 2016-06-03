@@ -32,7 +32,7 @@ class ProductView extends Backbone.View
 
   render: ->
     @$el.html @template
-      image: @model.largeImage()
+      image: @model.mediumImage()
       name:  @model.name()
       price: @model.formattedPrice()
       link:  @model.link()
