@@ -153,8 +153,8 @@ body {
     .epages-shop-product-list-image-container img {
         position: absolute;
         top: 50%;
-        left: 0;
-        transform: translateY(-50%);
+        left: 50%;
+        transform: translate(-50%,-50%);
     }
     .epages-shop-product-list-text-container {
 		    float: left;
@@ -174,7 +174,6 @@ body {
     height: auto;
     max-width: 100%;
     object-fit: contain;
-    width: 100%;
 }
 /********** Shop Pagination **********/
 .epages-shop-pagination {
