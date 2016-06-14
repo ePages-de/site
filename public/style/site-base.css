@@ -112,6 +112,9 @@ body {
     content:" ";
     display: block;
 }
+.epages-shop-navigation label {
+    margin-bottom: 0.5em;
+}
 .epages-shop-sort {
     float: left;
     margin-right:1em;

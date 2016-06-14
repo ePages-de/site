@@ -16,6 +16,7 @@
   "include-vat-price": "Price includes VAT, plus ",
   "include-vat-prices": "Prices include VAT, plus ",
   "loading": "Loading ...",
+  "sortby": "Sort by",
   "name": "Name",
   "no-products": "Your search did not produce any matches.",
   "price-asc": "Price: low to high",

@@ -3,13 +3,14 @@ class CategoryListView extends Backbone.View
   initialize: ->
     @listenTo @collection, "reset", @render
 
-  tagName: "label"
+  tagName: "input-group"
 
   events:
     "change select": "onSelectionChange"
 
   template: _.template """
-  <div class="input-group"><select class="form-control"></div>
+  <label for="category" data-i18n='category'></label>
+  <select class="form-control" id="category">
   """
   render: ->
     return this if @collection.isEmpty()
