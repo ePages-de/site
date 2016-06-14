@@ -91,16 +91,20 @@ class Product extends Backbone.Model
     return "disabled"
 
   thumbnailImage: ->
-    _.findWhere(@get("images"), classifier: "Thumbnail").url
+    if _.findWhere(@get("images"), classifier: "Thumbnail")
+      _.findWhere(@get("images"), classifier: "Thumbnail").url
 
   smallImage: ->
-    _.findWhere(@get("images"), classifier: "Small").url
+    if _.findWhere(@get("images"), classifier: "Small")
+      _.findWhere(@get("images"), classifier: "Small").url
 
   mediumImage: ->
-    _.findWhere(@get("images"), classifier: "Medium").url
+    if _.findWhere(@get("images"), classifier: "Medium")
+      _.findWhere(@get("images"), classifier: "Medium").url
 
   largeImage: ->
-    _.findWhere(@get("images"), classifier: "Large").url
+    if _.findWhere(@get("images"), classifier: "Large")
+      _.findWhere(@get("images"), classifier: "Large").url
 
   productImage: ->
     @get("variationImage") || @largeImage()
