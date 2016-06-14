@@ -114,6 +114,7 @@ body {
 }
 .epages-shop-navigation label {
     margin-bottom: 0.5em;
+    width:200px;
 }
 .epages-shop-sort {
     float: left;
