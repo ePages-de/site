@@ -20,6 +20,8 @@ class App
   @i18n: (view) ->
     for el in view.$el.find("[data-i18n]")
       $(el).html(App.translations[$(el).data("i18n")])
+    for el in view.$el.find("[data-i18n-placeholder]")
+      $(el).attr("placeholder", App.translations[$(el).data("i18n-placeholder")])
 
   @start: ->
     @modal = new Modal()
