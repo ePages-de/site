@@ -36,7 +36,7 @@ class ProductDetailView extends Backbone.View
           <div class="epages-shop-overlay-product-availability-<%= availability %>">
             <%= availabilityText %>
           </div>
-          <% if (masterUrl) { %>
+          <% if (variationsLink) { %>
             <h3 data-i18n='variation-options'></h3>
             <div class="epages-shop-overlay-product-variations"></div>
           <% } %>
@@ -83,7 +83,7 @@ class ProductDetailView extends Backbone.View
       disabled: @model.isAvailable()
       shippingUrl: @model.shippingUrl()
       taxType: @model.taxType()
-      masterUrl: @model.masterUrl()
+      variationsLink: @model.variationsLink()
 
     new VariationAttributeListView(
       collection: @model.variationAttributes()

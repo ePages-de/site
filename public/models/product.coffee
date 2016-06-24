@@ -124,9 +124,9 @@ class Product extends Backbone.Model
     if _.findWhere(@get("links"), rel: "lowest-price")
       _.findWhere(@get("links"), rel: "lowest-price").href
 
-  masterUrl: ->
-    if _.findWhere(@get("links"), rel: "master")
-      _.findWhere(@get("links"), rel: "master").href
+  variationsLink: ->
+    if _.findWhere(@get("links"), rel: "variations")
+      _.findWhere(@get("links"), rel: "variations").href
 
   toJSON: ->
     productId: @id()
@@ -146,7 +146,7 @@ class Product extends Backbone.Model
 
   loadVariations: =>
     if @variationItems() then return
-    $.getJSON "#{@masterUrl()}/variations"
+    $.getJSON "#{@variationsLink()}"
       .done (json) =>
         @set("variationAttributes", new VariationAttributes json.variationAttributes)
         @set("variationItems", new VariationItems json.items)
