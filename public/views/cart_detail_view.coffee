@@ -1,7 +1,6 @@
 class CartDetailView extends Backbone.View
 
   initialize: ->
-    @collection.sync()
     @listenTo @collection, "reset update change", @render
 
   events:
@@ -37,7 +36,7 @@ class CartDetailView extends Backbone.View
               <td class="epages-cart-overlay-remove"></td>
             </tr>
             <tr>
-              <td colspan="4" data-i18n='shipping-price'></td>
+              <td colspan="4"><%= deliveryName %></td>
               <td class="epages-cart-overlay-delivery-price"><%= deliveryPrice %></td>
               <td class="epages-cart-overlay-remove"></td>
             </tr>
@@ -72,6 +71,7 @@ class CartDetailView extends Backbone.View
       total: @collection.total
       shippingUrl: @collection.shippingUrl
       deliveryPrice: @collection.deliveryPrice
+      deliveryName: @collection.deliveryName
       failedToCreateCart: @failedToCreateCart
 
     if @collection.isEmpty()
@@ -98,14 +98,17 @@ class CartDetailView extends Backbone.View
     # XXX: can we get rid of this maybe?
     App.modal.closeAll()
 
-    App.cart.save()
-      .done (response) ->
-        checkoutWindow.location = response.checkoutUrl
-      .fail =>
-        checkoutWindow.close()
+    if @checkoutUrl
+      checkoutWindow.location = @checkoutUrl
+    else
+      App.cart.save()
+        .done (response) ->
+          checkoutWindow.location = response.checkoutUrl
+        .fail =>
+          checkoutWindow.close()
 
-        @failedToCreateCart = true
-        @render()
-        @failedToCreateCart = false
+          @failedToCreateCart = true
+          @render()
+          @failedToCreateCart = false
 
-        App.modal.open(this)
+          App.modal.open(this)

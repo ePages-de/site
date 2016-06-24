@@ -26,7 +26,9 @@ class Cart extends Backbone.Collection
 
         @subTotal = response.lineItemContainer.lineItemsSubTotal.formatted
         @deliveryPrice = response.lineItemContainer.shippingPrice.formatted
+        @deliveryName = response.shippingData.shippingMethod.name
         @total = response.lineItemContainer.grandTotal.formatted
+        @checkoutUrl = response.checkoutUrl
         @trigger("update:cartId", response.cartId)
 
   url: ->
@@ -44,15 +46,19 @@ class Cart extends Backbone.Collection
       .done (response) => @shippingUrl = response[0].sfUrl + "/Shipping"
 
   loadFromStorage: ->
-    data = @storage.get("cart")
+    data = @storage.get("products")
     @reset(data) if data
 
   _loadFromStorage: (event) =>
-    if event.key is @storage.key("cart")
+    if event.key is @storage.key("products")
       @loadFromStorage()
 
   _dumpToStorage: =>
-    @storage.set "cart", @map (product) -> product.attributes
+    @storage.set "products", @map (product) -> product.attributes
+    if @subTotal then @storage.set "subTotal", @subTotal
+    if @deliveryPrice then @storage.set "delivery", @deliveryPrice
+    if @total then @storage.set "total", @total
+    if @checkoutUrl then @storage.set "checkoutUrl", @checkoutUrl
 
   _updateSubTotal: (cartId) =>
     @trigger "change" # manual trigger because the items didn't change
