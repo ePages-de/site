@@ -28,5 +28,8 @@
   "ssl": "Vaše údaje budou přenášeny prostřednictvím šifrovaného připojení (SSL) a nebudou poskytnuty třetím stranám.",
   "subtotal": "Celkem",
   "total-price": "Celková cena",
-  "unit-price": "Cena"
+  "unit-price": "Cena",
+  "remove-line-item": "Remove product",
+  "variation-options": "Please choose your option(s)",
+  "all-products": "All products"
 }

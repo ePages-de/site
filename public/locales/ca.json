@@ -28,5 +28,8 @@
   "ssl": "Les vostres dades es transmetran per una connexió xifrada (SSL) i no es revelaran a tercers.",
   "subtotal": "Subtotal",
   "total-price": "Preu total",
-  "unit-price": "Preu"
+  "unit-price": "Preu",
+  "remove-line-item": "Remove product",
+  "variation-options": "Please choose your option(s)",
+  "all-products": "All products"
 }

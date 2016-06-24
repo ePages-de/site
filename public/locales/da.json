@@ -28,5 +28,8 @@
   "ssl": "Dine oplysninger sendes via en krypteret forbindelse (SSL) og bliver ikke videregivet til tredjeparter.",
   "subtotal": "Subtotal",
   "total-price": "Pris i alt",
-  "unit-price": "Pris"
+  "unit-price": "Pris",
+  "remove-line-item": "Remove product",
+  "variation-options": "Please choose your option(s)",
+  "all-products": "All products"
 }

@@ -28,5 +28,8 @@
   "ssl": "Ihre Daten werden über eine verschlüsselte Verbindung übertragen (SSL) und nicht an Dritte weitergegeben.",
   "subtotal": "Zwischensumme",
   "total-price": "Gesamtpreis",
-  "unit-price": "Preis"
+  "unit-price": "Preis",
+  "remove-line-item": "Produkt entfernen",
+  "variation-options": "Bitte Option(en) auswählen",
+  "all-products": "Alle Produkte"
 }

@@ -29,5 +29,7 @@
   "subtotal": "Subtotal",
   "total-price": "Total price",
   "unit-price": "Price",
-  "remove-line-item": "Remove product"
+  "remove-line-item": "Remove product",
+  "variation-options": "Please choose your option(s)",
+  "all-products": "All products"
 }

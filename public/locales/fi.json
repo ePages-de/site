@@ -28,5 +28,8 @@
   "ssl": "Tietosi siirretään salatun yhteyden (SSL) välityksellä, ja niitä ei anneta ulkopuolisten tahojen käyttöön.",
   "subtotal": "Yhteensä",
   "total-price": "Hinta yhteensä",
-  "unit-price": "Hinta"
+  "unit-price": "Hinta",
+  "remove-line-item": "Remove product",
+  "variation-options": "Please choose your option(s)",
+  "all-products": "All products"
 }

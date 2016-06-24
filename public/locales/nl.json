@@ -28,5 +28,8 @@
   "ssl": "Uw gegevens worden verzonden via een versleutelde verbinding (SSL) en worden niet vrijgegeven aan derden.",
   "subtotal": "Subtotaal",
   "total-price": "Totaalprijs",
-  "unit-price": "Prijs"
+  "unit-price": "Prijs",
+  "remove-line-item": "Remove product",
+  "variation-options": "Please choose your option(s)",
+  "all-products": "All products"
 }

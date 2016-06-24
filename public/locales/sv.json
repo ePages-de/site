@@ -28,5 +28,8 @@
   "ssl": "Dina uppgifter överförs via en krypterad anslutning (SSL) och lämnas inte ut till tredje part.",
   "subtotal": "Delsumma",
   "total-price": "Totalt pris",
-  "unit-price": "Pris"
+  "unit-price": "Pris",
+  "remove-line-item": "Remove product",
+  "variation-options": "Please choose your option(s)",
+  "all-products": "All products"
 }

@@ -20,7 +20,7 @@ class CartLineItemView extends Backbone.View
     <td class="epages-cart-overlay-remove">
       <button class="epages-cart-overlay-line-item-remove"
               alt="Remove product">
-      </button> <span>Remove product</span>
+      </button> <span data-i18n='remove-line-item'></span>
     </td>
   """
 

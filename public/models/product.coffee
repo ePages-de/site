@@ -35,7 +35,7 @@ class Product extends Backbone.Model
     @get("availability")
 
   availabilityText: ->
-    @get("availabilityText") || "Please choose your option(s)"
+    @get("availabilityText")
 
   name: ->
     @get("name")
@@ -124,6 +124,10 @@ class Product extends Backbone.Model
     if _.findWhere(@get("links"), rel: "lowest-price")
       _.findWhere(@get("links"), rel: "lowest-price").href
 
+  masterUrl: ->
+    if _.findWhere(@get("links"), rel: "master")
+      _.findWhere(@get("links"), rel: "master").href
+
   toJSON: ->
     productId: @id()
     quantity: @quantity()
@@ -142,7 +146,7 @@ class Product extends Backbone.Model
 
   loadVariations: =>
     if @variationItems() then return
-    $.getJSON "#{@url()}/variations"
+    $.getJSON "#{@masterUrl()}/variations"
       .done (json) =>
         @set("variationAttributes", new VariationAttributes json.variationAttributes)
         @set("variationItems", new VariationItems json.items)

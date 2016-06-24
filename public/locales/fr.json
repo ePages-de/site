@@ -28,5 +28,8 @@
   "ssl": "Vos données sont transmises par une connexion chiffrée (SSL) et ne seront pas communiquées à des tiers.",
   "subtotal": "Sous-total",
   "total-price": "Prix total",
-  "unit-price": "Prix"
+  "unit-price": "Prix",
+  "remove-line-item": "Remove product",
+  "variation-options": "Please choose your option(s)",
+  "all-products": "All products"
 }

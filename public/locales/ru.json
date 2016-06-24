@@ -28,5 +28,8 @@
   "ssl": "Ваши данные будут отправлены с использованием зашифрованного соединения (SSL) и не будут передаваться третьим лицам.",
   "subtotal": "Промежуточный итог:",
   "total-price": "Итого",
-  "unit-price": "Цена"
+  "unit-price": "Цена",
+  "remove-line-item": "Remove product",
+  "variation-options": "Please choose your option(s)",
+  "all-products": "All products"
 }
