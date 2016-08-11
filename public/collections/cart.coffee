@@ -26,7 +26,8 @@ class Cart extends Backbone.Collection
 
         @subTotal = response.lineItemContainer.lineItemsSubTotal.formatted
         @deliveryPrice = response.lineItemContainer.shippingPrice.formatted
-        @deliveryName = response.shippingData.shippingMethod.name
+        shippingMethod = (response.shippingData || {}).shippingMethod
+        @deliveryName = (shippingMethod || {}).name
         @total = response.lineItemContainer.grandTotal.formatted
         @checkoutUrl = response.checkoutUrl
         @trigger("update:cartId", response.cartId)
