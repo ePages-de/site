@@ -10,7 +10,7 @@ class CategoryListView extends Backbone.View
 
   template: _.template """
   <label for="category" data-i18n='category'></label>
-  <select class="form-control" id="category">
+  <select id="categories" class="form-control" id="category">
   """
   render: ->
     return this if @collection.isEmpty()
@@ -19,7 +19,7 @@ class CategoryListView extends Backbone.View
       view = new CategoryListItemView(model: category)
       view.render().el
 
-    allProducts = new SubCategory(title: "----------")
+    allProducts = new SubCategory(title: App.translations['all-products'])
     allView = new CategoryListItemView(model: allProducts)
     allView.render()
 
@@ -28,6 +28,10 @@ class CategoryListView extends Backbone.View
     @$el.html @template()
     @$("select").html html
     App.i18n(this)
+
+    text = (document.getElementById('acl') || {}).innerText || "All Products"
+    document.getElementById('categories').children[0].text = text
+
     this
 
   reset: ->

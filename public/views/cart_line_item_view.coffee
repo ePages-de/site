@@ -32,14 +32,13 @@ class CartLineItemView extends Backbone.View
       unit:            @model.unit()
       singleItemPrice: @model.formattedPrice()
       lineItemPrice:   @model.get("lineItemPrice") || ''
-   
+
     App.i18n(this)
     this
-  
+
   changeQuantity: (event) ->
     quantity = parseInt(event.target.value)
     @model.set(quantity: quantity)
-
 
   removeLineItem: (event) ->
     event.preventDefault()

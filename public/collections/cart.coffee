@@ -63,5 +63,3 @@ class Cart extends Backbone.Collection
 
   _updateSubTotal: (cartId) =>
     @trigger "change" # manual trigger because the items didn't change
-
-
