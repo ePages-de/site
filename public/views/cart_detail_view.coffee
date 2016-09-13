@@ -78,7 +78,6 @@ class CartDetailView extends Backbone.View
     if @collection.isEmpty()
       @$(".epages-cart-overlay-is-empty").show()
     else
-      console.log @collection.storage.storage
       html = @collection.map (lineItem) ->
         view = new CartLineItemView(model: lineItem)
         view.render().el
