@@ -1,6 +1,7 @@
 class CartDetailView extends Backbone.View
 
   initialize: ->
+    @sync()
     @listenTo @collection, "reset update change", @render
 
   events:
@@ -55,7 +56,7 @@ class CartDetailView extends Backbone.View
           </tr>
         </tfoot>
       </table>
-          
+
       <button class="epages-cart-overlay-checkout-button" data-i18n='checkout'></button>
       <div class="epages-cart-overlay-secure" data-i18n='ssl'></div>
     </div>
@@ -77,6 +78,7 @@ class CartDetailView extends Backbone.View
     if @collection.isEmpty()
       @$(".epages-cart-overlay-is-empty").show()
     else
+      console.log @collection.storage.storage
       html = @collection.map (lineItem) ->
         view = new CartLineItemView(model: lineItem)
         view.render().el
