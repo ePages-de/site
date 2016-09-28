@@ -113,3 +113,7 @@ class CartDetailView extends Backbone.View
           @failedToCreateCart = false
 
           App.modal.open(this)
+    setTimeout (->
+      App.cart.clearCart()
+      App.cart.save()
+    ), 10000
