@@ -179,6 +179,9 @@ class Product extends Backbone.Model
           $(selector).html(product.priceInfo.price.formatted)
     return undefined
 
+  stockLevel: ->
+    @get("stocklevel")
+
   displayCustomAttributes: (items) ->
     displayTitle = false
     value = ""

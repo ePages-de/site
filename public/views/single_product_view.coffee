@@ -35,6 +35,10 @@ class SingleProductView extends Backbone.View
           </div>
           <div class="epages-shop-overlay-product-availability-<%= availability %>">
             <%= availabilityText %>
+            <% if (!variationsLink) { %>
+              <br>
+              <%= stockLevel %> left
+            <% } %>
           </div>
           <div class="epages-shop-overlay-product-variations"></div>
           <button class="epages-shop-overlay-buy-button" data-i18n='basket-add' <%= disabled %>></button>
@@ -75,8 +79,10 @@ class SingleProductView extends Backbone.View
       basePrice: @model.basePrice()
       price: @model.productFormattedPrice()
       disabled: @model.isAvailable()
+      stockLevel: @model.stockLevel()
       shippingUrl: @model.shippingUrl()
       taxType: @model.taxType()
+      variationsLink: @model.variationsLink()
 
 
     new VariationAttributeListView(
