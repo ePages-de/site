@@ -33,3 +33,6 @@ class CartLineItem extends Backbone.Model
 
   lineItemPrice: ->
     @get("lineItemPrice").formatted
+
+  productId: ->
+    @get("productId")

@@ -84,7 +84,6 @@ class CartDetailView extends Backbone.View
 
       @$(".epages-cart-overlay-line-table tbody").html html
       @$(".epages-cart-overlay-not-empty").show()
-
     App.i18n(this)
     this
 
