@@ -42,6 +42,9 @@ class CartLineItemView extends Backbone.View
 
   changeQuantity: (event) ->
     quantity = parseInt(event.target.value)
+    top = @model.get("stocklevel")
+    if quantity > top
+      quantity = top
     @model.set(quantity: quantity)
 
   changeQuantityH: (event) ->
