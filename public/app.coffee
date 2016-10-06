@@ -70,7 +70,7 @@ class App
           dataType: 'json',
           success: (response) =>
             App.translations = response
-
+    localStorage.setItem("epages-shop-lang", App.lang)
     scriptTag.after new LoadingView().render().el
 
     App.cart = new Cart(null, shopId: shopId)

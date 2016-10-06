@@ -115,4 +115,4 @@ class CartDetailView extends Backbone.View
     setTimeout (->
       App.cart.clearCart()
       App.cart.save()
-    ), 10000
+    ), 300000

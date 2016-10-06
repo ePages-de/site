@@ -20,4 +20,10 @@
       Please wait while you are redirected to your basket &hellip;
     </div>
   </body>
+  <script>
+    lang = localStorage.getItem("epages-shop-lang");
+    if (lang == "de") {
+      document.getElementsByClassName("checkout")[0].innerText = "Bitte warten Sie, während Sie zu Ihrem Warenkorb weitergeleitet werden...";
+    }
+  </script>
 </html>

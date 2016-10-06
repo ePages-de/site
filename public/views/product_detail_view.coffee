@@ -35,10 +35,6 @@ class ProductDetailView extends Backbone.View
           </div>
           <div class="epages-shop-overlay-product-availability-<%= availability %>">
             <%= availabilityText %>
-            <% if (!variationsLink) { %>
-              <br>
-              <%= stockLevel %> left
-            <% } %>
           </div>
           <% if (variationsLink) { %>
             <h3 data-i18n='variation-options'></h3>
