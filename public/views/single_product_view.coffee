@@ -37,7 +37,7 @@ class SingleProductView extends Backbone.View
             <%= availabilityText %>
           </div>
           <div class="epages-shop-overlay-product-variations"></div>
-          <button class="epages-shop-overlay-buy-button" data-i18n='basket-add' <%= disabled %>></button>
+          <button class="epages-shop-overlay-buy-button" data-i18n='basket-add' <%= disabled %> ></button>
         </div>
       </div>
       <div class="epages-shop-overlay-box-2">
@@ -80,7 +80,6 @@ class SingleProductView extends Backbone.View
       taxType: @model.taxType()
       variationsLink: @model.variationsLink()
 
-
     new VariationAttributeListView(
       collection: @model.variationAttributes()
       el: @$el.find(".epages-shop-overlay-product-variations")
@@ -92,8 +91,32 @@ class SingleProductView extends Backbone.View
   addLineItem: (event) ->
     event.preventDefault()
     event.target.disabled = true # disable button
-
-    App.cart.add(@model.clone())
+    selected_value = true
+    arr = [].slice.call(document.getElementsByTagName('select'));
+    if arr.length > 0
+      i = 0
+      while i < arr.length
+        if arr[i].value == ''
+          selected_value = false
+        i++
+    if selected_value == true
+      isNew = true
+      if App.cart.length > 0
+        for model in App.cart.models
+          if @model.attributes.productId == model.attributes.productId
+            isNew = false
+      if isNew
+        App.cart.add(@model.clone())
+      else
+        for model in App.cart.models
+          if @model.attributes.productId == model.attributes.productId
+            model.attributes.quantity += 1
+      App.cart.sync()
+    else
+      if localStorage.getItem('epages-shop-lang') == 'en'
+        alert ('Please select a version.')
+      else
+        alert ('Bitte wählen Sie eine Ausführung.')
     event.target.disabled = false
 
   updateVariations: =>
