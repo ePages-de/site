@@ -146,6 +146,7 @@ class ProductDetailView extends Backbone.View
           if @model.attributes.productId == model.attributes.productId
             model.attributes.quantity += 1
       App.cart.sync()
+      App.modal.close()
     event.target.disabled = false
 
   updateVariations: =>
