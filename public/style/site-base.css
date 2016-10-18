@@ -294,6 +294,7 @@ body {
 .epages-shop-variation label {
     min-width: 50px;
     display: inline-block;
+    height: 30px;
 }
 .epages-shop-variation select {
     margin-bottom: 0 !important;
@@ -603,4 +604,31 @@ input[type=number]::-webkit-outer-spin-button {
   flex: 1 0 200px;
   box-sizing: border-box;
   max-width:250px;
+}
+
+.tooltiptext {
+    visibility: visible;
+    background-color: rgb(255, 221, 221);
+    color: black;
+    padding: 0px 5px 0px 5px;
+    opacity: 0.8;
+    z-index: 999;
+    position: absolute;
+    height: 22px;
+    line-height: 20px;
+    text-align: center;
+    margin-left: 10px;
+    border-radius: 7px;
+}
+
+.tooltiptext:after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 1px;
+    margin-left: -8px;
+    width: 0; height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid rgb(255, 221, 221);
 }

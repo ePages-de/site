@@ -94,22 +94,59 @@ class ProductDetailView extends Backbone.View
     App.i18n(this)
     this
 
+  insertAfter = (newNode, referenceNode) ->
+    referenceNode.parentNode.insertBefore newNode, referenceNode.nextSibling
+
+  restoreWarnings = ->
+    setTimeout ->
+      arr = [].slice.call(document.getElementsByClassName('tooltip'))
+      tool = [].slice.call(document.getElementsByClassName('tooltiptext'))
+      if arr.length > 0
+        y = 0
+        while y < arr.length
+          arr[y].style.backgroundColor = '#f8f8f8'
+          y++
+      if tool.length > 0
+        x = 0
+        while x < arr.length
+          tool[x].parentNode.removeChild(tool[x])
+          x++
+    , 5000
+
   addLineItem: (event) ->
     event.preventDefault()
     event.target.disabled = true # disable button
-    isNew = true
-    if App.cart.length > 0
-      for model in App.cart.models
-        if @model.attributes.productId == model.attributes.productId
-          isNew = false
-    if isNew
-      App.cart.add(@model.clone())
-    else
-      for model in App.cart.models
-        if @model.attributes.productId == model.attributes.productId
-          model.attributes.quantity += 1
-    App.cart.sync()
-    App.modal.close()
+    selected_value = true
+    arr = [].slice.call(document.getElementsByClassName('tooltip'))
+    if arr.length > 0
+      i = 0
+      while i < arr.length
+        if arr[i].value == ''
+          selected_value = false
+          tooltipText = document.createElement("span")
+          tooltipText.setAttribute("class", "tooltiptext")
+          if localStorage.getItem('epages-shop-lang') == 'en'
+            tooltipText.innerText = 'Please select a version.'
+          else
+            tooltipText.innerText = 'Bitte wählen Sie eine Ausführung.'
+          insertAfter(tooltipText, arr[i])
+          arr[i].style.backgroundColor = '#fdd'
+        i++
+    restoreWarnings()
+    if selected_value == true
+      isNew = true
+      if App.cart.length > 0
+        for model in App.cart.models
+          if @model.attributes.productId == model.attributes.productId
+            isNew = false
+      if isNew
+        App.cart.add(@model.clone())
+      else
+        for model in App.cart.models
+          if @model.attributes.productId == model.attributes.productId
+            model.attributes.quantity += 1
+      App.cart.sync()
+    event.target.disabled = false
 
   updateVariations: =>
     matchingVariationItem = @model.variationItems().find (item) =>

@@ -6,7 +6,9 @@ class VariationAttributeView extends Backbone.View
 
   template: _.template """
       <label for="epages-shop-variation-<%= name %>"><%= displayName%>:</label>
-      <select name="epage-shop-variation-<%= name %>"></select>
+      <select name="epage-shop-variation-<%= name %>" class="tooltip">
+        <span class="tooltiptext">A</span>
+      </select>
   """
 
   optionTemplate: _.template """

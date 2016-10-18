@@ -93,7 +93,10 @@ class CartDetailView extends Backbone.View
   checkout: ->
     left = screen.width/2 - 300
     top = screen.height/2 - 350
-    checkoutWindow = window.open("#{App.rootUrl}/checkout.html", 'newwindow',"width=600,height=620,scrollbars=yes,top=#{top},left=#{left}")
+    checkoutPage = "checkout.html"
+    if localStorage.getItem('epages-shop-lang') == 'de'
+      checkoutPage = "checkoutDE.html"
+    checkoutWindow = window.open("#{App.rootUrl}/" + checkoutPage, 'newwindow',"width=600,height=620,scrollbars=yes,top=#{top},left=#{left}")
 
     # XXX: can we get rid of this maybe?
     App.modal.closeAll()
