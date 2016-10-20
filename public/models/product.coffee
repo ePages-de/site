@@ -50,10 +50,18 @@ class Product extends Backbone.Model
     @get("variationItems")
 
   price: ->
-    @get("priceInfo").price.amount
+    price = @get("priceInfo").price
+    if price?
+      price.amount
+    else
+      0
 
   formattedPrice: ->
-    @get("priceInfo").price.formatted
+    price = @get("priceInfo").price
+    if price?
+      price.formatted
+    else
+      0
 
   manufacturerPrice: ->
     if @get("priceInfo").manufacturerPrice
@@ -66,7 +74,7 @@ class Product extends Backbone.Model
   taxType: ->
     if @get("priceInfo")
       @get("priceInfo").price.taxType
-
+      
   totalPrice: ->
     @quantity() * @price()
 
