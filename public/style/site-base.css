@@ -47,7 +47,7 @@ body {
     color: #444;
 }
 .pico-content::-webkit-scrollbar {
-    width: 0 !important;
+    /*width: 0 !important;*/
 }
 .epages-cart-overlay, .epages-shop-overlay {
     padding: 10px 15px 50px;
