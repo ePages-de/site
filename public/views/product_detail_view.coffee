@@ -117,6 +117,8 @@ class ProductDetailView extends Backbone.View
 
   addLineItem: (event) ->
     event.preventDefault()
+    if !@model.attributes.priceInfo.price?
+      return false
     event.target.disabled = true # disable button
     selected_value = true
     arr = [].slice.call(document.getElementsByClassName('tooltip'))

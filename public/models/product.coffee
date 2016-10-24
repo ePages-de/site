@@ -76,7 +76,7 @@ class Product extends Backbone.Model
       ''
 
   taxType: ->
-    if @get("priceInfo")?
+    if @get("priceInfo").price?
       @get("priceInfo").price.taxType
     else
       ''
