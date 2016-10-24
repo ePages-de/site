@@ -104,12 +104,14 @@ class ProductDetailView extends Backbone.View
       if arr.length > 0
         y = 0
         while y < arr.length
-          arr[y].style.backgroundColor = '#f8f8f8'
+          if arr[y]?
+            arr[y].style.backgroundColor = '#f8f8f8'
           y++
       if tool.length > 0
         x = 0
         while x < arr.length
-          tool[x].parentNode.removeChild(tool[x])
+          if tool[x]?
+            tool[x].parentNode.removeChild(tool[x])
           x++
     , 5000
 

@@ -44,6 +44,14 @@ class ProductView extends Backbone.View
   openProductDetails: (event) ->
     event.preventDefault()
 
+    arr = [].slice.call(document.getElementsByClassName('tooltip'))
+    if arr.length > 0
+      y = 0
+      while y < arr.length
+        if arr[y]?
+          arr[y].parentNode.removeChild(arr[y])
+        y++
+
     productDetailView = new ProductDetailView(model: @model)
     @model.loadVariations()
     productDetailView.render()
