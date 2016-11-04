@@ -7,6 +7,8 @@ class PaginationView extends Backbone.View
 
   initialize: ->
     @listenTo @collection, "click reset", @render
+    @listenTo Backbone, "sort:changed", @render
+    @listenTo Backbone, "category:changed", @render
 
 
   template: _.template """
@@ -22,6 +24,8 @@ class PaginationView extends Backbone.View
   render: ->
     if @collection.pages > 1
       @$el.html @template({pages: @collection.pages, current_page: @collection.page, selected_pages: @windowed_page() })
+    else
+      @$el.html @template({pages: 0, current_page: 0, selected_pages: @windowed_page() })
     this
 
   previous: ->

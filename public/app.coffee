@@ -136,6 +136,7 @@ class App
       categoriesView.reset() if products.query
 
     categoriesView.on "change:category", (selectedCategoryId) ->
+      products.page = 1
       products.selectedCategoryId = selectedCategoryId
       products.query = null # category selection resets search query
       products.fetch(reset: true)

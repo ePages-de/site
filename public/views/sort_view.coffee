@@ -26,3 +26,4 @@ class SortView extends Backbone.View
     event.preventDefault()
     [ @sort, @direction ] = event.target.value.split(",")
     @trigger "change"
+    Backbone.trigger 'sort:changed', @

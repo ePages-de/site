@@ -39,3 +39,4 @@ class CategoryListView extends Backbone.View
 
   onSelectionChange: (event) ->
     @trigger "change:category", event.target.value
+    Backbone.trigger 'category:changed', @
