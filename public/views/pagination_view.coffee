@@ -12,20 +12,24 @@ class PaginationView extends Backbone.View
 
 
   template: _.template """
-    <ul class="shop-pagination">
-      <li><a class="previous_page" href="#">&lt;</a></li>
-      <% _.map(selected_pages, function(num) { %>
-        <li class="<% if(current_page == num){ %><%= 'active' %><% }%>" ><a class="<% if(!isNaN(num)){ %><%= 'set_page' %><% }%>" href="#"><%= num %></a></li>
-      <% }); %>
-      <li><a class="next_page" href="#">&gt;</a></li>
-    </ul>
+    <% if (pages !== 0) { %>
+      <ul class="shop-pagination">
+        <li><a class="previous_page" href="#">&lt;</a></li>
+        <% _.map(selected_pages, function(num) { %>
+          <li class="<% if(current_page == num){ %><%= 'active' %><% }%>" ><a class="<% if(!isNaN(num)){ %><%= 'set_page' %><% }%>" href="#"><%= num %></a></li>
+        <% }); %>
+        <li><a class="next_page" href="#">&gt;</a></li>
+      </ul>
+    <% } else { %>
+      <ul class="shop-pagination"></ul>
+    <% } %>
   """
 
   render: ->
     if @collection.pages > 1
       @$el.html @template({pages: @collection.pages, current_page: @collection.page, selected_pages: @windowed_page() })
     else
-      @$el.html @template({pages: 0, current_page: 0, selected_pages: @windowed_page() })
+      @$el.html @template({pages: @collection.pages, current_page: 0, selected_pages: @windowed_page() })
     this
 
   previous: ->
