@@ -30,7 +30,6 @@
   "total-price": "Hinta yhteensä",
   "unit-price": "Hinta",
   "remove-line-item": "Poista tuote",
-  "variation-options": "Valitse omat vaihtoehdot",
-  "all-products": "Kaikki tuotteet",
-  "choose": "Choose"
+  "pieces": "piece(s)",
+  "all-products": "Kaikki tuotteet"
 }
