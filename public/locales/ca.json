@@ -31,5 +31,6 @@
   "unit-price": "Preu",
   "remove-line-item": "Elimina el producte",
   "pieces": "piece(s)",
-  "all-products": "Tots els productes"
+  "all-products": "Tots els productes",
+  "product-amount-updated": "Unfortunately, the products you selected are not available in the amount you requested. The amount has been changed."
 }

@@ -10,6 +10,7 @@ class Cart extends Backbone.Collection
 
     @on "update:cartId", @_updateSubTotal
     @on "reset update change", @_dumpToStorage
+    @on "update:lineItem", @_showQuantityChange
 
   model: Product
 
@@ -22,7 +23,10 @@ class Cart extends Backbone.Collection
       .done (response) =>
         for p in response.lineItemContainer.productLineItems
           product = _(@models).chain().pluck('attributes').flatten().findWhere(productId: p.productId).value()
+          if product.quantity != p.quantity.amount
+            @trigger 'update:lineItem'
           product.lineItemPrice = p.lineItemPrice.formatted
+          product.quantity = p.quantity.amount
 
         @subTotal = response.lineItemContainer.lineItemsSubTotal.formatted
         @deliveryPrice = response.lineItemContainer.shippingPrice.formatted
@@ -63,6 +67,9 @@ class Cart extends Backbone.Collection
 
   _updateSubTotal: (cartId) =>
     @trigger "change" # manual trigger because the items didn't change
+
+  _showQuantityChange: =>
+    alert App.translations['product-amount-updated']
 
   clearCart: ->
     @reset()

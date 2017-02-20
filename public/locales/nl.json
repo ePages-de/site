@@ -31,5 +31,6 @@
   "unit-price": "Prijs",
   "remove-line-item": "Product verwijderen",
   "pieces": "stuk(s)",
-  "all-products": "Alle producten"
+  "all-products": "Alle producten",
+  "product-amount-updated": "Unfortunately, the products you selected are not available in the amount you requested. The amount has been changed."
 }

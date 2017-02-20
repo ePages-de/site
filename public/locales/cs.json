@@ -31,5 +31,6 @@
   "unit-price": "Cena",
   "remove-line-item": "Odebrat produkt",
   "pieces": "piece(s)",
-  "all-products": "Všechny produkty"
+  "all-products": "Všechny produkty",
+  "product-amount-updated": "Unfortunately, the products you selected are not available in the amount you requested. The amount has been changed."
 }

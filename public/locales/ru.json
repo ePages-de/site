@@ -31,5 +31,6 @@
   "unit-price": "Цена",
   "remove-line-item": "Удалить товар",
   "pieces": "piece(s)",
-  "all-products": "Все товары"
+  "all-products": "Все товары",
+  "product-amount-updated": "Unfortunately, the products you selected are not available in the amount you requested. The amount has been changed."
 }

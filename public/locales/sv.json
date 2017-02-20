@@ -31,5 +31,6 @@
   "unit-price": "Pris",
   "remove-line-item": "Ta bort produkt",
   "pieces": "piece(s)",
-  "all-products": "Alla produkter"
+  "all-products": "Alla produkter",
+  "product-amount-updated": "Unfortunately, the products you selected are not available in the amount you requested. The amount has been changed."
 }

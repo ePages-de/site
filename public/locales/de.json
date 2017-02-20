@@ -31,5 +31,6 @@
   "unit-price": "Preis",
   "remove-line-item": "Produkt löschen",
   "pieces": "piece(s)",
-  "all-products": "Alle Produkte"
+  "all-products": "Alle Produkte",
+  "product-amount-updated": "Unfortunately, the products you selected are not available in the amount you requested. The amount has been changed."
 }
