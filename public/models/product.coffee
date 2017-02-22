@@ -99,7 +99,7 @@ class Product extends Backbone.Model
   isAvailable: ->
     $.getJSON @url()
       .done (response) =>
-        if response.forSale && response.availability != "OutStock"
+        if response.forSale
           $(".epages-shop-overlay-buy-button").prop('disabled', false)
 
     return "disabled"
