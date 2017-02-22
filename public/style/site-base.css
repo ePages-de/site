@@ -45,6 +45,7 @@ body {
     width: 100%;
     z-index: 10001;
     color: #444;
+    overflow-x: hidden;
 }
 .pico-content::-webkit-scrollbar {
     /*width: 0 !important;*/
@@ -425,6 +426,7 @@ input[type=number]::-webkit-outer-spin-button {
     text-decoration: inherit;
     font-size: 22px;
     padding-right: 0.5em;
+    cursor: pointer;
 }
 .epages-cart-overlay-line-item-remove:disabled {
     cursor: auto;
@@ -459,13 +461,53 @@ input[type=number]::-webkit-outer-spin-button {
 .epages-cart-overlay-line-table .epages-cart-overlay-remove button {
     width: 25px;
     padding: 0;
+    position: relative;
 }
 .epages-cart-overlay-line-item-remove::before {
     padding-right: 0;
 }
-.epages-cart-overlay-line-table .epages-cart-overlay-remove span,
+/*.epages-cart-overlay-line-table .epages-cart-overlay-remove span,*/
 .epages-cart-overlay-line-table .epages-cart-overlay-subhead-narrow {
     display: none;
+}
+.epages-cart-overlay-line-table .epages-cart-overlay-remove .tooltip {
+  position: absolute;
+  display: none;
+  border: 1px solid #dddddd;
+  padding: 5px;
+  line-height: 12px;
+  border-radius: 3px;
+  font-size: 12px;
+  text-align: center;
+  left: calc(-50% - 3px);
+  top: -8px;
+  background: white;
+}
+.epages-cart-overlay-line-table .epages-cart-overlay-remove .tooltip:after,
+.epages-cart-overlay-line-table .epages-cart-overlay-remove .tooltip:before {
+  top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+.epages-cart-overlay-line-table .epages-cart-overlay-remove .tooltip:after {
+  border-color: rgba(255, 255, 255, 0);
+	border-top-color: #ffffff;
+	border-width: 5px;
+	margin-left: -5px;
+}
+.epages-cart-overlay-line-table .epages-cart-overlay-remove .tooltip:before {
+  border-color: rgba(221, 221, 221, 0);
+	border-top-color: #dddddd;
+	border-width: 6px;
+	margin-left: -6px;
+}
+.epages-cart-overlay-line-item-remove:hover + .tooltip {
+  display: block;
 }
 .epages-cart-overlay-line-table tfoot td {
     text-align: right;
