@@ -352,6 +352,9 @@ body {
 	  border-left: none;
 	  background-color: transparent;
 }
+.epages-cart-overlay table tbody tr {
+    height: 90px;
+}
 .epages-cart-overlay table td {
     background-color: transparent;
     border-width: 0;
