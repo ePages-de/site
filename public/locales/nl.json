@@ -32,5 +32,5 @@
   "remove-line-item": "Product verwijderen",
   "pieces": "stuk(s)",
   "all-products": "Alle producten",
-  "product-amount-updated": "Unfortunately, the products you selected are not available in the amount you requested. The amount has been changed."
+  "product-amount-updated": "Het geselecteerde product is niet beschikbaar voor het gevraagde bedrag. Het bedrag is gewijzigd."
 }

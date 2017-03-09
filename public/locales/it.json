@@ -32,5 +32,5 @@
   "remove-line-item": "Elimina prodotto",
   "pieces": "pezzo/i",
   "all-products": "Tutti i prodotti",
-  "product-amount-updated": "Unfortunately, the products you selected are not available in the amount you requested. The amount has been changed."
+  "product-amount-updated": "Il prodotto selezionato non è disponibile nella quantità richiesta. La quantità è stata modificata."
 }
