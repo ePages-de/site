@@ -150,6 +150,7 @@ class ProductDetailView extends Backbone.View
             model.attributes.quantity += 1
       App.cart.sync()
       App.modal.close()
+      App.modal.removePicos()
     event.target.disabled = false
 
   updateVariations: =>
