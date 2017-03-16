@@ -12,7 +12,11 @@ class CartDetailView extends Backbone.View
   template: _.template """
   <div class="epages-cart-overlay">
     <h2 class="epages-cart-healine" data-i18n='basket'></h2>
-
+    <% if (shopQuantityChange == 1) { %>
+      <div class="shop-quantity-change">
+        <span>ⓘ</span><div data-i18n='product-amount-updated'></div>
+      </div>
+    <% } %>
     <% if (failedToCreateCart) { %>
       <div class="epages-cart-overlay-fail" data-i18n='basket-fail'></div>
     <% } %>
@@ -74,6 +78,7 @@ class CartDetailView extends Backbone.View
       deliveryPrice: @collection.deliveryPrice
       deliveryName: @collection.deliveryName
       failedToCreateCart: @failedToCreateCart
+      shopQuantityChange: localStorage.getItem('epages-shop-quantity-change')
 
     if @collection.isEmpty()
       @$(".epages-cart-overlay-is-empty").show()
@@ -84,6 +89,7 @@ class CartDetailView extends Backbone.View
 
       @$(".epages-cart-overlay-line-table tbody").html html
       @$(".epages-cart-overlay-not-empty").show()
+
     App.i18n(this)
     this
 

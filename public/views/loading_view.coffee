@@ -7,6 +7,7 @@ class LoadingView extends Backbone.View
       _isACloseButton = ->
         if event.target.className == " pico-close fa fa-2x fa-times-circle undefined" or event.target.className == " pico-overlay "
           App.modal.removePicos()
+
       document.addEventListener 'click', _isACloseButton
 
     clickButton()

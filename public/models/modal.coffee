@@ -18,6 +18,8 @@ class Modal
     @commands.send "closeModal"
 
   removePicos: ->
+    if $('.epages-cart-overlay').length > 0
+      localStorage.setItem('epages-shop-quantity-change', 0)
     if $('.pico-overlay').length > 0
       _.map $('.pico-overlay'), (pico) -> pico.parentNode.removeChild pico
     if $('.pico-content').length > 0

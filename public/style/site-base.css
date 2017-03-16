@@ -54,6 +54,13 @@ body {
     padding: 10px 15px 50px;
     text-align: left;
 }
+.epages-cart-overlay .shop-quantity-change {
+  width: 100%;
+  background: #fef0c1;
+  color: #e59941;
+  margin-bottom: 20px;
+  padding: 8px 16px;
+}
 /********** CTA Buttons **********/
 .epages-shop-overlay-buy-button,
 .epages-cart-overlay-checkout-button {
