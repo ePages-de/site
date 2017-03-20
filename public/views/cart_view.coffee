@@ -15,7 +15,8 @@ class CartView extends Backbone.View
   """
 
   render: ->
-    @$el.html @template(count: @collection.length)
+    quantity = @countProducts()
+    @$el.html @template(count: quantity)
     this
 
   openCart: (event) ->
@@ -23,3 +24,10 @@ class CartView extends Backbone.View
 
     view = new CartDetailView(collection: @collection).render()
     App.modal.open(view)
+
+  countProducts: () ->
+    lineProducts = JSON.parse(@collection.storage.storage["epages-shop-cart-products"])
+    quantity = 0
+    for product in lineProducts
+      quantity += product.quantity
+    quantity
