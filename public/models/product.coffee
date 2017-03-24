@@ -173,8 +173,8 @@ class Product extends Backbone.Model
 
 
   loadSlideshow: =>
-    if url = @slideshowLink()
-      $.getJSON url
+    if url = @link()
+      $.getJSON url + '/slideshow'
         .done (json) =>
           $(".epages-shop-overlay-slideshow").empty()
           json.items.map (image) ->
