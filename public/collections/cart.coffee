@@ -17,6 +17,7 @@ class Cart extends Backbone.Collection
     Backbone.sync("create", this, timeout: 10 * 1000)
 
   sync: ->
+    amount = 0
     @deliveryPrice = undefined # reset to avoid render previous delivery prices
     Backbone.sync("create", this, timeout: 10 * 1000)
       .done (response) =>
@@ -24,9 +25,13 @@ class Cart extends Backbone.Collection
           product = _(@models).chain().pluck('attributes').flatten().findWhere(productId: p.productId).value()
           if product.quantity != p.quantity.amount
             localStorage.setItem('epages-shop-quantity-change', 1)
+          else
+            localStorage.setItem('epages-shop-quantity-change', 0)
           product.lineItemPrice = p.lineItemPrice.formatted
           product.quantity = p.quantity.amount
+          amount += p.quantity.amount
 
+        $('.epages-shop-cart span').html(amount)
         @subTotal = response.lineItemContainer.lineItemsSubTotal.formatted
         @deliveryPrice = response.lineItemContainer.shippingPrice.formatted
         shippingMethod = (response.shippingData || {}).shippingMethod
