@@ -26,8 +26,9 @@ class CartView extends Backbone.View
     App.modal.open(view)
 
   countProducts: () ->
-    lineProducts = JSON.parse(@collection.storage.storage["epages-shop-cart-products"])
     quantity = 0
-    for product in lineProducts
-      quantity += product.quantity
+    if typeof @collection.storage.storage["epages-shop-cart-products"] != 'undefined'
+      lineProducts = JSON.parse(@collection.storage.storage["epages-shop-cart-products"])
+      for product in lineProducts
+        quantity += product.quantity
     quantity
