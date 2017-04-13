@@ -7,11 +7,10 @@
   "scripts": {
     "start": "REPLAY=cheat node proxy.js & gulp build && node index.js",
     "watch": "PORT=4321 node index.js & PROXY_PORT=4041 node proxy.js & ./node_modules/karma/bin/karma start karma.conf.coffee",
-    "watchi": "REPLAY=cheat node proxy.js & gulp build && gulp watch && node index.js",
     "test": "./ci.sh"
   },
   "engines": {
-    "node": "7.5.0"
+    "node": "7.9.0"
   },
   "dependencies": {
     "coffee-script": "^1.9.3",
