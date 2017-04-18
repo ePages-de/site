@@ -84,7 +84,21 @@ a custom position by inserting your own cart  ```div``` somewhere into the page.
 
 ## For developers
 
-### Installation
+### Installation with docker
+
+If it's the first time or you want to update the package.json you have to build it first:
+
+```sh
+docker-compose build
+```
+
+After that, you'll only have to do:
+
+```sh
+docker-compose up
+```
+
+### Installation without docker
 
 ```sh
 npm install
