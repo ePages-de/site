@@ -3,10 +3,10 @@ set -ex # fail completely at first failure
 
 NODE_ENV="test" gulp build
 
-PORT=4321 node index.js &
+PORT=4321 node --harmony index.js &
 NODE_PID=$!
 
-PROXY_PORT=4041 node proxy.js &
+PROXY_PORT=4041 --harmony node proxy.js &
 PROXY_PID=$!
 
 ./node_modules/karma/bin/karma start karma.conf.coffee --single-run
