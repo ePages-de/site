@@ -62,7 +62,7 @@ describe "Widget", ->
     script.type = "text/javascript"
     script.src  = "http://localhost:4321/site.js"
     script.id   = "epages-widget"
-    script.dataset.shopUrl = "https://pm.epages.com/rs/shops/mindmatters"
+    script.dataset.shopUrl = "https://pm.epages.com/rs/shops/unai"
 
     @$container.append script
     $(document.body).append @$container
