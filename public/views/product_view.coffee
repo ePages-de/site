@@ -43,7 +43,6 @@ class ProductView extends Backbone.View
 
   openProductDetails: (event) ->
     event.preventDefault()
-
     arr = [].slice.call(document.getElementsByClassName('tooltip'))
     if arr.length > 0
       y = 0

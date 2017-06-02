@@ -160,10 +160,11 @@ class Product extends Backbone.Model
 
   loadVariations: =>
     if @variationItems() then return
-    $.getJSON "#{@variationsLink()}"
-      .done (json) =>
-        @set("variationAttributes", new VariationAttributes json.variationAttributes)
-        @set("variationItems", new VariationItems json.items)
+    if @variationsLink() != undefined
+      $.getJSON "#{@variationsLink()}"
+        .done (json) =>
+          @set("variationAttributes", new VariationAttributes json.variationAttributes)
+          @set("variationItems", new VariationItems json.items)
 
   loadCustomAttributes: =>
     if url = @customAttributesLink()
