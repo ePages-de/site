@@ -1,4 +1,4 @@
-FROM node:7.9.0
+FROM node:7.10.1
 
 MAINTAINER Unai Martinez <u.martinez@epages.com>
 
